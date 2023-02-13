@@ -1,4 +1,3 @@
-
 import 'package:enreda_app/presentation/pages/resources/sections/show_alert_user_anonimous.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -41,7 +40,9 @@ dialogContent(BuildContext context, Resource resource) {
   final dialogWidth = Responsive.isMobile(context) || isSmallScreen
       ? widthOfScreen(context)
       : widthOfScreen(context) * 0.55;
-  final dialogHeight = Responsive.isMobile(context) ? heightOfScreen(context) : heightOfScreen(context) * 0.80;
+  final dialogHeight = Responsive.isMobile(context)
+      ? heightOfScreen(context)
+      : heightOfScreen(context) * 0.80;
   TextTheme textTheme = Theme.of(context).textTheme;
   double fontSizeTitle = responsiveSize(context, 14, 22, md: 18);
   double fontSizePromotor = responsiveSize(context, 12, 16, md: 14);
@@ -56,7 +57,10 @@ dialogContent(BuildContext context, Resource resource) {
           left: Consts.padding,
           right: Consts.padding,
         ),
-        margin: EdgeInsets.only(top: Responsive.isMobile(context) ? Consts.avatarRadius / 2 : Consts.avatarRadius),
+        margin: EdgeInsets.only(
+            top: Responsive.isMobile(context)
+                ? Consts.avatarRadius / 2
+                : Consts.avatarRadius),
         decoration: new BoxDecoration(
           color: Colors.white,
           shape: BoxShape.rectangle,
@@ -138,77 +142,93 @@ dialogContent(BuildContext context, Resource resource) {
               ],
             ),
             Divider(
-              color: AppColors.grey150, thickness: 1,
+              color: AppColors.grey150,
+              thickness: 1,
             ),
-            Expanded(child: Responsive.isMobile(context) || Responsive.isTablet(context) ? _buildDetailsListViewMobile(context, resource) : _buildDetailsListViewWeb(context, resource)),
+            Expanded(
+                child:
+                    Responsive.isMobile(context) || Responsive.isTablet(context)
+                        ? _buildDetailsListViewMobile(context, resource)
+                        : _buildDetailsListViewWeb(context, resource)),
           ],
         ),
       ),
       Positioned(
-        left: Responsive.isMobile(context) ? (dialogWidth / 2) - 60 : isSmallScreen ? (dialogWidth / 2) - 80 : (dialogWidth / 2) - 80 * 0.55,
+        left: Responsive.isMobile(context)
+            ? (dialogWidth / 2) - 60
+            : isSmallScreen
+                ? (dialogWidth / 2) - 80
+                : (dialogWidth / 2) - 80 * 0.55,
         width: Responsive.isMobile(context) ? 50 : 80,
-        child:
-        Container(
+        child: Container(
           color: Colors.transparent,
           width: Responsive.isMobile(context) ? 50 : 80,
           height: Responsive.isMobile(context) ? 50 : 80,
-          child:
-          resource.organizerImage == null || resource.organizerImage!.isEmpty ? Container() :
-          CircleAvatar(
-            backgroundColor: Colors.blueAccent,
-            radius: Consts.avatarRadius,
-            backgroundImage: NetworkImage(resource.organizerImage!),
-          ),
+          child: resource.organizerImage == null ||
+                  resource.organizerImage!.isEmpty
+              ? Container()
+              : CircleAvatar(
+                  backgroundColor: Colors.blueAccent,
+                  radius: Consts.avatarRadius,
+                  backgroundImage: NetworkImage(resource.organizerImage!),
+                ),
         ),
       ),
-      Responsive.isTablet(context) || Responsive.isMobile(context) ? Container() :
-      Positioned(
-        bottom: 1,
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, Constants.mainPadding),
-          child: Container(
-            height: 60,
-            width: dialogWidth,
-            child: Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Column(
-                    crossAxisAlignment: Responsive.isMobile(context) ? CrossAxisAlignment.center : CrossAxisAlignment.stretch,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      DialogMainButton(
-                        title: StringConst.JOIN_RESOURCE,
-                        onPressed: () => showAlertUserAnonimous(context),
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: buildShareButton(context, resource, AppColors.darkBlue),
-                ),
-                Expanded(
-                  flex: 1,
+      Responsive.isTablet(context) || Responsive.isMobile(context)
+          ? Container()
+          : Positioned(
+              bottom: 1,
+              child: Padding(
+                padding:
+                    EdgeInsets.fromLTRB(20.0, 0.0, 20.0, Constants.mainPadding),
+                child: Container(
+                  height: 60,
+                  width: dialogWidth,
                   child: Row(
-                    mainAxisAlignment: Responsive.isMobile(context) ? MainAxisAlignment.center : MainAxisAlignment.start,
-                    children: [
-                      IconButton(
-                        icon: FaIcon(FontAwesomeIcons.heart),
-                        tooltip: 'Me gusta',
-                        color: AppColors.darkBlue,
-                        iconSize: 24,
-                        onPressed: () => showAlertUserAnonimous(context),
+                    children: <Widget>[
+                      Expanded(
+                        flex: 2,
+                        child: Column(
+                          crossAxisAlignment: Responsive.isMobile(context)
+                              ? CrossAxisAlignment.center
+                              : CrossAxisAlignment.stretch,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            DialogMainButton(
+                              title: StringConst.JOIN_RESOURCE,
+                              onPressed: () => showAlertUserAnonimous(context),
+                            ),
+                          ],
+                        ),
                       ),
+                      Expanded(
+                        flex: 1,
+                        child: buildShareButton(
+                            context, resource, AppColors.darkBlue),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Row(
+                          mainAxisAlignment: Responsive.isMobile(context)
+                              ? MainAxisAlignment.center
+                              : MainAxisAlignment.start,
+                          children: [
+                            IconButton(
+                              icon: FaIcon(FontAwesomeIcons.heart),
+                              tooltip: 'Me gusta',
+                              color: AppColors.darkBlue,
+                              iconSize: 24,
+                              onPressed: () => showAlertUserAnonimous(context),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Spacer(),
                     ],
                   ),
                 ),
-                Spacer(),
-              ],
+              ),
             ),
-          ),
-        ),
-      ),
     ],
   );
 }
@@ -231,7 +251,7 @@ Widget _buildDetailsListViewWeb(BuildContext context, Resource resource) {
         Expanded(
           flex: Responsive.isMobile(context) ? 2 : 4,
           child: Padding(
-            padding: const EdgeInsets.only(top:30, right: 30.0),
+            padding: const EdgeInsets.only(top: 30, right: 30.0),
             child: SingleChildScrollView(
               child: Text(
                 resource.description,
@@ -260,7 +280,8 @@ Widget _buildDetailsListViewWeb(BuildContext context, Resource resource) {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomTextTitle(title: StringConst.RESOURCE_TYPE.toUpperCase()),
+                  CustomTextTitle(
+                      title: StringConst.RESOURCE_TYPE.toUpperCase()),
                   CustomTextBody(text: '${resource.resourceTypeName}'),
                   SpaceH16(),
                   CustomTextTitle(title: StringConst.LOCATION.toUpperCase()),
@@ -272,12 +293,13 @@ Widget _buildDetailsListViewWeb(BuildContext context, Resource resource) {
                       resource.modality == StringConst.ONLINE
                           ? Container()
                           : Row(
-                        children: [
-                          CustomTextBody(text: '${resource.countryName}'),
-                          CustomTextBody(text: ', '),
-                          CustomTextBody(text: '${resource.provinceName}'),
-                        ],
-                      ),
+                              children: [
+                                CustomTextBody(text: '${resource.countryName}'),
+                                CustomTextBody(text: ', '),
+                                CustomTextBody(
+                                    text: '${resource.provinceName}'),
+                              ],
+                            ),
                     ],
                   ),
                   SpaceH16(),
@@ -287,47 +309,56 @@ Widget _buildDetailsListViewWeb(BuildContext context, Resource resource) {
                   CustomTextTitle(title: StringConst.DURATION.toUpperCase()),
                   CustomTextBody(text: '${resource.duration}'),
                   SpaceH16(),
-                  (resource.contractType != null && resource.contractType != '') ?
-                  CustomTextTitle(title: StringConst.CONTRACT_TYPE.toUpperCase())
+                  (resource.contractType != null && resource.contractType != '')
+                      ? CustomTextTitle(
+                          title: StringConst.CONTRACT_TYPE.toUpperCase())
                       : Container(),
-                  (resource.contractType != null && resource.contractType != '') ?
-                  CustomTextBody(text: '${resource.contractType}') : Container(),
+                  (resource.contractType != null && resource.contractType != '')
+                      ? CustomTextBody(text: '${resource.contractType}')
+                      : Container(),
                   SpaceH4(),
                   (resource.contractType != null && resource.contractType != '')
                       ? SpaceH16()
                       : Container(),
-                  (resource.salary != null && resource.salary != '') ?
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomTextTitle(title: StringConst.SALARY.toUpperCase()),
-                      CustomTextBody(text: '${resource.salary}')
-                    ],
-                  )
+                  (resource.salary != null && resource.salary != '')
+                      ? Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CustomTextTitle(
+                                title: StringConst.SALARY.toUpperCase()),
+                            CustomTextBody(text: '${resource.salary}')
+                          ],
+                        )
                       : Container(),
                   SpaceH4(),
                   (resource.salary != null && resource.salary != '')
                       ? SpaceH16()
                       : Container(),
                   CustomTextTitle(title: StringConst.DATE.toUpperCase()),
-                  DateFormat('dd/MM/yyyy').format(resource.start) == '31/12/2050' ?
-                  CustomTextBody(text: StringConst.ALWAYS_AVAILABLE,) :
-                  Row(
-                    children: [
-                      CustomTextBody(text: DateFormat('dd/MM/yyyy').format(resource.start)),
-                      SpaceW4(),
-                      CustomTextBody(text: '-'),
-                      SpaceW4(),
-                      CustomTextBody(text: DateFormat('dd/MM/yyyy').format(resource.end))
-                    ],
-                  ),
+                  DateFormat('dd/MM/yyyy').format(resource.start) ==
+                          '31/12/2050'
+                      ? CustomTextBody(
+                          text: StringConst.ALWAYS_AVAILABLE,
+                        )
+                      : Row(
+                          children: [
+                            CustomTextBody(
+                                text: DateFormat('dd/MM/yyyy')
+                                    .format(resource.start)),
+                            SpaceW4(),
+                            CustomTextBody(text: '-'),
+                            SpaceW4(),
+                            CustomTextBody(
+                                text: DateFormat('dd/MM/yyyy')
+                                    .format(resource.end))
+                          ],
+                        ),
                   resource.temporality == null
                       ? SizedBox(
-                    height: 0,
-                  )
-                      :
-                  CustomTextBody(text: '${resource.temporality}')
+                          height: 0,
+                        )
+                      : CustomTextBody(text: '${resource.temporality}')
                 ],
               ),
             ),
@@ -346,7 +377,7 @@ Widget _buildDetailsListViewMobile(BuildContext context, Resource resource) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(top:30, right: 30.0),
+          padding: const EdgeInsets.only(top: 30, right: 30.0),
           child: Text(
             resource.description,
             textAlign: TextAlign.left,
@@ -381,12 +412,12 @@ Widget _buildDetailsListViewMobile(BuildContext context, Resource resource) {
                   resource.modality == StringConst.ONLINE
                       ? Container()
                       : Row(
-                    children: [
-                      CustomTextBody(text: '${resource.countryName}'),
-                      CustomTextBody(text: ', '),
-                      CustomTextBody(text: '${resource.provinceName}'),
-                    ],
-                  ),
+                          children: [
+                            CustomTextBody(text: '${resource.countryName}'),
+                            CustomTextBody(text: ', '),
+                            CustomTextBody(text: '${resource.provinceName}'),
+                          ],
+                        ),
                 ],
               ),
               SpaceH16(),
@@ -396,47 +427,54 @@ Widget _buildDetailsListViewMobile(BuildContext context, Resource resource) {
               CustomTextTitle(title: StringConst.DURATION.toUpperCase()),
               CustomTextBody(text: '${resource.duration}'),
               SpaceH16(),
-              (resource.contractType != null && resource.contractType != '') ?
-              CustomTextTitle(title: StringConst.CONTRACT_TYPE.toUpperCase())
+              (resource.contractType != null && resource.contractType != '')
+                  ? CustomTextTitle(
+                      title: StringConst.CONTRACT_TYPE.toUpperCase())
                   : Container(),
-              (resource.contractType != null && resource.contractType != '') ?
-              CustomTextBody(text: '${resource.contractType}') : Container(),
+              (resource.contractType != null && resource.contractType != '')
+                  ? CustomTextBody(text: '${resource.contractType}')
+                  : Container(),
               SpaceH4(),
               (resource.contractType != null && resource.contractType != '')
                   ? SpaceH16()
                   : Container(),
-              (resource.salary != null && resource.salary != '') ?
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomTextTitle(title: StringConst.SALARY.toUpperCase()),
-                  CustomTextBody(text: '${resource.salary}')
-                ],
-              )
+              (resource.salary != null && resource.salary != '')
+                  ? Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomTextTitle(
+                            title: StringConst.SALARY.toUpperCase()),
+                        CustomTextBody(text: '${resource.salary}')
+                      ],
+                    )
                   : Container(),
               SpaceH4(),
               (resource.salary != null && resource.salary != '')
                   ? SpaceH16()
                   : Container(),
               CustomTextTitle(title: StringConst.DATE.toUpperCase()),
-              DateFormat('dd/MM/yyyy').format(resource.start) == '31/12/2050' ?
-              CustomTextBody(text: StringConst.ALWAYS_AVAILABLE,) :
-              Row(
-                children: [
-                  CustomTextBody(text: DateFormat('dd/MM/yyyy').format(resource.start)),
-                  SpaceW4(),
-                  CustomTextBody(text: '-'),
-                  SpaceW4(),
-                  CustomTextBody(text: DateFormat('dd/MM/yyyy').format(resource.end))
-                ],
-              ),
+              DateFormat('dd/MM/yyyy').format(resource.start) == '31/12/2050'
+                  ? CustomTextBody(
+                      text: StringConst.ALWAYS_AVAILABLE,
+                    )
+                  : Row(
+                      children: [
+                        CustomTextBody(
+                            text: DateFormat('dd/MM/yyyy')
+                                .format(resource.start)),
+                        SpaceW4(),
+                        CustomTextBody(text: '-'),
+                        SpaceW4(),
+                        CustomTextBody(
+                            text: DateFormat('dd/MM/yyyy').format(resource.end))
+                      ],
+                    ),
               resource.temporality == null
                   ? SizedBox(
-                height: 0,
-              )
-                  :
-              CustomTextBody(text: '${resource.temporality}')
+                      height: 0,
+                    )
+                  : CustomTextBody(text: '${resource.temporality}')
             ],
           ),
         ),

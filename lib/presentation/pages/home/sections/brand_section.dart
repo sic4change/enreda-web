@@ -43,10 +43,6 @@ class _CompaniesSectionState extends State<CompaniesSection> {
 
   @override
   Widget build(BuildContext context) {
-    TextTheme textTheme = Theme.of(context).textTheme;
-    TextStyle? titleStyle = textTheme.headline3?.copyWith(
-      fontSize: responsiveSize(context, 25, 45, md: 30),
-    );
 
     return Container(
       child: Column(
@@ -69,7 +65,7 @@ class _CompaniesSectionState extends State<CompaniesSection> {
                       width: widthOfScreen(context),
                       padding: EdgeInsets.symmetric(horizontal: screenWidth < 850 ? 20 : 100),
                       child: CarouselSlider.builder(
-                        itemCount: 6,
+                        itemCount: 7,
                         carouselController: _carouselController,
                         itemBuilder: (
                           BuildContext context,
@@ -128,6 +124,15 @@ class _CompaniesSectionState extends State<CompaniesSection> {
                               url: "https://www.mdsocialesa2030.gob.es/",
                               imageUrl: ImagePath.PORTFOLIO_6,
                               imageUrlBn: ImagePath.PORTFOLIO_6bn,
+                              title: StringConst.GOBES,
+                            );
+                          } else if (itemIndex == 6) {
+                            return CompanyCard(
+                              height: heightOfCarousel,
+                              width: widthOfCarousel,
+                              url: "https://www.mites.gob.es/",
+                              imageUrl: ImagePath.PORTFOLIO_7,
+                              imageUrlBn: ImagePath.PORTFOLIO_7bn,
                               title: StringConst.GOBES,
                             );
                           } else {
@@ -169,7 +174,7 @@ class _CompaniesSectionState extends State<CompaniesSection> {
                       width: widthOfScreen(context),
                       padding: const EdgeInsets.symmetric(horizontal: 100.0),
                       child: CarouselSlider.builder(
-                        itemCount: 6,
+                        itemCount: 7,
                         carouselController: _carouselController,
                         itemBuilder: (
                           BuildContext context,
@@ -230,6 +235,15 @@ class _CompaniesSectionState extends State<CompaniesSection> {
                               imageUrlBn: ImagePath.PORTFOLIO_6bn,
                               title: StringConst.GOBES,
                             );
+                          } else if (itemIndex == 6) {
+                            return CompanyCard(
+                              height: heightOfCarousel,
+                              width: widthOfCarousel,
+                              url: "https://www.mites.gob.es/",
+                              imageUrl: ImagePath.PORTFOLIO_7,
+                              imageUrlBn: ImagePath.PORTFOLIO_7bn,
+                              title: StringConst.GOBES,
+                            );
                           } else {
                             return CompanyCard(
                               height: heightOfCarousel,
@@ -269,7 +283,7 @@ class _CompaniesSectionState extends State<CompaniesSection> {
                       width: widthOfScreen(context),
                       padding: const EdgeInsets.symmetric(horizontal: 200.0),
                       child: CarouselSlider.builder(
-                        itemCount: 6,
+                        itemCount: 7,
                         carouselController: _carouselController,
                         itemBuilder: (
                           BuildContext context,
@@ -328,6 +342,15 @@ class _CompaniesSectionState extends State<CompaniesSection> {
                               url: "https://www.mdsocialesa2030.gob.es/",
                               imageUrl: ImagePath.PORTFOLIO_6,
                               imageUrlBn: ImagePath.PORTFOLIO_6bn,
+                              title: StringConst.GOBES,
+                            );
+                          } else if (itemIndex == 6) {
+                            return CompanyCard(
+                              height: heightOfCarousel,
+                              width: widthOfCarousel,
+                              url: "https://www.mites.gob.es/",
+                              imageUrl: ImagePath.PORTFOLIO_7,
+                              imageUrlBn: ImagePath.PORTFOLIO_7bn,
                               title: StringConst.GOBES,
                             );
                           } else {

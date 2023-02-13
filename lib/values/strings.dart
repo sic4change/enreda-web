@@ -35,6 +35,8 @@ class StringConst {
   static const String ABOUT_2 = "Descubre aquello que te hace diferente y ponlo en valor a la hora de buscar empleo.";
   static const String INTRO2 = "¡Identifica";
   static const String POSITION2 = "tu potencial!";
+  static const String INTRO3 = "¿No sabes por dónde empezar";
+  static const String POSITION3 = "con tu búsqueda de empleo?";
   static const String APP_STORE = "App Store";
   static const String DEV_EMAIL_2 = "escuchamos@enredas.org";
   static const String GOOGLE_PLAY = "Google Play";
