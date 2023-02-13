@@ -406,7 +406,7 @@ class _CompaniesSectionState extends State<CompaniesSection> {
   }) {
     return Container(
       child: DotsIndicator(
-        dotsCount: 6,
+        dotsCount: 7,
         position: currentIndex,
         onTap: (index) {
           _moveToNextCarousel(index.toInt());
