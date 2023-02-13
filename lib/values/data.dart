@@ -157,6 +157,15 @@ class Data {
         buttonText: StringConst.DISCOVER2,
         chatButton: true,
     ),
+    MainPageData(
+      circleImagePath: ImagePath.HOME_CIRCLE_WEB,
+      headerImagePath: ImagePath.DEV_HEADER3,
+      introText: StringConst.INTRO3,
+      positionText: StringConst.POSITION3,
+      aboutText: StringConst.ABOUT_1,
+      buttonText: StringConst.DISCOVER,
+      chatButton: false,
+    ),
 
   ];
 
@@ -225,6 +234,13 @@ class Data {
         width: 0.225,
         url: "https://www.mdsocialesa2030.gob.es/",
     ),
+    CompanyData(
+      title: StringConst.GOBES,
+      category: StringConst.AAPP,
+      projectCoverUrl: ImagePath.PORTFOLIO_7,
+      width: 0.225,
+      url: "https://www.mites.gob.es/",
+    ),
   ];
 
   static List<CompanyData> branding = [
@@ -290,6 +306,14 @@ class Data {
         projectCoverUrl: ImagePath.PORTFOLIO_6,
         width: 0.5,
         url: "https://www.mdsocialesa2030.gob.es/",
+        mobileHeight: 0.3
+    ),
+    CompanyData(
+        title: StringConst.GOBES,
+        category: StringConst.AAPP,
+        projectCoverUrl: ImagePath.PORTFOLIO_7,
+        width: 0.5,
+        url: "https://www.mites.gob.es/",
         mobileHeight: 0.3
     ),
   ];
