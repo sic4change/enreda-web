@@ -171,7 +171,6 @@ class StringConst {
   //Footer Section
   static const String LETS_TALK = "¡Te escuchamos!";
   static const String PHONE_ME = "Llámanos";
-  static const String PHONE_NUMBER = "+34 613 04 24 34";
   static const String MAIL_ME = "Contáctanos";
   static const String FOLLOW_ME_2 = "Follow Me";
   static const String RIGHTS_RESERVED = "Políticas de privacidad";

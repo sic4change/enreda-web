@@ -21,11 +21,6 @@ import '../../../widgets/spaces.dart';
 
 List<FooterItem> footerItems = [
   FooterItem(
-    title: StringConst.PHONE_ME + ":",
-    subtitle: StringConst.PHONE_NUMBER,
-    image: ImagePath.FOOTER_CALL,
-  ),
-  FooterItem(
     title: StringConst.MAIL_ME + ":",
     subtitle: StringConst.DEV_EMAIL_2,
     image: ImagePath.FOOTER_CONTACT,
