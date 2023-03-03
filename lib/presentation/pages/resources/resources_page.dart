@@ -1,4 +1,4 @@
-import 'package:chips_choice_null_safety/chips_choice_null_safety.dart';
+import 'package:chips_choice/chips_choice.dart';
 import 'package:enreda_app/models/city.dart';
 import 'package:enreda_app/models/country.dart';
 import 'package:enreda_app/models/filterResource.dart';
@@ -15,11 +15,16 @@ import 'package:enreda_app/presentation/widgets/list_item_builder.dart';
 import 'package:enreda_app/presentation/widgets/spaces.dart';
 import 'package:enreda_app/services/database.dart';
 import 'package:enreda_app/utils/const.dart';
-import 'package:enreda_app/values/values.dart';
+import 'package:enreda_app/utils/my_scroll_behaviour.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../models/resourceCategory.dart';
 import '../../../utils/responsive.dart';
+import '../../widgets/custom_chip.dart';
+
+
+
 
 class ResourcesPage extends StatefulWidget {
   @override
@@ -27,20 +32,26 @@ class ResourcesPage extends StatefulWidget {
 }
 
 class _ResourcesPageState extends State<ResourcesPage> {
-  FilterResource filterResource = FilterResource(
-    "",
-    [],
-  );
+  FilterResource filterResource = FilterResource("", [],);
   bool isAlertboxOpened = false;
   final _searchTextController = TextEditingController();
+  List<ResourceCategory> resourceCategoriesList = [];
 
   void setStateIfMounted(f) {
     if (mounted) setState(f);
   }
 
+  getResourceCategories() {
+    final database = Provider.of<Database>(context, listen: false);
+    database.getCategoriesResources().listen((categoriesList) {
+      setState(() => resourceCategoriesList = categoriesList);
+    });
+  }
+
   @override
   void initState() {
     super.initState();
+    getResourceCategories();
     _searchTextController.addListener(() {
       filterResource.searchText = _searchTextController.text;
     });
@@ -73,6 +84,7 @@ class _ResourcesPageState extends State<ResourcesPage> {
   }
 
   Widget _buildFilterRow() {
+    final double margin = Responsive.isDesktop(context) ? 20.0 : 12.0;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -87,37 +99,39 @@ class _ResourcesPageState extends State<ResourcesPage> {
             clearFilter: () => _clearFilter()),
         Responsive.isMobile(context) ? SpaceH4() : SpaceH16(),
         Container(
-          color: Colors.transparent,
-          height: Responsive.isMobile(context) ? 50 : 60.0,
-          child: ChipsChoice<String>.multiple(
-            alignment: WrapAlignment.start,
-            value: filterResource.resourceTypes,
-            onChanged: (val) {
-              setState(() {
-                filterResource.resourceTypes = val;
-              });
-            },
-            choiceItems: C2Choice.listFrom<String, String>(
-              source: StringConst.RESOURCE_TYPES,
-              value: (i, v) => v,
-              label: (i, v) => v,
+          height: 50.0,
+          child:
+          resourceCategoriesList.isEmpty ? Center(child: LinearProgressIndicator()) :
+          ScrollConfiguration(
+            behavior: MyCustomScrollBehavior(),
+            child: ChipsChoice<String>.multiple(
+              alignment: WrapAlignment.start,
+              padding: EdgeInsets.only(left: 0.0, right: 0.0),
+              value: filterResource.resourceCategories,
+              onChanged: (val) {
+                setState(() {
+                  filterResource.resourceCategories = val;
+                });
+              },
+              choiceItems: C2Choice.listFrom<String, ResourceCategory>(
+                source: resourceCategoriesList,
+                value: (i, v) => v.id,
+                label: (i, v) => v.name,
+              ),
+              choiceBuilder: (item, i) => Row(
+                children: [
+                  CustomChip(
+                    label: item.label,
+                    selected: item.selected,
+                    onSelect: item.select!,
+                  ),
+                  SpaceW8(),
+                ],
+              ),
             ),
-            choiceStyle: C2ChoiceStyle(
-              padding: Responsive.isMobile(context) ? EdgeInsets.all(8.0) : EdgeInsets.all(15.0),
-              color: AppColors.greyViolet,
-              borderColor: AppColors.greyViolet,
-              backgroundColor: AppColors.greyLight,
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-            ),
-            choiceActiveStyle: C2ChoiceStyle(
-              padding: Responsive.isMobile(context) ? EdgeInsets.all(8.0) : EdgeInsets.all(15.0),
-              color: Colors.white,
-              backgroundColor: AppColors.greyViolet,
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-            ),
-            runSpacing: 4,
           ),
         ),
+
       ],
     );
   }
@@ -126,9 +140,9 @@ class _ResourcesPageState extends State<ResourcesPage> {
     final database = Provider.of<Database>(context, listen: false);
     double padding = responsiveSize(context, 15, 70, md: 30);
     return Container(
-      padding: EdgeInsets.only(top: Responsive.isMobile(context) ? 100 : 180.0, right: padding, left: padding, bottom: 30.0),
+      padding: EdgeInsets.only(top: Responsive.isMobile(context) ? 100 : 150.0, right: padding, left: padding, bottom: 30.0),
       child: StreamBuilder<List<Resource>>(
-          stream: database.filteredResourcesStream(filterResource),
+          stream: database.filteredResourcesCategoryStream(filterResource),
           builder: (context, snapshot) {
             return MediaQuery.removePadding(
               context: context,
@@ -244,10 +258,6 @@ class _ResourcesPageState extends State<ResourcesPage> {
                                                     'resource-${resource.resourceId}'),
                                                 child: ResourceListTile(
                                                   resource: resource,
-                                                  // onTap: () =>
-                                                  //     showResourceDetailDialog(
-                                                  //         context: context,
-                                                  //         resource: resource),
                                                   onTap: () => showDialog(
                                                     context: context,
                                                     builder: (BuildContext context) => ShowResourceDetailDialog(
@@ -276,7 +286,8 @@ class _ResourcesPageState extends State<ResourcesPage> {
   void _clearFilter() {
     setState(() {
       _searchTextController.clear();
-      filterResource.resourceTypes.clear();
+      filterResource.searchText = '';
+      filterResource.resourceCategories = [];
     });
   }
 }

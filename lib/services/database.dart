@@ -1,4 +1,3 @@
-
 import 'package:enreda_app/models/ability.dart';
 import 'package:enreda_app/models/dedication.dart';
 import 'package:enreda_app/models/education.dart';
@@ -9,7 +8,6 @@ import 'package:enreda_app/models/size.dart';
 import 'package:enreda_app/models/specificinterest.dart';
 import 'package:enreda_app/models/timeSearching.dart';
 import 'package:enreda_app/models/timeSpentWeekly.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:enreda_app/models/filterResource.dart';
 import 'package:enreda_app/utils/functions.dart';
 import 'package:enreda_app/values/values.dart';
@@ -23,6 +21,7 @@ import '../models/organization.dart';
 import '../models/organizationUser.dart';
 import '../models/province.dart';
 import '../models/resource.dart';
+import '../models/resourceCategory.dart';
 import '../models/scope.dart';
 import '../models/test.dart';
 import '../models/unemployedUser.dart';
@@ -34,7 +33,9 @@ abstract class Database {
   Stream<List<UserEnreda>> youngsStream();
   Stream<Resource> resourceStream(String resourceId);
   Stream<List<Resource>> resourcesStream();
-  Stream<List<Resource>> filteredResourcesStream(FilterResource filter);
+  //Stream<List<Resource>> filteredResourcesStream(FilterResource filter);
+  Stream<List<Resource>> filteredResourcesCategoryStream(FilterResource filter);
+  Stream<List<ResourceCategory>> getCategoriesResources();
   Stream<List<Organization>> organizationsStream();
   Stream<Organization> organizationStream(String organizationId);
   Stream<UserEnreda> mentorStream(String mentorId);
@@ -112,7 +113,17 @@ class FirestoreDatabase implements Database {
   }
 
   @override
-  Stream<List<Resource>> filteredResourcesStream(FilterResource filter) {
+  Stream<List<ResourceCategory>> getCategoriesResources() {
+    return _service.collectionStream(
+      path: APIPath.resourcesCategories(),
+      queryBuilder: (query) => query.where('name', isNotEqualTo: null),
+      builder: (data, documentId) => ResourceCategory.fromMap(data, documentId),
+      sort: (lhs, rhs) => lhs.order.compareTo(rhs.order),
+    );
+  }
+
+  @override
+  Stream<List<Resource>> filteredResourcesCategoryStream(FilterResource filter) {
     return _service.filteredCollectionStream(
       path: APIPath.resources(),
       queryBuilder: (query) {
@@ -122,39 +133,96 @@ class FirestoreDatabase implements Database {
         return query;
       },
       builder: (data, documentId) {
-        final searchTextResource = removeDiacritics((data['searchText']??'').toLowerCase());
+        final searchTextResource =
+        removeDiacritics((data['searchText'] ?? '').toLowerCase());
         final searchListResource = searchTextResource.split(';');
-        final searchTextFilter = removeDiacritics(filter.searchText.toLowerCase());
+        final searchTextFilter =
+        removeDiacritics(filter.searchText.toLowerCase());
         final searchListFilter = searchTextFilter.split(' ');
-        bool isValid = true;
+        // The following code checks if a resource is selected by applying filters
+        bool resourceSelected = true; // Initialize resourceSelected to true
+
+        // If search text exists in filter, filter through the search list
         if (filter.searchText != '') {
           searchListFilter.forEach((filterElement) {
-            if (!searchListResource.any((resourceElement) =>
-                resourceElement.contains(filterElement))) {
-              isValid = false;
+            // For each element in searchListFilter, check against each element in searchListResource
+            if (!searchListResource.any(
+                    (resourceElement) => resourceElement.contains(filterElement))) {
+              resourceSelected = false; // Set resourceSelected false if a match isn't found
             }
           });
         }
-        if (filter.resourceTypes.isNotEmpty && !filter.resourceTypes.contains(getResourceTypeName(data['resourceType'])))
-          isValid = false;
 
-        return isValid? Resource.fromMap(data, documentId):null;
+        // If resourceCategory filter (array of Categories Ids) exists and it doesn't contain the category Id of the 'resourceCategory' from data,
+        // set resourceSelected to false
+        if (filter.resourceCategories.isNotEmpty &&
+            !filter.resourceCategories.contains((data['resourceCategory'])))
+          resourceSelected = false;
+
+        return resourceSelected ? Resource.fromMap(data, documentId) : null;
       },
       sort: (lhs, rhs) {
-
         int cmp = 0;
-        if ((rhs.modality == StringConst.FACE_TO_FACE || rhs.modality == StringConst.BLENDED)
-            && (lhs.modality != StringConst.FACE_TO_FACE && lhs.modality != StringConst.BLENDED)) cmp = 1;
-        if ((lhs.modality == StringConst.FACE_TO_FACE || lhs.modality == StringConst.BLENDED) &&
-            (rhs.modality != StringConst.FACE_TO_FACE && rhs.modality != StringConst.BLENDED)) cmp = -1;
+        if ((rhs.modality == StringConst.FACE_TO_FACE ||
+            rhs.modality == StringConst.BLENDED) &&
+            (lhs.modality != StringConst.FACE_TO_FACE &&
+                lhs.modality != StringConst.BLENDED)) cmp = 1;
+        if ((lhs.modality == StringConst.FACE_TO_FACE ||
+            lhs.modality == StringConst.BLENDED) &&
+            (rhs.modality != StringConst.FACE_TO_FACE &&
+                rhs.modality != StringConst.BLENDED)) cmp = -1;
 
         if (cmp != 0) return cmp;
 
         return lhs.maximumDate.compareTo(rhs.maximumDate);
-
       },
     );
   }
+
+  // @override
+  // Stream<List<Resource>> filteredResourcesStream(FilterResource filter) {
+  //   return _service.filteredCollectionStream(
+  //     path: APIPath.resources(),
+  //     queryBuilder: (query) {
+  //       query = query
+  //           .where('status', isEqualTo: 'Disponible')
+  //           .where('trust', isEqualTo: true);
+  //       return query;
+  //     },
+  //     builder: (data, documentId) {
+  //       final searchTextResource = removeDiacritics((data['searchText']??'').toLowerCase());
+  //       final searchListResource = searchTextResource.split(';');
+  //       final searchTextFilter = removeDiacritics(filter.searchText.toLowerCase());
+  //       final searchListFilter = searchTextFilter.split(' ');
+  //       bool isValid = true;
+  //       if (filter.searchText != '') {
+  //         searchListFilter.forEach((filterElement) {
+  //           if (!searchListResource.any((resourceElement) =>
+  //               resourceElement.contains(filterElement))) {
+  //             isValid = false;
+  //           }
+  //         });
+  //       }
+  //       if (filter.resourceTypes.isNotEmpty && !filter.resourceTypes.contains(getResourceTypeName(data['resourceType'])))
+  //         isValid = false;
+  //
+  //       return isValid? Resource.fromMap(data, documentId):null;
+  //     },
+  //     sort: (lhs, rhs) {
+  //
+  //       int cmp = 0;
+  //       if ((rhs.modality == StringConst.FACE_TO_FACE || rhs.modality == StringConst.BLENDED)
+  //           && (lhs.modality != StringConst.FACE_TO_FACE && lhs.modality != StringConst.BLENDED)) cmp = 1;
+  //       if ((lhs.modality == StringConst.FACE_TO_FACE || lhs.modality == StringConst.BLENDED) &&
+  //           (rhs.modality != StringConst.FACE_TO_FACE && rhs.modality != StringConst.BLENDED)) cmp = -1;
+  //
+  //       if (cmp != 0) return cmp;
+  //
+  //       return lhs.maximumDate.compareTo(rhs.maximumDate);
+  //
+  //     },
+  //   );
+  // }
 
 
   Stream<Resource> resourceStream(String resourceId) =>
