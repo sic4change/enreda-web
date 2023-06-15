@@ -241,143 +241,114 @@ class Consts {
 }
 
 Widget _buildDetailsListViewWeb(BuildContext context, Resource resource) {
-  double fontSize = responsiveSize(context, 12, 15, md: 14);
+  double fontSize = responsiveSize(context, 13, 14, md: 14);
   TextTheme textTheme = Theme.of(context).textTheme;
   return Padding(
     padding: const EdgeInsets.only(bottom: 80.0),
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          flex: Responsive.isMobile(context) ? 2 : 4,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 30, right: 30.0),
-            child: SingleChildScrollView(
-              child: Text(
-                resource.description,
-                textAlign: TextAlign.left,
-                style: textTheme.bodyText1?.copyWith(
-                  color: AppColors.greyTxtAlt,
-                  height: 1.5,
-                  fontWeight: FontWeight.w400,
-                  fontSize: fontSize,
+    child: SingleChildScrollView(
+      child: Column(
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                flex: Responsive.isMobile(context) ? 2 : 4,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 30, right: 30.0, left: 10),
+                  child: Text(
+                    resource.description,
+                    textAlign: TextAlign.left,
+                    style: textTheme.bodyText1?.copyWith(
+                      color: AppColors.greyTxtAlt,
+                      fontWeight: FontWeight.w400,
+                      fontSize: fontSize,
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ),
-        ),
-        Expanded(
-          flex: Responsive.isMobile(context) ? 2 : 2,
-          child: Container(
-            padding: const EdgeInsets.all(20),
-            margin: const EdgeInsets.only(top: 30),
-            decoration: BoxDecoration(
-              border: Border.all(color: AppColors.greyDarkTxt, width: 1),
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomTextTitle(
-                      title: StringConst.RESOURCE_TYPE.toUpperCase()),
-                  CustomTextBody(text: '${resource.resourceTypeName}'),
-                  SpaceH16(),
-                  CustomTextTitle(title: StringConst.LOCATION.toUpperCase()),
-                  Column(
+              Expanded(
+                flex: Responsive.isMobile(context) ? 2 : 2,
+                child: Container(
+                  padding: const EdgeInsets.all(20),
+                  margin: const EdgeInsets.only(top: 30),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: AppColors.greyDarkTxt, width: 1),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomTextBody(text: '${resource.modality}'),
-                      resource.modality == StringConst.ONLINE
-                          ? Container()
+                      CustomTextTitle(title: StringConst.RESOURCE_TYPE.toUpperCase()),
+                      CustomTextBody(text: '${resource.resourceTypeName}'),
+                      SpaceH8(),
+                      CustomTextTitle(title: StringConst.LOCATION.toUpperCase()),
+                      Row(
+                        children: [
+                          CustomTextBody(text: '${resource.cityName}'),
+                          CustomTextBody(text: ', '),
+                          CustomTextBody(text: '${resource.provinceName}'),
+                          CustomTextBody(text: ', '),
+                          CustomTextBody(text: '${resource.countryName}'),
+                        ],
+                      ),
+                      SpaceH8(),
+                      CustomTextTitle(title: StringConst.MODALITY.toUpperCase()),
+                      CustomTextBody(text: resource.modality),
+                      SpaceH8(),
+                      CustomTextTitle(title: StringConst.CAPACITY.toUpperCase()),
+                      CustomTextBody(text: '${resource.capacity}'),
+                      SpaceH8(),
+                      CustomTextTitle(title: StringConst.DATE.toUpperCase()),
+                      DateFormat('dd/MM/yyyy').format(resource.start) == '31/12/2050'
+                          ? CustomTextBody(
+                        text: StringConst.ALWAYS_AVAILABLE,
+                      )
                           : Row(
-                              children: [
-                                CustomTextBody(text: '${resource.countryName}'),
-                                CustomTextBody(text: ', '),
-                                CustomTextBody(
-                                    text: '${resource.provinceName}'),
-                              ],
-                            ),
+                        children: [
+                          CustomTextBody(
+                              text: DateFormat('dd/MM/yyyy').format(resource.start)),
+                          SpaceW4(),
+                          CustomTextBody(text: '-'),
+                          SpaceW4(),
+                          CustomTextBody(
+                              text: DateFormat('dd/MM/yyyy').format(resource.end))
+                        ],
+                      ),
+                      SpaceH8(),
+                      CustomTextTitle(title: StringConst.CONTRACT_TYPE.toUpperCase()),
+                      CustomTextBody(text: resource.contractType != null && resource.contractType != ''  ? '${resource.contractType}' : 'Sin especificar' ),
+                      SpaceH8(),
+                      CustomTextTitle(title: StringConst.DURATION.toUpperCase()),
+                      CustomTextBody(text: resource.duration),
+                      SpaceH8(),
+                      CustomTextTitle(title: StringConst.SALARY.toUpperCase()),
+                      CustomTextBody(text: resource.salary != null && resource.salary != ''  ? '${resource.salary}' :  'Sin especificar'),
+                      SpaceH8(),
+                      CustomTextTitle(title: StringConst.SCHEDULE.toUpperCase()),
+                      CustomTextBody(text: resource.temporality != null && resource.temporality != ''  ? '${resource.temporality}' :  'Sin especificar'),
+                      SpaceH8(),
                     ],
                   ),
-                  SpaceH16(),
-                  CustomTextTitle(title: StringConst.CAPACITY.toUpperCase()),
-                  CustomTextBody(text: '${resource.capacity}'),
-                  SpaceH16(),
-                  CustomTextTitle(title: StringConst.DURATION.toUpperCase()),
-                  CustomTextBody(text: '${resource.duration}'),
-                  SpaceH16(),
-                  (resource.contractType != null && resource.contractType != '')
-                      ? CustomTextTitle(
-                          title: StringConst.CONTRACT_TYPE.toUpperCase())
-                      : Container(),
-                  (resource.contractType != null && resource.contractType != '')
-                      ? CustomTextBody(text: '${resource.contractType}')
-                      : Container(),
-                  SpaceH4(),
-                  (resource.contractType != null && resource.contractType != '')
-                      ? SpaceH16()
-                      : Container(),
-                  (resource.salary != null && resource.salary != '')
-                      ? Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CustomTextTitle(
-                                title: StringConst.SALARY.toUpperCase()),
-                            CustomTextBody(text: '${resource.salary}')
-                          ],
-                        )
-                      : Container(),
-                  SpaceH4(),
-                  (resource.salary != null && resource.salary != '')
-                      ? SpaceH16()
-                      : Container(),
-                  CustomTextTitle(title: StringConst.DATE.toUpperCase()),
-                  DateFormat('dd/MM/yyyy').format(resource.start) ==
-                          '31/12/2050'
-                      ? CustomTextBody(
-                          text: StringConst.ALWAYS_AVAILABLE,
-                        )
-                      : Row(
-                          children: [
-                            CustomTextBody(
-                                text: DateFormat('dd/MM/yyyy')
-                                    .format(resource.start)),
-                            SpaceW4(),
-                            CustomTextBody(text: '-'),
-                            SpaceW4(),
-                            CustomTextBody(
-                                text: DateFormat('dd/MM/yyyy')
-                                    .format(resource.end))
-                          ],
-                        ),
-                  resource.temporality == null
-                      ? SizedBox(
-                          height: 0,
-                        )
-                      : CustomTextBody(text: '${resource.temporality}')
-                ],
+                ),
               ),
-            ),
+            ],
           ),
-        ),
-      ],
+        ],
+      ),
     ),
   );
 }
 
 Widget _buildDetailsListViewMobile(BuildContext context, Resource resource) {
-  double fontSize = responsiveSize(context, 12, 15, md: 14);
+  double fontSize = responsiveSize(context, 13, 14, md: 14);
   TextTheme textTheme = Theme.of(context).textTheme;
   return SingleChildScrollView(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 30, right: 30.0),
+          padding: const EdgeInsets.only(top: 30, right: 30.0, left: 10),
           child: Text(
             resource.description,
             textAlign: TextAlign.left,
@@ -404,77 +375,51 @@ Widget _buildDetailsListViewMobile(BuildContext context, Resource resource) {
               CustomTextBody(text: '${resource.resourceTypeName}'),
               SpaceH16(),
               CustomTextTitle(title: StringConst.LOCATION.toUpperCase()),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
                 children: [
-                  CustomTextBody(text: '${resource.modality}'),
-                  resource.modality == StringConst.ONLINE
-                      ? Container()
-                      : Row(
-                          children: [
-                            CustomTextBody(text: '${resource.countryName}'),
-                            CustomTextBody(text: ', '),
-                            CustomTextBody(text: '${resource.provinceName}'),
-                          ],
-                        ),
+                  CustomTextBody(text: '${resource.cityName}'),
+                  CustomTextBody(text: ', '),
+                  CustomTextBody(text: '${resource.provinceName}'),
+                  CustomTextBody(text: ', '),
+                  CustomTextBody(text: '${resource.countryName}'),
                 ],
               ),
+              SpaceH16(),
+              CustomTextTitle(title: StringConst.MODALITY.toUpperCase()),
+              CustomTextBody(text: resource.modality),
               SpaceH16(),
               CustomTextTitle(title: StringConst.CAPACITY.toUpperCase()),
               CustomTextBody(text: '${resource.capacity}'),
               SpaceH16(),
-              CustomTextTitle(title: StringConst.DURATION.toUpperCase()),
-              CustomTextBody(text: '${resource.duration}'),
-              SpaceH16(),
-              (resource.contractType != null && resource.contractType != '')
-                  ? CustomTextTitle(
-                      title: StringConst.CONTRACT_TYPE.toUpperCase())
-                  : Container(),
-              (resource.contractType != null && resource.contractType != '')
-                  ? CustomTextBody(text: '${resource.contractType}')
-                  : Container(),
-              SpaceH4(),
-              (resource.contractType != null && resource.contractType != '')
-                  ? SpaceH16()
-                  : Container(),
-              (resource.salary != null && resource.salary != '')
-                  ? Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CustomTextTitle(
-                            title: StringConst.SALARY.toUpperCase()),
-                        CustomTextBody(text: '${resource.salary}')
-                      ],
-                    )
-                  : Container(),
-              SpaceH4(),
-              (resource.salary != null && resource.salary != '')
-                  ? SpaceH16()
-                  : Container(),
               CustomTextTitle(title: StringConst.DATE.toUpperCase()),
               DateFormat('dd/MM/yyyy').format(resource.start) == '31/12/2050'
                   ? CustomTextBody(
-                      text: StringConst.ALWAYS_AVAILABLE,
-                    )
+                text: StringConst.ALWAYS_AVAILABLE,
+              )
                   : Row(
-                      children: [
-                        CustomTextBody(
-                            text: DateFormat('dd/MM/yyyy')
-                                .format(resource.start)),
-                        SpaceW4(),
-                        CustomTextBody(text: '-'),
-                        SpaceW4(),
-                        CustomTextBody(
-                            text: DateFormat('dd/MM/yyyy').format(resource.end))
-                      ],
-                    ),
-              resource.temporality == null
-                  ? SizedBox(
-                      height: 0,
-                    )
-                  : CustomTextBody(text: '${resource.temporality}')
+                children: [
+                  CustomTextBody(
+                      text: DateFormat('dd/MM/yyyy').format(resource.start)),
+                  SpaceW4(),
+                  CustomTextBody(text: '-'),
+                  SpaceW4(),
+                  CustomTextBody(
+                      text: DateFormat('dd/MM/yyyy').format(resource.end))
+                ],
+              ),
+              SpaceH16(),
+              CustomTextTitle(title: StringConst.CONTRACT_TYPE.toUpperCase()),
+              CustomTextBody(text: resource.contractType != null && resource.contractType != ''  ? '${resource.contractType}' : 'Sin especificar' ),
+              SpaceH16(),
+              CustomTextTitle(title: StringConst.DURATION.toUpperCase()),
+              CustomTextBody(text: resource.duration),
+              SpaceH16(),
+              CustomTextTitle(title: StringConst.SALARY.toUpperCase()),
+              CustomTextBody(text: resource.salary != null && resource.salary != ''  ? '${resource.salary}' :  'Sin especificar'),
+              SpaceH16(),
+              CustomTextTitle(title: StringConst.SCHEDULE.toUpperCase()),
+              CustomTextBody(text: resource.temporality != null && resource.temporality != ''  ? '${resource.temporality}' :  'Sin especificar'),
+              SpaceH16(),
             ],
           ),
         ),

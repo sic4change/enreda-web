@@ -9,7 +9,7 @@ class CustomTextTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double fontSize = responsiveSize(context, 12, 15, md: 14);
+    double fontSize = responsiveSize(context, 12, 13, md: 13);
     TextTheme textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: const EdgeInsets.only(bottom: 4.0),
@@ -36,7 +36,7 @@ class CustomTextBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double fontSize = responsiveSize(context, 12, 15, md: 14);
+    double fontSize = responsiveSize(context, 12, 13, md: 13);
     TextTheme textTheme = Theme.of(context).textTheme;
     return Text(
       text,

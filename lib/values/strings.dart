@@ -302,6 +302,8 @@ class StringConst {
   static const String RESOURCE_TYPE = 'Tipo de recurso';
   static const String CONTRACT_TYPE = 'Tipo de contrato';
   static const String SALARY = 'Salario';
+  static const String MODALITY = 'Modalidad';
+  static const String SCHEDULE = 'Horario';
   static const String DATE = 'Fecha';
   static const String ALWAYS_AVAILABLE = 'Siempre disponible';
   static const String LOCATION = 'Localización';
