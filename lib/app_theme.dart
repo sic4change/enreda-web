@@ -96,7 +96,7 @@ class AppTheme {
       fontWeight: _bold,
       fontStyle: FontStyle.normal,
     ),
-    bodyText1: GoogleFonts.lato(
+    bodyText1: GoogleFonts.inter(
       fontSize: Sizes.TEXT_SIZE_16,
       color: AppColors.primaryText2,
       fontWeight: _regular,
