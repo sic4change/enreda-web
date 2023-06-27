@@ -1,4 +1,5 @@
 
+import 'package:enreda_app/models/filterResource.dart';
 import 'package:enreda_app/models/organization.dart';
 import 'package:enreda_app/models/resource.dart';
 import 'package:enreda_app/models/userEnreda.dart';
@@ -35,6 +36,7 @@ class StatisticsSection extends StatefulWidget {
 class _StatisticsSectionState extends State<StatisticsSection>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
+  FilterResource filterResource = FilterResource("", [],);
 
   @override
   void initState() {
@@ -61,8 +63,8 @@ class _StatisticsSectionState extends State<StatisticsSection>
     double fontSizeTitle3 = responsiveSize(context, 45, 87, md: 75);
     double sidePadding = responsiveSize(context, Sizes.PADDING_10, Sizes.PADDING_80, md: Sizes.PADDING_20);
 
-    return StreamBuilder<List<Resource>>(
-      stream: database.resourcesStream(),
+    return StreamBuilder<List<Resource?>>(
+      stream: database.filteredResourcesCategoryStream(filterResource),
       builder: (context, snapshotResources) {
         int? resources = (snapshotResources.data?.length != null) ? snapshotResources.data?.length : 0;
         return StreamBuilder<List<UserEnreda>>(
