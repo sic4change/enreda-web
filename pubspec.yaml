@@ -60,6 +60,8 @@ dependencies:
   fluttertoast: 8.0.9
   chips_choice: 3.0.0
 
+  modal_bottom_sheet: 2.1.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
