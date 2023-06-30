@@ -38,7 +38,7 @@ class _CompaniesSectionState extends State<CompaniesSection> {
 
   final int blogLength = Data.branding.length;
   final _carouselController = CarouselController();
-  double currentPageIndex = 0;
+  int currentPageIndex = 0;
 
 
   @override
@@ -152,7 +152,7 @@ class _CompaniesSectionState extends State<CompaniesSection> {
                           initialPage: 0,
                             onPageChanged: (index, reason) {
                               setState(() {
-                                currentPageIndex = index.toDouble();
+                                currentPageIndex = index;
                               });
                             },
                         ),
@@ -261,7 +261,7 @@ class _CompaniesSectionState extends State<CompaniesSection> {
                           initialPage: 0,
                           onPageChanged: (index, reason) {
                             setState(() {
-                              currentPageIndex = index.toDouble();
+                              currentPageIndex = index;
                             });
                           },
                         ),
@@ -371,7 +371,7 @@ class _CompaniesSectionState extends State<CompaniesSection> {
                           initialPage: 0,
                           onPageChanged: (index, reason) {
                           setState(() {
-                            currentPageIndex = index.toDouble();
+                            currentPageIndex = index;
                           });
                         },),
                       ),
@@ -402,12 +402,12 @@ class _CompaniesSectionState extends State<CompaniesSection> {
 
   Widget _buildDotsIndicator({
     required int pageLength,
-    required double currentIndex,
+    required int currentIndex,
   }) {
     return Container(
       child: DotsIndicator(
         dotsCount: 7,
-        position: currentIndex,
+        position: currentIndex.toInt(),
         onTap: (index) {
           _moveToNextCarousel(index.toInt());
         },
@@ -434,7 +434,7 @@ class _CompaniesSectionState extends State<CompaniesSection> {
 
   _moveToNextCarousel(int index) {
     setState(() {
-      currentPageIndex = index.toDouble();
+      currentPageIndex = index;
       _carouselController.animateToPage(index);
     });
   }

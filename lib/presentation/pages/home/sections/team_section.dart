@@ -21,7 +21,7 @@ class TeamSection extends StatefulWidget {
 
 class _TeamSectionState extends State<TeamSection> {
   final int blogLength = Data.blogData.length;
-  double currentPageIndex = 0;
+  int currentPageIndex = 0;
   CarouselController _carouselController = CarouselController();
 
   @override
@@ -74,7 +74,7 @@ class _TeamSectionState extends State<TeamSection> {
                           aspectRatio: 0.1,
                             onPageChanged: (index, reason) {
                               setState(() {
-                                currentPageIndex = index.toDouble();
+                                currentPageIndex = index;
                               });
                             }
                         ),
@@ -123,7 +123,7 @@ class _TeamSectionState extends State<TeamSection> {
                           enlargeCenterPage: false,
                             onPageChanged: (index, reason) {
                               setState(() {
-                                currentPageIndex = index.toDouble();
+                                currentPageIndex = index;
                               });
                             }
                         ),
@@ -180,7 +180,7 @@ class _TeamSectionState extends State<TeamSection> {
         scrollPhysics: scrollPhysics,
         onPageChanged: (int index, CarouselPageChangedReason reason) {
           setState(() {
-            currentPageIndex = index.toDouble();
+            currentPageIndex = index;
           });
         });
   }
@@ -213,12 +213,12 @@ class _TeamSectionState extends State<TeamSection> {
 
   Widget _buildDotsIndicator({
     required int pageLength,
-    required double currentIndex,
+    required int currentIndex,
   }) {
     return Container(
       child: DotsIndicator(
         dotsCount: pageLength,
-        position: currentIndex,
+        position: currentIndex.toInt(),
         onTap: (index) {
           _moveToNextCarousel(index.toInt());
         },
@@ -245,7 +245,7 @@ class _TeamSectionState extends State<TeamSection> {
 
   _moveToNextCarousel(int index) {
     setState(() {
-      currentPageIndex = index.toDouble();
+      currentPageIndex = index;
       _carouselController.animateToPage(index);
     });
   }

@@ -18,7 +18,7 @@ class AppTheme {
       canvasColor: colorScheme.background,
       scaffoldBackgroundColor: colorScheme.background,
       highlightColor: Colors.transparent,
-      accentColor: colorScheme.primary,
+      hintColor: colorScheme.primary, //accentColor: colorScheme.primary,
       visualDensity: VisualDensity.adaptivePlatformDensity,
       focusColor: AppColors.primaryColor,
     );

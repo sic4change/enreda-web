@@ -27,40 +27,40 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  google_fonts: ^2.1.0
-  auto_route: ^3.2.2
-  responsive_builder: ^0.4.1
-  auto_route_generator: ^3.2.1
-  feather_icons: ^1.1.0-nullsafety.0
-  font_awesome_flutter: ^9.0.0-nullsafety
+  cupertino_icons: ^1.0.5
+  google_fonts: ^5.1.0
+  auto_route: ^5.0.0
+  responsive_builder: ^0.7.0
+  auto_route_generator: ^5.0.0
+  feather_icons: ^1.2.0
+  font_awesome_flutter: ^10.5.0
   flutter_staggered_grid_view: ^0.4.0
-  url_launcher: ^6.0.3
-  layout: ^0.6.2
-  carousel_slider: ^4.1.0
-  dots_indicator: ^2.0.0
-  animated_text_kit: ^4.2.1
-  visibility_detector: ^0.2.2
+  url_launcher: ^6.1.11
+  layout: ^1.0.3
+  carousel_slider: ^4.2.1
+  dots_indicator: ^3.0.0
+  animated_text_kit: ^4.2.2
+  visibility_detector: ^0.4.0+2
   youtube_player_iframe: ^2.2.2
-  country_code_picker: ^2.0.2
-  transparent_image: ^2.0.0
+  country_code_picker: ^3.0.0
+  transparent_image: ^2.0.1
 
-  firebase_core: 1.15.0
-  firebase_auth: 3.3.15
-  provider: 6.0.2
-  cloud_firestore: 3.1.13
-  firebase_storage: 10.2.13
-  intl: 0.17.0
-  firebase_messaging: 11.2.14
-  email_validator: ^2.0.1
+  firebase_core: ^2.14.0
+  firebase_auth: ^4.6.3
+  provider: ^6.0.5
+  cloud_firestore: ^4.8.2
+  firebase_storage: ^11.2.4
+  intl: ^0.18.1
+  firebase_messaging: ^14.6.4
+  email_validator: ^2.1.17
 
-  badges: ^2.0.2
-  share_plus: 4.0.4
-  external_app_launcher: 2.0.2
-  fluttertoast: 8.0.9
-  chips_choice: 3.0.0
+  badges: ^3.1.1
+  share_plus: ^7.0.2
+  external_app_launcher: ^3.1.0
+  fluttertoast: ^8.2.2
+  chips_choice: ^3.0.0
 
-  modal_bottom_sheet: 2.1.2
+  modal_bottom_sheet: ^2.1.2
 
 dev_dependencies:
   flutter_test:

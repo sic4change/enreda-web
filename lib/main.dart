@@ -1,4 +1,5 @@
 
+import 'package:enreda_app/firebase_options.dart';
 import 'package:enreda_app/presentation/routes/router.gr.dart';
 import 'package:enreda_app/services/database.dart';
 import 'package:enreda_app/utils/my_scroll_behaviour.dart';
@@ -12,7 +13,7 @@ import 'app_theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,);
   runApp(Enreda());
 }
 

@@ -80,10 +80,16 @@ class _FilterTextFieldRowState extends State<FilterTextFieldRow> {
                         decoration: InputDecoration(
                           isDense: true,
                           hintText: _hintText,
+                          hintStyle: textTheme.bodyMedium?.copyWith(
+                            color: AppColors.greyDarkTxt,
+                            height: 1.5,
+                            fontWeight: FontWeight.w500,
+                            fontSize: fontSize,
+                          ),
                           border: InputBorder.none,
                         ),
                         controller: widget.searchTextController,
-                        style: textTheme.bodyText1?.copyWith(
+                        style: textTheme.bodyMedium?.copyWith(
                           color: AppColors.greyAlt,
                           height: 1.5,
                           fontWeight: FontWeight.w500,
