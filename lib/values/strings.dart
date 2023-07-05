@@ -192,7 +192,7 @@ class StringConst {
   static const String FACEBOOK_URL = "https://www.facebook.com/EnREDaEmpleo/";
   static const String TWITTER_URL = "https://twitter.com/sic4change";
   static const String USE_CONDITIONS_URL = "https://firebasestorage.googleapis.com/v0/b/enreda-d3b41.appspot.com/o/condiciones_de_uso.pdf?alt=media&token=dfb2444a-87e7-4ec8-b079-c90e1074f7b9";
-  static const String ADMIN_WEB_URL = 'https://enreda-d3b41.firebaseapp.com/#/login';
+  static const String ADMIN_WEB_URL = 'https://enreda-empresas.web.app/'; //'https://enreda-d3b41.firebaseapp.com/#/login';
   static const String WEB_APP_URL = 'https://enredawebapp.web.app/access';
 
   //Contact form
