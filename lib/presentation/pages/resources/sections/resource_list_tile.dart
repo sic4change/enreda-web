@@ -114,38 +114,27 @@ class _ResourceListTileState extends State<ResourceListTile> {
                                           Icon(Icons.place,
                                             color: AppColors.greyTxtAlt,
                                             size: 12,),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                            child: Row(
-                                              children: [
-                                                Text(
-                                                  widget.resource.countryName != null
-                                                      ? widget.resource.countryName!
-                                                      : widget.resource.countryName ?? '',
-                                                  maxLines: 1,
-                                                  overflow: TextOverflow.ellipsis,
-                                                  style: textTheme.bodyText1?.copyWith(
-                                                    color: AppColors.greyTxtAlt,
-                                                    height: 1.5,
-                                                    fontWeight: FontWeight.w400,
-                                                    fontSize: fontSize,
+                                          Expanded(
+                                            child: Padding(
+                                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Flexible(
+                                                    child: Text("${widget.resource.countryName ?? ''}, ${widget.resource.provinceName ?? ''}",
+                                                      maxLines: 1,
+                                                      overflow: TextOverflow.ellipsis,
+                                                      style: textTheme.bodyText1?.copyWith(
+                                                        overflow: TextOverflow.ellipsis,
+                                                        color: AppColors.greyTxtAlt,
+                                                        height: 1.5,
+                                                        fontWeight: FontWeight.w400,
+                                                        fontSize: fontSize,
+                                                      ),
+                                                    ),
                                                   ),
-                                                ),
-                                                Text(','),
-                                                Text(
-                                                  widget.resource.provinceName != null
-                                                      ? widget.resource.provinceName!
-                                                      : widget.resource.provinceName ?? '',
-                                                  maxLines: 1,
-                                                  overflow: TextOverflow.ellipsis,
-                                                  style: textTheme.bodyText1?.copyWith(
-                                                    color: AppColors.greyTxtAlt,
-                                                    height: 1.5,
-                                                    fontWeight: FontWeight.w400,
-                                                    fontSize: fontSize,
-                                                  ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ],
