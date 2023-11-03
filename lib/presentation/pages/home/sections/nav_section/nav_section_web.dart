@@ -1,5 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:enreda_app/presentation/routes/router.gr.dart';
+import 'package:enreda_app/presentation/widgets/circular_container.dart';
+import 'package:enreda_app/presentation/widgets/dialogs/show_login_menu.dart';
+import 'package:enreda_app/utils/const.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -140,7 +143,10 @@ class _NavSectionWebState extends State<NavSectionWeb> {
               buttonTitle: StringConst.ACCESS.toUpperCase(),
               buttonColor: AppColors.bluePurple,
               width: contactBtnWidth,
-              onPressed: () => openUrlLink(StringConst.WEB_APP_URL)
+              onPressed: () => showLoginMenu(
+                  context,
+                  relativePosition: RelativeRect.fromLTRB(double.infinity, 90, 40, 0)
+              )
             ),
             SizedBox(width: contactBtnSpaceRight),
           ],

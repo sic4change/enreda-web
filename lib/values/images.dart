@@ -70,4 +70,9 @@ class ImagePath {
   static const String PORTFOLIO_6bn = "$imageDir/company_06bn.png";
   static const String PORTFOLIO_7bn = "$imageDir/company_07bn.png";
 
+  // Icons
+  static const String USER_COMPANY_ICON = "$imageDir/icon-user-empresa.png";
+  static const String USER_YOUNG_ICON = "$imageDir/icon-user-joven.png";
+  static const String USER_ENTITY_ICON = "$imageDir/icon-user-entidad.png";
+
 }

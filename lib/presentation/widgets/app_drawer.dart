@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:enreda_app/presentation/routes/router.gr.dart';
 import 'package:enreda_app/presentation/widgets/buttons/enreda_button.dart';
+import 'package:enreda_app/presentation/widgets/dialogs/show_login_menu.dart';
 import 'package:enreda_app/presentation/widgets/spaces.dart';
 import 'package:enreda_app/utils/const.dart';
 import 'package:flutter/material.dart';
@@ -115,7 +116,10 @@ class _AppDrawerState extends State<AppDrawer> {
               InkWell(
                 onTap: () {
                   _closeDrawer();
-                  openUrlLink(StringConst.WEB_APP_URL);
+                  showLoginMenu(
+                      context,
+                      relativePosition: RelativeRect.fromLTRB(20, 420, double.infinity, 0)
+                  );
                 },
                 child: Container(
                   color: AppColors.bluePurple,

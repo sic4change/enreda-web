@@ -76,6 +76,7 @@ class AppColors {
   static const Color darkViolet = Color(0xFFA0A5D2);
   static const Color lightViolet = Color(0xFFD7DAF7);
   static const Color ultraLightViolet = Color(0xFFD7DAF8);
+  static const Color lightestViolet = Color(0xFFEDEFFF);
 
 
   //Red

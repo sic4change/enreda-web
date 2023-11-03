@@ -74,6 +74,7 @@ class StringConst {
   static const String TOOLS_2_PROFICIENCY = "90%";
   static const String TOOLS_3_NAME = "Sketch";
   static const String TOOLS_3_PROFICIENCY = "70%";
+  static const String USER_YOUNG = "Usuario Joven";
   static const String YOUNGS = "Jóvenes";
   static const String YOUNG_1_DESC = "¿No sabes por dónde tirar?";
   static const String YOUNG_2_DESC =
@@ -82,6 +83,8 @@ class StringConst {
   static const String INSTITUTIONS_1_DESC = "¿Quieres que tus programas y recursos lleguen más lejos?";
   static const String INSTITUTIONS_2_DESC =
       "EnREDa te acercará al colectivo joven haciendo que tus programas y recursos lleguen a más gente. Puedes darte de alta como entidad colaboradora de enREDa y subir tus vacantes de empleo, formación o voluntariado inmediatamente.";
+  static const String SOCIAL_ENTITY= "Entidad Social";
+  static const String COMPANY= "Empresa";
   static const String COMPANIES = "Empresas";
   static const String COMPANIES_1_DESC = "¿Qué buscas en tu plantilla?";
   static const String COMPANIES_2_DESC =
