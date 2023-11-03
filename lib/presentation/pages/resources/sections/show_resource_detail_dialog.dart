@@ -284,12 +284,13 @@ Widget _buildDetailsListViewWeb(BuildContext context, Resource resource) {
                       SpaceH8(),
                       CustomTextTitle(title: StringConst.LOCATION.toUpperCase()),
                       Row(
+                        mainAxisSize: MainAxisSize.max,
                         children: [
-                          CustomTextBody(text: '${resource.cityName}'),
-                          CustomTextBody(text: ', '),
-                          CustomTextBody(text: '${resource.provinceName}'),
-                          CustomTextBody(text: ', '),
-                          CustomTextBody(text: '${resource.countryName}'),
+                          Flexible(
+                              child: CustomTextBody(
+                                  text: '${resource.cityName}, ${resource.provinceName}, ${resource.countryName}'
+                              )
+                          ),
                         ],
                       ),
                       SpaceH8(),

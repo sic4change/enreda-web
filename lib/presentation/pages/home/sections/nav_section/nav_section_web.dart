@@ -132,14 +132,6 @@ class _NavSectionWebState extends State<NavSectionWeb> {
             EnredaVerticalDivider(),
             SizedBox(width: contactBtnSpaceLeft),
             EnredaButton(
-                buttonTitle: StringConst.ACCESS_ORG.toUpperCase(),
-                buttonColor: AppColors.turquoiseUltraLight,
-                titleColor: AppColors.darkBlue,
-                width: contactBtnWidth,
-                onPressed: () => router.push(AccessRoute()),
-            ),
-            SpaceW20(),
-            EnredaButton(
               buttonTitle: StringConst.ACCESS.toUpperCase(),
               buttonColor: AppColors.bluePurple,
               width: contactBtnWidth,

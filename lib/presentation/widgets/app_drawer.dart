@@ -91,34 +91,9 @@ class _AppDrawerState extends State<AppDrawer> {
               InkWell(
                 onTap: () {
                   _closeDrawer();
-                  AutoRouter.of(context).push(AccessRoute());
-                },
-                child: Container(
-                  color: AppColors.turquoiseUltraLight,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: Responsive.isMobile(context) ? Sizes.PADDING_28 :Sizes.PADDING_32,
-                    vertical: Responsive.isMobile(context) ? Sizes.PADDING_16 :Sizes.PADDING_32,
-                  ),
-                  child: Row(
-                    children: [
-                      Text(
-                        StringConst.ACCESS_ORG.toUpperCase(),
-                        style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                          color: AppColors.greyViolet,
-                          fontSize: Sizes.TEXT_SIZE_15,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  _closeDrawer();
                   showLoginMenu(
                       context,
-                      relativePosition: RelativeRect.fromLTRB(20, 420, double.infinity, 0)
+                      relativePosition: RelativeRect.fromLTRB(20, 360, double.infinity, 0)
                   );
                 },
                 child: Container(
