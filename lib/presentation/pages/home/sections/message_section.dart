@@ -5,7 +5,6 @@ import '../../../../utils/responsive.dart';
 import '../../../../values/values.dart';
 import '../../../layout/adaptive.dart';
 import '../../../widgets/bullet_text.dart';
-import '../../../widgets/content_area.dart';
 import '../../../widgets/enreda_info_section.dart';
 import '../../../widgets/spaces.dart';
 
@@ -19,31 +18,32 @@ class MessageSection extends StatefulWidget {
 
 class _MessageSectionState extends State<MessageSection>
     with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
   bool text1InView = false;
   bool text2InView = false;
+  late YoutubePlayerController _controller;
+  bool _isVideoVisible = false;
+
 
   @override
   void initState() {
     super.initState();
   
-    _controller = AnimationController(
-      duration: const Duration(seconds: 20),
-      vsync: this,
-    )..repeat();
-
-    _controller.forward();
-    _controller.addListener(() {
-      if (_controller.status == AnimationStatus.completed) {
-        _controller.reset();
-        _controller.forward();
-      }
-    });
+    // _controller = AnimationController(
+    //   duration: const Duration(seconds: 20),
+    //   vsync: this,
+    // )..repeat();
+    //
+    // _controller.forward();
+    // _controller.addListener(() {
+    //   if (_controller.status == AnimationStatus.completed) {
+    //     _controller.reset();
+    //     _controller.forward();
+    //   }
+    // });
   }
 
   @override
   void dispose() {
-    _controller.dispose();
     super.dispose();
   }
 
@@ -106,10 +106,7 @@ class _MessageSectionState extends State<MessageSection>
                 margin: EdgeInsets.only(
                     left: Responsive.isTablet(context) || Responsive.isMobile(context) ? (sizeOfBlobSm * 0.2) : (sizeOfBlobSm * 0.1),
                     right: Responsive.isTablet(context) || Responsive.isMobile(context) ? (sizeOfBlobSm * 0.2) :(sizeOfBlobSm * 0.3)),
-                child: _buildImage(
-                  width: screenWidth,
-                  height: screenHeight * 0.5,
-                ),
+                child: playAreaDesktop(),
               ),
             ),
           ],
@@ -118,40 +115,84 @@ class _MessageSectionState extends State<MessageSection>
     );
   }
 
-  Widget _buildImage({
-    required double width,
-    required double height,
-  }) {
-    TextTheme textTheme = Theme.of(context).textTheme;
-    TextStyle? titleStyle = textTheme.bodyText1?.merge(
-      Styles.customTextStyle3(
-        fontSize: responsiveSize(context, 64, 80, md: 76),
-        height: 1.25,
-        color: AppColors.primaryColor,
+
+  Widget playAreaDesktop() {
+    String idYoutubeVideo = 'cJO4B_OBnvQ';
+    if (!_isVideoVisible)
+      return AspectRatio(
+        aspectRatio: 16 / 9,
+        child: InkWell(
+          onTap: () async {
+            setState(() {
+              setState(() {
+                _isVideoVisible = !_isVideoVisible;
+                _initializeVideo(idYoutubeVideo);
+              });
+            });
+          },
+          child: Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      YoutubePlayerController.getThumbnail(
+                        videoId: idYoutubeVideo,
+                        quality: ThumbnailQuality.max,
+                      ),
+                    ),
+                    fit: BoxFit.fitWidth,
+                  ),
+                  borderRadius: Responsive.isMobile(context)
+                      ? BorderRadius.circular(10)
+                      : BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10)),
+                ),
+              ),
+              Center(
+                child: Icon(
+                  Icons.play_circle_rounded,
+                  color: AppColors.white.withOpacity(0.7),
+                  size: 70,
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+      ),
+      child: YoutubePlayerControllerProvider(
+        // Provides controller to all the widget below it.
+          controller: _controller,
+          child: YoutubePlayer(
+            controller: _controller,
+            aspectRatio: 16 / 9,
+          )),
+    );
+  }
+
+  _initializeVideo(String id) {
+    // Generate a new controller and set as global _controller
+    final controller = YoutubePlayerController.fromVideoId(
+      videoId: id,
+      autoPlay: true,
+      params: const YoutubePlayerParams(
+        showControls: true,
+        mute: false,
+        showFullscreenButton: true,
       ),
     );
-    return ContentArea(
-      width: width,
-      height: height * 0.8,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          YoutubePlayerControllerProvider( // Provides controller to all the widget below it.
-          controller: YoutubePlayerController(
-            initialVideoId: 'cJO4B_OBnvQ',
-            params: YoutubePlayerParams( // Defining custom playlist
-              startAt: Duration(seconds: 0),
-              showControls: true,
-              showFullscreenButton: true,
-            ),
-          ),
-            child: YoutubePlayerIFrame(
-              aspectRatio: 16 / 9,
-            ),
-          ),
-        ],
-      ),
-    );
+    setState(() {
+      _controller = controller;
+      if (_isVideoVisible == false) {
+        _isVideoVisible = true;
+      }
+    });
   }
 
   Widget _buildMessage1() {

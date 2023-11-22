@@ -8,6 +8,7 @@ class ImagePath {
   // Logo
   static const String LOGO_DARK = "$imageDir/logo_dark.png";
   static const String LOGO_LIGHT = "$imageDir/logo_light.png";
+  static const String LOGO_FUNDAULA = '$imageDir/fundaula-logo.png';
 
   // Stores
   static const String PLAY_STORE = "$imageDir/play_store_900x503.png";
@@ -53,6 +54,7 @@ class ImagePath {
   static const String SEARCH_JOB = "$imageDir/1-busco-trabajo-ilustracion.png";
   static const String FOR_ORGANIZATION = "$imageDir/1-soy-organizacion-ilustracion.png";
   static const String FOR_COLABORATOR = "$imageDir/1-quiero-colab-ilustracion.png";
+  static const String ICON_SHARE = '$imageDir/icon-share.png';
 
   // Company Images
   static const String PORTFOLIO_1 = "$imageDir/company_01.png";
@@ -74,5 +76,28 @@ class ImagePath {
   static const String USER_COMPANY_ICON = "$imageDir/icon-user-empresa.png";
   static const String USER_YOUNG_ICON = "$imageDir/icon-user-joven.png";
   static const String USER_ENTITY_ICON = "$imageDir/icon-user-entidad.png";
+  static const String ICON_CLICK_FUNDAULA = '$imageDir/icon-click-fundaula.png';
+  static const String ICON_INFO = '$imageDir/info_icon.png';
+
+  //Resources Categories
+  static const String BACKGROUND_1 = '$imageDir/background-empleo-2X.png';
+  static const String PERSON_1 = '$imageDir/person-empleo.png';
+  static const String BACKGROUND_2 = '$imageDir/background-formacion-2X.png';
+  static const String PERSON_2 = '$imageDir/person-formacion.png';
+  static const String BACKGROUND_3 = '$imageDir/background-ocio-2X.png';
+  static const String PERSON_3 = '$imageDir/person-ocio.png';
+  static const String BACKGROUND_4 = '$imageDir/background-otros-2X.png';
+  static const String PERSON_4 = '$imageDir/person-otros.png';
+  static const String BACKGROUND_5 = '$imageDir/background-practicas-2X.png';
+  static const String PERSON_5 = '$imageDir/person-practicas.png';
+  static const String BACKGROUND_6 = '$imageDir/background-voluntariado-2X.png';
+  static const String PERSON_6 = '$imageDir/person-voluntariado.png';
+  static const String FUNDAULA = '$imageDir/icon-click-fundaula.png';
+
+  //Training pills
+  static const String BACKGROUND_PILLS = '$imageDir/background-pildoras.png';
+  static const String PERSON_PILL1 = '$imageDir/person-pildoras-1.png';
+  static const String PERSON_PILL2 = '$imageDir/person-pildoras-2.png';
+  static const String PERSON_PILL3 = '$imageDir/person-pildoras-3.png';
 
 }

@@ -29,6 +29,7 @@ class APIPath {
   static String contacts() => 'contact';
   static String certificates() => 'certificates';
   static String certificate(String certificateId) => 'certificates/$certificateId';
-
   static String test() => 'test';
+  static String trainingPills() => 'trainingPills';
+  static String trainingPill(String? trainingPillId) => 'trainingPills/$trainingPillId';
 }

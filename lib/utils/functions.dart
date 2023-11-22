@@ -16,6 +16,24 @@ Future<void> openUrlLink(String url) async {
   }
 }
 
+Future<void> launchURL(url) async {
+  if (!url.contains('http://') && !url.contains('https://')) {
+    url = 'http://' + url;
+  }
+  final Uri _url = Uri.parse(url);
+  final bool nativeAppLaunchSucceeded = await launchUrl(
+    _url,
+    mode: LaunchMode.externalNonBrowserApplication,
+  );
+  if (!nativeAppLaunchSucceeded) {
+    if (!await launchUrl(
+      _url,
+      mode: LaunchMode.inAppWebView,
+    )) throw 'No se puede mostrar la dirección $_url';
+  }
+}
+
+
 scrollToSection(BuildContext context) {
   Scrollable.ensureVisible(
     context,
