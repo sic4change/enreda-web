@@ -1,10 +1,8 @@
-import 'package:enreda_app/presentation/widgets/spaces.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../utils/on_hover.dart';
 import '../../values/values.dart';
-import 'circular_container.dart';
 
 class CompanyCardData {
   final String title;

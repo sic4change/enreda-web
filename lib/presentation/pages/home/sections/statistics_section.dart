@@ -36,7 +36,7 @@ class StatisticsSection extends StatefulWidget {
 class _StatisticsSectionState extends State<StatisticsSection>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  FilterResource filterResource = FilterResource("", [],);
+  FilterResource filterResource = FilterResource("", "",);
 
   @override
   void initState() {

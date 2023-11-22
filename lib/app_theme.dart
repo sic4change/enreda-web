@@ -26,9 +26,7 @@ class AppTheme {
 
   static const ColorScheme lightColorScheme = ColorScheme(
     primary: AppColors.primaryColor,
-    primaryVariant: AppColors.secondaryColor,
     secondary: AppColors.primaryColor,
-    secondaryVariant: AppColors.primaryColor,
     background: Colors.white,
     surface: Color(0xFFFAFBFB),
     onBackground: AppColors.primaryColor,

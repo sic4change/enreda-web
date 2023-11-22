@@ -962,7 +962,7 @@ class _UnemployedRegisteringState extends State<UnemployedRegistering> {
             iconTheme: IconThemeData(
               color: Constants.blueDark, //change your color here
             ),
-            leading: showBackIconButton(context),
+            leading: showBackIconButton(context, AppColors.primaryColor),
             title: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [

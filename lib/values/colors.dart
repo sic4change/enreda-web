@@ -91,4 +91,19 @@ class AppColors {
   static const Color turquoiseDark = Color(0xFF00CCCC);
   static const Color turquoiseUltraLight = Color(0xFFDAFCF5);
 
+  //Other
+  static const Color whiteAlt = Color(0xFFA0A5D200);
+  static const Color lilacAlt = Color(0xFFCDCFE999);
+  static const Color turquoiseAlt = Color(0xFFCCFAF0);
+  static const Color greyLightAlt = Color(0xFFF5F6F7);
+  static const Color darkPurple = Color(0xFF460174);
+  static const Color lightPurple = Color(0xFFA100FE);
+  static const Color ultraLightPurple = Color(0xFFF5EDF9);
+  static const Color yellowDark = Color(0xFFFFCB77);
+  static const Color greenDark = Color(0xFF054C5E);
+  static const Color darkGray = Color(0xFF535A5F);
+  static const Color blueDark = Color(0xFF4E92B1);
+  static const Color chatButtonsGray = Color(0xFFA0A0A7);
+  static const Color penBlue = Color(0xFF002185);
+
 }

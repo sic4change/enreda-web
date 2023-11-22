@@ -1,6 +1,7 @@
 import 'package:enreda_app/models/ability.dart';
 import 'package:enreda_app/models/dedication.dart';
 import 'package:enreda_app/models/education.dart';
+import 'package:enreda_app/models/filterTrainingPills.dart';
 import 'package:enreda_app/models/mentorUser.dart';
 import 'package:enreda_app/models/nature.dart';
 import 'package:enreda_app/models/resourcePicture.dart';
@@ -9,8 +10,8 @@ import 'package:enreda_app/models/specificinterest.dart';
 import 'package:enreda_app/models/timeSearching.dart';
 import 'package:enreda_app/models/timeSpentWeekly.dart';
 import 'package:enreda_app/models/filterResource.dart';
+import 'package:enreda_app/models/trainingPill.dart';
 import 'package:enreda_app/utils/functions.dart';
-import 'package:enreda_app/values/values.dart';
 
 import '../models/city.dart';
 import '../models/contact.dart';
@@ -62,6 +63,9 @@ abstract class Database {
   Stream<List<Education>> educationStream();
   Stream<List<Gender>> genderStream();
   Stream<List<Test>> testsStream();
+  Stream<List<TrainingPill>> trainingPillStream();
+  Stream<List<TrainingPill>> filteredTrainingPillStream(FilterTrainingPill filter);
+  Stream<TrainingPill> trainingPillStreamById(String id);
 
   Future<void> addContact(Contact contact);
   Future<void> addUnemployedUser(UnemployedUser unemployedUser);
@@ -127,17 +131,13 @@ class FirestoreDatabase implements Database {
     return _service.filteredCollectionStream(
       path: APIPath.resources(),
       queryBuilder: (query) {
-        query = query
-            .where('status', isEqualTo: 'Disponible')
-            .where('trust', isEqualTo: true);
+        query = query.where('status', isEqualTo: 'Disponible').where('trust', isEqualTo: true);
         return query;
       },
       builder: (data, documentId) {
-        final searchTextResource =
-        removeDiacritics((data['searchText'] ?? '').toLowerCase());
+        final searchTextResource = removeDiacritics((data['searchText'] ?? '').toLowerCase());
         final searchListResource = searchTextResource.split(';');
-        final searchTextFilter =
-        removeDiacritics(filter.searchText.toLowerCase());
+        final searchTextFilter = removeDiacritics(filter.searchText.toLowerCase());
         final searchListFilter = searchTextFilter.split(' ');
         // The following code checks if a resource is selected by applying filters
         bool resourceSelected = true; // Initialize resourceSelected to true
@@ -153,30 +153,13 @@ class FirestoreDatabase implements Database {
           });
         }
 
-        // If resourceCategory filter (array of Categories Ids) exists and it doesn't contain the category Id of the 'resourceCategory' from data,
-        // set resourceSelected to false
-        if (filter.resourceCategories.isNotEmpty &&
-            !filter.resourceCategories.contains((data['resourceCategory'])))
+        if (!filter.resourceCategoryId.contains(data['resourceCategory'])) {
           resourceSelected = false;
+        }
 
         return resourceSelected ? Resource.fromMap(data, documentId) : null;
       },
       sort: (rhs, lhs) => lhs.createdate.compareTo(rhs.createdate),
-      // sort: (lhs, rhs) {
-      //   int cmp = 0;
-      //   if ((rhs.modality == StringConst.FACE_TO_FACE ||
-      //       rhs.modality == StringConst.BLENDED) &&
-      //       (lhs.modality != StringConst.FACE_TO_FACE &&
-      //           lhs.modality != StringConst.BLENDED)) cmp = 1;
-      //   if ((lhs.modality == StringConst.FACE_TO_FACE ||
-      //       lhs.modality == StringConst.BLENDED) &&
-      //       (rhs.modality != StringConst.FACE_TO_FACE &&
-      //           rhs.modality != StringConst.BLENDED)) cmp = -1;
-      //
-      //   if (cmp != 0) return cmp;
-      //
-      //   return lhs.maximumDate.compareTo(rhs.maximumDate);
-      // },
     );
   }
 
@@ -426,6 +409,60 @@ class FirestoreDatabase implements Database {
     builder: (data, documentId) => Gender.fromMap(data, documentId),
     sort: (lhs, rhs) => lhs.name.compareTo(rhs.name),
   );
+
+  @override
+  Stream<List<TrainingPill>> trainingPillStream() {
+    return _service.collectionStream(
+      path: APIPath.trainingPills(),
+      queryBuilder: (query) => query.where('status', isEqualTo: 'Disponible'),
+      builder: (data, documentId) => TrainingPill.fromMap(data, documentId),
+      sort: (lhs, rhs) => lhs.order.compareTo(rhs.order),
+    );
+  }
+
+  @override
+  Stream<List<TrainingPill>> filteredTrainingPillStream(FilterTrainingPill filter) {
+    return _service.filteredCollectionStream(
+      path: APIPath.trainingPills(),
+      queryBuilder: (query) {
+        query = query.where('id', isNotEqualTo: null);
+        return query;
+      },
+      builder: (data, documentId) {
+        final searchTextChallenge = removeDiacritics((data['searchText'] ?? '').toLowerCase());
+        final searchListSolution = searchTextChallenge.split(';');
+        final searchTextFilter = removeDiacritics(filter.searchText.toLowerCase());
+        final searchListFilter = searchTextFilter.split(' ');
+
+        if (filter.searchText == '')
+          return TrainingPill.fromMap(data, documentId);
+
+        // The following code checks if an idea is selected by applying filters
+        bool textFilterSelection = false; // Initialize textFilter result to false
+
+        // If search text exists in filter, filter through the search list
+        if (filter.searchText != '') {
+          searchListFilter.forEach((filterElement) {
+            // For each element in searchListFilter, check against each element in searchListIdea
+            if (searchListSolution.any(
+                    (resourceElement) => resourceElement.contains(filterElement))) {
+              textFilterSelection = textFilterSelection || true; // Set ideaSelected false if a match isn't found
+            }
+          });
+        }
+        return textFilterSelection ? TrainingPill.fromMap(data, documentId) : null;
+      },
+      sort: (lhs, rhs) => lhs.order.compareTo(rhs.order),
+    );
+  }
+
+  @override
+  Stream<TrainingPill> trainingPillStreamById(String id) =>
+      _service.documentStream<TrainingPill>(
+        path: APIPath.trainingPill(id),
+        builder: (data, documentId) => TrainingPill.fromMap(data, documentId),
+      );
+
 
   @override
   Future<void> addContact(Contact contact) =>

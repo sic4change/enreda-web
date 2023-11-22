@@ -22,7 +22,6 @@ class Constants {
   static Color salmonLight = Color(0xFFF19895);
 
   // Blue
-
   static Color blueMain = Color(0xFF579ACA);
   static Color blueDark = Color(0xFF4E92B1);
   static Color blueLight = Color(0xFF5AA6C8);
@@ -36,6 +35,7 @@ class Constants {
 
   // Violet
   static Color lightViolet = Color(0xFFFBF5FF);
+  static const Color lilac = Color(0xFFA0A5D2);
 
   // Red
   static Color alertRed = Color(0xFFD32F2F);

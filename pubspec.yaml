@@ -41,7 +41,7 @@ dependencies:
   dots_indicator: ^3.0.0
   animated_text_kit: ^4.2.2
   visibility_detector: ^0.4.0+2
-  youtube_player_iframe: ^2.2.2
+  youtube_player_iframe: ^4.0.4
   country_code_picker: ^3.0.0
   transparent_image: ^2.0.1
 

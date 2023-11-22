@@ -197,6 +197,8 @@ class StringConst {
   static const String USE_CONDITIONS_URL = "https://firebasestorage.googleapis.com/v0/b/enreda-d3b41.appspot.com/o/condiciones_de_uso.pdf?alt=media&token=dfb2444a-87e7-4ec8-b079-c90e1074f7b9";
   static const String ADMIN_WEB_URL = 'https://enreda-empresas.web.app/'; //'https://enreda-d3b41.firebaseapp.com/#/login';
   static const String WEB_APP_URL = 'https://enredawebapp.web.app/access';
+  static const String WEB_FUNDAULA_ACCESS = 'https://fundaula-lp.cclearning.accenture.com/?p=12510';
+
 
   //Contact form
   static const String CONFIRM = "Confirmado";
@@ -321,6 +323,12 @@ class StringConst {
   static const String NOT_ALLOWED_CHAT = '¿Quieres empezar el chat y crear tu CV?';
   static const String SEARCH_TEXT = 'Nombre del recurso, organizador, país...';
 
+  //Search Section
+  static const String SEARCH = "Busca por área";
+  static const String SEARCH_SUBTITLE = "EnREDa te conecta con recursos educativos, actividades, empresas y pleabilidad y construir tu camino vital. Porque las oportunidades no se compran, se crean.";
+  static const String PILLS_TITLE = "Píldoras formativas";
+  static const String PILLS_SUBTITLE = "¡Hemos recopilado todo este contenido para ti!";
+  static const String FUNDAULA_BUTTON = "Accede a la formación online que te acerca al mundo digital y al empleo desde enREDa";
 
   //Resource modalities
   static const String FACE_TO_FACE = 'Presencial';
@@ -331,6 +339,8 @@ class StringConst {
   static const String ONLINE_FOR_CITY = 'Online para residentes en ciudad';
 
   static String RESOURCE_LINK(String resourceId) => 'https://enredawebapp.web.app/resources/$resourceId';
+  static String TRAINING_PILL_LINK(String trainingPillId) => 'https://enredawebapp.web.app/pills/$trainingPillId';
+  static String SHARE_TEXT_PILLS(String title, String trainingPillId) => 'La píldora formativa: "$title" podría interesarte.\n\nhttps://enredawebapp.web.app/pills/$trainingPillId';
 
   static const List<String> RESOURCE_TYPES = [
     'Oferta de empleo',
@@ -348,4 +358,5 @@ class StringConst {
     'Voluntariado',
     'Otros',
   ];
+
 }

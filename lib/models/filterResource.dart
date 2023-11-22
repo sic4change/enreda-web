@@ -1,12 +1,12 @@
 class FilterResource {
   String searchText;
+  String resourceCategoryId;
   //List<String> resourceTypes;
-  List<String> resourceCategories;
-
+  //List<String> resourceCategories;
 
   FilterResource(
       this.searchText,
-      //this.resourceTypes,
-      this.resourceCategories);
-
+      this.resourceCategoryId);
+//this.resourceTypes,
+//this.resourceCategories);
 }

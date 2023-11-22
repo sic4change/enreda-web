@@ -4,11 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
-Widget showBackIconButton(BuildContext context) {
+Widget showBackIconButton(BuildContext context, Color color) {
   try {
     if (kIsWeb) {
       return IconButton(
           icon: Icon(Icons.arrow_back),
+          color: color,
           onPressed: () {
             Navigator.of(context).pop();
           });
@@ -16,6 +17,7 @@ Widget showBackIconButton(BuildContext context) {
     if (Platform.isIOS) {
       return IconButton(
           icon: Icon(CupertinoIcons.back),
+          color: color,
           onPressed: () {
             Navigator.of(context).pop();
           });
@@ -23,6 +25,7 @@ Widget showBackIconButton(BuildContext context) {
     if (Platform.isAndroid) {
       return IconButton(
           icon: Icon(Icons.arrow_back),
+          color: color,
           onPressed: () {
             Navigator.of(context).pop();
           });
@@ -30,6 +33,7 @@ Widget showBackIconButton(BuildContext context) {
   } catch (e) {
     return IconButton(
         icon: Icon(Icons.arrow_back),
+        color: color,
         onPressed: () {
           Navigator.of(context).pop();
         });

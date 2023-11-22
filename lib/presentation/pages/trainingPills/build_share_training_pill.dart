@@ -1,6 +1,6 @@
-import 'package:enreda_app/models/resource.dart';
+import 'package:enreda_app/models/trainingPill.dart';
 import 'package:enreda_app/presentation/layout/adaptive.dart';
-import 'package:enreda_app/presentation/pages/resources/sections/show_resource_detail_dialog.dart';
+import 'package:enreda_app/presentation/pages/trainingPills/pages/training_pills_actions.dart';
 import 'package:enreda_app/presentation/widgets/spaces.dart';
 import 'package:enreda_app/utils/const.dart';
 import 'package:enreda_app/utils/responsive.dart';
@@ -8,9 +8,8 @@ import 'package:enreda_app/values/values.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-Widget buildShareButton(BuildContext context, Resource resource, Color color) {
+Widget buildShareTrainingPill(BuildContext context, TrainingPill trainingPill, Color color) {
   _showToast() {
     FToast fToast = FToast().init(context);
 
@@ -43,11 +42,11 @@ Widget buildShareButton(BuildContext context, Resource resource, Color color) {
       switch (value) {
         case 1:
           Clipboard.setData(ClipboardData(
-              text: StringConst.RESOURCE_LINK(resource.resourceId)));
+              text: StringConst.TRAINING_PILL_LINK(trainingPill.id)));
           _showToast();
           break;
         case 2:
-          shareResource(resource);
+          shareTrainingPill(trainingPill);
           break;
       }
     },
@@ -74,15 +73,18 @@ Widget buildShareButton(BuildContext context, Resource resource, Color color) {
           value: 2,
           child: Row(
             children: [
-              Image.asset(ImagePath.ICON_SHARE, height: Responsive.isMobile(context) ? 15 : 20),
+              Icon(
+                Icons.share,
+                color: Constants.grey,
+              ),
               SpaceW16(),
               Text('Compartir',
-                  style: textTheme.bodyText1?.copyWith(
-                color: AppColors.greyTxtAlt,
-                height: 1.5,
-                fontWeight: FontWeight.w400,
-                fontSize: fontSize,
-              ),),
+                style: textTheme.bodyText1?.copyWith(
+                  color: Constants.grey,
+                  height: 1.5,
+                  fontWeight: FontWeight.w400,
+                  fontSize: fontSize,
+                ),),
             ],
           ),
         )
@@ -91,8 +93,8 @@ Widget buildShareButton(BuildContext context, Resource resource, Color color) {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset(ImagePath.ICON_SHARE, height: Responsive.isMobile(context) ? 20 : 20),
-        SizedBox(width: 10),
+        Image.asset(ImagePath.ICON_SHARE, height: Responsive.isMobile(context) ? 15 : 20),
+        Responsive.isMobile(context) ? SizedBox(width: 0) : SizedBox(width: 10),
       ],
     ),
   );
