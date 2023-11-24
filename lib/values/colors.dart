@@ -103,6 +103,7 @@ class AppColors {
   static const Color greenDark = Color(0xFF054C5E);
   static const Color darkGray = Color(0xFF535A5F);
   static const Color blueDark = Color(0xFF4E92B1);
+  static const Color blue = Color(0xFF002185);
   static const Color chatButtonsGray = Color(0xFFA0A0A7);
   static const Color penBlue = Color(0xFF002185);
 
