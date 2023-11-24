@@ -45,12 +45,12 @@ class _TrainingPillListTileState extends State<TrainingPillListTile> {
         margin: const EdgeInsets.all(5.0),
         child: Container(
           decoration: BoxDecoration(
-              border: Border.all(color: AppColors.greyBorder, width: 1),
+              border: Border.all(color: AppColors.grey350, width: 1),
               borderRadius: BorderRadius.all(Radius.circular(15)),
               color: Constants.white,
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.greyBorder,
+                  color: AppColors.grey350,
                   spreadRadius: 0.2,
                   blurRadius: 1,
                   offset: Offset(0, 0),
@@ -103,7 +103,7 @@ class _TrainingPillListTileState extends State<TrainingPillListTile> {
                                     letterSpacing: 1,
                                     fontSize: fontSize,
                                     fontWeight: FontWeight.bold,
-                                    color: AppColors.blueDark,
+                                    color: AppColors.blue,
                                   ),
                                 ),
                               ),
