@@ -117,7 +117,7 @@ class _MessageSectionState extends State<MessageSection>
 
 
   Widget playAreaDesktop() {
-    String idYoutubeVideo = 'cJO4B_OBnvQ';
+    String idYoutubeVideo = 'dthnnqIz1uE';
     if (!_isVideoVisible)
       return AspectRatio(
         aspectRatio: 16 / 9,
