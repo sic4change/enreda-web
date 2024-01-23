@@ -65,7 +65,7 @@ class _CompaniesSectionState extends State<CompaniesSection> {
                       width: widthOfScreen(context),
                       padding: EdgeInsets.symmetric(horizontal: screenWidth < 850 ? 20 : 100),
                       child: CarouselSlider.builder(
-                        itemCount: 7,
+                        itemCount: 10,
                         carouselController: _carouselController,
                         itemBuilder: (
                           BuildContext context,
@@ -134,6 +134,33 @@ class _CompaniesSectionState extends State<CompaniesSection> {
                               imageUrl: ImagePath.PORTFOLIO_7,
                               imageUrlBn: ImagePath.PORTFOLIO_7bn,
                               title: StringConst.GOBES,
+                            );
+                          } else if (itemIndex == 7) {
+                            return CompanyCard(
+                              height: heightOfCarousel,
+                              width: widthOfCarousel,
+                              url: "https://planderecuperacion.gob.es/",
+                              imageUrl: ImagePath.PORTFOLIO_8,
+                              imageUrlBn: ImagePath.PORTFOLIO_8bn,
+                              title: StringConst.PRTR,
+                            );
+                          } else if (itemIndex == 8) {
+                            return CompanyCard(
+                              height: heightOfCarousel,
+                              width: widthOfCarousel,
+                              url: "https://www.mdsocialesa2030.gob.es/",
+                              imageUrl: ImagePath.PORTFOLIO_9,
+                              imageUrlBn: ImagePath.PORTFOLIO_9bn,
+                              title: StringConst.AGENDA2030,
+                            );
+                          } else if (itemIndex == 9) {
+                            return CompanyCard(
+                              height: heightOfCarousel,
+                              width: widthOfCarousel,
+                              url: "https://next-generation-eu.europa.eu/index_es",
+                              imageUrl: ImagePath.PORTFOLIO_10,
+                              imageUrlBn: ImagePath.PORTFOLIO_10bn,
+                              title: StringConst.NEXT_GEN_EU,
                             );
                           } else {
                             return CompanyCard(
@@ -174,7 +201,7 @@ class _CompaniesSectionState extends State<CompaniesSection> {
                       width: widthOfScreen(context),
                       padding: const EdgeInsets.symmetric(horizontal: 100.0),
                       child: CarouselSlider.builder(
-                        itemCount: 7,
+                        itemCount: 10,
                         carouselController: _carouselController,
                         itemBuilder: (
                           BuildContext context,
@@ -244,6 +271,33 @@ class _CompaniesSectionState extends State<CompaniesSection> {
                               imageUrlBn: ImagePath.PORTFOLIO_7bn,
                               title: StringConst.GOBES,
                             );
+                          } else if (itemIndex == 7) {
+                            return CompanyCard(
+                              height: heightOfCarousel,
+                              width: widthOfCarousel,
+                              url: "https://planderecuperacion.gob.es/",
+                              imageUrl: ImagePath.PORTFOLIO_8,
+                              imageUrlBn: ImagePath.PORTFOLIO_8bn,
+                              title: StringConst.PRTR,
+                            );
+                          } else if (itemIndex == 8) {
+                            return CompanyCard(
+                              height: heightOfCarousel,
+                              width: widthOfCarousel,
+                              url: "https://www.mdsocialesa2030.gob.es/",
+                              imageUrl: ImagePath.PORTFOLIO_9,
+                              imageUrlBn: ImagePath.PORTFOLIO_9bn,
+                              title: StringConst.AGENDA2030,
+                            );
+                          } else if (itemIndex == 9) {
+                            return CompanyCard(
+                              height: heightOfCarousel,
+                              width: widthOfCarousel,
+                              url: "https://next-generation-eu.europa.eu/index_es",
+                              imageUrl: ImagePath.PORTFOLIO_10,
+                              imageUrlBn: ImagePath.PORTFOLIO_10bn,
+                              title: StringConst.NEXT_GEN_EU,
+                            );
                           } else {
                             return CompanyCard(
                               height: heightOfCarousel,
@@ -283,7 +337,7 @@ class _CompaniesSectionState extends State<CompaniesSection> {
                       width: widthOfScreen(context),
                       padding: const EdgeInsets.symmetric(horizontal: 200.0),
                       child: CarouselSlider.builder(
-                        itemCount: 7,
+                        itemCount: 10,
                         carouselController: _carouselController,
                         itemBuilder: (
                           BuildContext context,
@@ -353,6 +407,33 @@ class _CompaniesSectionState extends State<CompaniesSection> {
                               imageUrlBn: ImagePath.PORTFOLIO_7bn,
                               title: StringConst.GOBES,
                             );
+                          } else if (itemIndex == 7) {
+                            return CompanyCard(
+                              height: heightOfCarousel,
+                              width: widthOfCarousel,
+                              url: "https://planderecuperacion.gob.es/",
+                              imageUrl: ImagePath.PORTFOLIO_8,
+                              imageUrlBn: ImagePath.PORTFOLIO_8bn,
+                              title: StringConst.PRTR,
+                            );
+                          } else if (itemIndex == 8) {
+                            return CompanyCard(
+                              height: heightOfCarousel,
+                              width: widthOfCarousel,
+                              url: "https://www.mdsocialesa2030.gob.es/",
+                              imageUrl: ImagePath.PORTFOLIO_9,
+                              imageUrlBn: ImagePath.PORTFOLIO_9bn,
+                              title: StringConst.AGENDA2030,
+                            );
+                          } else if (itemIndex == 9) {
+                            return CompanyCard(
+                              height: heightOfCarousel,
+                              width: widthOfCarousel,
+                              url: "https://next-generation-eu.europa.eu/index_es",
+                              imageUrl: ImagePath.PORTFOLIO_10,
+                              imageUrlBn: ImagePath.PORTFOLIO_10bn,
+                              title: StringConst.NEXT_GEN_EU,
+                            );
                           } else {
                             return CompanyCard(
                               height: heightOfCarousel,
@@ -363,7 +444,6 @@ class _CompaniesSectionState extends State<CompaniesSection> {
                               title: StringConst.SIC4CHANGE,
                             );
                           }
-
                         },
                         options: CarouselOptions(
                           viewportFraction: 0.15,
@@ -406,7 +486,7 @@ class _CompaniesSectionState extends State<CompaniesSection> {
   }) {
     return Container(
       child: DotsIndicator(
-        dotsCount: 7,
+        dotsCount: 10,
         position: currentIndex.toInt(),
         onTap: (index) {
           _moveToNextCarousel(index.toInt());

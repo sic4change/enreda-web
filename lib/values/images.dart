@@ -64,6 +64,9 @@ class ImagePath {
   static const String PORTFOLIO_5 = "$imageDir/company_05.png";
   static const String PORTFOLIO_6 = "$imageDir/company_06.png";
   static const String PORTFOLIO_7 = "$imageDir/company_07.png";
+  static const String PORTFOLIO_8 = "$imageDir/company_08.png";
+  static const String PORTFOLIO_9 = "$imageDir/company_09.png";
+  static const String PORTFOLIO_10 = "$imageDir/company_10.png";
   static const String PORTFOLIO_1bn = "$imageDir/company_01bn.png";
   static const String PORTFOLIO_2bn = "$imageDir/company_02bn.png";
   static const String PORTFOLIO_3bn = "$imageDir/company_03bn.png";
@@ -71,6 +74,9 @@ class ImagePath {
   static const String PORTFOLIO_5bn = "$imageDir/company_05bn.png";
   static const String PORTFOLIO_6bn = "$imageDir/company_06bn.png";
   static const String PORTFOLIO_7bn = "$imageDir/company_07bn.png";
+  static const String PORTFOLIO_8bn = "$imageDir/company_08bn.png";
+  static const String PORTFOLIO_9bn = "$imageDir/company_09bn.png";
+  static const String PORTFOLIO_10bn = "$imageDir/company_10bn.png";
 
   // Icons
   static const String USER_COMPANY_ICON = "$imageDir/icon-user-empresa.png";

@@ -120,6 +120,9 @@ class StringConst {
   static const String COPAN = "Copanch'orti'";
   static const String GOBCAN = "Gob. Canarias";
   static const String GOBES = "Gob. España";
+  static const String PRTR = "Plan de Recuperación, Transformación y Resiliencia";
+  static const String AGENDA2030 = "Ministerio de Derechos Sociales, Consumo y Agenda 2030";
+  static const String NEXT_GEN_EU = "Next Generation EU";
 
   //Awards & Section
   static const String MY = "My";
