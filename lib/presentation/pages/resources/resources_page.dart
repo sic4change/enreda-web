@@ -7,6 +7,7 @@ import 'package:enreda_app/models/province.dart';
 import 'package:enreda_app/models/resource.dart';
 import 'package:enreda_app/models/resourceCategory.dart';
 import 'package:enreda_app/models/resourcePicture.dart';
+import 'package:enreda_app/models/socialEntity.dart';
 import 'package:enreda_app/models/trainingPill.dart';
 import 'package:enreda_app/models/userEnreda.dart';
 import 'package:enreda_app/presentation/layout/adaptive.dart';
@@ -647,130 +648,66 @@ class _ResourcesPageState extends State<ResourcesPage> {
               child: ListItemBuilderGrid<Resource>(
                 snapshot: snapshot,
                 itemBuilder: (context, resource) {
-                  if (resource.organizerType == 'Organización') {
-                    return StreamBuilder<Organization>(
-                      stream: database.organizationStream(resource.organizer),
-                      builder: (context, snapshot) {
-                        final organization = snapshot.data;
-                        resource.organizerName =
-                        organization == null ? '' : organization.name;
-                        resource.organizerImage =
-                        organization == null ? '' : organization.photo;
-                        resource.setResourceTypeName();
-                        return StreamBuilder<Country>(
-                            stream: database.countryStream(resource.country),
-                            builder: (context, snapshot) {
-                              final country = snapshot.data;
-                              resource.countryName =
-                              country == null ? '' : country.name;
-                              return StreamBuilder<Province>(
-                                stream:
-                                database.provinceStream(resource.province),
-                                builder: (context, snapshot) {
-                                  final province = snapshot.data;
-                                  resource.provinceName =
-                                  province == null ? '' : province.name;
-                                  return StreamBuilder<City>(
-                                      stream: database.cityStream(resource.city),
-                                      builder: (context, snapshot) {
-                                        final city = snapshot.data;
-                                        resource.cityName =
-                                        city == null ? '' : city.name;
-                                        return StreamBuilder<ResourcePicture>(
-                                            stream:
-                                            database.resourcePictureStream(
-                                                resource.resourcePictureId),
-                                            builder: (context, snapshot) {
-                                              final resourcePicture =
-                                                  snapshot.data;
-                                              resource.resourcePhoto =
-                                              resourcePicture == null
-                                                  ? resource.resourcePhoto
-                                                  : resourcePicture
-                                                  .resourcePhoto;
-                                              return Container(
-                                                key: Key(
-                                                    'resource-${resource.resourceId}'),
-                                                child: ResourceListTile(
-                                                  resource: resource,
-                                                  onTap: () => showDialog(
-                                                    context: context,
-                                                    builder: (BuildContext context) => ShowResourceDetailDialog(
-                                                      resource: resource,
-                                                    ),
-                                                  ),
-                                                ),
-                                              );
-                                            });
-                                      });
-                                },
-                              );
-                            });
-                      },
-                    );
-                  } else {
-                    return StreamBuilder<UserEnreda>(
-                      stream: database.mentorStream(resource.organizer),
-                      builder: (context, snapshot) {
-                        final mentor = snapshot.data;
-                        resource.organizerName = mentor == null
-                            ? ''
-                            : '${mentor.firstName} ${mentor.lastName} ';
-                        resource.organizerImage =
-                        mentor == null ? '' : mentor.photo;
-                        resource.setResourceTypeName();
-                        return StreamBuilder<Country>(
-                            stream: database.countryStream(resource.country!),
-                            builder: (context, snapshot) {
-                              final country = snapshot.data;
-                              resource.countryName =
-                              country == null ? '' : country.name;
-                              return StreamBuilder<Province>(
-                                stream:
-                                database.provinceStream(resource.province!),
-                                builder: (context, snapshot) {
-                                  final province = snapshot.data;
-                                  resource.provinceName =
-                                  province == null ? '' : province.name;
-                                  return StreamBuilder<City>(
-                                      stream: database.cityStream(resource.city!),
-                                      builder: (context, snapshot) {
-                                        final city = snapshot.data;
-                                        resource.cityName =
-                                        city == null ? '' : city.name;
-                                        return StreamBuilder<ResourcePicture>(
-                                            stream:
-                                            database.resourcePictureStream(
-                                                resource.resourcePictureId),
-                                            builder: (context, snapshot) {
-                                              final resourcePicture =
-                                                  snapshot.data;
-                                              resource.resourcePhoto =
-                                              resourcePicture == null
-                                                  ? resource.resourcePhoto
-                                                  : resourcePicture
-                                                  .resourcePhoto;
-                                              return Container(
-                                                key: Key(
-                                                    'resource-${resource.resourceId}'),
-                                                child: ResourceListTile(
-                                                  resource: resource,
-                                                  onTap: () => showDialog(
-                                                    context: context,
-                                                    builder: (BuildContext context) => ShowResourceDetailDialog(
-                                                      resource: resource,
-                                                    ),
-                                                  ),
-                                                ),
-                                              );
-                                            });
-                                      });
-                                },
-                              );
-                            });
-                      },
-                    );
-                  }
+                  return StreamBuilder(
+                    stream:  resource.organizerType == 'Organización' ? database.organizationStream(resource.organizer) :
+                    resource.organizerType == 'Entidad Social' ? database.socialEntityStream(resource.organizer)
+                        : database.mentorStream(resource.organizer),
+                    builder: (context, snapshotOrganizer) {
+                      if (snapshotOrganizer.hasData) {
+                        if (resource.organizerType == 'Organización') {
+                          final organization = snapshotOrganizer.data as Organization;
+                          resource.organizerName = organization.name;
+                          resource.organizerImage = organization.photo;
+                        } else if (resource.organizerType == 'Entidad Social') {
+                          final organization = snapshotOrganizer.data as SocialEntity;
+                          resource.organizerName = organization.name;
+                          resource.organizerImage = organization.photo;
+                        } else {
+                          final mentor = snapshotOrganizer.data as UserEnreda;
+                          resource.organizerName = '${mentor.firstName} ${mentor.lastName} ';
+                          resource.organizerImage = mentor.photo;
+                        }
+                      }
+                      resource.setResourceTypeName();
+                      resource.setResourceCategoryName();
+                      return StreamBuilder<Country>(
+                          stream: database.countryStream(resource.country),
+                          builder: (context, snapshot) {
+                            final country = snapshot.data;
+                            resource.countryName =
+                            country == null ? '' : country.name;
+                            return StreamBuilder<Province>(
+                              stream:
+                              database.provinceStream(resource.province),
+                              builder: (context, snapshot) {
+                                final province = snapshot.data;
+                                resource.provinceName =
+                                province == null ? '' : province.name;
+                                return StreamBuilder<City>(
+                                    stream: database.cityStream(resource.city),
+                                    builder: (context, snapshot) {
+                                      final city = snapshot.data;
+                                      resource.cityName =
+                                      city == null ? '' : city.name;
+                                      return Container(
+                                        key: Key(
+                                            'resource-${resource.resourceId}'),
+                                        child: ResourceListTile(
+                                          resource: resource,
+                                          onTap: () => showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) => ShowResourceDetailDialog(
+                                              resource: resource,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    });
+                              },
+                            );
+                          });
+                    },
+                  );
                 },
                 emptyTitle: 'Sin recursos',
                 emptyMessage: 'Aún no tenemos recursos que mostrarte',

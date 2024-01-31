@@ -6,6 +6,7 @@ import 'package:enreda_app/models/mentorUser.dart';
 import 'package:enreda_app/models/nature.dart';
 import 'package:enreda_app/models/resourcePicture.dart';
 import 'package:enreda_app/models/size.dart';
+import 'package:enreda_app/models/socialEntity.dart';
 import 'package:enreda_app/models/specificinterest.dart';
 import 'package:enreda_app/models/timeSearching.dart';
 import 'package:enreda_app/models/timeSpentWeekly.dart';
@@ -39,6 +40,7 @@ abstract class Database {
   Stream<List<ResourceCategory>> getCategoriesResources();
   Stream<List<Organization>> organizationsStream();
   Stream<Organization> organizationStream(String organizationId);
+  Stream<SocialEntity> socialEntityStream(String socialEntityId);
   Stream<UserEnreda> mentorStream(String mentorId);
   Stream<List<Country>> countriesStream();
   Stream<List<Country>> countryFormatedStream();
@@ -109,8 +111,10 @@ class FirestoreDatabase implements Database {
   Stream<List<Resource>> resourcesStream() {
     return _service.collectionStream(
       path: APIPath.resources(),
-      queryBuilder: (query) => query
-          .where('trust', isEqualTo: true),
+      queryBuilder: (query) {
+        query = query.where('status', isEqualTo: 'Disponible').where('trust', isEqualTo: true);
+        return query;
+      },
       builder: (data, documentId) => Resource.fromMap(data, documentId),
       sort: (lhs, rhs) => lhs.title.compareTo(rhs.title),
     );
@@ -224,6 +228,7 @@ class FirestoreDatabase implements Database {
     sort: (lhs, rhs) => lhs.name.compareTo(rhs.name),
   );
 
+  @override
   Stream<Organization> organizationStream(String organizationId) {
     final organization =  _service.documentStream<Organization>(
       path: APIPath.organization(organizationId),
@@ -232,7 +237,14 @@ class FirestoreDatabase implements Database {
     return organization;
   }
 
+  @override
+  Stream<SocialEntity> socialEntityStream(String? socialEntityId) =>
+      _service.documentStream<SocialEntity>(
+        path: APIPath.socialEntity(socialEntityId!),
+        builder: (data, documentId) => SocialEntity.fromMap(data, documentId),
+      );
 
+  @override
   Stream<UserEnreda> mentorStream(String mentorId) =>
       _service.documentStream<UserEnreda>(
         path: APIPath.user(mentorId),

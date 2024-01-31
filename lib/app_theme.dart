@@ -14,6 +14,7 @@ class AppTheme {
     return ThemeData(
       colorScheme: colorScheme,
       textTheme: _textTheme,
+      useMaterial3: true,
       iconTheme: IconThemeData(color: AppColors.white),
       canvasColor: colorScheme.background,
       scaffoldBackgroundColor: colorScheme.background,
