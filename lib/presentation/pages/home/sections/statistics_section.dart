@@ -64,7 +64,7 @@ class _StatisticsSectionState extends State<StatisticsSection>
     double sidePadding = responsiveSize(context, Sizes.PADDING_10, Sizes.PADDING_80, md: Sizes.PADDING_20);
 
     return StreamBuilder<List<Resource?>>(
-      stream: database.filteredResourcesCategoryStream(filterResource),
+      stream: database.resourcesStream(),
       builder: (context, snapshotResources) {
         int? resources = (snapshotResources.data?.length != null) ? snapshotResources.data?.length : 0;
         return StreamBuilder<List<UserEnreda>>(

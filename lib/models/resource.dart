@@ -11,6 +11,8 @@ class Resource {
     this.promotor,
     this.resourceType,
     this.resourceTypeName,
+    this.resourceCategory,
+    this.resourceCategoryName,
     required this.capacity,
     required this.duration,
     required this.modality,
@@ -51,9 +53,11 @@ class Resource {
     final String? organizerImage = data['organizerImage'];
     final String? promotor = data['promotor'];
     final String? resourceType = data['resourceType'];
+    final String? resourceCategory = data['resourceCategory'];
     final String? contractType = data['contractType'];
     final String? salary = data['salary'];
     final String? resourceTypeName = data['resourceTypeName'];
+    final String? resourceCategoryName = data['resourceCategoryName'];
     final int capacity = data['capacity'];
     final String duration = data['duration'];
     final String modality = data['modality'];
@@ -97,7 +101,9 @@ class Resource {
       organizerImage: organizerImage,
       promotor: promotor,
       resourceType: resourceType,
+      resourceCategory: resourceCategory,
       resourceTypeName:  resourceTypeName,
+      resourceCategoryName: resourceCategoryName,
       capacity: capacity,
       duration: duration,
       modality: modality,
@@ -138,7 +144,9 @@ class Resource {
   final String? promotor;
   final String description;
   String? resourceType;
+  String? resourceCategory;
   String? resourceTypeName;
+  String? resourceCategoryName;
   final int capacity;
   final String duration;
   final String modality;
@@ -175,6 +183,7 @@ class Resource {
       'description': description,
       'organizer': organizer,
       'organizerType': organizerType,
+      'resourceCategory': resourceCategory,
       'organizerName': organizerName,
       'organizerImage': organizerImage,
       'promotor': promotor,
@@ -284,6 +293,45 @@ class Resource {
 
       default: {
         this.resourceTypeName = 'Otros';
+      }
+      break;
+    }
+  }
+
+  void setResourceCategoryName() {
+    switch(this.resourceCategory) {
+      case 'POUBGFk5gU6c5X1DKo1b': {
+        this.resourceCategoryName = 'Empleo';
+      }
+      break;
+
+      case '6ag9Px7zkFpHgRe17PQk': {
+        this.resourceCategoryName = 'Formación';
+      }
+      break;
+
+      case 'PlaaW4L4Z36Wu1V6HuBa': {
+        this.resourceCategoryName = 'Ocio y tiempo libre';
+      }
+      break;
+
+      case 'LNj2FMTEBsNtBYCRo0MQ': {
+        this.resourceCategoryName = 'Otros';
+      }
+      break;
+
+      case 'zVusrwQkVoAca9R6iuQo': {
+        this.resourceCategoryName = 'Prácticas';
+      }
+      break;
+
+      case 'FNAcayruXghBMjj3RD9h': {
+        this.resourceCategoryName = 'Voluntariado';
+      }
+      break;
+
+      default: {
+        this.resourceCategoryName = 'Otros';
       }
       break;
     }

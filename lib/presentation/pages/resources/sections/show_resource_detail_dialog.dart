@@ -107,7 +107,7 @@ dialogContent(BuildContext context, Resource resource) {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              resource.promotor != null
+                              resource.promotor?.isNotEmpty == true
                                   ? resource.promotor!
                                   : resource.organizerName ?? '',
                               maxLines: 1,
@@ -280,7 +280,7 @@ Widget _buildDetailsListViewWeb(BuildContext context, Resource resource) {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomTextTitle(title: StringConst.RESOURCE_TYPE.toUpperCase()),
-                      CustomTextBody(text: '${resource.resourceTypeName}'),
+                      CustomTextBody(text: '${resource.resourceCategoryName}'),
                       SpaceH8(),
                       CustomTextTitle(title: StringConst.LOCATION.toUpperCase()),
                       Row(

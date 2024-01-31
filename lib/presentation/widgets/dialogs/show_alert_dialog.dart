@@ -30,6 +30,9 @@ Future showAlertDialog(
         actions: <Widget>[
           ElevatedButton(
               onPressed: () => Navigator.of(context).pop((true)),
+              style: TextButton.styleFrom(
+                backgroundColor: AppColors.primaryColor,
+              ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(defaultActionText, style: textTheme.bodyText1?.copyWith(
@@ -43,6 +46,9 @@ Future showAlertDialog(
           // ignore: deprecated_member_use
             ElevatedButton(
                 onPressed: () => Navigator.of(context).pop((false)),
+                style: TextButton.styleFrom(
+                  backgroundColor: AppColors.primaryColor,
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(cancelActionText, style: textTheme.bodyText1?.copyWith(
@@ -75,6 +81,9 @@ Future showAlertDialog(
         actions: <Widget>[
           ElevatedButton(
               onPressed: () => Navigator.of(context).pop((true)),
+              style: TextButton.styleFrom(
+                backgroundColor: AppColors.primaryColor,
+              ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(defaultActionText, style: textTheme.bodyText1?.copyWith(
@@ -88,6 +97,9 @@ Future showAlertDialog(
           // ignore: deprecated_member_use
             ElevatedButton(
                 onPressed: () => Navigator.of(context).pop((false)),
+                style: TextButton.styleFrom(
+                  backgroundColor: AppColors.primaryColor,
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(cancelActionText, style: textTheme.bodyText1?.copyWith(
