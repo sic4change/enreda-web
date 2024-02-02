@@ -74,7 +74,7 @@ class StringConst {
   static const String TOOLS_2_PROFICIENCY = "90%";
   static const String TOOLS_3_NAME = "Sketch";
   static const String TOOLS_3_PROFICIENCY = "70%";
-  static const String USER_YOUNG = "Usuario Joven";
+  static const String USER_YOUNG = "Participante";
   static const String YOUNGS = "Jóvenes";
   static const String YOUNG_1_DESC = "¿No sabes por dónde tirar?";
   static const String YOUNG_2_DESC =
