@@ -33,10 +33,10 @@ Future showLoginMenu(BuildContext context, {
           ),
         ),
       ),
-      /*PopupMenuItem(
+      PopupMenuItem(
           value: 'entidad_social',
           child: CircularContainer(
-            backgroundColor: AppColors.grey100,
+            backgroundColor: AppColors.turquoiseUltraLight,
             borderRadius: BorderRadius.circular(10.0),
             padding: EdgeInsets.all(0.0),
             child: Row(
@@ -52,11 +52,12 @@ Future showLoginMenu(BuildContext context, {
               ],
             ),
           ),
-        ),*/
+        ),
+      /*
       PopupMenuItem(
         value: 'empresa',
         child: CircularContainer(
-          backgroundColor: AppColors.turquoiseUltraLight,
+          backgroundColor: AppColors.grey100,
           borderRadius: BorderRadius.circular(10.0),
           padding: EdgeInsets.all(0.0),
           child: Row(
@@ -74,6 +75,7 @@ Future showLoginMenu(BuildContext context, {
           ),
         ),
       ),
+      */
     ],
   ).then((value) {
     if (value != null) {
@@ -82,6 +84,7 @@ Future showLoginMenu(BuildContext context, {
           openUrlLink(StringConst.WEB_APP_URL);
           break;
         case 'entidad_social':
+          openUrlLink(StringConst.SOCIAL_ENTITY_URL);
           break;
         case 'empresa':
           openUrlLink(StringConst.ADMIN_WEB_URL);
