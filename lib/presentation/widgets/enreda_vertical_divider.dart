@@ -6,7 +6,7 @@ class EnredaVerticalDivider extends StatelessWidget {
   const EnredaVerticalDivider({
     this.thickness = 0.8,
     this.width,
-    this.color = AppColors.black,
+    this.color = AppColors.greyDivider,
   });
 
   final double? width;
@@ -15,6 +15,6 @@ class EnredaVerticalDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return VerticalDivider(thickness: thickness);
+    return VerticalDivider(thickness: thickness, color: color,);
   }
 }

@@ -38,6 +38,10 @@ class AppColors {
   static const Color bluePurple = Color(0xFF002185);
   static const Color blueText = Color(0xFF6699C6);
   static const Color blueMain = Color(0xFF25378D);
+  static const Color lightBlue = Color(0xFFD0F0EF);
+  static const Color textBlue = Color(0xFF054D5E);
+  static const Color skyBlue = Color(0xFFA7E4E1);
+  static const Color buttonBlue = Color(0xFF18C5C1);
 
   //Yellow
   /*static const Color yellow10 = Color(0xFFFBE8C5);
@@ -70,6 +74,7 @@ class AppColors {
   static const Color greyLightTxt = Color(0xFFC9CCD9);
   static const Color greyDarkTxt = Color(0xFF777B7C);
   static const Color greyUltraLight = Color(0xFFD9D9D9);
+  static const Color greyDivider = Color(0xFFCBCBCB);
 
 
   //Violet

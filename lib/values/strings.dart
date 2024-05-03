@@ -15,6 +15,9 @@ class StringConst {
   static const String WHO = "Nosotros";
   static const String HANDS = "De la mano de...";
   static const String CONTACT = "Contacto";
+  static const String ENTITIES = "Entidades";
+  static const String JOB_SEARCH = "Busco empleo";
+  static const String TALENT_SEARCH = "Busco talento";
 
   static const String ACCESS = "Acceder";
   static const String ACCESS_ORG = "Soy Empresa";

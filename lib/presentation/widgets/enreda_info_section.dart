@@ -1,5 +1,7 @@
+import 'package:enreda_app/presentation/widgets/buttons/enreda_button.dart';
 import 'package:enreda_app/presentation/widgets/spaces.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../utils/responsive.dart';
 import '../../values/values.dart';
@@ -430,6 +432,78 @@ class EnredaInfoSection5 extends StatelessWidget {
             ],
           )
               : Empty(),
+        ],
+      ),
+    );
+  }
+}
+
+class EnredaInfoSection6 extends StatelessWidget {
+  final String? title1;
+  final TextStyle? title1Style;
+  final String? buttonTitle;
+
+  EnredaInfoSection6({
+    this.title1,
+    this.title1Style,
+    this.buttonTitle,
+
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    double fontSize = responsiveSize(context, 25, 40, md: 20);
+    double fontSizeSection = responsiveSize(context, 30, 40, md: 30, xl: 55);
+    return Padding(
+      padding: EdgeInsets.only(right: Responsive.isTablet(context) ? 0 : 30.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 50.0, top: 20),
+                child: Text(
+                  title1!,
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    fontFamily: GoogleFonts.outfit().fontFamily,
+                    fontWeight: FontWeight.w800,
+                    fontSize: fontSizeSection,
+                    color: AppColors.textBlue,
+                  )
+                ),
+              ),
+              Responsive.isMobile(context) ? SpaceH30() : SpaceH50(),
+              Container(
+                height: 60,
+                width: 300,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: AppColors.turquoiseDark,
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                    onPrimary: AppColors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(33),
+                    ),
+                    textStyle: TextStyle(
+                      fontFamily: GoogleFonts.outfit().fontFamily,
+                      fontSize: 15,
+                      letterSpacing: 1.8,
+                    ),
+                  ),
+                  onPressed: () {
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.all(22.0),
+                    child:
+                        Center(child: Text(buttonTitle!.toUpperCase())),
+                  ),
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );

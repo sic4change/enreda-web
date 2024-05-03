@@ -9,6 +9,8 @@ class ImagePath {
   static const String LOGO_DARK = "$imageDir/logo_dark.png";
   static const String LOGO_LIGHT = "$imageDir/logo_light.png";
   static const String LOGO_FUNDAULA = '$imageDir/fundaula-logo.png';
+  static const String LOGO_ENREDA_VERTICAL = '$imageDir/enreda-logo-vertical.png';
+  static const String LOGO_ENREDA_NEW = '$imageDir/enreda-logo-new.png';
 
   // Stores
   static const String PLAY_STORE = "$imageDir/play_store_900x503.png";
@@ -36,6 +38,25 @@ class ImagePath {
   static const String BUTTON_CHAT = "$imageDir/icono-boton-chat.png";
   static const String USER_DEFAULT = '$imageDir/user_default.jpg';
   static const String IMAGE_DEFAULT = '$imageDir/placeholder-image.png';
+  static const String PANEL_PRESENTATION = '$imageDir/presentation-panel-image.png';
+  static const String JOIN_GIRL = '$imageDir/join-girl-image.png';
+  static const String ENTITY_PRESENTATION_IMAGE = '$imageDir/entity-presentation-image.png';
+  static const String ENTITY_PRESENTATION_TEXT = '$imageDir/entity-presentation-text.png';
+  static const String ENTITY_EXAMPLE_IMAGE = '$imageDir/entity-example-image.png';
+  static const String ENTITY_YELLOW_LINE_1 = '$imageDir/yellow-line-1.png';
+  static const String ICON_ROCKET = '$imageDir/icon-rocket.png';
+  static const String ICON_BULB = '$imageDir/icon-bulb.png';
+  static const String ICON_PUZZLE = '$imageDir/icon-puzzle.png';
+  static const String JOB_SEARCH_PRESENTATION_IMAGE = '$imageDir/job-search-presentation-image.png';
+  static const String JOB_SEARCH_PRESENTATION_TEXT = '$imageDir/job-search-presentation-text.png';
+  static const String JOB_SEARCH_EXAMPLE_IMAGE = '$imageDir/job-search-example-image.png';
+  static const String TALENT_SEARCH_PRESENTATION_IMAGE = '$imageDir/talent-search-presentation-image.png';
+  static const String TALENT_SEARCH_PRESENTATION_TEXT = '$imageDir/talent-search-presentation-text.png';
+  static const String TALENT_SEARCH_EXAMPLE_IMAGE = '$imageDir/talent-search-example-image.png';
+  static const String TALENT_SEARCH_DIAGRAM_1 = '$imageDir/talent-search-diagram-1.png';
+  static const String TALENT_SEARCH_DIAGRAM_2 = '$imageDir/talent-search-diagram-2.png';
+  static const String TALENT_SEARCH_DIAGRAM_3 = '$imageDir/talent-search-diagram-3.png';
+  static const String TALENT_SEARCH_DIAGRAM_4 = '$imageDir/talent-search-diagram-4.png';
 
   // Blog Images
   static const String TEAM_01 = "$imageDir/team_01.jpg";
@@ -84,6 +105,10 @@ class ImagePath {
   static const String USER_ENTITY_ICON = "$imageDir/icon-user-entidad.png";
   static const String ICON_CLICK_FUNDAULA = '$imageDir/icon-click-fundaula.png';
   static const String ICON_INFO = '$imageDir/info_icon.png';
+  static const String ICON_FACEBOOK = '$imageDir/social-icon-facebook.png';
+  static const String ICON_INSTAGRAM = '$imageDir/social-icon-instagram.png';
+  static const String ICON_LINKEDIN = '$imageDir/social-icon-linkedin.png';
+  static const String ICON_TWITTER = '$imageDir/social-icon-twitter.png';
 
   //Resources Categories
   static const String BACKGROUND_1 = '$imageDir/background-empleo-2X.png';

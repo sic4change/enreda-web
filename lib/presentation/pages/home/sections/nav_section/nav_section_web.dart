@@ -103,7 +103,7 @@ class _NavSectionWebState extends State<NavSectionWeb> {
             InkWell(
               onTap: () => router.push(HomeRoute()),
               child: Image.asset(
-                ImagePath.LOGO_DARK,
+                ImagePath.LOGO_ENREDA_NEW,
                 height: Sizes.HEIGHT_52,
               ),
             ),
@@ -128,11 +128,12 @@ class _NavSectionWebState extends State<NavSectionWeb> {
                 }
               },
             ),
-            EnredaVerticalDivider(),
+            EnredaVerticalDivider(color: AppColors.greyDivider,),
             SizedBox(width: contactBtnSpaceLeft),
             EnredaButton(
               buttonTitle: StringConst.ACCESS.toUpperCase(),
-              buttonColor: AppColors.bluePurple,
+              buttonColor: AppColors.textBlue,
+              borderRadius: BorderRadius.all(Radius.circular(30)),
               width: contactBtnWidth,
               onPressed: () => showLoginMenu(
                   context,
@@ -169,9 +170,10 @@ class _NavSectionWebState extends State<NavSectionWeb> {
         widget.isShowingResources) {
       widget.switchIsShowingResources();
       Future.delayed(Duration(milliseconds: 500))
-          .whenComplete(() => scrollToSection(context.currentContext!));
+          .whenComplete(() => (){});//scrollToSection(context.currentContext!));
     } else if (navItemName != StringConst.RESOURCES) {
-      scrollToSection(context.currentContext!);
+      //scrollToSection(context.currentContext!);
+      widget.switchIsShowingResources();
     }
   }
 
