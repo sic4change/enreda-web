@@ -57,6 +57,15 @@ class ImagePath {
   static const String TALENT_SEARCH_DIAGRAM_2 = '$imageDir/talent-search-diagram-2.png';
   static const String TALENT_SEARCH_DIAGRAM_3 = '$imageDir/talent-search-diagram-3.png';
   static const String TALENT_SEARCH_DIAGRAM_4 = '$imageDir/talent-search-diagram-4.png';
+  static const String REDISCOVER_IMAGE = '$imageDir/rediscover-image.png';
+  static const String REDISCOVER_TEXT = '$imageDir/rediscover-text.png';
+  static const String REDISCOVER_PARTICIPANT_ICON = '$imageDir/rediscover-participant-icon.png';
+  static const String REDISCOVER_SOCIAL_ENTITY_ICON = '$imageDir/rediscover-social-entity-icon.png';
+  static const String REDISCOVER_COMPANY_ICON = '$imageDir/rediscover-company-icon.png';
+  static const String REIMAGINE_TITLE_IMAGE = '$imageDir/reimagine-title-image.png';
+  static const String REBUILD_MAP = '$imageDir/rebuild-map.png';
+  static const String REBUILD_CARD_ITEM = '$imageDir/rebuild-card-item.png';
+  static const String REBUILD_TITLE_IMAGE = '$imageDir/rebuild-title-image.png';
 
   // Blog Images
   static const String TEAM_01 = "$imageDir/team_01.jpg";
@@ -98,6 +107,7 @@ class ImagePath {
   static const String PORTFOLIO_8bn = "$imageDir/company_08bn.png";
   static const String PORTFOLIO_9bn = "$imageDir/company_09bn.png";
   static const String PORTFOLIO_10bn = "$imageDir/company_10bn.png";
+  static const String FINANCIER_1 = "$imageDir/financier-1.png";
 
   // Icons
   static const String USER_COMPANY_ICON = "$imageDir/icon-user-empresa.png";
