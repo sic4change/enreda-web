@@ -79,13 +79,20 @@ double responsiveSize(
   double? md,
   double? xl,
 }) {
-  return context.layout.value(
-    xs: xs,
-    sm: sm ?? (md ?? xs), //assign md to sm if it is not null, if null assign xs
-    md: md ?? lg,
-    lg: lg,
-    xl: xl ?? lg,
-  );
+  var width = MediaQuery.of(context).size.width;
+
+  // Definir los puntos de quiebre (breakpoints) según el ancho de la pantalla
+  if (width < 600) {
+    return xs;
+  } else if (width < 768) {
+    return sm ?? (md ?? xs);
+  } else if (width < 992) {
+    return md ?? lg;
+  } else if (width < 1200) {
+    return lg;
+  } else {
+    return xl ?? lg;
+  }
 }
 
 int responsiveSizeInt(
@@ -96,13 +103,20 @@ int responsiveSizeInt(
   int? md,
   int? xl,
 }) {
-  return context.layout.value(
-    xs: xs,
-    sm: sm ?? (md ?? xs), //assign md to sm if it is not null, if null assign xs
-    md: md ?? lg,
-    lg: lg,
-    xl: xl ?? lg,
-  );
+  var width = MediaQuery.of(context).size.width;
+
+  // Definir los puntos de quiebre (breakpoints) según el ancho de la pantalla
+  if (width < 600) {
+    return xs;
+  } else if (width < 768) {
+    return sm ?? (md ?? xs);
+  } else if (width < 992) {
+    return md ?? lg;
+  } else if (width < 1200) {
+    return lg;
+  } else {
+    return xl ?? lg;
+  }
 }
 
 Color responsiveColor(
@@ -113,13 +127,20 @@ Color responsiveColor(
   Color? md,
   Color? xl,
 }) {
-  return context.layout.value(
-    xs: xs,
-    sm: sm ?? (md ?? xs), //assign md to sm if it is not null, if null assign xs
-    md: md ?? lg,
-    lg: lg,
-    xl: xl ?? lg,
-  );
+  var width = MediaQuery.of(context).size.width;
+
+  // Definir los puntos de quiebre (breakpoints) según el ancho de la pantalla
+  if (width < 600) {
+    return xs;
+  } else if (width < 768) {
+    return sm ?? (md ?? xs);
+  } else if (width < 992) {
+    return md ?? lg;
+  } else if (width < 1200) {
+    return lg;
+  } else {
+    return xl ?? lg;
+  }
 }
 
 double getSidePadding(BuildContext context) {

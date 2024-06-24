@@ -12,6 +12,7 @@ import '../../../widgets/buttons/social_button_2.dart';
 import '../../../widgets/content_area.dart';
 import '../../../widgets/enreda_info_section.dart';
 import '../../../widgets/spaces.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 const double kSpacingSm = 40.0;
 const double kRunSpacingSm = 24.0;
@@ -85,7 +86,7 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
                   Container(
                     width: widthOfScreen(context)/2.5,
                     child: Text(
-                      'Tecnología y acompañamiento integral para impulsar el empleo',
+                        AppLocalizations.of(context)!.techText,
                       style: TextStyle(
                         fontFamily: GoogleFonts.outfit().fontFamily,
                         fontSize: 46,
@@ -96,14 +97,48 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
                   ),
                   Container(
                     width: widthOfScreen(context)/2.5,
-                    child: Text(
-                      'Enreda combina tecnología y acción comunitaria para activar y mejorar la empleabilidad juvenil; conecta a los actores y recursos del territorio vinculados con el empleo juvenil, al tiempo que dinamiza el mercado laboral.\n\nEnreda te ayuda a descubrir y destacar tus habilidades transferibles para el trabajo a través de un chat, te guía en la creación de tu CV y te conecta con ofertas laborales y recursos de formación digital para mejorar tu empleabilidad.\n\nTambién apoyamos a las empresas en la búsqueda de talento y apoyamos con herramientas y medimos el impacto de la intervención profesional en la inserción laboral de personas vulnerables.',
-                      style: TextStyle(
-                        fontFamily: GoogleFonts.lato().fontFamily,
-                        fontSize: 16,
-                        color: AppColors.greyTxtAlt,
-                        fontWeight: FontWeight.w600,
-                      ),
+                    child: Column(
+                      children: [
+                        Text(
+                          AppLocalizations.of(context)!.techParagraph1,
+                          style: TextStyle(
+                            fontFamily: GoogleFonts.lato().fontFamily,
+                            fontSize: 16,
+                            color: AppColors.greyTxtAlt,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        SpaceH20(),
+                        Text(
+                          AppLocalizations.of(context)!.techParagraph2,
+                          style: TextStyle(
+                            fontFamily: GoogleFonts.lato().fontFamily,
+                            fontSize: 16,
+                            color: AppColors.greyTxtAlt,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        SpaceH20(),
+                        Text(
+                          AppLocalizations.of(context)!.techParagraph3,
+                          style: TextStyle(
+                            fontFamily: GoogleFonts.lato().fontFamily,
+                            fontSize: 16,
+                            color: AppColors.greyTxtAlt,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        SpaceH20(),
+                        Text(
+                          AppLocalizations.of(context)!.techParagraph4,
+                          style: TextStyle(
+                            fontFamily: GoogleFonts.lato().fontFamily,
+                            fontSize: 16,
+                            color: AppColors.greyTxtAlt,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -117,47 +152,47 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
                   child: Container(
                     color: AppColors.textBlue,
                     width: widthOfScreen(context),
-                    height: heightOfScreen(context)+100,
+                    //height: heightOfScreen(context)+100,
                     child: Padding(
                       padding: EdgeInsets.only(top: widthOfScreen(context)/6),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children:[
                           optionsCard(
                               AppColors.brightBlue,
                               ImagePath.REDISCOVER_PARTICIPANT_ICON,
-                              'Participantes',
-                              '¿NO SABES POR DONDE TIRAR?',
-                              'EnREDa te conecta con ofertas de empleo recursos educativos, actividades, empresas y personas de tu comunidad para que puedas mejorar empleabilidad y construir tu camino vital. Porque las oportunidades no se compran, se crean.'),
+                              AppLocalizations.of(context)!.participant,
+                              AppLocalizations.of(context)!.participantSubtitle.toUpperCase(),
+                              AppLocalizations.of(context)!.participantText,),
                           optionsCard(
                               AppColors.yellowDark,
                               ImagePath.REDISCOVER_SOCIAL_ENTITY_ICON,
-                              'Entidades sociales',
-                              '¿Quieres que tus programas y recursos lleguen más lejos?'.toUpperCase(),
-                              'EnREDa te conecta con recursos educativos, actividades, empresas y personas de tu comunidad para que puedas mejorar empleabilidad y construir tu camino vital. Porque las oportunidades no se compran, se crean.'),
+                              AppLocalizations.of(context)!.socialEntities,
+                              AppLocalizations.of(context)!.socialEntitiesSubtitle.toUpperCase(),
+                              AppLocalizations.of(context)!.socialEntitiesText,),
                           optionsCard(
                               AppColors.lightBlue,
                               ImagePath.REDISCOVER_COMPANY_ICON,
-                              'Empresas',
-                              '¿BUSCAS TALENTO CON IMPACTO?'.toUpperCase(),
-                              'EnREDa conecta a tu empresa con jóvenes del territorio motivados/as y comprometidos/as, que cumplirán con tus expectativas y tus necesidades. Te permite una selección ágil, no solo basada en conocimientos, sino también en capacidades.'),
+                              AppLocalizations.of(context)!.companies,
+                              AppLocalizations.of(context)!.companiesSubtitle.toUpperCase(),
+                              AppLocalizations.of(context)!.companiesText,),
                         ]
                       ),
                     ),
                   ),
-                  bottom: -heightOfScreen(context)/1.05,
+                  bottom: -heightOfScreen(context)/0.9,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 100.0),
                   child: Image.asset(
                     ImagePath.REDISCOVER_IMAGE,
-
                   ),
                 ),
                 Positioned(
                   child: Image.asset(ImagePath.REDISCOVER_TEXT),
                   width: widthOfScreen(context)/1.1,
-                  bottom: -widthOfScreen(context)/12,
+                  bottom: -widthOfScreen(context)/15,
                 ),
               ],
             ),
@@ -218,79 +253,82 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
   }
 
   Widget optionsCard(Color color, String icon, String title, String subtitle, String text){
-    return Container(
-      height: 500,
-      width: 300,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(15)),
-        color: color,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 33, vertical: 18),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: 90,
-              height: 90,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white
-              ),
-              child: Image.asset(
-                icon,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 50.0, top:200),
+      child: Container(
+        //height: 650,
+        width: 300,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(15)),
+          color: color,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 33, vertical: 18),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
                 width: 90,
                 height: 90,
-              ),
-            ),
-            SpaceH20(),
-            Text(
-              title,
-              style: TextStyle(
-                fontFamily: GoogleFonts.outfit().fontFamily,
-                fontWeight: FontWeight.w700,
-                fontSize: 24,
-                color: AppColors.textBlue
-              ),
-            ),
-            SpaceH12(),
-            Text(
-              subtitle,
-              style: TextStyle(
-                fontFamily: GoogleFonts.outfit().fontFamily,
-                fontWeight: FontWeight.w700,
-                fontSize: 14,
-                color: AppColors.greyTxtAlt,
-              ),
-            ),
-            SpaceH12(),
-            Text(
-              text,
-              style: TextStyle(
-                  fontFamily: GoogleFonts.lato().fontFamily,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 14,
-                  color: AppColors.textBlue,
-                  height: 1.4
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20, top: 20),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: EnredaButton(
-                  buttonTitle: 'Ver más'.toUpperCase(),
-                  buttonColor: AppColors.turquoise,
-                  titleColor: AppColors.white,
-                  onPressed: () =>  openUrlLink(StringConst.ADMIN_WEB_URL),
-                  borderRadius: BorderRadius.all(Radius.circular(33)),
-                  width: 260,
-                  height: 65,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white
+                ),
+                child: Image.asset(
+                  icon,
+                  width: 90,
+                  height: 90,
                 ),
               ),
-            ),
-          ],
+              SpaceH20(),
+              Text(
+                title,
+                style: TextStyle(
+                  fontFamily: GoogleFonts.outfit().fontFamily,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 24,
+                  color: AppColors.textBlue
+                ),
+              ),
+              SpaceH12(),
+              Text(
+                subtitle,
+                style: TextStyle(
+                  fontFamily: GoogleFonts.outfit().fontFamily,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 14,
+                  color: AppColors.greyTxtAlt,
+                ),
+              ),
+              SpaceH12(),
+              Text(
+                text,
+                style: TextStyle(
+                    fontFamily: GoogleFonts.lato().fontFamily,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                    color: AppColors.textBlue,
+                    height: 1.4
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20, top: 20),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: EnredaButton(
+                    buttonTitle: 'Ver más'.toUpperCase(),
+                    buttonColor: AppColors.turquoise,
+                    titleColor: AppColors.white,
+                    onPressed: () =>  openUrlLink(StringConst.ADMIN_WEB_URL),
+                    borderRadius: BorderRadius.all(Radius.circular(33)),
+                    width: 260,
+                    height: 65,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

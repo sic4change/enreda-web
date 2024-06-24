@@ -1,6 +1,10 @@
+import 'package:enreda_app/localization/LocaleProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:visibility_detector/visibility_detector.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 import '../../../../utils/functions.dart';
 import '../../../../utils/responsive.dart';
@@ -133,12 +137,12 @@ class _PresentationPanelState extends State<PresentationPanel> {
 
   Widget enredaInfoSectionLg() {
     TextTheme textTheme = Theme.of(context).textTheme;
-
+    final localeProvider = Provider.of<LocaleProvider>(context);
     return Column(
       children: [
         EnredaInfoSection6(
-          title1: 'Tu futuro está lleno de oportunidades. ¡Atrévete a avanzar y alcanzar tus metas!',
-          buttonTitle: 'Prueba de boton',
+          title1: AppLocalizations.of(context)!.futureText,
+          buttonTitle: AppLocalizations.of(context)!.test,
         ),
       ],
     );
@@ -149,8 +153,8 @@ class _PresentationPanelState extends State<PresentationPanel> {
     return Container(
       height: height,
       child: EnredaInfoSection6(
-        title1: 'Tu futuro está lleno de oportunidades. ¡Atrévete a avanzar y alcanzar tus metas!',
-        buttonTitle: 'Prueba de boton',
+        title1: AppLocalizations.of(context)!.techText,
+        buttonTitle: AppLocalizations.of(context)!.test,
       ),
     );
   }

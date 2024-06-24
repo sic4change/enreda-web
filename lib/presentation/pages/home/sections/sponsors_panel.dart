@@ -12,6 +12,7 @@ import '../../../widgets/buttons/social_button_2.dart';
 import '../../../widgets/content_area.dart';
 import '../../../widgets/enreda_info_section.dart';
 import '../../../widgets/spaces.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 const double kSpacingSm = 40.0;
 const double kRunSpacingSm = 24.0;
@@ -81,7 +82,7 @@ class _SponsorsPanelState extends State<SponsorsPanel> {
               children: [
                 Center(
                   child: Text(
-                    'De la mano de...',
+                    AppLocalizations.of(context)!.byHand,
                     style: TextStyle(
                       color: AppColors.textBlue,
                       fontFamily: GoogleFonts.outfit().fontFamily,
@@ -92,7 +93,7 @@ class _SponsorsPanelState extends State<SponsorsPanel> {
                 ),
                 SpaceH20(),
                 Text(
-                  'Socios',
+                  AppLocalizations.of(context)!.enredadas,
                   style: TextStyle(
                     color: AppColors.textBlue,
                     fontFamily: GoogleFonts.outfit().fontFamily,
@@ -125,7 +126,7 @@ class _SponsorsPanelState extends State<SponsorsPanel> {
                 ),
                 SpaceH20(),
                 Text(
-                  'Financiadores',
+                  AppLocalizations.of(context)!.funders,
                   style: TextStyle(
                     color: AppColors.textBlue,
                     fontFamily: GoogleFonts.outfit().fontFamily,

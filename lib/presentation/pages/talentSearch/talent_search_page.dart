@@ -4,6 +4,7 @@ import 'package:enreda_app/values/values.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TalentSearchPage extends StatefulWidget {
   @override
@@ -42,10 +43,205 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
     return SingleChildScrollView(
         child: Column(
           children: [
-            Column(
+            Stack(
+              alignment: Alignment.center,
+              clipBehavior: Clip.none,
               children: [
+                Container(
+                  width: widthOfScreen(context),
+                  //height: 550,
+                  child: Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_IMAGE),
+                ),
+                Positioned(
+                  bottom: -widthOfScreen(context)/19,
+                  width: widthOfScreen(context)/1.3,
+                  child: Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_TEXT),
+                )
               ],
             ),
+            SpaceH180(),
+            Container(
+              height: 1000,
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Positioned(
+                    top: 550,
+                    child: Container(
+                      color: AppColors.textBlue,
+                      width: widthOfScreen(context),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 90.0),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 100.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _buildBigItemCard(context, ImagePath.ICON_ROCKET, AppLocalizations.of(context)!.rediscover, AppLocalizations.of(context)!.rediscoverTalent),
+                              _buildBigItemCard(context, ImagePath.ICON_BULB, AppLocalizations.of(context)!.reimagine, AppLocalizations.of(context)!.reimagineTalent),
+                              _buildBigItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.rebuild, AppLocalizations.of(context)!.rebuildTalent),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    child: Image.asset(ImagePath.ENTITY_YELLOW_LINE_1),
+                    width: widthOfScreen(context),
+                    //bottom: widthOfScreen(context) > 1435 ? 800 : 900,
+                    bottom: 350,
+                  ),
+                  Positioned(
+                    top: 0,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 100.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: widthOfScreen(context)/2.5,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  AppLocalizations.of(context)!.talentTitle,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w800,
+                                    fontFamily: GoogleFonts.outfit().fontFamily,
+                                    fontSize: 40,
+                                    color: AppColors.textBlue,
+                                  ),
+                                ),
+                                SpaceH50(),
+                                Text(
+                                  AppLocalizations.of(context)!.talentParagraph1,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: GoogleFonts.lato().fontFamily,
+                                    fontSize: 14,
+                                    color: AppColors.greyTxtAlt,
+                                  ),
+                                ),
+                                SpaceH12(),
+                                Text(
+                                  AppLocalizations.of(context)!.talentParagraph2,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: GoogleFonts.lato().fontFamily,
+                                    fontSize: 14,
+                                    color: AppColors.greyTxtAlt,
+                                  ),
+                                ),
+                                SpaceH12(),
+                                Text(
+                                  AppLocalizations.of(context)!.talentParagraph3,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: GoogleFonts.lato().fontFamily,
+                                    fontSize: 14,
+                                    color: AppColors.greyTxtAlt,
+                                  ),
+                                ),
+                                SpaceH12(),
+                                Text(
+                                  AppLocalizations.of(context)!.talentParagraph4,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: GoogleFonts.lato().fontFamily,
+                                    fontSize: 14,
+                                    color: AppColors.greyTxtAlt,
+                                  ),
+                                ),
+                                SpaceH30(),
+                                Container(
+                                  height: 70,
+                                  width: 400,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      primary: AppColors.buttonBlue,
+                                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                                      onPrimary: AppColors.white,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(33),
+                                      ),
+                                      textStyle: TextStyle(
+                                        fontFamily: GoogleFonts.outfit().fontFamily,
+                                        fontSize: 16,
+                                        letterSpacing: 1.8,
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                    },
+                                    child: Padding(
+                                      padding: EdgeInsets.all(22.0),
+                                      child:
+                                      Center(child: Text(AppLocalizations.of(context)!.exploreProfiles)),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SpaceW40(),
+                          Container(
+                              clipBehavior: Clip.hardEdge,
+                              decoration: BoxDecoration(),
+                              width: widthOfScreen(context)/2.5,
+                              child: Image.asset(ImagePath.TALENT_SEARCH_EXAMPLE_IMAGE)
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 140,
+            ),
+            Container(
+              width: double.maxFinite,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Center(
+                    child: Text(
+                      AppLocalizations.of(context)!.talentItemsTitle,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w900,
+                        fontFamily: GoogleFonts.outfit().fontFamily,
+                        fontSize: 45,
+                        color: AppColors.textBlue,
+                      ),
+                    ),
+                  ),
+                  SpaceH80(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 100.0),
+                    child: Wrap(
+                        alignment: WrapAlignment.spaceBetween,
+                        spacing: 30,
+                        runSpacing: 30,
+                        children: [
+                          _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.jobOffersPublication, AppLocalizations.of(context)!.jobOffersPublicationText),
+                          _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.candidatesFollow, AppLocalizations.of(context)!.candidatesFollowText),
+                          _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.candidatesSelection, AppLocalizations.of(context)!.candidatesSelectionText),
+                        ]),
+                  ),
+                ],
+              ),
+            ),
+            SpaceH180(),
+            _buildFooter(context),
+          ],
+        )
+    );
+    /*return SingleChildScrollView(
+        child: Column(
+          children: [
             Stack(
               alignment: Alignment.center,
               clipBehavior: Clip.none,
@@ -333,7 +529,7 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
             SpaceH200(),
             _buildFooter(context),
           ],
-        ));
+        ));*/
   }
 
   Widget _buildBigItemCard(BuildContext context, String icon, String title, String text){
@@ -355,7 +551,7 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
               fontWeight: FontWeight.w900,
               fontFamily: GoogleFonts.outfit().fontFamily,
               fontSize: 38,
-              color: AppColors.textBlue,
+              color: AppColors.lightBlue,
             ),
           ),
           SpaceH30(),
@@ -365,7 +561,7 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
               fontWeight: FontWeight.w500,
               fontFamily: GoogleFonts.lato().fontFamily,
               fontSize: 14,
-              color: AppColors.greyTxtAlt,
+              color: AppColors.white,
             ),
             textAlign: TextAlign.center,
           ),

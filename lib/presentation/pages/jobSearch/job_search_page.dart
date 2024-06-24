@@ -4,6 +4,7 @@ import 'package:enreda_app/values/values.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class JobSearchPage extends StatefulWidget {
   @override
@@ -39,14 +40,9 @@ class _JobSearchPageState extends State<JobSearchPage> {
 
 
   Widget _buildJobSearchPage(BuildContext context) {
-    List<String> searchChoices = ['Empleo', 'Prácticas', 'Formación', 'Voluntariado', 'Ocio y tiempo libre', 'Otros'];
     return SingleChildScrollView(
         child: Column(
           children: [
-            Column(
-              children: [
-              ],
-            ),
             Stack(
               alignment: Alignment.center,
               clipBehavior: Clip.none,
@@ -64,18 +60,44 @@ class _JobSearchPageState extends State<JobSearchPage> {
               ],
             ),
             SpaceH180(),
-            Stack(
-              children: [
-                Positioned(
-                  child: Image.asset(ImagePath.ENTITY_YELLOW_LINE_1),
-                  width: widthOfScreen(context),
-                  bottom: 950,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 100.0),
-                  child: Column(
-                    children: [
-                      Row(
+            Container(
+              height: 1000,
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Positioned(
+                    top: 550,
+                    child: Container(
+                      color: AppColors.textBlue,
+                      width: widthOfScreen(context),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 90.0),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 100.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _buildBigItemCard(context, ImagePath.ICON_ROCKET, AppLocalizations.of(context)!.rediscover, AppLocalizations.of(context)!.rediscoverText),
+                              _buildBigItemCard(context, ImagePath.ICON_BULB, AppLocalizations.of(context)!.reimagine, AppLocalizations.of(context)!.reimagineText),
+                              _buildBigItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.rebuild, AppLocalizations.of(context)!.rebuildText),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    child: Image.asset(ImagePath.ENTITY_YELLOW_LINE_1),
+                    width: widthOfScreen(context),
+                    //bottom: widthOfScreen(context) > 1435 ? 800 : 900,
+                    bottom: 350,
+                  ),
+                  Positioned(
+                    top: 0,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 100.0),
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -85,7 +107,7 @@ class _JobSearchPageState extends State<JobSearchPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Lorem Ipsumis simply dummy text of the printtry.',
+                                  AppLocalizations.of(context)!.jobTitle,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w800,
                                     fontFamily: GoogleFonts.outfit().fontFamily,
@@ -95,7 +117,27 @@ class _JobSearchPageState extends State<JobSearchPage> {
                                 ),
                                 SpaceH50(),
                                 Text(
-                                  'Enreda combina tecnología y acción comunitaria para activar y mejorar la empleabilidad juvenil; conecta a los actores y recursos del territorio vinculados con el empleo juvenil, al tiempo que dinamiza el desarrollo local. \n\n Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. I',
+                                  AppLocalizations.of(context)!.jobParagraph1,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: GoogleFonts.lato().fontFamily,
+                                    fontSize: 14,
+                                    color: AppColors.greyTxtAlt,
+                                  ),
+                                ),
+                                SpaceH12(),
+                                Text(
+                                  AppLocalizations.of(context)!.jobParagraph2,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: GoogleFonts.lato().fontFamily,
+                                    fontSize: 14,
+                                    color: AppColors.greyTxtAlt,
+                                  ),
+                                ),
+                                SpaceH12(),
+                                Text(
+                                  AppLocalizations.of(context)!.jobParagraph3,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w500,
                                     fontFamily: GoogleFonts.lato().fontFamily,
@@ -126,174 +168,70 @@ class _JobSearchPageState extends State<JobSearchPage> {
                                     child: Padding(
                                       padding: EdgeInsets.all(22.0),
                                       child:
-                                      Center(child: Text('IDENTIFICA TU POTENCIAL')),
+                                      Center(child: Text(AppLocalizations.of(context)!.activeAccount)),
                                     ),
                                   ),
                                 ),
                               ],
                             ),
                           ),
+                          SpaceW40(),
                           Container(
+                            clipBehavior: Clip.hardEdge,
+                            decoration: BoxDecoration(),
                             width: widthOfScreen(context)/2.5,
                             child: Image.asset(ImagePath.JOB_SEARCH_EXAMPLE_IMAGE)
                           ),
                         ],
                       ),
-                      SpaceH60(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _buildBigItemCard(context, ImagePath.ICON_ROCKET, 'RE-DESCUBRE', 'La esencia de los desafíos sociales, sumergiéndonos en la realidad de las comunidades afectadas'),
-                          _buildBigItemCard(context, ImagePath.ICON_BULB, 'RE-IMAGINA', 'Soluciones creativas que desafíen las convenciones y exploren nuevas posibilidades'),
-                          _buildBigItemCard(context, ImagePath.ICON_PUZZLE, 'RE-CONSTRUYE', 'El futuro mediante la implementación de soluciones adaptando nuestro enfoque'),
-                        ],
-                      ),
-                      SpaceH60(),
-                      Container(
-                        width: double.maxFinite,
-                        child: Wrap(
-                          alignment: WrapAlignment.spaceBetween,
-                          spacing: 12,
-                          runSpacing: 10,
-                          children: [
-                            _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, 'Chatbot', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard d.'),
-                            _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, 'Competencias', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard d.'),
-                            _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, 'Gamificación', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard d.'),
-                            _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, 'Creación de CV', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard d.'),
-                            _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, 'Acceso a recursos', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard d.'),
-                            _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, 'Enreda App', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard d.'),],
-                        ),
-                      ),
-                      SpaceH60(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: widthOfScreen(context)/2.5,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  '¿Qué buscas?',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w900,
-                                    fontFamily: GoogleFonts.outfit().fontFamily,
-                                    fontSize: 38,
-                                    color: AppColors.textBlue,
-                                  ),
-                                ),
-                                SpaceH30(),
-                                Wrap(
-                                  spacing: 30.0,
-                                  runSpacing: 20,
-                                  children: List<Widget>.generate(
-                                    6,
-                                        (int index) {
-                                      return ChoiceChip(
-                                        showCheckmark: false,
-                                        padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-                                        selectedColor: AppColors.textBlue,
-                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(33))),
-                                        label: Text(searchChoices.elementAt(index)),
-                                        selected: true,
-                                        labelStyle: TextStyle(
-                                          color: Colors.white,
-                                          fontFamily: GoogleFonts.outfit().fontFamily,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                        onSelected: (bool selected) {
-                                          setState(() {
-                                          });
-                                        },
-                                      );
-                                    },
-                                  ).toList(),
-                                ),
-                                SpaceH30(),
-                                Text(
-                                  'Explora todos nuestros recursos',
-                                  style: TextStyle(
-                                    decoration: TextDecoration.underline,
-                                    fontWeight: FontWeight.w700,
-                                    fontFamily: GoogleFonts.lato().fontFamily,
-                                    fontSize: 20,
-                                    color: AppColors.textBlue,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            width: widthOfScreen(context)/2.5,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Crea tu CV',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w900,
-                                    fontFamily: GoogleFonts.outfit().fontFamily,
-                                    fontSize: 38,
-                                    color: AppColors.textBlue,
-                                  ),
-                                ),
-                                SpaceH30(),
-                                Container(
-                                  height: 60,
-                                  width: 200,
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      primary: AppColors.buttonBlue,
-                                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                                      onPrimary: AppColors.white,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(33),
-                                      ),
-                                      textStyle: TextStyle(
-                                        fontFamily: GoogleFonts.outfit().fontFamily,
-                                        fontSize: 16,
-                                        letterSpacing: 1.8,
-                                      ),
-                                    ),
-                                    onPressed: () {
-                                    },
-                                    child: Padding(
-                                      padding: EdgeInsets.all(22.0),
-                                      child:
-                                      Center(child: Text('CREAR CV')),
-                                    ),
-                                  ),
-                                ),
-                                SpaceH20(),
-                                Text(
-                                  'Inscríbete y empieza cuanto antes y ¡solicita las ofertas más nuevas!',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: GoogleFonts.lato().fontFamily,
-                                    fontSize: 20,
-                                    color: AppColors.greyTxtAlt,
-                                  ),
-                                  textAlign: TextAlign.start,
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 140,
+            ),
+            Container(
+              width: double.maxFinite,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Center(
+                    child: Text(
+                      AppLocalizations.of(context)!.jobItemsTitle,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w900,
+                        fontFamily: GoogleFonts.outfit().fontFamily,
+                        fontSize: 45,
+                        color: AppColors.textBlue,
+                      ),
+                    ),
+                  ),
+                  SpaceH80(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 100.0),
+                    child: Wrap(
+                      alignment: WrapAlignment.spaceBetween,
+                      spacing: 30,
+                      runSpacing: 30,
+                      children: [
+                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.chatbot, AppLocalizations.of(context)!.chatbotText),
+                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.competencies, AppLocalizations.of(context)!.competenciesText),
+                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.gamification, AppLocalizations.of(context)!.gamificationText),
+                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.cvCreation, AppLocalizations.of(context)!.cvCreationText),
+                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.resourcesAccess, AppLocalizations.of(context)!.resourcesAccessText),
+                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.enredaApp, AppLocalizations.of(context)!.enredaAppText),],
+                    ),
+                  ),
+                ],
+              ),
             ),
             SpaceH100(),
             _buildFooter(context),
           ],
-        ));
+        )
+      );
   }
 
   Widget _buildBigItemCard(BuildContext context, String icon, String title, String text){
@@ -315,7 +253,7 @@ class _JobSearchPageState extends State<JobSearchPage> {
               fontWeight: FontWeight.w900,
               fontFamily: GoogleFonts.outfit().fontFamily,
               fontSize: 38,
-              color: AppColors.textBlue,
+              color: AppColors.lightBlue,
             ),
           ),
           SpaceH30(),
@@ -325,7 +263,7 @@ class _JobSearchPageState extends State<JobSearchPage> {
               fontWeight: FontWeight.w500,
               fontFamily: GoogleFonts.lato().fontFamily,
               fontSize: 14,
-              color: AppColors.greyTxtAlt,
+              color: AppColors.white,
             ),
             textAlign: TextAlign.center,
           ),

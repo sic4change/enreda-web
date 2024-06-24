@@ -12,6 +12,7 @@ import '../../../widgets/buttons/social_button_2.dart';
 import '../../../widgets/content_area.dart';
 import '../../../widgets/enreda_info_section.dart';
 import '../../../widgets/spaces.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 const double kSpacingSm = 40.0;
 const double kRunSpacingSm = 24.0;
@@ -103,10 +104,10 @@ class _RebuildPanelState extends State<RebuildPanel> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            numberCountTile(856, 'Días transformando la realidad social', AppColors.brightBlueNumber),
-                            numberCountTile(350, 'Jóvenes y usuarios participantes', AppColors.white),
-                            numberCountTile(30, 'Instituciones y empresas', AppColors.brightBlueNumber),
-                            numberCountTile(2401, 'Recursos habilitados', AppColors.white),
+                            numberCountTile(856, AppLocalizations.of(context)!.daysTransforming, AppColors.brightBlueNumber),
+                            numberCountTile(350, AppLocalizations.of(context)!.participant, AppColors.white),
+                            numberCountTile(30, AppLocalizations.of(context)!.institutionsAndCompanies, AppColors.brightBlueNumber),
+                            numberCountTile(2401, AppLocalizations.of(context)!.resourcesEnabled, AppColors.white),
                           ],
                         ),
                       ),
@@ -122,11 +123,14 @@ class _RebuildPanelState extends State<RebuildPanel> {
                       child: Image.asset(ImagePath.REBUILD_CARD_ITEM)
                   ),
                 ),
-                Positioned(
-                  bottom: widthOfScreen(context)*0.25,
-                  child: Container(
-                      width: widthOfScreen(context)*0.9,
-                      child: Image.asset(ImagePath.REBUILD_TITLE_IMAGE)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 100.0),
+                  child: Positioned(
+                    bottom: widthOfScreen(context)*0.36,
+                    child: Container(
+                        width: widthOfScreen(context),
+                        child: Image.asset(ImagePath.REBUILD_TITLE_IMAGE)
+                    ),
                   ),
                 ),
 

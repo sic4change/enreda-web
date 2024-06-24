@@ -1,9 +1,13 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:enreda_app/localization/HeaderLanguageButton.dart';
+import 'package:enreda_app/localization/LocaleProvider.dart';
 import 'package:enreda_app/presentation/pages/resources/resources_page.dart';
 import 'package:enreda_app/presentation/routes/router.gr.dart';
 import 'package:enreda_app/presentation/widgets/dialogs/show_login_menu.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../../utils/functions.dart';
 import '../../../../../values/values.dart';
@@ -58,6 +62,7 @@ class _NavSectionWebState extends State<NavSectionWeb> {
 
   @override
   Widget build(BuildContext context) {
+    final localeProvider = Provider.of<LocaleProvider>(context);
     router = AutoRouter.of(context);
     double logoSpaceLeft =
         responsiveSize(context, logoSpaceLeftSm, logoSpaceLeftLg, sm:logoSpaceLeftSm, md: logoSpaceLeftMd, xl:logoSpaceLeftLg);
@@ -130,8 +135,23 @@ class _NavSectionWebState extends State<NavSectionWeb> {
             ),
             EnredaVerticalDivider(color: AppColors.greyDivider,),
             SizedBox(width: contactBtnSpaceLeft),
+            localeProvider.getLocale() == Locale('es').languageCode ?
+            HeaderLanguageButton(
+                text: AppLocalizations.of(context)!.english,
+                onTap: () {
+                  print('tapeado en ingles paea español');
+                  localeProvider.setLocale(Locale('en'));
+                }
+            ) : HeaderLanguageButton(
+                text: AppLocalizations.of(context)!.spanish,
+                onTap: () {
+                  print('tapeado en español para ingles');
+                  localeProvider.setLocale(Locale('es'));
+                }
+            ),
+            SizedBox(width: contactBtnSpaceLeft),
             EnredaButton(
-              buttonTitle: StringConst.ACCESS.toUpperCase(),
+              buttonTitle: AppLocalizations.of(context)!.access.toUpperCase(),
               buttonColor: AppColors.textBlue,
               borderRadius: BorderRadius.all(Radius.circular(30)),
               width: contactBtnWidth,

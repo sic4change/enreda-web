@@ -22,6 +22,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:visibility_detector/visibility_detector.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../utils/functions.dart';
 import '../../../values/values.dart';
@@ -51,18 +52,7 @@ class _HomePageState extends State<HomePage>
 
   final ScrollController _scrollController = ScrollController();
 
-  final List<NavItemData> navItems = [
-//    NavItemData(name: StringConst.HOME, key: GlobalKey(), isSelected: true),
-//    NavItemData(name: StringConst.EMPTY, key: GlobalKey()),
-    NavItemData(name: StringConst.RESOURCES, key: GlobalKey()),
-//    NavItemData(name: StringConst.EMPTY, key: GlobalKey()),
-//    NavItemData(name: StringConst.WHO, key: GlobalKey()),
-//    NavItemData(name: StringConst.EMPTY, key: GlobalKey()),
-//    NavItemData(name: StringConst.CONTACT, key: GlobalKey()),
-      NavItemData(name: StringConst.JOB_SEARCH, key: GlobalKey()),
-      NavItemData(name: StringConst.ENTITIES, key: GlobalKey()),
-      NavItemData(name: StringConst.TALENT_SEARCH, key: GlobalKey()),
-  ];
+
 
   var _isShowingResources = false;
   late Widget _scaffoldBody;
@@ -89,16 +79,29 @@ class _HomePageState extends State<HomePage>
     double screenHeight = heightOfScreen(context);
     double spacerHeight = screenHeight * 0.10;
 
-    if (navItems.firstWhere((element) => element.name == StringConst.RESOURCES).isSelected) {
+    final List<NavItemData> navItems = [
+//    NavItemData(name: StringConst.HOME, key: GlobalKey(), isSelected: true),
+//    NavItemData(name: StringConst.EMPTY, key: GlobalKey()),
+      NavItemData(name: AppLocalizations.of(context)!.resources, key: GlobalKey()),
+//    NavItemData(name: StringConst.EMPTY, key: GlobalKey()),
+//    NavItemData(name: StringConst.WHO, key: GlobalKey()),
+//    NavItemData(name: StringConst.EMPTY, key: GlobalKey()),
+//    NavItemData(name: StringConst.CONTACT, key: GlobalKey()),
+      NavItemData(name: AppLocalizations.of(context)!.jobSearch, key: GlobalKey()),
+      NavItemData(name: AppLocalizations.of(context)!.entities, key: GlobalKey()),
+      NavItemData(name: AppLocalizations.of(context)!.talentSearch, key: GlobalKey()),
+    ];
+
+    if (navItems.firstWhere((element) => element.name == AppLocalizations.of(context)!.resources).isSelected) {
       _scaffoldBody = ResourcesPage();
     } else {
-      if(navItems.firstWhere((element) => element.name == StringConst.ENTITIES).isSelected){
+      if(navItems.firstWhere((element) => element.name == AppLocalizations.of(context)!.entities).isSelected){
         _scaffoldBody = SocialEntityPage();
       } else
-      if(navItems.firstWhere((element) => element.name == StringConst.JOB_SEARCH).isSelected){
+      if(navItems.firstWhere((element) => element.name == AppLocalizations.of(context)!.jobSearch).isSelected){
         _scaffoldBody = JobSearchPage();
       } else
-      if(navItems.firstWhere((element) => element.name == StringConst.TALENT_SEARCH).isSelected){
+      if(navItems.firstWhere((element) => element.name == AppLocalizations.of(context)!.talentSearch).isSelected){
         _scaffoldBody = TalentSearchPage();
       } else
       _scaffoldBody = _buildScaffoldBody(spacerHeight, context);

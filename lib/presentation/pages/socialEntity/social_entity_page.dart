@@ -30,6 +30,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SocialEntityPage extends StatefulWidget {
   @override
@@ -68,10 +69,6 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
     return SingleChildScrollView(
         child: Column(
           children: [
-            Column(
-              children: [
-              ],
-            ),
             Stack(
               alignment: Alignment.center,
               clipBehavior: Clip.none,
@@ -89,18 +86,44 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
               ],
             ),
             SpaceH180(),
-            Stack(
-              children: [
-                Positioned(
-                  child: Image.asset(ImagePath.ENTITY_YELLOW_LINE_1),
-                  width: widthOfScreen(context),
-                  bottom: 650,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 100.0),
-                  child: Column(
-                    children: [
-                      Row(
+            Container(
+              height: 1000,
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Positioned(
+                    top: 550,
+                    child: Container(
+                      color: AppColors.textBlue,
+                      width: widthOfScreen(context),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 90.0),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 100.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _buildBigItemCard(context, ImagePath.ICON_ROCKET, AppLocalizations.of(context)!.rediscover, AppLocalizations.of(context)!.rediscoverEntity),
+                              _buildBigItemCard(context, ImagePath.ICON_BULB, AppLocalizations.of(context)!.reimagine, AppLocalizations.of(context)!.reimagineEntity),
+                              _buildBigItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.rebuild, AppLocalizations.of(context)!.rebuildEntity),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    child: Image.asset(ImagePath.ENTITY_YELLOW_LINE_1),
+                    width: widthOfScreen(context),
+                    //bottom: widthOfScreen(context) > 1435 ? 800 : 900,
+                    bottom: 350,
+                  ),
+                  Positioned(
+                    top: 0,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 100.0),
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -110,7 +133,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Lorem Ipsumis simply dummy text of the printtry.',
+                                  AppLocalizations.of(context)!.entityTitle,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w800,
                                     fontFamily: GoogleFonts.outfit().fontFamily,
@@ -120,7 +143,27 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                                 ),
                                 SpaceH50(),
                                 Text(
-                                  'Enreda combina tecnología y acción comunitaria para activar y mejorar la empleabilidad juvenil; conecta a los actores y recursos del territorio vinculados con el empleo juvenil, al tiempo que dinamiza el desarrollo local. \n\n Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. I',
+                                  AppLocalizations.of(context)!.entityParagraph1,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: GoogleFonts.lato().fontFamily,
+                                    fontSize: 14,
+                                    color: AppColors.greyTxtAlt,
+                                  ),
+                                ),
+                                SpaceH12(),
+                                Text(
+                                  AppLocalizations.of(context)!.entityParagraph2,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: GoogleFonts.lato().fontFamily,
+                                    fontSize: 14,
+                                    color: AppColors.greyTxtAlt,
+                                  ),
+                                ),
+                                SpaceH12(),
+                                Text(
+                                  AppLocalizations.of(context)!.entityParagraph3,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w500,
                                     fontFamily: GoogleFonts.lato().fontFamily,
@@ -130,7 +173,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                                 ),
                                 SpaceH30(),
                                 Container(
-                                  height: 60,
+                                  height: 70,
                                   width: 400,
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
@@ -151,54 +194,69 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                                     child: Padding(
                                       padding: EdgeInsets.all(22.0),
                                       child:
-                                      Center(child: Text('INSCRÍBETE')),
+                                      Center(child: Text(AppLocalizations.of(context)!.bePartEnreda)),
                                     ),
                                   ),
                                 ),
                               ],
                             ),
                           ),
+                          SpaceW40(),
                           Container(
-                            width: widthOfScreen(context)/2.5,
-                            child: Image.asset(ImagePath.ENTITY_EXAMPLE_IMAGE)
+                              clipBehavior: Clip.hardEdge,
+                              decoration: BoxDecoration(),
+                              width: widthOfScreen(context)/2.5,
+                              child: Image.asset(ImagePath.ENTITY_EXAMPLE_IMAGE)
                           ),
                         ],
                       ),
-                      SpaceH60(),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _buildBigItemCard(context, ImagePath.ICON_ROCKET, 'RE-DESCUBRE', 'La esencia de los desafíos sociales, sumergiéndonos en la realidad de las comunidades afectadas'),
-                          _buildBigItemCard(context, ImagePath.ICON_BULB, 'RE-IMAGINA', 'Soluciones creativas que desafíen las convenciones y exploren nuevas posibilidades'),
-                          _buildBigItemCard(context, ImagePath.ICON_PUZZLE, 'RE-CONSTRUYE', 'El futuro mediante la implementación de soluciones adaptando nuestro enfoque'),
-                        ],
-                      ),
-                      SpaceH60(),
-                      Container(
-                        width: double.maxFinite,
-                        child: Wrap(
-                          alignment: WrapAlignment.spaceBetween,
-                          spacing: 12,
-                          runSpacing: 10,
-                          children: [
-                            _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, 'Chatbot', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard d.'),
-                            _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, 'Competencias', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard d.'),
-                            _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, 'Gamificación', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard d.'),
-                            _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, 'Creación de CV', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard d.'),
-                            _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, 'Acceso a recursos', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard d.'),
-                            _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, 'Enreda App', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard d.'),],
-                        ),
-                      )
-                    ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 140,
+            ),
+            Container(
+              width: double.maxFinite,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Center(
+                    child: Text(
+                      AppLocalizations.of(context)!.entityItemsTitle,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w900,
+                        fontFamily: GoogleFonts.outfit().fontFamily,
+                        fontSize: 45,
+                        color: AppColors.textBlue,
+                      ),
+                    ),
+                  ),
+                  SpaceH80(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 100.0),
+                    child: Wrap(
+                      alignment: WrapAlignment.center,
+                      spacing: 30,
+                      runSpacing: 30,
+                      children: [
+                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.intervention, AppLocalizations.of(context)!.interventionText),
+                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.enredaMethodology, AppLocalizations.of(context)!.enredaMethodologyText),
+                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.intervention, AppLocalizations.of(context)!.interventionText),
+                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.resourcesCreation, AppLocalizations.of(context)!.resourcesCreationText),
+                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.entitiesDirectory, AppLocalizations.of(context)!.entitiesDirectoryText),
+                      ]),
+                  ),
+                ],
+              ),
             ),
             SpaceH100(),
             _buildFooter(context),
           ],
-        ));
+        )
+    );
   }
 
   Widget _buildBigItemCard(BuildContext context, String icon, String title, String text){
@@ -220,7 +278,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
               fontWeight: FontWeight.w900,
               fontFamily: GoogleFonts.outfit().fontFamily,
               fontSize: 38,
-              color: AppColors.textBlue,
+              color: AppColors.lightBlue,
             ),
           ),
           SpaceH30(),
@@ -230,7 +288,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
               fontWeight: FontWeight.w500,
               fontFamily: GoogleFonts.lato().fontFamily,
               fontSize: 14,
-              color: AppColors.greyTxtAlt,
+              color: AppColors.white,
             ),
             textAlign: TextAlign.center,
           ),
