@@ -98,6 +98,7 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
                   Container(
                     width: widthOfScreen(context)/2.5,
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
                           AppLocalizations.of(context)!.techParagraph1,

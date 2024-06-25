@@ -52,7 +52,18 @@ class _HomePageState extends State<HomePage>
 
   final ScrollController _scrollController = ScrollController();
 
-
+  final List<NavItemData> navItems = [
+//    NavItemData(name: StringConst.HOME, key: GlobalKey(), isSelected: true),
+//    NavItemData(name: StringConst.EMPTY, key: GlobalKey()),
+    NavItemData(name: StringConst.RESOURCES, key: GlobalKey()),
+//    NavItemData(name: StringConst.EMPTY, key: GlobalKey()),
+//    NavItemData(name: StringConst.WHO, key: GlobalKey()),
+//    NavItemData(name: StringConst.EMPTY, key: GlobalKey()),
+//    NavItemData(name: StringConst.CONTACT, key: GlobalKey()),
+    NavItemData(name: StringConst.JOB_SEARCH, key: GlobalKey()),
+    NavItemData(name: StringConst.SOCIAL_ENTITY, key: GlobalKey()),
+    NavItemData(name: StringConst.TALENT_SEARCH, key: GlobalKey()),
+  ];
 
   var _isShowingResources = false;
   late Widget _scaffoldBody;
@@ -79,29 +90,17 @@ class _HomePageState extends State<HomePage>
     double screenHeight = heightOfScreen(context);
     double spacerHeight = screenHeight * 0.10;
 
-    final List<NavItemData> navItems = [
-//    NavItemData(name: StringConst.HOME, key: GlobalKey(), isSelected: true),
-//    NavItemData(name: StringConst.EMPTY, key: GlobalKey()),
-      NavItemData(name: AppLocalizations.of(context)!.resources, key: GlobalKey()),
-//    NavItemData(name: StringConst.EMPTY, key: GlobalKey()),
-//    NavItemData(name: StringConst.WHO, key: GlobalKey()),
-//    NavItemData(name: StringConst.EMPTY, key: GlobalKey()),
-//    NavItemData(name: StringConst.CONTACT, key: GlobalKey()),
-      NavItemData(name: AppLocalizations.of(context)!.jobSearch, key: GlobalKey()),
-      NavItemData(name: AppLocalizations.of(context)!.entities, key: GlobalKey()),
-      NavItemData(name: AppLocalizations.of(context)!.talentSearch, key: GlobalKey()),
-    ];
 
-    if (navItems.firstWhere((element) => element.name == AppLocalizations.of(context)!.resources).isSelected) {
+    if (navItems.firstWhere((element) => element.name == StringConst.RESOURCES).isSelected) {
       _scaffoldBody = ResourcesPage();
     } else {
-      if(navItems.firstWhere((element) => element.name == AppLocalizations.of(context)!.entities).isSelected){
+      if(navItems.firstWhere((element) => element.name == StringConst.SOCIAL_ENTITY).isSelected){
         _scaffoldBody = SocialEntityPage();
       } else
-      if(navItems.firstWhere((element) => element.name == AppLocalizations.of(context)!.jobSearch).isSelected){
+      if(navItems.firstWhere((element) => element.name == StringConst.JOB_SEARCH).isSelected){
         _scaffoldBody = JobSearchPage();
       } else
-      if(navItems.firstWhere((element) => element.name == AppLocalizations.of(context)!.talentSearch).isSelected){
+      if(navItems.firstWhere((element) => element.name == StringConst.TALENT_SEARCH).isSelected){
         _scaffoldBody = TalentSearchPage();
       } else
       _scaffoldBody = _buildScaffoldBody(spacerHeight, context);
@@ -180,7 +179,7 @@ class _HomePageState extends State<HomePage>
                       isShowingResources: _isShowingResources,
                   ),*/
                   RediscoverPanel(),
-                  RebuildPanel(),
+                  RebuildPanel(), //TODO arreglar
                   SponsorsPanel(),
                   _buildFooter(context),
                   /*VisibilityDetector(

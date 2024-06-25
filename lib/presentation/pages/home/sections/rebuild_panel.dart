@@ -123,14 +123,11 @@ class _RebuildPanelState extends State<RebuildPanel> {
                       child: Image.asset(ImagePath.REBUILD_CARD_ITEM)
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 100.0),
-                  child: Positioned(
-                    bottom: widthOfScreen(context)*0.36,
-                    child: Container(
-                        width: widthOfScreen(context),
-                        child: Image.asset(ImagePath.REBUILD_TITLE_IMAGE)
-                    ),
+                Positioned(
+                  bottom: widthOfScreen(context)*0.36,
+                  child: Container(
+                      width: widthOfScreen(context)-200,
+                      child: Image.asset(ImagePath.REBUILD_TITLE_IMAGE)
                   ),
                 ),
 
