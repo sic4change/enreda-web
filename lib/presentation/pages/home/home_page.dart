@@ -399,33 +399,29 @@ class _HomePageState extends State<HomePage>
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        'Aviso Legal',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontFamily: GoogleFonts.lato().fontFamily,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white,
+                      GestureDetector(
+                        onTap: () => openUrlLink(StringConst.USE_CONDITIONS_URL),
+                        child: Text(
+                          StringConst.BUILT_BY,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: GoogleFonts.lato().fontFamily,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                       SpaceW16(),
-                      Text(
-                        'Política de Privacidad',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontFamily: GoogleFonts.lato().fontFamily,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SpaceW16(),
-                      Text(
-                        'Política de Cookies',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontFamily: GoogleFonts.lato().fontFamily,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white,
+                      GestureDetector(
+                        onTap: () => openUrlLink(StringConst.PRIVACITY_URL),
+                        child: Text(
+                          StringConst.RIGHTS_RESERVED,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontFamily: GoogleFonts.lato().fontFamily,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ],
