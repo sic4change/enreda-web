@@ -124,7 +124,7 @@ class _RebuildPanelState extends State<RebuildPanel> {
                   ),
                 ),
                 Positioned(
-                  bottom: widthOfScreen(context)*0.36,
+                  bottom: 500,
                   child: Container(
                       width: widthOfScreen(context)-200,
                       child: Image.asset(ImagePath.REBUILD_TITLE_IMAGE)

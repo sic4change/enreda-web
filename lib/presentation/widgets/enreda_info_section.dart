@@ -1,3 +1,5 @@
+import 'package:enreda_app/presentation/pages/home/home_page.dart';
+import 'package:enreda_app/presentation/pages/jobSearch/job_search_page.dart';
 import 'package:enreda_app/presentation/widgets/buttons/enreda_button.dart';
 import 'package:enreda_app/presentation/widgets/spaces.dart';
 import 'package:flutter/material.dart';
@@ -494,6 +496,10 @@ class EnredaInfoSection6 extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.JOB_SEARCH,)),
+                    );
                   },
                   child: Padding(
                     padding: EdgeInsets.all(22.0),

@@ -117,7 +117,7 @@ class _NavSectionWebState extends State<NavSectionWeb> {
             Spacer(flex: 1),
             ..._buildNavItems(widget.navItems),
             Spacer(flex: menuSpacerRight),
-            ResponsiveBuilder(
+            /*ResponsiveBuilder(
               refinedBreakpoints: RefinedBreakpoints(),
               builder: (context, sizingInformation) {
                 double screenWidth = sizingInformation.screenSize.width;
@@ -132,7 +132,7 @@ class _NavSectionWebState extends State<NavSectionWeb> {
                   );
                 }
               },
-            ),
+            ),*/
             EnredaVerticalDivider(color: AppColors.greyDivider,),
             SizedBox(width: contactBtnSpaceLeft),
             localeProvider.getLocale() == Locale('es').languageCode ?

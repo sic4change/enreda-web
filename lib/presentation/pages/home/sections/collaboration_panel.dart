@@ -19,13 +19,13 @@ const double kRunSpacingSm = 24.0;
 const double kSpacingLg = 24.0;
 const double kRunSpacingLg = 16.0;
 
-class SponsorsPanel extends StatefulWidget {
-  SponsorsPanel({Key? key});
+class CollaborationPanel extends StatefulWidget {
+  CollaborationPanel({Key? key});
   @override
-  _SponsorsPanelState createState() => _SponsorsPanelState();
+  _CollaborationPanelState createState() => _CollaborationPanelState();
 }
 
-class _SponsorsPanelState extends State<SponsorsPanel> {
+class _CollaborationPanelState extends State<CollaborationPanel> {
 
   @override
   void initState() {
@@ -73,88 +73,46 @@ class _SponsorsPanelState extends State<SponsorsPanel> {
           ],
         ) :
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 100.0, vertical: 90),
+          padding: const EdgeInsets.symmetric(horizontal: 200.0, vertical: 90),
           child: Container(
             width: widthOfScreen(context),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(
-                  child: Text(
-                    AppLocalizations.of(context)!.byHand,
-                    style: TextStyle(
-                      color: AppColors.textBlue,
-                      fontFamily: GoogleFonts.outfit().fontFamily,
-                      fontWeight: FontWeight.w800,
-                      fontSize: 46,
-                    ),
-                  ),
-                ),
-                SpaceH20(),
                 Text(
-                  AppLocalizations.of(context)!.enredadas,
+                  'Realizado con la colaboración de:',
                   style: TextStyle(
                     color: AppColors.textBlue,
                     fontFamily: GoogleFonts.outfit().fontFamily,
-                    fontWeight: FontWeight.w100,
+                    fontWeight: FontWeight.w800,
                     fontSize: 46,
                   ),
                 ),
+                SpaceH12(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.ENREDADA_1)),
+                      width: widthOfScreen(context)/6,
+                      child: Text(
+                        'Un programa innovador enfocado en la cohesión social para el desarrollo del territorio a través del empleo joven',
+                        style: TextStyle(
+                          color: AppColors.textBlue,
+                          fontFamily: GoogleFonts.lato().fontFamily,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 30,
+                        ),
+                      ),
+                    ),
                     Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.ENREDADA_2)),
+                      width: widthOfScreen(context)/6,
+                      child: Image.asset(ImagePath.LOGO_SIC_4_CHANGE),
+                    ),
                     Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.ENREDADA_3)),
-                    Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.ENREDADA_4)),
-                    Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.ENREDADA_5)),
-                    Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.ENREDADA_6)),
-                  ],
-                ),
-                SpaceH20(),
-                Text(
-                  AppLocalizations.of(context)!.funders,
-                  style: TextStyle(
-                    color: AppColors.textBlue,
-                    fontFamily: GoogleFonts.outfit().fontFamily,
-                    fontWeight: FontWeight.w100,
-                    fontSize: 40,
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.FINANCIER_1)),
-                    Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.FINANCIER_2)),
-                    Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.FINANCIER_3)),
-                    Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.FINANCIER_4)),
-                    Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.FINANCIER_5)),
-                    Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.FINANCIER_6)),
+                      width: widthOfScreen(context)/6,
+                      child: Image.asset(ImagePath.LOGO_PROYECTO_KIEU),
+                    ),
                   ],
                 ),
               ],

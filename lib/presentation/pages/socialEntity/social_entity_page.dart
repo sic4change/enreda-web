@@ -11,6 +11,7 @@ import 'package:enreda_app/models/socialEntity.dart';
 import 'package:enreda_app/models/trainingPill.dart';
 import 'package:enreda_app/models/userEnreda.dart';
 import 'package:enreda_app/presentation/layout/adaptive.dart';
+import 'package:enreda_app/presentation/pages/home/home_page.dart';
 import 'package:enreda_app/presentation/pages/resources/sections/filter_text_field_row.dart';
 import 'package:enreda_app/presentation/pages/resources/sections/resource_list_tile.dart';
 import 'package:enreda_app/presentation/pages/resources/sections/show_resource_detail_dialog.dart';
@@ -106,7 +107,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                             children: [
                               _buildBigItemCard(context, ImagePath.ICON_ROCKET, AppLocalizations.of(context)!.rediscover, AppLocalizations.of(context)!.rediscoverEntity),
                               _buildBigItemCard(context, ImagePath.ICON_BULB, AppLocalizations.of(context)!.reimagine, AppLocalizations.of(context)!.reimagineEntity),
-                              _buildBigItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.rebuild, AppLocalizations.of(context)!.rebuildEntity),
+                              _buildBigItemCard(context, ImagePath.ICON_DART, AppLocalizations.of(context)!.rebuild, AppLocalizations.of(context)!.rebuildEntity),
                             ],
                           ),
                         ),
@@ -190,6 +191,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                                       ),
                                     ),
                                     onPressed: () {
+                                      openUrlLink(StringConst.SOCIAL_ENTITY_URL);
                                     },
                                     child: Padding(
                                       padding: EdgeInsets.all(22.0),
@@ -242,11 +244,11 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                       spacing: 30,
                       runSpacing: 30,
                       children: [
-                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.intervention, AppLocalizations.of(context)!.interventionText),
-                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.enredaMethodology, AppLocalizations.of(context)!.enredaMethodologyText),
-                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.intervention, AppLocalizations.of(context)!.interventionText),
-                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.resourcesCreation, AppLocalizations.of(context)!.resourcesCreationText),
-                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.entitiesDirectory, AppLocalizations.of(context)!.entitiesDirectoryText),
+                        _buildSmallItemCard(context, ImagePath.ICON_CANDIDATES, AppLocalizations.of(context)!.intervention, AppLocalizations.of(context)!.interventionText),
+                        _buildSmallItemCard(context, ImagePath.ICON_METHODOLOGY, AppLocalizations.of(context)!.enredaMethodology, AppLocalizations.of(context)!.enredaMethodologyText),
+                        _buildSmallItemCard(context, ImagePath.ICON_DESIGN, AppLocalizations.of(context)!.intervention, AppLocalizations.of(context)!.interventionText),
+                        _buildSmallItemCard(context, ImagePath.ICON_RESOURCE_ACCESS, AppLocalizations.of(context)!.resourcesCreation, AppLocalizations.of(context)!.resourcesCreationText),
+                        _buildSmallItemCard(context, ImagePath.ICON_DIRECTORY, AppLocalizations.of(context)!.entitiesDirectory, AppLocalizations.of(context)!.entitiesDirectoryText),
                       ]),
                   ),
                 ],
@@ -365,13 +367,42 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   _buildSubMenuItem('Menú', true),
-                                  _buildSubMenuItem('Sobre Enreda', false),
-                                  _buildSubMenuItem('Recursos', false),
-                                  _buildSubMenuItem('Participantes', false),
-                                  _buildSubMenuItem('Empresas', false),
-                                  _buildSubMenuItem('Entidades', false),
-                                  _buildSubMenuItem('Transparencia', false),
-                                  _buildSubMenuItem('Contacto', false),
+                                  InkWell(
+                                      onTap: (){
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.RESOURCES,)),
+                                        );
+                                      },
+                                      child: _buildSubMenuItem('Recursos', false)
+                                  ),
+                                  InkWell(
+                                      onTap: (){
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.JOB_SEARCH,)),
+                                        );
+                                      },
+                                      child: _buildSubMenuItem('Busco empleo', false)
+                                  ),
+                                  InkWell(
+                                      onTap: (){
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.SOCIAL_ENTITY,)),
+                                        );
+                                      },
+                                      child: _buildSubMenuItem('Entidades', false)
+                                  ),
+                                  InkWell(
+                                      onTap: (){
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.TALENT_SEARCH,)),
+                                        );
+                                      },
+                                      child: _buildSubMenuItem('Busco talento', false)
+                                  ),
                                 ],
                               ),
                             ),
@@ -386,7 +417,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            'Atrévete a desafiar el\nstatus quo y contáctanos\npara ser parte del cambio',
+                            'Sé parte del cambio,\n¡Enrédate!',
                             textAlign: TextAlign.right,
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
@@ -417,38 +448,12 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                                       ),
                                     ),
                                     onPressed: () {
+                                      sendEmail(StringConst.DEV_EMAIL);
                                     },
                                     child: Padding(
                                       padding: EdgeInsets.all(22.0),
                                       child:
                                       Center(child: Text('Contacta ahora'.toUpperCase())),
-                                    ),
-                                  ),
-                                ),
-                                SpaceW24(),
-                                Container(
-                                  height: 60,
-                                  width: 260,
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      primary: AppColors.textBlue,
-                                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                                      onPrimary: AppColors.white,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(33),
-                                      ),
-                                      textStyle: TextStyle(
-                                        fontFamily: GoogleFonts.outfit().fontFamily,
-                                        fontSize: 15,
-                                        letterSpacing: 1.8,
-                                      ),
-                                    ),
-                                    onPressed: () {
-                                    },
-                                    child: Padding(
-                                      padding: EdgeInsets.all(22.0),
-                                      child:
-                                      Center(child: Text('Más información'.toUpperCase())),
                                     ),
                                   ),
                                 ),
@@ -458,13 +463,25 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Image.asset(ImagePath.ICON_LINKEDIN, height: 36),
+                              InkWell(
+                                  onTap: () => openUrlLink(StringConst.LINKED_IN_URL),
+                                  child: Image.asset(ImagePath.ICON_LINKEDIN, height: 36)
+                              ),
                               SpaceW16(),
-                              Image.asset(ImagePath.ICON_INSTAGRAM, height: 36),
+                              InkWell(
+                                  onTap: () => openUrlLink(StringConst.INSTAGRAM_URL),
+                                  child: Image.asset(ImagePath.ICON_INSTAGRAM, height: 36)
+                              ),
                               SpaceW16(),
-                              Image.asset(ImagePath.ICON_TWITTER, height: 36),
+                              InkWell(
+                                  onTap: () => openUrlLink(StringConst.TWITTER_URL),
+                                  child: Image.asset(ImagePath.ICON_TWITTER, height: 36)
+                              ),
                               SpaceW16(),
-                              Image.asset(ImagePath.ICON_FACEBOOK, height: 36),
+                              InkWell(
+                                  onTap: () => openUrlLink(StringConst.FACEBOOK_URL),
+                                  child: Image.asset(ImagePath.ICON_FACEBOOK, height: 36)
+                              ),
                             ],
                           )
                         ],
@@ -500,7 +517,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      GestureDetector(
+                      InkWell(
                         onTap: () => openUrlLink(StringConst.USE_CONDITIONS_URL),
                         child: Text(
                           StringConst.BUILT_BY,
@@ -513,7 +530,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                         ),
                       ),
                       SpaceW16(),
-                      GestureDetector(
+                      InkWell(
                         onTap: () => openUrlLink(StringConst.PRIVACITY_URL),
                         child: Text(
                           StringConst.RIGHTS_RESERVED,
@@ -550,7 +567,6 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
       ),
     );
   }
-
 
   Widget _buildJoinCommunityPanel(BuildContext context) {
     return Container(
@@ -603,12 +619,11 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                             letterSpacing: 1.8,
                           ),
                         ),
-                        onPressed: () {
-                        },
+                        onPressed: () => openUrlLink(StringConst.WEB_APP_URL),
                         child: Padding(
                           padding: EdgeInsets.all(22.0),
                           child:
-                          Center(child: Text('Más información'.toUpperCase())),
+                          Center(child: Text('Quiero inscribrime ahora'.toUpperCase())),
                         ),
                       ),
                     ),
@@ -620,7 +635,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                   Padding(
                     padding: const EdgeInsets.all(50.0),
                     child: Text(
-                      'Recibirás actualizaciones exclusivas sobre nuestro trabajo\ny eventos. Cada suscriptor es un paso más\nhacia un futuro mejor para todos. ¡Tu voz y tu\nparticipación hacen la diferencia!',
+                      'Descubre cómo transformamos el camino hacia\nel empleo, escuchando y colaborando con\nel ecosistema para crear oportunidades en red.',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w400,
@@ -635,9 +650,9 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
             ],
           ),
           Positioned(
-              right: 30,
-              bottom: -60,
-              child: Image.asset(ImagePath.JOIN_GIRL, height: 500),
+            right: 30,
+            bottom: -60,
+            child: Image.asset(ImagePath.JOIN_GIRL, height: 500),
           ),
         ],
       ),

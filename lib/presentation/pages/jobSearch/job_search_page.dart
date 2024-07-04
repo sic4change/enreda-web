@@ -1,4 +1,5 @@
 import 'package:enreda_app/presentation/layout/adaptive.dart';
+import 'package:enreda_app/presentation/pages/home/home_page.dart';
 import 'package:enreda_app/presentation/widgets/spaces.dart';
 import 'package:enreda_app/utils/functions.dart';
 import 'package:enreda_app/values/values.dart';
@@ -79,8 +80,8 @@ class _JobSearchPageState extends State<JobSearchPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              _buildBigItemCard(context, ImagePath.ICON_ROCKET, AppLocalizations.of(context)!.rediscover, AppLocalizations.of(context)!.rediscoverText),
-                              _buildBigItemCard(context, ImagePath.ICON_BULB, AppLocalizations.of(context)!.reimagine, AppLocalizations.of(context)!.reimagineText),
+                              _buildBigItemCard(context, ImagePath.ICON_ROCKET_JOB, AppLocalizations.of(context)!.rediscover, AppLocalizations.of(context)!.rediscoverText),
+                              _buildBigItemCard(context, ImagePath.ICON_ASTRONAUT, AppLocalizations.of(context)!.reimagine, AppLocalizations.of(context)!.reimagineText),
                               _buildBigItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.rebuild, AppLocalizations.of(context)!.rebuildText),
                             ],
                           ),
@@ -165,11 +166,12 @@ class _JobSearchPageState extends State<JobSearchPage> {
                                       ),
                                     ),
                                     onPressed: () {
+                                      openUrlLink(StringConst.WEB_APP_URL);
                                     },
                                     child: Padding(
                                       padding: EdgeInsets.all(22.0),
                                       child:
-                                      Center(child: Text(AppLocalizations.of(context)!.activeAccount)),
+                                      Center(child: Text(AppLocalizations.of(context)!.joinNow)),
                                     ),
                                   ),
                                 ),
@@ -217,12 +219,12 @@ class _JobSearchPageState extends State<JobSearchPage> {
                       spacing: 30,
                       runSpacing: 30,
                       children: [
-                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.chatbot, AppLocalizations.of(context)!.chatbotText),
-                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.competencies, AppLocalizations.of(context)!.competenciesText),
-                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.gamification, AppLocalizations.of(context)!.gamificationText),
-                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.cvCreation, AppLocalizations.of(context)!.cvCreationText),
-                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.resourcesAccess, AppLocalizations.of(context)!.resourcesAccessText),
-                        _buildSmallItemCard(context, ImagePath.ICON_PUZZLE, AppLocalizations.of(context)!.enredaApp, AppLocalizations.of(context)!.enredaAppText),],
+                        _buildSmallItemCard(context, ImagePath.ICON_CHAT, AppLocalizations.of(context)!.chatbot, AppLocalizations.of(context)!.chatbotText),
+                        _buildSmallItemCard(context, ImagePath.ICON_COMPETENCIES, AppLocalizations.of(context)!.competencies, AppLocalizations.of(context)!.competenciesText),
+                        _buildSmallItemCard(context, ImagePath.ICON_GAMIFICATION, AppLocalizations.of(context)!.gamification, AppLocalizations.of(context)!.gamificationText),
+                        _buildSmallItemCard(context, ImagePath.ICON_CV_CREATION, AppLocalizations.of(context)!.cvCreation, AppLocalizations.of(context)!.cvCreationText),
+                        _buildSmallItemCard(context, ImagePath.ICON_RESOURCE_ACCESS, AppLocalizations.of(context)!.resourcesAccess, AppLocalizations.of(context)!.resourcesAccessText),
+                        _buildSmallItemCard(context, ImagePath.ICON_ENREDA_APP, AppLocalizations.of(context)!.enredaApp, AppLocalizations.of(context)!.enredaAppText),],
                     ),
                   ),
                 ],
@@ -341,13 +343,42 @@ class _JobSearchPageState extends State<JobSearchPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   _buildSubMenuItem('Menú', true),
-                                  _buildSubMenuItem('Sobre Enreda', false),
-                                  _buildSubMenuItem('Recursos', false),
-                                  _buildSubMenuItem('Participantes', false),
-                                  _buildSubMenuItem('Empresas', false),
-                                  _buildSubMenuItem('Entidades', false),
-                                  _buildSubMenuItem('Transparencia', false),
-                                  _buildSubMenuItem('Contacto', false),
+                                  InkWell(
+                                      onTap: (){
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.RESOURCES,)),
+                                        );
+                                      },
+                                      child: _buildSubMenuItem('Recursos', false)
+                                  ),
+                                  InkWell(
+                                      onTap: (){
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.JOB_SEARCH,)),
+                                        );
+                                      },
+                                      child: _buildSubMenuItem('Busco empleo', false)
+                                  ),
+                                  InkWell(
+                                      onTap: (){
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.SOCIAL_ENTITY,)),
+                                        );
+                                      },
+                                      child: _buildSubMenuItem('Entidades', false)
+                                  ),
+                                  InkWell(
+                                      onTap: (){
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.TALENT_SEARCH,)),
+                                        );
+                                      },
+                                      child: _buildSubMenuItem('Busco talento', false)
+                                  ),
                                 ],
                               ),
                             ),
@@ -362,7 +393,7 @@ class _JobSearchPageState extends State<JobSearchPage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            'Atrévete a desafiar el\nstatus quo y contáctanos\npara ser parte del cambio',
+                            'Sé parte del cambio,\n¡Enrédate!',
                             textAlign: TextAlign.right,
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
@@ -393,38 +424,12 @@ class _JobSearchPageState extends State<JobSearchPage> {
                                       ),
                                     ),
                                     onPressed: () {
+                                      sendEmail(StringConst.DEV_EMAIL);
                                     },
                                     child: Padding(
                                       padding: EdgeInsets.all(22.0),
                                       child:
                                       Center(child: Text('Contacta ahora'.toUpperCase())),
-                                    ),
-                                  ),
-                                ),
-                                SpaceW24(),
-                                Container(
-                                  height: 60,
-                                  width: 260,
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      primary: AppColors.textBlue,
-                                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                                      onPrimary: AppColors.white,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(33),
-                                      ),
-                                      textStyle: TextStyle(
-                                        fontFamily: GoogleFonts.outfit().fontFamily,
-                                        fontSize: 15,
-                                        letterSpacing: 1.8,
-                                      ),
-                                    ),
-                                    onPressed: () {
-                                    },
-                                    child: Padding(
-                                      padding: EdgeInsets.all(22.0),
-                                      child:
-                                      Center(child: Text('Más información'.toUpperCase())),
                                     ),
                                   ),
                                 ),
@@ -434,13 +439,25 @@ class _JobSearchPageState extends State<JobSearchPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Image.asset(ImagePath.ICON_LINKEDIN, height: 36),
+                              InkWell(
+                                  onTap: () => openUrlLink(StringConst.LINKED_IN_URL),
+                                  child: Image.asset(ImagePath.ICON_LINKEDIN, height: 36)
+                              ),
                               SpaceW16(),
-                              Image.asset(ImagePath.ICON_INSTAGRAM, height: 36),
+                              InkWell(
+                                  onTap: () => openUrlLink(StringConst.INSTAGRAM_URL),
+                                  child: Image.asset(ImagePath.ICON_INSTAGRAM, height: 36)
+                              ),
                               SpaceW16(),
-                              Image.asset(ImagePath.ICON_TWITTER, height: 36),
+                              InkWell(
+                                  onTap: () => openUrlLink(StringConst.TWITTER_URL),
+                                  child: Image.asset(ImagePath.ICON_TWITTER, height: 36)
+                              ),
                               SpaceW16(),
-                              Image.asset(ImagePath.ICON_FACEBOOK, height: 36),
+                              InkWell(
+                                  onTap: () => openUrlLink(StringConst.FACEBOOK_URL),
+                                  child: Image.asset(ImagePath.ICON_FACEBOOK, height: 36)
+                              ),
                             ],
                           )
                         ],
@@ -476,7 +493,7 @@ class _JobSearchPageState extends State<JobSearchPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      GestureDetector(
+                      InkWell(
                         onTap: () => openUrlLink(StringConst.USE_CONDITIONS_URL),
                         child: Text(
                           StringConst.BUILT_BY,
@@ -489,7 +506,7 @@ class _JobSearchPageState extends State<JobSearchPage> {
                         ),
                       ),
                       SpaceW16(),
-                      GestureDetector(
+                      InkWell(
                         onTap: () => openUrlLink(StringConst.PRIVACITY_URL),
                         child: Text(
                           StringConst.RIGHTS_RESERVED,
@@ -526,7 +543,6 @@ class _JobSearchPageState extends State<JobSearchPage> {
       ),
     );
   }
-
 
   Widget _buildJoinCommunityPanel(BuildContext context) {
     return Container(
@@ -579,12 +595,11 @@ class _JobSearchPageState extends State<JobSearchPage> {
                             letterSpacing: 1.8,
                           ),
                         ),
-                        onPressed: () {
-                        },
+                        onPressed: () => openUrlLink(StringConst.WEB_APP_URL),
                         child: Padding(
                           padding: EdgeInsets.all(22.0),
                           child:
-                          Center(child: Text('Más información'.toUpperCase())),
+                          Center(child: Text('Quiero inscribrime ahora'.toUpperCase())),
                         ),
                       ),
                     ),
@@ -596,7 +611,7 @@ class _JobSearchPageState extends State<JobSearchPage> {
                   Padding(
                     padding: const EdgeInsets.all(50.0),
                     child: Text(
-                      'Recibirás actualizaciones exclusivas sobre nuestro trabajo\ny eventos. Cada suscriptor es un paso más\nhacia un futuro mejor para todos. ¡Tu voz y tu\nparticipación hacen la diferencia!',
+                      'Descubre cómo transformamos el camino hacia\nel empleo, escuchando y colaborando con\nel ecosistema para crear oportunidades en red.',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w400,
@@ -611,9 +626,9 @@ class _JobSearchPageState extends State<JobSearchPage> {
             ],
           ),
           Positioned(
-              right: 30,
-              bottom: -60,
-              child: Image.asset(ImagePath.JOIN_GIRL, height: 500),
+            right: 30,
+            bottom: -60,
+            child: Image.asset(ImagePath.JOIN_GIRL, height: 500),
           ),
         ],
       ),

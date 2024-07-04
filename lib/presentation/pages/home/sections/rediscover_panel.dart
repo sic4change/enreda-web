@@ -1,3 +1,4 @@
+import 'package:enreda_app/presentation/pages/home/home_page.dart';
 import 'package:enreda_app/presentation/widgets/buttons/enreda_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -99,6 +100,7 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
                     width: widthOfScreen(context)/2.5,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           AppLocalizations.of(context)!.techParagraph1,
@@ -149,6 +151,9 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
               clipBehavior: Clip.none,
               alignment: Alignment.center,
               children: [
+                Container(
+                  color: Colors.transparent,
+                ),
                 Positioned(
                   child: Container(
                     color: AppColors.textBlue,
@@ -156,33 +161,13 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
                     //height: heightOfScreen(context)+100,
                     child: Padding(
                       padding: EdgeInsets.only(top: widthOfScreen(context)/6),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children:[
-                          optionsCard(
-                              AppColors.brightBlue,
-                              ImagePath.REDISCOVER_PARTICIPANT_ICON,
-                              AppLocalizations.of(context)!.participant,
-                              AppLocalizations.of(context)!.participantSubtitle.toUpperCase(),
-                              AppLocalizations.of(context)!.participantText,),
-                          optionsCard(
-                              AppColors.yellowDark,
-                              ImagePath.REDISCOVER_SOCIAL_ENTITY_ICON,
-                              AppLocalizations.of(context)!.socialEntities,
-                              AppLocalizations.of(context)!.socialEntitiesSubtitle.toUpperCase(),
-                              AppLocalizations.of(context)!.socialEntitiesText,),
-                          optionsCard(
-                              AppColors.lightBlue,
-                              ImagePath.REDISCOVER_COMPANY_ICON,
-                              AppLocalizations.of(context)!.companies,
-                              AppLocalizations.of(context)!.companiesSubtitle.toUpperCase(),
-                              AppLocalizations.of(context)!.companiesText,),
-                        ]
-                      ),
+                      child: Container(
+                        color: AppColors.textBlue,
+                        height: 150,
+                      )
                     ),
                   ),
-                  bottom: -heightOfScreen(context)/0.9,
+                  bottom: -200,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 100.0),
@@ -197,8 +182,61 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
                 ),
               ],
             ),
+            Container(
+              color: Colors.transparent,
+              height: 140,
+            ),
+            Container(
+              color: AppColors.textBlue,
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children:[
+                    optionsCard(
+                      AppColors.brightBlue,
+                      ImagePath.REDISCOVER_PARTICIPANT_ICON,
+                      AppLocalizations.of(context)!.participant,
+                      AppLocalizations.of(context)!.participantSubtitle.toUpperCase(),
+                      AppLocalizations.of(context)!.participantText,
+                      (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.JOB_SEARCH)),
+                        );
+                      }
+                    ),
+                    optionsCard(
+                      AppColors.yellowDark,
+                      ImagePath.REDISCOVER_SOCIAL_ENTITY_ICON,
+                      AppLocalizations.of(context)!.socialEntities,
+                      AppLocalizations.of(context)!.socialEntitiesSubtitle.toUpperCase(),
+                      AppLocalizations.of(context)!.socialEntitiesText,
+                      (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.SOCIAL_ENTITY)),
+                        );
+                      }
+                    ),
+                    optionsCard(
+                      AppColors.lightBlue,
+                      ImagePath.REDISCOVER_COMPANY_ICON,
+                      AppLocalizations.of(context)!.companies,
+                      AppLocalizations.of(context)!.companiesSubtitle.toUpperCase(),
+                      AppLocalizations.of(context)!.companiesText,
+                      (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.TALENT_SEARCH)),
+                        );
+                      }
+                    ),
+                  ]
+              ),
+            ),
+            SpaceH20(),
             Padding(
-              padding: const EdgeInsets.only(top:800, left: 100, right: 100),
+              padding: const EdgeInsets.only( left: 100, right: 100),
               child: Container(
                 width: widthOfScreen(context),
                 height: heightOfScreen(context)*0.8,
@@ -253,9 +291,9 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
     );
   }
 
-  Widget optionsCard(Color color, String icon, String title, String subtitle, String text){
+  Widget optionsCard(Color color, String icon, String title, String subtitle, String text, Function onTap){
     return Padding(
-      padding: const EdgeInsets.only(bottom: 50.0, top:200),
+      padding: const EdgeInsets.only(bottom: 50.0, top:30),
       child: Container(
         //height: 650,
         width: 300,
@@ -321,7 +359,10 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
                     buttonTitle: 'Ver más'.toUpperCase(),
                     buttonColor: AppColors.turquoise,
                     titleColor: AppColors.white,
-                    onPressed: () =>  openUrlLink(StringConst.ADMIN_WEB_URL),
+                    opensUrl: false,
+                    onPressed: () {
+                      onTap();
+                    },
                     borderRadius: BorderRadius.all(Radius.circular(33)),
                     width: 260,
                     height: 65,

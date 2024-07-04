@@ -88,5 +88,6 @@
   "resources": "Resources",
   "jobSearch": "Looking for a job",
   "entities": "Entities",
-  "talentSearch": "Looking for talent"
+  "talentSearch": "Looking for talent",
+  "joinNow": "Join now!"
 }

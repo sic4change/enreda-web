@@ -142,7 +142,7 @@ class _PresentationPanelState extends State<PresentationPanel> {
       children: [
         EnredaInfoSection6(
           title1: AppLocalizations.of(context)!.futureText,
-          buttonTitle: AppLocalizations.of(context)!.test,
+          buttonTitle: AppLocalizations.of(context)!.jobSearch,
         ),
       ],
     );
@@ -154,7 +154,7 @@ class _PresentationPanelState extends State<PresentationPanel> {
       height: height,
       child: EnredaInfoSection6(
         title1: AppLocalizations.of(context)!.techText,
-        buttonTitle: AppLocalizations.of(context)!.test,
+        buttonTitle: AppLocalizations.of(context)!.jobSearch,
       ),
     );
   }
