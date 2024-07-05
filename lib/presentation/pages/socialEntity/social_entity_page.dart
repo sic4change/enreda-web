@@ -491,8 +491,8 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                 ),
               ),
               Positioned(
-                child: _buildJoinCommunityPanel(context),
-                top: -400,
+                child: _buildContactFormCommunityPanel(context),
+                top: -500,
               ),
             ],
           ),
@@ -568,93 +568,182 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
     );
   }
 
-  Widget _buildJoinCommunityPanel(BuildContext context) {
+  Widget _buildContactFormCommunityPanel(BuildContext context) {
     return Container(
       color: AppColors.textBlue,
       //margin: EdgeInsets.symmetric(horizontal: 100),
       width: widthOfScreen(context)-200,
-      height: 550,
+      height: 650,
       child: Stack(
         clipBehavior: Clip.none,
         alignment: Alignment.centerLeft,
         children: [
-          Row(
+          Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: const EdgeInsets.all(50.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                padding: const EdgeInsets.only(top:40.0),
+                child: Container(
+                  //width: widthOfScreen(context)/5,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Formulario de contacto'.toUpperCase(),
+                        style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: GoogleFonts.outfit().fontFamily,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      SpaceH8(),
+                      Text(
+                        'Transforma el futuro de tus participantes. Explícanos brevemente  tu proyecto y nos pondremos en contacto contigo.',
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: GoogleFonts.lato().fontFamily,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top:40.0, right: 100, left: 100),
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      'Únete a nuestra\ncomunidad de cambio\ny sé parte de la \nrevolución'.toUpperCase(),
-                      style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.w700,
-                        fontFamily: GoogleFonts.outfit().fontFamily,
-                        color: Colors.white,
-                      ),
-                      textAlign: TextAlign.left,
-
+                    Column(
+                      children: [
+                        contactFormField('Nombre y apellidos'),
+                        contactFormField('Nombre de la entidad'),
+                        contactFormField('Correo electrónico'),
+                        contactFormField('Número de télefono'),
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50.0, bottom: 20),
-                      child: _buildEmailFieldYellow(context),
-                    ),
-                    Container(
-                      height: 60,
-                      width: 320,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          primary: AppColors.turquoiseDark,
-                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                          onPrimary: AppColors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(33),
-                          ),
-                          textStyle: TextStyle(
-                            fontFamily: GoogleFonts.outfit().fontFamily,
-                            fontSize: 15,
-                            letterSpacing: 1.8,
-                          ),
-                        ),
-                        onPressed: () => openUrlLink(StringConst.WEB_APP_URL),
-                        child: Padding(
-                          padding: EdgeInsets.all(22.0),
-                          child:
-                          Center(child: Text('Quiero inscribrime ahora'.toUpperCase())),
-                        ),
-                      ),
-                    ),
+                    SpaceW48(),
+                    contactFormFieldBig("¿En qué podemos ayudarte?"),
                   ],
                 ),
               ),
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(50.0),
-                    child: Text(
-                      'Descubre cómo transformamos el camino hacia\nel empleo, escuchando y colaborando con\nel ecosistema para crear oportunidades en red.',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: GoogleFonts.lato().fontFamily,
-                        color: Colors.white,
+              Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Container(
+                  height: 60,
+                  width: 200,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: AppColors.turquoiseDark,
+                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                      onPrimary: AppColors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(33),
                       ),
-                      textAlign: TextAlign.left,
+                      textStyle: TextStyle(
+                        fontFamily: GoogleFonts.outfit().fontFamily,
+                        fontSize: 15,
+                        letterSpacing: 1.8,
+                      ),
                     ),
-                  )
-                ],
-              )
+                    onPressed: () {
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.all(22.0),
+                      child:
+                      Center(child: Text('Enviar'.toUpperCase())),
+                    ),
+                  ),
+                ),
+              ),
+
+
             ],
           ),
-          Positioned(
-            right: 30,
-            bottom: -60,
-            child: Image.asset(ImagePath.JOIN_GIRL, height: 500),
-          ),
         ],
+      ),
+    );
+  }
+
+  Widget contactFormField(String title){
+    return Container(
+      width: widthOfScreen(context)/4,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+                fontFamily: GoogleFonts.lato().fontFamily,
+                fontSize: 12,
+              ),
+            ),
+            SpaceH2(),
+            Container(
+              height: 45,
+              child: TextFormField(
+                  decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: BorderSide.none,
+                    ),
+                  )
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget contactFormFieldBig(String title){
+    return Container(
+      width: widthOfScreen(context)/2.5 ,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+                fontFamily: GoogleFonts.lato().fontFamily,
+                fontSize: 12,
+              ),
+            ),
+            SpaceH2(),
+            SizedBox(
+              height: 286,
+              child: TextFormField(
+                maxLines: 30,
+                  decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: BorderSide.none,
+                    ),
+                  )
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -98,7 +98,7 @@ class _SponsorsPanelState extends State<SponsorsPanel> {
                     color: AppColors.textBlue,
                     fontFamily: GoogleFonts.outfit().fontFamily,
                     fontWeight: FontWeight.w100,
-                    fontSize: 46,
+                    fontSize: 40,
                   ),
                 ),
                 Row(

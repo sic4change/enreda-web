@@ -862,7 +862,7 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Únete a nuestra\ncomunidad de cambio\ny sé parte de la \nrevolución'.toUpperCase(),
+                      'Únete a Enreda y\nconstruye tu futuro\ncon nosotras/os'.toUpperCase(),
                       style: TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.w700,
@@ -989,7 +989,7 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
                     contactFormField('Ciudad'),
                     contactFormField('Correo electrónico'),
                     contactFormField('Número de télefono'),
-                    contactFormField('Pregunta'),
+                    contactFormField('¿Qué tipo de colaboración o información estás buscando?'),
                     SpaceH20(),
                     Container(
                       height: 60,

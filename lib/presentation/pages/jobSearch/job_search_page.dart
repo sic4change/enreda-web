@@ -564,7 +564,7 @@ class _JobSearchPageState extends State<JobSearchPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Únete a nuestra\ncomunidad de cambio\ny sé parte de la \nrevolución'.toUpperCase(),
+                      'Únete a Enreda y\nconstruye tu futuro\ncon nosotras/os'.toUpperCase(),
                       style: TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.w700,

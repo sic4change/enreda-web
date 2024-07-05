@@ -86,7 +86,7 @@ class StringConst {
   static const String INSTITUTIONS_1_DESC = "¿Quieres que tus programas y recursos lleguen más lejos?";
   static const String INSTITUTIONS_2_DESC =
       "EnREDa te acercará al colectivo joven haciendo que tus programas y recursos lleguen a más gente. Puedes darte de alta como entidad colaboradora de enREDa y subir tus vacantes de empleo, formación o voluntariado inmediatamente.";
-  static const String SOCIAL_ENTITY= "Entidad Social";
+  static const String SOCIAL_ENTITY= "Entidades";
   static const String COMPANY= "Empresa";
   static const String COMPANIES = "Empresas";
   static const String COMPANIES_1_DESC = "¿Qué buscas en tu plantilla?";

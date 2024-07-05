@@ -5,7 +5,7 @@ import '../../values/values.dart';
 class SelectedIndicator extends StatelessWidget {
   const SelectedIndicator({
     required this.width,
-    this.indicatorColor = AppColors.darkViolet,
+    this.indicatorColor = AppColors.buttonBlue,
     this.height = Sizes.SIZE_6,
     this.opacity = 0.85,
   });
@@ -20,9 +20,12 @@ class SelectedIndicator extends StatelessWidget {
     return Opacity(
       opacity: opacity,
       child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(3),
+            color: indicatorColor
+        ),
         width: width,
         height: height,
-        color: indicatorColor,
       ),
     );
   }

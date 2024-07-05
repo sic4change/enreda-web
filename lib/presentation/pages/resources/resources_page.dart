@@ -204,6 +204,7 @@ class _ResourcesPageState extends State<ResourcesPage> {
                         Text(StringConst.PILLS_TITLE,
                           style: textTheme.headlineSmall?.copyWith(
                             color: Colors.white,
+                            fontFamily: GoogleFonts.outfit().fontFamily,
                             letterSpacing: 1,
                             fontSize: Responsive.isMobile(context) ? 15 : Responsive.isDesktopS(context) ? 25 : 34,
                             fontWeight: FontWeight.w900,
@@ -212,6 +213,7 @@ class _ResourcesPageState extends State<ResourcesPage> {
                         SpaceH8(),
                         Text(StringConst.PILLS_SUBTITLE, style: textTheme.bodySmall?.copyWith(
                           color: Colors.white,
+                          fontFamily: GoogleFonts.outfit().fontFamily,
                           letterSpacing: 1,
                           fontSize: Responsive.isMobile(context) ? 12 : Responsive.isDesktopS(context) ? 15 : 18,
                         ),),
@@ -549,6 +551,7 @@ class _ResourcesPageState extends State<ResourcesPage> {
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                         style: textTheme.headlineSmall?.copyWith(
+                          fontFamily: GoogleFonts.outfit().fontFamily,
                           color: Colors.white,
                           letterSpacing: 1,
                           fontSize: Responsive.isMobile(context) ? 15 : Responsive.isDesktopS(context) ? 25 : 34,
@@ -975,7 +978,7 @@ class _ResourcesPageState extends State<ResourcesPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Únete a nuestra\ncomunidad de cambio\ny sé parte de la \nrevolución'.toUpperCase(),
+                      'Únete a Enreda y\nconstruye tu futuro\ncon nosotras/os'.toUpperCase(),
                       style: TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.w700,

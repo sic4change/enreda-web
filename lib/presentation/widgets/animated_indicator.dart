@@ -5,7 +5,7 @@ import '../../values/values.dart';
 class AnimatedHoverIndicator extends StatelessWidget {
   const AnimatedHoverIndicator({
     required this.width,
-    this.indicatorColor = AppColors.darkViolet,
+    this.indicatorColor = AppColors.buttonBlue,
     this.height = Sizes.SIZE_6,
     this.curve = Curves.linearToEaseOut,
     this.isHover = false,
@@ -22,9 +22,12 @@ class AnimatedHoverIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(3),
+        color: indicatorColor
+      ),
       width: isHover ? width : 0,
       height: height,
-      color: indicatorColor,
       duration: duration,
       curve: curve,
     );

@@ -5,6 +5,7 @@ import 'package:enreda_app/presentation/pages/resources/resources_page.dart';
 import 'package:enreda_app/presentation/routes/router.gr.dart';
 import 'package:enreda_app/presentation/widgets/dialogs/show_login_menu.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -201,16 +202,24 @@ class _NavSectionWebState extends State<NavSectionWeb> {
     List<Widget> items = [];
     for (int index = 0; index < navItems.length; index++) {
       items.add(
-        NavItem(
-          title: navItems[index].name,
-          isSelected: navItems[index].isSelected,
-          onTap: () => _onTapNavItem(
-            context: navItems[index].key,
-            navItemName: navItems[index].name,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30.0),
+          child: NavItem(
+            title: navItems[index].name,
+            isSelected: navItems[index].isSelected,
+            onTap: () => _onTapNavItem(
+              context: navItems[index].key,
+              navItemName: navItems[index].name,
+            ),
+            titleStyle: TextStyle(
+              fontFamily: GoogleFonts.outfit().fontFamily,
+              fontWeight: FontWeight.w700,
+              fontSize: 16
+            ),
           ),
         ),
       );
-      items.add(Spacer());
+
     }
     return items;
   }
