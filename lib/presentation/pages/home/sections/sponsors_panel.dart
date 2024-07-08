@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:enreda_app/presentation/widgets/buttons/enreda_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -51,165 +52,180 @@ class _SponsorsPanelState extends State<SponsorsPanel> {
       ),
         child:
         Responsive.isMobile(context) ?
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              //margin: const EdgeInsets.all(30.0),
-              child: ContentArea(
-                width: contentAreaWidthSm,
-                child: _buildAboutMe(
-                  width: contentAreaWidthSm,
-                  height: contentAreaHeightSm,
-                ),
-              ),
-            ),
-
-            ContentArea(
-              width: widthOfScreen(context),
-              child: Container(),
-            ),
-          ],
-        ) :
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 100.0, vertical: 90),
-          child: Container(
-            width: widthOfScreen(context),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: Text(
-                    AppLocalizations.of(context)!.byHand,
-                    style: TextStyle(
-                      color: AppColors.textBlue,
-                      fontFamily: GoogleFonts.outfit().fontFamily,
-                      fontWeight: FontWeight.w800,
-                      fontSize: 46,
-                    ),
-                  ),
-                ),
-                SpaceH20(),
-                Text(
-                  AppLocalizations.of(context)!.enredadas,
-                  style: TextStyle(
-                    color: AppColors.textBlue,
-                    fontFamily: GoogleFonts.outfit().fontFamily,
-                    fontWeight: FontWeight.w100,
-                    fontSize: 40,
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.ENREDADA_1)),
-                    Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.ENREDADA_2)),
-                    Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.ENREDADA_3)),
-                    Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.ENREDADA_4)),
-                    Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.ENREDADA_5)),
-                    Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.ENREDADA_6)),
-                  ],
-                ),
-                SpaceH20(),
-                Text(
-                  AppLocalizations.of(context)!.funders,
-                  style: TextStyle(
-                    color: AppColors.textBlue,
-                    fontFamily: GoogleFonts.outfit().fontFamily,
-                    fontWeight: FontWeight.w100,
-                    fontSize: 40,
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.FINANCIER_1)),
-                    Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.FINANCIER_2)),
-                    Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.FINANCIER_3)),
-                    Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.FINANCIER_4)),
-                    Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.FINANCIER_5)),
-                    Container(
-                        width: widthOfScreen(context)/8,
-                        child: Image.asset(ImagePath.FINANCIER_6)),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
+        _buildMobilePage(context) :
+        _buildWebPage(context),
 
       );
   }
 
-  Widget _buildAboutMe({
-    required double width,
-    required double height,
-  }) {
-    return ResponsiveBuilder(
-      refinedBreakpoints: RefinedBreakpoints(),
-      builder: (context, sizingInformation) {
-        double screenWidth = sizingInformation.screenSize.width;
-        if (screenWidth < (RefinedBreakpoints().tabletNormal)) {
-          return enredaInfoSectionSm(width: width, height: height);
-        } else {
-          //This container takes 85% of the space and leave 15% as spacing
-          //between the blob and the content
-          return Container(
-            width: width * 0.75,
-            height: height,
-            child: enredaInfoSectionLg(),
-          );
-        }
-      },
-    );
-  }
-
-
-  Widget enredaInfoSectionLg() {
-    TextTheme textTheme = Theme.of(context).textTheme;
-
-    return Column(
-      children: [
-        EnredaInfoSection6(
-          title1: 'Tu futuro está lleno de oportunidades. ¡Atrévete a avanzar y alcanzar tus metas!',
-          buttonTitle: 'Prueba de boton',
+  Widget _buildWebPage(BuildContext context){
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 100.0, vertical: 90),
+      child: Container(
+        width: widthOfScreen(context),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Text(
+                AppLocalizations.of(context)!.byHand,
+                style: TextStyle(
+                  color: AppColors.textBlue,
+                  fontFamily: GoogleFonts.outfit().fontFamily,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 46,
+                ),
+              ),
+            ),
+            SpaceH20(),
+            Text(
+              AppLocalizations.of(context)!.enredadas,
+              style: TextStyle(
+                color: AppColors.textBlue,
+                fontFamily: GoogleFonts.outfit().fontFamily,
+                fontWeight: FontWeight.w100,
+                fontSize: 40,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                    width: widthOfScreen(context)/8,
+                    child: Image.asset(ImagePath.ENREDADA_1)),
+                Container(
+                    width: widthOfScreen(context)/8,
+                    child: Image.asset(ImagePath.ENREDADA_2)),
+                Container(
+                    width: widthOfScreen(context)/8,
+                    child: Image.asset(ImagePath.ENREDADA_3)),
+                Container(
+                    width: widthOfScreen(context)/8,
+                    child: Image.asset(ImagePath.ENREDADA_4)),
+                Container(
+                    width: widthOfScreen(context)/8,
+                    child: Image.asset(ImagePath.ENREDADA_5)),
+                Container(
+                    width: widthOfScreen(context)/8,
+                    child: Image.asset(ImagePath.ENREDADA_6)),
+              ],
+            ),
+            SpaceH20(),
+            Text(
+              AppLocalizations.of(context)!.funders,
+              style: TextStyle(
+                color: AppColors.textBlue,
+                fontFamily: GoogleFonts.outfit().fontFamily,
+                fontWeight: FontWeight.w100,
+                fontSize: 40,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                    width: widthOfScreen(context)/8,
+                    child: Image.asset(ImagePath.FINANCIER_1)),
+                Container(
+                    width: widthOfScreen(context)/8,
+                    child: Image.asset(ImagePath.FINANCIER_2)),
+                Container(
+                    width: widthOfScreen(context)/8,
+                    child: Image.asset(ImagePath.FINANCIER_3)),
+                Container(
+                    width: widthOfScreen(context)/8,
+                    child: Image.asset(ImagePath.FINANCIER_4)),
+                Container(
+                    width: widthOfScreen(context)/8,
+                    child: Image.asset(ImagePath.FINANCIER_5)),
+                Container(
+                    width: widthOfScreen(context)/8,
+                    child: Image.asset(ImagePath.FINANCIER_6)),
+              ],
+            ),
+          ],
         ),
-      ],
-    );
-  }
-
-  Widget enredaInfoSectionSm({required double width, required double height}) {
-    TextTheme textTheme = Theme.of(context).textTheme;
-    return Container(
-      height: height,
-      child: EnredaInfoSection6(
-        title1: 'Tu futuro está lleno de oportunidades. ¡Atrévete a avanzar y alcanzar tus metas!',
-        buttonTitle: 'Prueba de boton',
       ),
     );
   }
+
+  Widget _buildMobilePage(BuildContext context){
+    double fontSizeTitle = responsiveSize(context, 30, 46);
+    double fontSizeBody = responsiveSize(context, 26, 40);
+    List<String> enredadasImages = [ImagePath.ENREDADA_1, ImagePath.ENREDADA_2, ImagePath.ENREDADA_3, ImagePath.ENREDADA_4, ImagePath.ENREDADA_5, ImagePath.ENREDADA_6];
+    List<String> financiersImages = [ImagePath.FINANCIER_1, ImagePath.FINANCIER_2, ImagePath.FINANCIER_3, ImagePath.FINANCIER_4, ImagePath.FINANCIER_5, ImagePath.FINANCIER_6];
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20),
+      child: Container(
+        width: widthOfScreen(context),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Text(
+                AppLocalizations.of(context)!.byHand,
+                style: TextStyle(
+                  color: AppColors.textBlue,
+                  fontFamily: GoogleFonts.outfit().fontFamily,
+                  fontWeight: FontWeight.w800,
+                  fontSize: fontSizeTitle,
+                ),
+              ),
+            ),
+            SpaceH20(),
+            Text(
+              AppLocalizations.of(context)!.enredadas,
+              style: TextStyle(
+                color: AppColors.textBlue,
+                fontFamily: GoogleFonts.outfit().fontFamily,
+                fontWeight: FontWeight.w100,
+                fontSize: fontSizeBody,
+              ),
+            ),
+            CarouselSlider.builder(
+              itemCount: enredadasImages.length,
+              itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) =>
+              Container(
+                child: Container(
+                  height: 150,
+                  child: Image.asset(enredadasImages[itemIndex]),
+                )
+              ),
+              options: CarouselOptions(
+                height: 180,
+                autoPlay: true,
+              ),
+            ),
+            SpaceH20(),
+            Text(
+              AppLocalizations.of(context)!.funders,
+              style: TextStyle(
+                color: AppColors.textBlue,
+                fontFamily: GoogleFonts.outfit().fontFamily,
+                fontWeight: FontWeight.w100,
+                fontSize: fontSizeBody,
+              ),
+            ),
+            CarouselSlider.builder(
+              itemCount: financiersImages.length,
+              itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) =>
+                  Container(
+                      child: Container(
+                        height: 150,
+                        child: Image.asset(financiersImages[itemIndex]),
+                      )
+                  ),
+              options: CarouselOptions(
+                height: 180,
+                autoPlay: true,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
 }

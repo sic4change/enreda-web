@@ -6,6 +6,7 @@ import 'package:enreda_app/presentation/widgets/spaces.dart';
 import 'package:enreda_app/utils/const.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../utils/functions.dart';
 import '../../utils/responsive.dart';
@@ -63,7 +64,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     InkWell(
                       onTap: () {},
                       child: Image.asset(
-                        ImagePath.LOGO_LIGHT,
+                        ImagePath.LOGO_ENREDA_LONG,
                         height: Sizes.HEIGHT_60,
                       ),
                     ),
@@ -97,7 +98,7 @@ class _AppDrawerState extends State<AppDrawer> {
                   );
                 },
                 child: Container(
-                  color: AppColors.bluePurple,
+                  color: AppColors.textBlue,
                   padding: EdgeInsets.symmetric(
                     horizontal: Responsive.isMobile(context) ? Sizes.PADDING_28 :Sizes.PADDING_32,
                     vertical: Responsive.isMobile(context) ? Sizes.PADDING_16 :Sizes.PADDING_32,
@@ -150,7 +151,7 @@ class _AppDrawerState extends State<AppDrawer> {
           isSelected: menuList[i].isSelected,
           titleStyle: textTheme.bodyText1?.copyWith(
             color:
-                menuList[i].isSelected ? AppColors.darkViolet : AppColors.greyDark,
+                menuList[i].isSelected ? AppColors.buttonBlue : AppColors.greyDark,
             fontSize: Sizes.TEXT_SIZE_15,
             fontWeight:
                 menuList[i].isSelected ? FontWeight.bold : FontWeight.bold,
@@ -175,21 +176,8 @@ class _AppDrawerState extends State<AppDrawer> {
         widget.menuList[index].isSelected = false;
       }
     }
-
-    if (navItemName == StringConst.RESOURCES && !widget.isShowingResources) {
-      widget.switchIsShowingResources();
-      _closeDrawer();
-    } else if (navItemName != StringConst.RESOURCES &&
-        widget.isShowingResources) {
-      widget.switchIsShowingResources();
-      _closeDrawer();
-      Future.delayed(Duration(milliseconds: 500))
-          .whenComplete(() => scrollToSection(context.currentContext!));
-    } else {
-      if (navItemName != StringConst.RESOURCES)
-        scrollToSection(context.currentContext!);
-      _closeDrawer();
-    }
+    widget.switchIsShowingResources();
+    _closeDrawer();
   }
 
   _closeDrawer() {
@@ -199,6 +187,7 @@ class _AppDrawerState extends State<AppDrawer> {
   Widget _buildFooterText() {
     TextTheme textTheme = Theme.of(context).textTheme;
     TextStyle? footerTextStyle = textTheme.caption?.copyWith(
+      fontFamily: GoogleFonts.lato().fontFamily,
       color: AppColors.primaryText2,
       fontWeight: FontWeight.bold,
     );

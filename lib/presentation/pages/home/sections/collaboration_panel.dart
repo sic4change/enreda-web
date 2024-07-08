@@ -51,76 +51,112 @@ class _CollaborationPanelState extends State<CollaborationPanel> {
       ),
         child:
         Responsive.isMobile(context) ?
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        _buildMobilePage(context) :
+        _buildWebPage(context),
+
+      );
+  }
+
+  Widget _buildWebPage(BuildContext context){
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 200.0, vertical: 90),
+      child: Container(
+        width: widthOfScreen(context),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              //margin: const EdgeInsets.all(30.0),
-              child: ContentArea(
-                width: contentAreaWidthSm,
-                child: _buildAboutMe(
-                  width: contentAreaWidthSm,
-                  height: contentAreaHeightSm,
-                ),
+            Text(
+              'Realizado con la colaboración de:',
+              style: TextStyle(
+                color: AppColors.textBlue,
+                fontFamily: GoogleFonts.outfit().fontFamily,
+                fontWeight: FontWeight.w800,
+                fontSize: 46,
               ),
             ),
-
-            ContentArea(
-              width: widthOfScreen(context),
-              child: Container(),
-            ),
-          ],
-        ) :
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 200.0, vertical: 90),
-          child: Container(
-            width: widthOfScreen(context),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            SpaceH12(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Realizado con la colaboración de:',
-                  style: TextStyle(
-                    color: AppColors.textBlue,
-                    fontFamily: GoogleFonts.outfit().fontFamily,
-                    fontWeight: FontWeight.w800,
-                    fontSize: 46,
+                Container(
+                  width: widthOfScreen(context)/6,
+                  child: Text(
+                    'Un programa innovador enfocado en la cohesión social para el desarrollo del territorio a través del empleo joven',
+                    style: TextStyle(
+                      color: AppColors.textBlue,
+                      fontFamily: GoogleFonts.lato().fontFamily,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 30,
+                    ),
                   ),
                 ),
-                SpaceH12(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: widthOfScreen(context)/6,
-                      child: Text(
-                        'Un programa innovador enfocado en la cohesión social para el desarrollo del territorio a través del empleo joven',
-                        style: TextStyle(
-                          color: AppColors.textBlue,
-                          fontFamily: GoogleFonts.lato().fontFamily,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 30,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: widthOfScreen(context)/6,
-                      child: Image.asset(ImagePath.LOGO_SIC_4_CHANGE),
-                    ),
-                    Container(
-                      width: widthOfScreen(context)/6,
-                      child: Image.asset(ImagePath.LOGO_PROYECTO_KIEU),
-                    ),
-                  ],
+                Container(
+                  width: widthOfScreen(context)/6,
+                  child: Image.asset(ImagePath.LOGO_SIC_4_CHANGE),
+                ),
+                Container(
+                  width: widthOfScreen(context)/6,
+                  child: Image.asset(ImagePath.LOGO_PROYECTO_KIEU),
                 ),
               ],
             ),
-          ),
+          ],
         ),
+      ),
+    );
+  }
 
-      );
+  Widget _buildMobilePage(BuildContext context){
+    double fontSizeTitle = responsiveSize(context, 30, 46);
+    double fontSizeBody = responsiveSize(context, 20, 30);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20),
+      child: Container(
+        width: widthOfScreen(context),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Realizado con la colaboración de:',
+              style: TextStyle(
+                color: AppColors.textBlue,
+                fontFamily: GoogleFonts.outfit().fontFamily,
+                fontWeight: FontWeight.w800,
+                fontSize: fontSizeTitle,
+              ),
+            ),
+            SpaceH12(),
+            Container(
+              child: Text(
+                'Un programa innovador enfocado en la cohesión social para el desarrollo del territorio a través del empleo joven',
+                style: TextStyle(
+                  color: AppColors.textBlue,
+                  fontFamily: GoogleFonts.lato().fontFamily,
+                  fontWeight: FontWeight.w400,
+                  fontSize: fontSizeBody,
+                ),
+              ),
+            ),
+            SpaceH20(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  width: widthOfScreen(context)/3,
+                  child: Image.asset(ImagePath.LOGO_SIC_4_CHANGE),
+                ),
+                Container(
+                  width: widthOfScreen(context)/3,
+                  child: Image.asset(ImagePath.LOGO_PROYECTO_KIEU),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   Widget _buildAboutMe({

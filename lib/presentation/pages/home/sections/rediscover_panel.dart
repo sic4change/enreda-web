@@ -52,243 +52,362 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
       ),
         child:
         Responsive.isMobile(context) ?
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              //margin: const EdgeInsets.all(30.0),
-              child: ContentArea(
-                width: contentAreaWidthSm,
-                child: _buildAboutMe(
-                  width: contentAreaWidthSm,
-                  height: contentAreaHeightSm,
-                ),
-              ),
-            ),
-
-            ContentArea(
-              width: widthOfScreen(context),
-              child: _buildImage(
-                width: widthOfScreen(context),
-                //height: contentAreaHeightSm * 0.6,
-              ),
-            ),
-          ],
-        ) :
-        Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 100.0, vertical: 70),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: widthOfScreen(context)/2.5,
-                    child: Text(
-                        AppLocalizations.of(context)!.techText,
-                      style: TextStyle(
-                        fontFamily: GoogleFonts.outfit().fontFamily,
-                        fontSize: 46,
-                        color: AppColors.textBlue,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: widthOfScreen(context)/2.5,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          AppLocalizations.of(context)!.techParagraph1,
-                          style: TextStyle(
-                            fontFamily: GoogleFonts.lato().fontFamily,
-                            fontSize: 16,
-                            color: AppColors.greyTxtAlt,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        SpaceH20(),
-                        Text(
-                          AppLocalizations.of(context)!.techParagraph2,
-                          style: TextStyle(
-                            fontFamily: GoogleFonts.lato().fontFamily,
-                            fontSize: 16,
-                            color: AppColors.greyTxtAlt,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        SpaceH20(),
-                        Text(
-                          AppLocalizations.of(context)!.techParagraph3,
-                          style: TextStyle(
-                            fontFamily: GoogleFonts.lato().fontFamily,
-                            fontSize: 16,
-                            color: AppColors.greyTxtAlt,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        SpaceH20(),
-                        Text(
-                          AppLocalizations.of(context)!.techParagraph4,
-                          style: TextStyle(
-                            fontFamily: GoogleFonts.lato().fontFamily,
-                            fontSize: 16,
-                            color: AppColors.greyTxtAlt,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Stack(
-              clipBehavior: Clip.none,
-              alignment: Alignment.center,
-              children: [
-                Container(
-                  color: Colors.transparent,
-                ),
-                Positioned(
-                  child: Container(
-                    color: AppColors.textBlue,
-                    width: widthOfScreen(context),
-                    //height: heightOfScreen(context)+100,
-                    child: Padding(
-                      padding: EdgeInsets.only(top: widthOfScreen(context)/6),
-                      child: Container(
-                        color: AppColors.textBlue,
-                        height: 150,
-                      )
-                    ),
-                  ),
-                  bottom: -200,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 100.0),
-                  child: Image.asset(
-                    ImagePath.REDISCOVER_IMAGE,
-                  ),
-                ),
-                Positioned(
-                  child: Image.asset(ImagePath.REDISCOVER_TEXT),
-                  width: widthOfScreen(context)/1.1,
-                  bottom: -widthOfScreen(context)/15,
-                ),
-              ],
-            ),
-            Container(
-              color: Colors.transparent,
-              height: 140,
-            ),
-            Container(
-              color: AppColors.textBlue,
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children:[
-                    optionsCard(
-                      AppColors.brightBlue,
-                      ImagePath.REDISCOVER_PARTICIPANT_ICON,
-                      AppLocalizations.of(context)!.participant,
-                      AppLocalizations.of(context)!.participantSubtitle.toUpperCase(),
-                      AppLocalizations.of(context)!.participantText,
-                      (){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.JOB_SEARCH)),
-                        );
-                      }
-                    ),
-                    optionsCard(
-                      AppColors.yellowDark,
-                      ImagePath.REDISCOVER_SOCIAL_ENTITY_ICON,
-                      AppLocalizations.of(context)!.socialEntities,
-                      AppLocalizations.of(context)!.socialEntitiesSubtitle.toUpperCase(),
-                      AppLocalizations.of(context)!.socialEntitiesText,
-                      (){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.SOCIAL_ENTITY)),
-                        );
-                      }
-                    ),
-                    optionsCard(
-                      AppColors.lightBlue,
-                      ImagePath.REDISCOVER_COMPANY_ICON,
-                      AppLocalizations.of(context)!.companies,
-                      AppLocalizations.of(context)!.companiesSubtitle.toUpperCase(),
-                      AppLocalizations.of(context)!.companiesText,
-                      (){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.TALENT_SEARCH)),
-                        );
-                      }
-                    ),
-                  ]
-              ),
-            ),
-            SpaceH20(),
-            Padding(
-              padding: const EdgeInsets.only( left: 100, right: 100),
-              child: Container(
-                width: widthOfScreen(context),
-                height: heightOfScreen(context)*0.8,
-                child: Container(
-                  height: 430,
-                  child: Image.asset(ImagePath.REIMAGINE_TITLE_IMAGE)),
-              ),
-            ),
-          ],
-        ),
+        _buildMobilePage(context) :
+        _buildWebPage(context),
 
       );
   }
 
 
-  Widget _buildImage({width, height}) {
-
-    return Stack(
+  Widget _buildWebPage(BuildContext context){
+    return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(0.0),
-          child: Image.asset(
-            ImagePath.REDISCOVER_IMAGE,
-            width: width,
-            height: height,
+          padding: const EdgeInsets.symmetric(horizontal: 100.0, vertical: 70),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: widthOfScreen(context)/2.5,
+                child: Text(
+                  AppLocalizations.of(context)!.techText,
+                  style: TextStyle(
+                    fontFamily: GoogleFonts.outfit().fontFamily,
+                    fontSize: 46,
+                    color: AppColors.textBlue,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+              Container(
+                width: widthOfScreen(context)/2.5,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      AppLocalizations.of(context)!.techParagraph1,
+                      style: TextStyle(
+                        fontFamily: GoogleFonts.lato().fontFamily,
+                        fontSize: 16,
+                        color: AppColors.greyTxtAlt,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    SpaceH20(),
+                    Text(
+                      AppLocalizations.of(context)!.techParagraph2,
+                      style: TextStyle(
+                        fontFamily: GoogleFonts.lato().fontFamily,
+                        fontSize: 16,
+                        color: AppColors.greyTxtAlt,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    SpaceH20(),
+                    Text(
+                      AppLocalizations.of(context)!.techParagraph3,
+                      style: TextStyle(
+                        fontFamily: GoogleFonts.lato().fontFamily,
+                        fontSize: 16,
+                        color: AppColors.greyTxtAlt,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    SpaceH20(),
+                    Text(
+                      AppLocalizations.of(context)!.techParagraph4,
+                      style: TextStyle(
+                        fontFamily: GoogleFonts.lato().fontFamily,
+                        fontSize: 16,
+                        color: AppColors.greyTxtAlt,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        Stack(
+          clipBehavior: Clip.none,
+          alignment: Alignment.center,
+          children: [
+            Container(
+              color: Colors.transparent,
+            ),
+            Positioned(
+              child: Container(
+                color: AppColors.textBlue,
+                width: widthOfScreen(context),
+                //height: heightOfScreen(context)+100,
+                child: Padding(
+                    padding: EdgeInsets.only(top: widthOfScreen(context)/6),
+                    child: Container(
+                      color: AppColors.textBlue,
+                      height: 150,
+                    )
+                ),
+              ),
+              bottom: -200,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 100.0),
+              child: Image.asset(
+                ImagePath.REDISCOVER_IMAGE,
+              ),
+            ),
+            Positioned(
+              child: Image.asset(ImagePath.REDISCOVER_TEXT),
+              width: widthOfScreen(context)/1.1,
+              bottom: -widthOfScreen(context)/15,
+            ),
+          ],
+        ),
+        Container(
+          color: Colors.transparent,
+          height: 140,
+        ),
+        Container(
+          color: AppColors.textBlue,
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children:[
+                optionsCard(
+                    AppColors.brightBlue,
+                    ImagePath.REDISCOVER_PARTICIPANT_ICON,
+                    AppLocalizations.of(context)!.participant,
+                    AppLocalizations.of(context)!.participantSubtitle.toUpperCase(),
+                    AppLocalizations.of(context)!.participantText,
+                        (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.JOB_SEARCH)),
+                      );
+                    }
+                ),
+                optionsCard(
+                    AppColors.yellowDark,
+                    ImagePath.REDISCOVER_SOCIAL_ENTITY_ICON,
+                    AppLocalizations.of(context)!.socialEntities,
+                    AppLocalizations.of(context)!.socialEntitiesSubtitle.toUpperCase(),
+                    AppLocalizations.of(context)!.socialEntitiesText,
+                        (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.SOCIAL_ENTITY)),
+                      );
+                    }
+                ),
+                optionsCard(
+                    AppColors.lightBlue,
+                    ImagePath.REDISCOVER_COMPANY_ICON,
+                    AppLocalizations.of(context)!.companies,
+                    AppLocalizations.of(context)!.companiesSubtitle.toUpperCase(),
+                    AppLocalizations.of(context)!.companiesText,
+                        (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.TALENT_SEARCH)),
+                      );
+                    }
+                ),
+              ]
+          ),
+        ),
+        SpaceH20(),
+        Padding(
+          padding: const EdgeInsets.only( left: 100, right: 100),
+          child: Container(
+            width: widthOfScreen(context),
+            height: heightOfScreen(context)*0.8,
+            child: Container(
+                height: 430,
+                child: Image.asset(ImagePath.REIMAGINE_TITLE_IMAGE)),
           ),
         ),
       ],
     );
   }
 
-  Widget _buildAboutMe({
-    required double width,
-    required double height,
-  }) {
-    return ResponsiveBuilder(
-      refinedBreakpoints: RefinedBreakpoints(),
-      builder: (context, sizingInformation) {
-        double screenWidth = sizingInformation.screenSize.width;
-        if (screenWidth < (RefinedBreakpoints().tabletNormal)) {
-          return enredaInfoSectionSm(width: width, height: height);
-        } else {
-          //This container takes 85% of the space and leave 15% as spacing
-          //between the blob and the content
-          return Container(
-            width: width * 0.75,
-            height: height,
-            child: enredaInfoSectionLg(),
-          );
-        }
-      },
-    );
+  Widget _buildMobilePage(BuildContext context){
+    double fontSizeTitle = responsiveSize(context, 30, 46);
+    double fontSizeBody = responsiveSize(context, 13, 16);
+    return Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 70),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  //width: widthOfScreen(context)/2.5,
+                  child: Text(
+                    AppLocalizations.of(context)!.techText,
+                    style: TextStyle(
+                      fontFamily: GoogleFonts.outfit().fontFamily,
+                      fontSize: fontSizeTitle,
+                      color: AppColors.textBlue,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                ),
+                Container(
+                  //width: widthOfScreen(context)/2.5,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        AppLocalizations.of(context)!.techParagraph1,
+                        style: TextStyle(
+                          fontFamily: GoogleFonts.lato().fontFamily,
+                          fontSize: fontSizeBody,
+                          color: AppColors.greyTxtAlt,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      SpaceH20(),
+                      Text(
+                        AppLocalizations.of(context)!.techParagraph2,
+                        style: TextStyle(
+                          fontFamily: GoogleFonts.lato().fontFamily,
+                          fontSize: fontSizeBody,
+                          color: AppColors.greyTxtAlt,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      SpaceH20(),
+                      Text(
+                        AppLocalizations.of(context)!.techParagraph3,
+                        style: TextStyle(
+                          fontFamily: GoogleFonts.lato().fontFamily,
+                          fontSize: fontSizeBody,
+                          color: AppColors.greyTxtAlt,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      SpaceH20(),
+                      Text(
+                        AppLocalizations.of(context)!.techParagraph4,
+                        style: TextStyle(
+                          fontFamily: GoogleFonts.lato().fontFamily,
+                          fontSize: fontSizeBody,
+                          color: AppColors.greyTxtAlt,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Stack(
+            clipBehavior: Clip.none,
+            alignment: Alignment.center,
+            children: [
+              Container(
+                color: Colors.transparent,
+              ),
+              Positioned(
+                child: Container(
+                  color: AppColors.textBlue,
+                  width: widthOfScreen(context),
+                  //height: heightOfScreen(context)+100,
+                  child: Padding(
+                      padding: EdgeInsets.only(top: widthOfScreen(context)/6),
+                      child: Container(
+                        color: AppColors.textBlue,
+                        height: 150,
+                      )
+                  ),
+                ),
+                bottom: -200,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                child: Image.asset(
+                  ImagePath.REDISCOVER_IMAGE,
+                ),
+              ),
+              Positioned(
+                child: Image.asset(ImagePath.REDISCOVER_TEXT),
+                width: widthOfScreen(context)/1.1,
+                bottom: -widthOfScreen(context)/15,
+              ),
+            ],
+          ),
+          Container(
+            color: Colors.transparent,
+            height: 50,
+          ),
+          Container(
+            color: AppColors.textBlue,
+            width: widthOfScreen(context),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children:[
+                  optionsCard(
+                      AppColors.brightBlue,
+                      ImagePath.REDISCOVER_PARTICIPANT_ICON,
+                      AppLocalizations.of(context)!.participant,
+                      AppLocalizations.of(context)!.participantSubtitle.toUpperCase(),
+                      AppLocalizations.of(context)!.participantText,
+                          (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.JOB_SEARCH)),
+                        );
+                      }
+                  ),
+                  optionsCard(
+                      AppColors.yellowDark,
+                      ImagePath.REDISCOVER_SOCIAL_ENTITY_ICON,
+                      AppLocalizations.of(context)!.socialEntities,
+                      AppLocalizations.of(context)!.socialEntitiesSubtitle.toUpperCase(),
+                      AppLocalizations.of(context)!.socialEntitiesText,
+                          (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.SOCIAL_ENTITY)),
+                        );
+                      }
+                  ),
+                  optionsCard(
+                      AppColors.lightBlue,
+                      ImagePath.REDISCOVER_COMPANY_ICON,
+                      AppLocalizations.of(context)!.companies,
+                      AppLocalizations.of(context)!.companiesSubtitle.toUpperCase(),
+                      AppLocalizations.of(context)!.companiesText,
+                          (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.TALENT_SEARCH)),
+                        );
+                      }
+                  ),
+                ]
+            ),
+          ),
+          //SpaceH20(),
+          Padding(
+            padding: const EdgeInsets.only(left: 30, right: 30, top: 50, bottom: 50),
+            child: Container(
+              width: widthOfScreen(context),
+              //height: heightOfScreen(context)*0.8,
+              child: Container(
+                  //height: 430,
+                  child: Image.asset(ImagePath.REIMAGINE_TITLE_IMAGE)),
+            ),
+          ),
+        ],
+      );
   }
 
   Widget optionsCard(Color color, String icon, String title, String subtitle, String text, Function onTap){
@@ -376,27 +495,4 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
     );
   }
 
-  Widget enredaInfoSectionLg() {
-    TextTheme textTheme = Theme.of(context).textTheme;
-
-    return Column(
-      children: [
-        EnredaInfoSection6(
-          title1: 'Tu futuro está lleno de oportunidades. ¡Atrévete a avanzar y alcanzar tus metas!',
-          buttonTitle: 'Prueba de boton',
-        ),
-      ],
-    );
-  }
-
-  Widget enredaInfoSectionSm({required double width, required double height}) {
-    TextTheme textTheme = Theme.of(context).textTheme;
-    return Container(
-      height: height,
-      child: EnredaInfoSection6(
-        title1: 'Tu futuro está lleno de oportunidades. ¡Atrévete a avanzar y alcanzar tus metas!',
-        buttonTitle: 'Prueba de boton',
-      ),
-    );
-  }
 }

@@ -48,7 +48,7 @@ class _AccessPageWebState extends State<AccessPageWeb> {
                                   InkWell(
                                     onTap: () => router.navigate(HomeRoute()),
                                     child: Image.asset(
-                                      ImagePath.LOGO_LIGHT,
+                                      ImagePath.LOGO_ENREDA_LONG,
                                       height: Sizes.HEIGHT_52,
                                     ),
                                   ),

@@ -43,7 +43,7 @@ class _PresentationPanelState extends State<PresentationPanel> {
     double screenWidth = widthOfScreen(context) - getSidePadding(context);
     double screenHeight = heightOfScreen(context);
     double contentAreaWidthSm = screenWidth * 1.0;
-    double contentAreaHeightSm = screenHeight * 0.7;
+    double contentAreaHeightSm = screenHeight * 0.5;
     double contentAreaWidthLg = screenWidth * 0.5;
     return Container(
       //height: Responsive.isMobile(context) ? screenHeight : contentAreaHeightSm,

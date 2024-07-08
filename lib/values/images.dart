@@ -13,6 +13,7 @@ class ImagePath {
   static const String LOGO_ENREDA_NEW = '$imageDir/enreda-logo-new.png';
   static const String LOGO_SIC_4_CHANGE = '$imageDir/logo-sic-4-change.png';
   static const String LOGO_PROYECTO_KIEU = '$imageDir/logo-proyecto-kieu.png';
+  static const String LOGO_ENREDA_LONG = '$imageDir/logo-enreda-long.png';
 
   // Stores
   static const String PLAY_STORE = "$imageDir/play_store_900x503.png";
