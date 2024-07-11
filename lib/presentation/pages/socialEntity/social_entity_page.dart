@@ -290,7 +290,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                 clipBehavior: Clip.none,
                 children: [
                   Positioned(
-                    top: 800,
+                    top: 850,
                     child: Container(
                       color: AppColors.textBlue,
                       width: widthOfScreen(context),
@@ -365,7 +365,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                                 SpaceH30(),
                                 Container(
                                   height: 60,
-                                  width: widthOfScreen(context)*0.6,
+                                  width: widthOfScreen(context)*0.7,
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
                                       primary: AppColors.buttonBlue,
@@ -408,13 +408,13 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                     child: Image.asset(ImagePath.ENTITY_YELLOW_LINE_1),
                     width: widthOfScreen(context),
                     //bottom: widthOfScreen(context) > 1435 ? 800 : 900,
-                    bottom: 200,
+                    bottom: 300,
                   ),
                 ],
               ),
             ),
             SizedBox(
-              height: 1000,
+              height: 1100,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -452,7 +452,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
               ),
             ),
             SpaceH100(),
-            _buildFooter(context),
+            _buildFooterMobile(context),
           ],
         )
     );
@@ -1024,6 +1024,288 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
     );
   }
 
+  Widget _buildFooterMobile(BuildContext context){
+    return Column(
+      children: [
+        Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            Container(
+              color: AppColors.skyBlue,
+              width: widthOfScreen(context),
+              height: 200,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Container(
+                color: AppColors.textBlue,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Column(
+                    children: [
+                      SpaceH80(),
+                      Text(
+                        'Únete a Enreda y\nconstruye tu futuro\ncon nosotras/os'.toUpperCase(),
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: GoogleFonts.outfit().fontFamily,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      SpaceH20(),
+                      Text(
+                        'Descubre cómo transformamos el camino hacia\nel empleo, escuchando y colaborando con\nel ecosistema para crear oportunidades en red.',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: GoogleFonts.lato().fontFamily,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      SpaceH30(),
+                      _buildEmailFieldYellow(context),
+                      SpaceH30(),
+                      Container(
+                        height: 60,
+                        width: 320,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: AppColors.turquoiseDark,
+                            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                            onPrimary: AppColors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(33),
+                            ),
+                            textStyle: TextStyle(
+                              fontFamily: GoogleFonts.outfit().fontFamily,
+                              fontSize: 15,
+                              letterSpacing: 1.8,
+                            ),
+                          ),
+                          onPressed: () => openUrlLink(StringConst.WEB_APP_URL),
+                          child: Padding(
+                            padding: EdgeInsets.all(22.0),
+                            child:
+                            Center(child: Text('Quiero inscribrime ahora'.toUpperCase())),
+                          ),
+                        ),
+                      ),
+                      SpaceH36()
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        Container(
+          color: AppColors.skyBlue,
+          width: widthOfScreen(context),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SpaceH40(),
+                Container(
+                  width: 50,
+                  child: Image.asset(ImagePath.LOGO_ENREDA_BLACK),
+                ),
+                SpaceH16(),
+                _buildSubMenuItem('Menú', true),
+                Padding(
+                  padding: const EdgeInsets.only(right: 150.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      InkWell(
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.RESOURCES,)),
+                            );
+                          },
+                          child: _buildSubMenuItem('Recursos', false)
+                      ),
+                      InkWell(
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.JOB_SEARCH,)),
+                            );
+                          },
+                          child: _buildSubMenuItem('Busco empleo', false)
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 150.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      InkWell(
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.SOCIAL_ENTITY,)),
+                            );
+                          },
+                          child: _buildSubMenuItem('Entidades', false)
+                      ),
+                      InkWell(
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.TALENT_SEARCH,)),
+                            );
+                          },
+                          child: _buildSubMenuItem('Busco talento', false)
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: AppColors.textBlue,
+                ),
+                SpaceH20(),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      'Sé parte del cambio,\n¡Enrédate!',
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontFamily: GoogleFonts.outfit().fontFamily,
+                        color: AppColors.textBlue,
+                        fontSize: 36,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 30),
+                      child: Container(
+                        height: 60,
+                        width: 260,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: AppColors.textBlue,
+                            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                            onPrimary: AppColors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(33),
+                            ),
+                            textStyle: TextStyle(
+                              fontFamily: GoogleFonts.outfit().fontFamily,
+                              fontSize: 15,
+                              letterSpacing: 1.8,
+                            ),
+                          ),
+                          onPressed: () {
+                            sendEmail(StringConst.DEV_EMAIL);
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.all(22.0),
+                            child:
+                            Center(child: Text('Contacta ahora'.toUpperCase())),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 25.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          InkWell(
+                              onTap: () => openUrlLink(StringConst.LINKED_IN_URL),
+                              child: Image.asset(ImagePath.ICON_LINKEDIN, height: 36)
+                          ),
+                          SpaceW16(),
+                          InkWell(
+                              onTap: () => openUrlLink(StringConst.INSTAGRAM_URL),
+                              child: Image.asset(ImagePath.ICON_INSTAGRAM, height: 36)
+                          ),
+                          SpaceW16(),
+                          InkWell(
+                              onTap: () => openUrlLink(StringConst.TWITTER_URL),
+                              child: Image.asset(ImagePath.ICON_TWITTER, height: 36)
+                          ),
+                          SpaceW16(),
+                          InkWell(
+                              onTap: () => openUrlLink(StringConst.FACEBOOK_URL),
+                              child: Image.asset(ImagePath.ICON_FACEBOOK, height: 36)
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+        Container(
+          color: AppColors.textBlue,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(25.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    InkWell(
+                      onTap: () => openUrlLink(StringConst.USE_CONDITIONS_URL),
+                      child: Text(
+                        StringConst.BUILT_BY,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontFamily: GoogleFonts.lato().fontFamily,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SpaceW16(),
+                    InkWell(
+                      onTap: () => openUrlLink(StringConst.PRIVACITY_URL),
+                      child: Text(
+                        StringConst.RIGHTS_RESERVED,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontFamily: GoogleFonts.lato().fontFamily,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Divider(
+                color: Colors.white,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(25.0),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                    height: 40,
+                    child: Image.asset(ImagePath.LOGO_SIC4CHANGE),
+                  ),
+                ),
+              )
+            ],
+          ),
+
+        )
+      ],
+    );
+  }
 
   Widget _buildEmailFieldYellow(BuildContext context){
     TextEditingController emailController = TextEditingController();
@@ -1046,23 +1328,23 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
             controller: emailController,
             cursorColor: Colors.white,
             decoration: InputDecoration(
-              border: InputBorder.none, // Sin borde visible
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.transparent),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.transparent),
-              ),
-              disabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent),
-              ),
-              hintText: 'ejemplo@gmail.com',
-              hintStyle: TextStyle(
-                color: Colors.white,
-                fontFamily: GoogleFonts.lato().fontFamily,
-                fontWeight: FontWeight.w400,
-                fontSize: 18,
-              )
+                border: InputBorder.none, // Sin borde visible
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent),
+                ),
+                disabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent),
+                ),
+                hintText: 'ejemplo@gmail.com',
+                hintStyle: TextStyle(
+                  color: Colors.white,
+                  fontFamily: GoogleFonts.lato().fontFamily,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 18,
+                )
             ),
             style: TextStyle(
               color: Colors.white,
@@ -1075,7 +1357,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
         Row(
           children: [
             Container(
-              width: 300.0,
+              width: Responsive.isMobile(context) ? 200 : 300,
               height: 7.0,
               decoration: BoxDecoration(
                 color: AppColors.yellowDark,
@@ -1096,6 +1378,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
       ],
     );
   }
+
 
 }
 
