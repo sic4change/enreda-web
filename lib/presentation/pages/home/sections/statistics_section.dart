@@ -5,6 +5,7 @@ import 'package:enreda_app/models/resource.dart';
 import 'package:enreda_app/models/userEnreda.dart';
 import 'package:enreda_app/utils/functions.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -14,6 +15,7 @@ import '../../../../utils/responsive.dart';
 import '../../../../values/values.dart';
 import '../../../layout/adaptive.dart';
 import '../../../widgets/spaces.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class StatItemData {
@@ -86,7 +88,7 @@ class _StatisticsSectionState extends State<StatisticsSection>
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color: AppColors.greyStats,
+                        //color: AppColors.greyStats,
                         borderRadius: BorderRadius.only(
                           topLeft: Responsive.isTablet(context) || Responsive.isMobile(context) ? Radius.circular(50) : Radius.circular(0),
                           topRight: Responsive.isTablet(context) || Responsive.isMobile(context) ? Radius.circular(50) : Radius.circular(0),
@@ -108,33 +110,33 @@ class _StatisticsSectionState extends State<StatisticsSection>
                                   ..._buildItems([
                                     StatItemData(
                                         value: daysBetween(DateTime.parse("2020-06-28 23:00:00.299871"), DateTime.now()),
-                                        subtitle: StringConst.DAYS_CHANGIN,
-                                        titleColor: AppColors.turquoise,
-                                        subtitleColor: AppColors.turquoise,
+                                        subtitle: AppLocalizations.of(context)!.daysTransforming,
+                                        titleColor: AppColors.brightBlueNumber,
+                                        subtitleColor: AppColors.brightBlueNumber,
                                         fontSizeTitle: fontSizeTitle,
                                         fontWeightTitle: FontWeight.w800,
                                     ),
                                     StatItemData(
                                         value: resources,
-                                        subtitle: StringConst.RESOURCES_CREATED,
-                                        titleColor: AppColors.turquoiseLight,
-                                        subtitleColor: AppColors.turquoiseLight,
+                                        subtitle: AppLocalizations.of(context)!.participant,
+                                        titleColor: AppColors.white,
+                                        subtitleColor: AppColors.white,
                                         fontSizeTitle: fontSizeTitle1,
                                         fontWeightTitle: FontWeight.w100,
                                     ),
                                     StatItemData(
                                         value: youngs,
-                                        subtitle: StringConst.YOUNG_PARTICIPANTS,
-                                        titleColor: AppColors.darkViolet,
-                                        subtitleColor: AppColors.darkViolet,
+                                        subtitle: AppLocalizations.of(context)!.institutionsAndCompanies,
+                                        titleColor: AppColors.brightBlueNumber,
+                                        subtitleColor: AppColors.brightBlueNumber,
                                         fontSizeTitle: fontSizeTitle2,
                                         fontWeightTitle: FontWeight.w800,
                                     ),
                                     StatItemData(
                                         value: companies,
-                                        subtitle: StringConst.COMPANY_PARTICIPANTS,
-                                        titleColor: AppColors.turquoise,
-                                        subtitleColor: AppColors.turquoise,
+                                        subtitle: AppLocalizations.of(context)!.resourcesEnabled,
+                                        titleColor: AppColors.white,
+                                        subtitleColor: AppColors.white,
                                         fontSizeTitle: fontSizeTitle3,
                                         fontWeightTitle: FontWeight.w100
                                     ),
@@ -154,33 +156,33 @@ class _StatisticsSectionState extends State<StatisticsSection>
                                   ..._buildItems([
                                     StatItemData(
                                         value: daysBetween(DateTime.parse("2020-06-28 23:00:00.299871"), DateTime.now()),
-                                        subtitle: StringConst.DAYS_CHANGIN,
-                                        titleColor: AppColors.turquoise,
-                                        subtitleColor: AppColors.turquoise,
+                                        subtitle: AppLocalizations.of(context)!.daysTransforming,
+                                        titleColor: AppColors.brightBlueNumber,
+                                        subtitleColor: AppColors.brightBlueNumber,
                                         fontSizeTitle: fontSizeTitle,
                                         fontWeightTitle: FontWeight.w800,
                                     ),
                                     StatItemData(
                                         value: resources,
-                                        subtitle: StringConst.RESOURCES_CREATED,
-                                        titleColor: AppColors.turquoiseLight,
-                                        subtitleColor: AppColors.turquoiseLight,
+                                        subtitle: AppLocalizations.of(context)!.participant,
+                                        titleColor: AppColors.white,
+                                        subtitleColor: AppColors.white,
                                         fontSizeTitle: fontSizeTitle1,
                                         fontWeightTitle: FontWeight.w100,
                                     ),
                                     StatItemData(
                                         value: youngs,
-                                        subtitle: StringConst.YOUNG_PARTICIPANTS,
-                                        titleColor: AppColors.darkViolet,
-                                        subtitleColor: AppColors.darkViolet,
+                                        subtitle: AppLocalizations.of(context)!.institutionsAndCompanies,
+                                        titleColor: AppColors.brightBlueNumber,
+                                        subtitleColor: AppColors.brightBlueNumber,
                                         fontSizeTitle: fontSizeTitle2,
                                         fontWeightTitle: FontWeight.w800,
                                     ),
                                     StatItemData(
                                         value: companies,
-                                        subtitle: StringConst.COMPANY_PARTICIPANTS,
-                                        titleColor: AppColors.turquoise,
-                                        subtitleColor: AppColors.turquoise,
+                                        subtitle: AppLocalizations.of(context)!.resourcesEnabled,
+                                        titleColor: AppColors.white,
+                                        subtitleColor: AppColors.white,
                                         fontSizeTitle: fontSizeTitle3,
                                         fontWeightTitle: FontWeight.w100,
                                     ),
@@ -222,7 +224,7 @@ class _StatisticsSectionState extends State<StatisticsSection>
 
       if (index < data.length - 1) {
         if (isHorizontal) {
-          items.add(Spacer(flex: 2));
+          items.add(Spacer(flex: 1));
         } else {
           items.add(SpaceH40());
         }
@@ -282,7 +284,98 @@ class StatItem extends StatelessWidget {
     required int value,
   }) {
     TextTheme textTheme = Theme.of(context).textTheme;
-    return Column(
+    double fontSizeTitle = responsiveSize(context, 50, 80);
+    double fontSizeBody = responsiveSize(context, 20, 26);
+    return Responsive.isMobile(context) ?
+    Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 0),
+      child: Container(
+        height: 230,
+        width: widthOfScreen(context)-120,
+        decoration:  BoxDecoration(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.all(
+              const Radius.circular(60.0),
+            ),
+            border: Border.all(
+              color: titleColor,
+              width: 2,
+            )
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(40.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "$value",
+                style: TextStyle(
+                  fontSize: fontSizeTitle,
+                  fontWeight: FontWeight.w700,
+                  fontFamily: GoogleFonts.outfit().fontFamily,
+                  color: titleColor,
+                ),
+              ),
+              Text(
+                subtitle,
+                style: TextStyle(
+                  fontSize: fontSizeBody,
+                  fontWeight: FontWeight.w700,
+                  fontFamily: GoogleFonts.outfit().fontFamily,
+                  color: titleColor,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ) :
+    Container(
+      height: 380,
+      width: widthOfScreen(context)/5,
+      decoration:  BoxDecoration(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.all(
+            const Radius.circular(60.0),
+          ),
+          border: Border.all(
+            color: titleColor, //TODO
+            width: 2,
+          )
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(40.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '$value',
+              style: TextStyle(
+                fontSize: 80,
+                fontWeight: FontWeight.w700,
+                fontFamily: GoogleFonts.outfit().fontFamily,
+                color: titleColor
+              ),
+            ),
+            Text(
+              subtitle,
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.w700,
+                fontFamily: GoogleFonts.outfit().fontFamily,
+                color: titleColor
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+
+
+
+      Column(
       children: [
         Text(
           "$value",

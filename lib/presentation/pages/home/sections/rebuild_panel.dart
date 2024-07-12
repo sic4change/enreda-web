@@ -1,3 +1,4 @@
+import 'package:enreda_app/presentation/pages/home/sections/statistics_section.dart';
 import 'package:enreda_app/presentation/widgets/buttons/enreda_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -82,17 +83,8 @@ class _RebuildPanelState extends State<RebuildPanel> {
                   height: 600,
                   color: AppColors.textBlue,
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 50.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        numberCountTile(856, AppLocalizations.of(context)!.daysTransforming, AppColors.brightBlueNumber),
-                        numberCountTile(350, AppLocalizations.of(context)!.participant, AppColors.white),
-                        numberCountTile(30, AppLocalizations.of(context)!.institutionsAndCompanies, AppColors.brightBlueNumber),
-                        numberCountTile(2401, AppLocalizations.of(context)!.resourcesEnabled, AppColors.white),
-                      ],
-                    ),
+                    padding: const EdgeInsets.only(bottom: 50.0, top:100),
+                    child: StatisticsSection(),
                   ),
                 ),
               ],
@@ -146,7 +138,8 @@ class _RebuildPanelState extends State<RebuildPanel> {
                   color: AppColors.textBlue,
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 20.0),
-                    child: Column(
+                    child: StatisticsSection()
+                    /*Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -156,7 +149,7 @@ class _RebuildPanelState extends State<RebuildPanel> {
                         numberCountTileMobile(30, AppLocalizations.of(context)!.institutionsAndCompanies, AppColors.brightBlueNumber),
                         numberCountTileMobile(2401, AppLocalizations.of(context)!.resourcesEnabled, AppColors.white),
                       ],
-                    ),
+                    ),*/
                   ),
                 ),
               ],

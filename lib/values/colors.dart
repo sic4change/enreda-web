@@ -29,6 +29,7 @@ class AppColors {
   static const Color offWhite = Color(0xFFF3F3F3);
   static const Color darkWhite = Color(0xFFDFDFDF);
   static const Color offWhite200 = Color(0xFFE5E5DB);
+  static const Color cardWhite = Color(0xFFF5FAFA);
 
   //Blue
   static const Color blue300 = Color(0xFF2867F0);

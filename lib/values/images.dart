@@ -175,4 +175,20 @@ class ImagePath {
   static const String PERSON_PILL2 = '$imageDir/person-pildoras-2.png';
   static const String PERSON_PILL3 = '$imageDir/person-pildoras-3.png';
 
+  //Card persons
+  static const String PERSON_BEA = '$imageDir/person-bea.png';
+  static const String PERSON_MARIA = '$imageDir/person-maria.png';
+  static const String PERSON_LAURA = '$imageDir/person-laura.png';
+  static const String PERSON_VALERIA = '$imageDir/person-valeria.png';
+  static const String PERSON_AIDIRA = '$imageDir/person-aidira.png';
+  static const String PERSON_ANA = '$imageDir/person-ana.png';
+  static const String PERSON_MARISOL = '$imageDir/person-marisol.png';
+  static const String PERSON_MORELIA = '$imageDir/person-morelia.png';
+
+
+
+
+
+
+
 }
