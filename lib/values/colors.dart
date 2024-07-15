@@ -45,6 +45,8 @@ class AppColors {
   static const Color buttonBlue = Color(0xFF18C5C1);
   static const Color brightBlue = Color(0xFF79FFFC);
   static const Color brightBlueNumber = Color(0xFF20DAD3);
+  static const Color blue050 = Color(0xFF82A6AE);
+
 
   //Yellow
   /*static const Color yellow10 = Color(0xFFFBE8C5);
@@ -114,5 +116,11 @@ class AppColors {
   static const Color blue = Color(0xFF002185);
   static const Color chatButtonsGray = Color(0xFFA0A0A7);
   static const Color penBlue = Color(0xFF002185);
+
+  //Shades of primary color
+  static const Color primary050 = Color(0xFFEDFAF9);
+  static const Color primary500 = Color(0xFF18C5C1);
+  static const Color primary030 = Color(0xFFDBF1F1);
+
 
 }

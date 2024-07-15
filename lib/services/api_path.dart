@@ -33,4 +33,6 @@ class APIPath {
   static String test() => 'test';
   static String trainingPills() => 'trainingPills';
   static String trainingPill(String? trainingPillId) => 'trainingPills/$trainingPillId';
+  static String competencies() => 'competencies';
+
 }

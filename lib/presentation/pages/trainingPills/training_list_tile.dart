@@ -1,19 +1,24 @@
+
 import 'package:enreda_app/models/trainingPill.dart';
 import 'package:enreda_app/presentation/layout/adaptive.dart';
 import 'package:enreda_app/presentation/pages/resources/sections/show_alert_user_anonimous.dart';
 import 'package:enreda_app/presentation/pages/trainingPills/build_share_training_pill.dart';
 import 'package:enreda_app/presentation/widgets/spaces.dart';
 import 'package:enreda_app/utils/const.dart';
+
 import 'package:enreda_app/utils/responsive.dart';
 import 'package:enreda_app/values/values.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class TrainingPillListTile extends StatefulWidget {
-  const TrainingPillListTile({Key? key, required this.trainingPill, this.onTap})
+  const TrainingPillListTile({Key? key, required this.trainingPill, this.showDescription = true, this.onTap})
       : super(key: key);
   final TrainingPill trainingPill;
+  final bool showDescription;
   final VoidCallback? onTap;
 
   @override
@@ -45,12 +50,12 @@ class _TrainingPillListTileState extends State<TrainingPillListTile> {
         margin: const EdgeInsets.all(5.0),
         child: Container(
           decoration: BoxDecoration(
-              border: Border.all(color: AppColors.grey350, width: 1),
+              border: Border.all(color: AppColors.greyBorder, width: 1),
               borderRadius: BorderRadius.all(Radius.circular(15)),
-              color: Constants.white,
+              color: AppColors.textBlue,
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.grey350,
+                  color: AppColors.greyBorder,
                   spreadRadius: 0.2,
                   blurRadius: 1,
                   offset: Offset(0, 0),
@@ -76,14 +81,13 @@ class _TrainingPillListTileState extends State<TrainingPillListTile> {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: <Widget>[
                               Padding(
-                                padding: Responsive.isMobile(context) ? EdgeInsets.all(8.0)
-                                    : EdgeInsets.all(sidePadding),
+                                padding: EdgeInsets.symmetric(horizontal: sidePadding, vertical: 0),
                                 child: Text(
                                   widget.trainingPill.trainingPillCategoryName!,
                                   textAlign: TextAlign.left,
                                   maxLines: 1,
                                   style: textTheme.titleSmall?.copyWith(
-                                    color: Constants.lilac,
+                                    color: Constants.white,
                                     height: 1.5,
                                     fontWeight: FontWeight.normal,
                                     fontSize: isBigScreen ? 18 : 15,
@@ -92,9 +96,8 @@ class _TrainingPillListTileState extends State<TrainingPillListTile> {
                                 ),
                               ),
                               Padding(
-                                padding: Responsive.isMobile(context) ? EdgeInsets.symmetric(horizontal: 8.0)
-                                    : EdgeInsets.only(right: sidePadding, left: sidePadding,
-                                    bottom: sidePadding / 2),
+                                padding: EdgeInsets.only(right: sidePadding, left: sidePadding,
+                                    bottom: 0),
                                 child: Text(
                                   widget.trainingPill.title.toUpperCase(),
                                   textAlign: TextAlign.left,
@@ -103,11 +106,11 @@ class _TrainingPillListTileState extends State<TrainingPillListTile> {
                                     letterSpacing: 1,
                                     fontSize: fontSize,
                                     fontWeight: FontWeight.bold,
-                                    color: AppColors.blue,
+                                    color: AppColors.white,
                                   ),
                                 ),
                               ),
-                              Responsive.isMobile(context) ? Container() :
+                              Responsive.isMobile(context) || !widget.showDescription ? Container() :
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: sidePadding),
                                 child: Text(
@@ -115,7 +118,7 @@ class _TrainingPillListTileState extends State<TrainingPillListTile> {
                                   textAlign: TextAlign.left,
                                   maxLines: 2,
                                   style: textTheme.bodySmall?.copyWith(
-                                    color: AppColors.greyTxtAlt,
+                                    color: AppColors.white,
                                     height: 1.5,
                                     fontWeight: FontWeight.normal,
                                     fontSize: fontSize,
@@ -128,25 +131,25 @@ class _TrainingPillListTileState extends State<TrainingPillListTile> {
                         ],
                       ),
                     ),
-                    Spacer(),
+                    if (widget.showDescription)
+                      Spacer(),
                     Container(
                       child: Padding(
-                        padding: Responsive.isMobile(context) ? EdgeInsets.all(8) :
-                        EdgeInsets.symmetric(horizontal: sidePadding, vertical: sidePadding),
+                        padding: EdgeInsets.symmetric(horizontal: sidePadding, vertical: 10),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Spacer(),
-                            buildShareTrainingPill(context, widget.trainingPill, Constants.grey),
+                            buildShareTrainingPill(context, widget.trainingPill, Constants.white),
                             SpaceW4(),
                             IconButton(
                               icon: FaIcon(FontAwesomeIcons.heart),
                               tooltip: 'Me gusta',
-                              color: AppColors.darkGray,
+                              color: Constants.white,
                               iconSize: 20,
                               onPressed: () => showAlertUserAnonimous(context),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -164,7 +167,7 @@ class _TrainingPillListTileState extends State<TrainingPillListTile> {
   Widget playAreaMobile() {
     String urlYoutubeVideo = widget.trainingPill.urlVideo;
     String idYoutubeVideo =
-        urlYoutubeVideo.substring(urlYoutubeVideo.length - 11);
+    urlYoutubeVideo.substring(urlYoutubeVideo.length - 11);
     if (!_isVideoVisible)
       return AspectRatio(
         aspectRatio: 16 / 9,
@@ -184,8 +187,8 @@ class _TrainingPillListTileState extends State<TrainingPillListTile> {
                 borderRadius: Responsive.isMobile(context)
                     ? BorderRadius.circular(10)
                     : BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        topRight: Radius.circular(10)),
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10)),
               ),
             ),
           ],
@@ -197,7 +200,7 @@ class _TrainingPillListTileState extends State<TrainingPillListTile> {
             topLeft: Radius.circular(10), topRight: Radius.circular(10)),
       ),
       child: YoutubePlayerControllerProvider(
-          // Provides controller to all the widget below it.
+        // Provides controller to all the widget below it.
           controller: _controller,
           child: YoutubePlayer(
             controller: _controller,
@@ -210,7 +213,7 @@ class _TrainingPillListTileState extends State<TrainingPillListTile> {
   Widget playAreaDesktop() {
     String urlYoutubeVideo = widget.trainingPill.urlVideo;
     String idYoutubeVideo =
-        urlYoutubeVideo.substring(urlYoutubeVideo.length - 11);
+    urlYoutubeVideo.substring(urlYoutubeVideo.length - 11);
     if (!_isVideoVisible)
       return AspectRatio(
         aspectRatio: 16 / 9,
@@ -239,14 +242,14 @@ class _TrainingPillListTileState extends State<TrainingPillListTile> {
                   borderRadius: Responsive.isMobile(context)
                       ? BorderRadius.circular(10)
                       : BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          topRight: Radius.circular(10)),
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10)),
                 ),
               ),
               Center(
                 child: Icon(
                   Icons.play_circle_rounded,
-                  color: AppColors.black100.withOpacity(0.7),
+                  color: AppColors.textBlue.withOpacity(0.5),
                   size: 70,
                 ),
               ),
@@ -260,7 +263,7 @@ class _TrainingPillListTileState extends State<TrainingPillListTile> {
             topLeft: Radius.circular(10), topRight: Radius.circular(10)),
       ),
       child: YoutubePlayerControllerProvider(
-          // Provides controller to all the widget below it.
+        // Provides controller to all the widget below it.
           controller: _controller,
           child: YoutubePlayer(
             controller: _controller,
@@ -286,5 +289,23 @@ class _TrainingPillListTileState extends State<TrainingPillListTile> {
         _isVideoVisible = true;
       }
     });
+    if (!kIsWeb) {
+      _controller..setFullScreenListener(
+            (_) async {
+          final videoData = await _controller.videoData;
+          final startSeconds = await _controller.currentTime;
+          final currentTime =
+          await FullscreenYoutubePlayer.launch(
+            context,
+            videoId: videoData.videoId,
+            startSeconds: startSeconds,
+          );
+          if (currentTime != null) {
+            _controller.seekTo(seconds: currentTime);
+          }
+          _controller.seekTo(seconds: currentTime!);
+        },
+      );
+    }
   }
 }

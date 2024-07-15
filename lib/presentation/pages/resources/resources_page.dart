@@ -13,6 +13,7 @@ import 'package:enreda_app/models/userEnreda.dart';
 import 'package:enreda_app/presentation/layout/adaptive.dart';
 import 'package:enreda_app/presentation/pages/home/home_page.dart';
 import 'package:enreda_app/presentation/pages/home/sections/footer_new.dart';
+import 'package:enreda_app/presentation/pages/resources/resource_detail_page.dart';
 import 'package:enreda_app/presentation/pages/resources/sections/filter_text_field_row.dart';
 import 'package:enreda_app/presentation/pages/resources/sections/resource_list_tile.dart';
 import 'package:enreda_app/presentation/pages/resources/sections/show_resource_detail_dialog.dart';
@@ -22,6 +23,7 @@ import 'package:enreda_app/presentation/widgets/list_item_builder.dart';
 import 'package:enreda_app/presentation/widgets/spaces.dart';
 import 'package:enreda_app/presentation/widgets/list_item_grid_builder.dart';
 import 'package:enreda_app/presentation/widgets/widgets/custom_person_pills_image.dart';
+import 'package:enreda_app/presentation/widgets/widgets/custom_text_title.dart';
 import 'package:enreda_app/presentation/widgets/widgets/list_item_grid_vertical.dart';
 import 'package:enreda_app/services/database.dart';
 import 'package:enreda_app/utils/functions.dart';
@@ -32,6 +34,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:enreda_app/presentation/pages/resources/global.dart' as globals;
+
 
 class ResourcesPage extends StatefulWidget {
   @override
@@ -104,14 +108,18 @@ class _ResourcesPageState extends State<ResourcesPage> {
     bodyWidget = [
       _buildResourcesPage(context),
       _buildFilteredResourcesPage(context),
-      _buildTrainingPills(context)
+      _buildTrainingPills(context),
+      _buildResourceDetail(context),
     ];
 
     return ValueListenableBuilder<int>(
         valueListenable: ResourcesPage.selectedIndex,
         builder: (context, selectedIndex, child) {
           return Scaffold(
-            body: bodyWidget[selectedIndex],
+            body: AnimatedSwitcher(
+              duration: Duration(milliseconds: 300),
+              child: bodyWidget[selectedIndex],
+            ),
           );
         });
   }
@@ -313,18 +321,6 @@ class _ResourcesPageState extends State<ResourcesPage> {
           margin: const EdgeInsets.only(top: 20.0),
           child: Column(
             children: [
-              FilterTextFieldRow(
-                searchTextController: _searchTextController,
-                onPressed: () => setStateIfMounted(() {
-                  filterResource.searchText = _searchTextController.text;
-                }),
-                onFieldSubmitted: (value) => setStateIfMounted(() {
-                  filterResource.searchText = _searchTextController.text;
-                }),
-                clearFilter: () => _clearFilter(),
-                hintText: 'Nombre del recurso, organizador, país...',
-              ),
-              SpaceH20(),
               Padding(
                 padding: Responsive.isMobile(context)
                     ? EdgeInsets.symmetric(horizontal: 15)
@@ -340,19 +336,26 @@ class _ResourcesPageState extends State<ResourcesPage> {
                   },
                   child: Row(
                     children: [
-                      Icon(Icons.arrow_back, color: AppColors.primaryColor),
-                      SpaceW12(),
-                      Text(_categoryName, style: textTheme.titleSmall?.copyWith(
-                        color: AppColors.greyAlt,
-                        height: 1.5,
-                        letterSpacing: 0.2,
-                        fontWeight: FontWeight.w700,
-                        fontSize:  isBigScreen ? 25 : 20,
-                        //fontSize: fontSize,
-                      ),),
+                      Image.asset(ImagePath.ARROW_B, height: 30),
+                      Spacer(),
+                      CustomTextMediumBold(text: _categoryName),
+                      Spacer(),
+                      SizedBox(width: 30),
                     ],
                   ),
                 ),
+              ),
+              SpaceH12(),
+              FilterTextFieldRow(
+                searchTextController: _searchTextController,
+                onPressed: () => setStateIfMounted(() {
+                  filterResource.searchText = _searchTextController.text;
+                }),
+                onFieldSubmitted: (value) => setStateIfMounted(() {
+                  filterResource.searchText = _searchTextController.text;
+                }),
+                clearFilter: () => _clearFilter(),
+                hintText: 'Nombre del recurso, organizador, país...',
               ),
               SpaceH20(),
               _categoryFormationId == "6ag9Px7zkFpHgRe17PQk" ?
@@ -432,8 +435,8 @@ class _ResourcesPageState extends State<ResourcesPage> {
         ),
         Container(
           margin: _categoryFormationId == "6ag9Px7zkFpHgRe17PQk"
-              ? EdgeInsets.only(top: 100.0)
-              : Responsive.isMobile(context) ? EdgeInsets.only(top: 20.0, right: 0, left: 0) : EdgeInsets.only(top: 0.0, right: 20, left: 20),
+              ? EdgeInsets.only(top: 230.0)
+              : EdgeInsets.only(top: 120.0),
           child: _buildContents(context),
         ),
       ],
@@ -449,18 +452,6 @@ class _ResourcesPageState extends State<ResourcesPage> {
           margin: const EdgeInsets.only(top: 20.0),
           child: Column(
             children: [
-              FilterTextFieldRow(
-                searchTextController: _searchTextController,
-                onPressed: () => setStateIfMounted(() {
-                  filterTrainingPill.searchText = _searchTextController.text;
-                }),
-                onFieldSubmitted: (value) => setStateIfMounted(() {
-                  filterTrainingPill.searchText = _searchTextController.text;
-                }),
-                clearFilter: () => _clearFilter(),
-                hintText: 'Nombre del video, categoría...',
-              ),
-              SpaceH20(),
               Padding(
                 padding: Responsive.isMobile(context)
                     ? EdgeInsets.symmetric(horizontal: 15)
@@ -476,19 +467,26 @@ class _ResourcesPageState extends State<ResourcesPage> {
                   },
                   child: Row(
                     children: [
-                      Icon(Icons.arrow_back, color: AppColors.primaryColor),
-                      SpaceW12(),
-                      Text('Píldoras formativas', style: textTheme.titleSmall?.copyWith(
-                        color: AppColors.greyAlt,
-                        height: 1.5,
-                        letterSpacing: 0.2,
-                        fontWeight: FontWeight.w700,
-                        fontSize:  isBigScreen ? 25 : 20,
-                        //fontSize: fontSize,
-                      ),),
+                      Image.asset(ImagePath.ARROW_B, height: 30),
+                      Spacer(),
+                      CustomTextMediumBold(text: 'Píldoras formativas'),
+                      Spacer(),
+                      SizedBox(width: 30),
                     ],
                   ),
                 ),
+              ),
+              SpaceH12(),
+              FilterTextFieldRow(
+                searchTextController: _searchTextController,
+                onPressed: () => setStateIfMounted(() {
+                  filterTrainingPill.searchText = _searchTextController.text;
+                }),
+                onFieldSubmitted: (value) => setStateIfMounted(() {
+                  filterTrainingPill.searchText = _searchTextController.text;
+                }),
+                clearFilter: () => _clearFilter(),
+                hintText: 'Nombre del video, categoría...',
               ),
             ],
           ),
@@ -586,16 +584,25 @@ class _ResourcesPageState extends State<ResourcesPage> {
       child: StreamBuilder<List<TrainingPill>>(
           stream: database.filteredTrainingPillStream(filterTrainingPill),
           builder: (context, snapshot) {
+            double? mainAxisExtentValue;
+            double? maxCrossAxisExtentValue;
+            bool showDescription = true;
+            if (snapshot.hasData && snapshot.data!.where((t) => t.description.isNotEmpty).length == 0) {
+              mainAxisExtentValue = Responsive.isDesktopS(context) ? 310 : 400;
+              maxCrossAxisExtentValue = Responsive.isDesktopS(context) ? 350 : 490;
+              showDescription = false;
+            }
             return ListItemBuilderGrid<TrainingPill>(
                 snapshot: snapshot,
-                maxCrossAxisExtentValue: 490,
-                mainAxisExtentValue: Responsive.isMobile(context) ? 305 : Responsive.isDesktopS(context) ? 480 : 500,
+                maxCrossAxisExtentValue: maxCrossAxisExtentValue,
+                mainAxisExtentValue: mainAxisExtentValue,
                 itemBuilder: (context, trainingPill) {
                   trainingPill.setTrainingPillCategoryName();
                   return Container(
                     key: Key('trainingPill-${trainingPill.id}'),
                     child: TrainingPillListTile(
                       trainingPill: trainingPill,
+                      showDescription: showDescription,
                     ),
                   );
                 }
@@ -622,10 +629,12 @@ class _ResourcesPageState extends State<ResourcesPage> {
                       children: [
                         TrainingPillsListTileMobile(
                           trainingPill: trainingPill,
+                          /*onTap: () => context.push(
+                              '${StringConst.PATH_TRAINING_PILLS}/${trainingPill.id}'),*/
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Divider(thickness: 1.5),
+                          child: Divider(thickness: 1, color: AppColors.blue050,),
                         ),
                       ],
                     ),
@@ -699,12 +708,11 @@ class _ResourcesPageState extends State<ResourcesPage> {
                                             'resource-${resource.resourceId}'),
                                         child: ResourceListTile(
                                           resource: resource,
-                                          onTap: () => showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) => ShowResourceDetailDialog(
-                                              resource: resource,
-                                            ),
-                                          ),
+                                          onTap: (){ setState(() {
+                                            globals.currentResource = resource;
+                                            ResourcesPage.selectedIndex.value = 3;
+                                          });
+                                          }
                                         ),
                                       );
                                     });
@@ -719,6 +727,36 @@ class _ResourcesPageState extends State<ResourcesPage> {
               ),
             );
           }),
+    );
+  }
+
+  Widget _buildResourceDetail(BuildContext context) {
+    return Padding(
+      padding: Responsive.isMobile(context) ? EdgeInsets.symmetric(horizontal: 0, vertical: 0)
+          : Responsive.isDesktopS(context) ? EdgeInsets.symmetric(horizontal: 30, vertical: 20)
+          : EdgeInsets.symmetric(horizontal: 100, vertical: 20),
+      child: SingleChildScrollView(
+        child: Stack(
+          children: [
+            ResourceDetailPage(),
+            InkWell(
+              onTap: () {
+                setStateIfMounted(() {
+                  ResourcesPage.selectedIndex.value = 1;
+                  _clearFilter();
+                });
+              },
+              child: Padding(
+                padding: MediaQuery.of(context).size.width >= 1200 || Responsive.isMobile(context) ? EdgeInsets.all(10.0)
+                    : EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+                child: Image.asset(ImagePath.ARROW_BACK_SHADOW, scale: 1.2, height: 40,),
+              ),
+            ),
+            Responsive.isMobile(context) || Responsive.isTablet(context) ? SpaceH8() : SpaceH4(),
+            SpaceH50(),
+          ],
+        ),
+      ),
     );
   }
 

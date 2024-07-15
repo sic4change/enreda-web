@@ -93,7 +93,7 @@ Widget buildShareTrainingPill(BuildContext context, TrainingPill trainingPill, C
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset(ImagePath.ICON_SHARE, height: Responsive.isMobile(context) ? 15 : 20),
+        Image.asset(ImagePath.ICON_SHARE, height: Responsive.isMobile(context) ? 15 : 20, color: color,),
         Responsive.isMobile(context) ? SizedBox(width: 0) : SizedBox(width: 10),
       ],
     ),

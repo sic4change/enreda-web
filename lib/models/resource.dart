@@ -10,8 +10,8 @@ class Resource {
     this.organizerImage,
     this.promotor,
     this.resourceType,
-    this.resourceTypeName,
     this.resourceCategory,
+    this.resourceTypeName,
     this.resourceCategoryName,
     required this.capacity,
     required this.duration,
@@ -41,6 +41,8 @@ class Resource {
     this.resourcePhoto,
     this.searchText,
     required this.createdate,
+    this.interests,
+    this.competencies,
   });
 
   factory Resource.fromMap(Map<String, dynamic> data, String documentId) {
@@ -85,6 +87,14 @@ class Resource {
     if (data['likes'] != null) {
       data['likes'].forEach((like) {likes.add(like.toString());});
     }
+    List<String>? interests = [];
+    if (data['interests'] != null) {
+      data['interests'].forEach((interest) {interests.add(interest.toString());});
+    }
+    List<String>? competencies = [];
+    if (data['competencies'] != null) {
+      data['competencies'].forEach((competency) {competencies.add(competency.toString());});
+    }
     final String? contactEmail = data['contactEmail'];
     final String? contactPhone = data['contactPhone'];
     final String? resourcePhoto = data['resourcePhoto'];
@@ -103,7 +113,7 @@ class Resource {
       resourceType: resourceType,
       resourceCategory: resourceCategory,
       resourceTypeName:  resourceTypeName,
-      resourceCategoryName: resourceCategoryName,
+      resourceCategoryName:  resourceCategoryName,
       capacity: capacity,
       duration: duration,
       modality: modality,
@@ -132,6 +142,8 @@ class Resource {
       resourcePhoto: resourcePhoto,
       searchText: searchText,
       createdate: createdate,
+      interests: interests,
+      competencies: competencies,
     );
   }
 
@@ -175,6 +187,8 @@ class Resource {
   String? resourcePhoto;
   final String? searchText;
   final DateTime createdate;
+  final List<String>? interests;
+  final List<String>? competencies;
 
   Map<String, dynamic> toMap() {
     return {
@@ -183,11 +197,11 @@ class Resource {
       'description': description,
       'organizer': organizer,
       'organizerType': organizerType,
-      'resourceCategory': resourceCategory,
       'organizerName': organizerName,
       'organizerImage': organizerImage,
       'promotor': promotor,
       'resourceType': resourceType,
+      'resourceCategory': resourceCategory,
       'capacity' : capacity,
       'duration' : duration,
       'modality' : modality,
@@ -216,6 +230,8 @@ class Resource {
       'resourcePhoto': resourcePhoto,
       'searchText': searchText,
       'createdate': createdate,
+      'interests' : interests,
+      'competencies' : competencies,
     };
   }
 

@@ -392,7 +392,7 @@ class _ResourceListTileState extends State<ResourceListTile> {
         ).then((value) => Navigator.pop(context));
       } on FirebaseException catch (e) {
         showExceptionAlertDialog(context,
-            title: 'Error al enviar contacto', exception: e).then((value) => Navigator.pop(context));;
+            title: 'Error al enviar contacto', exception: e).then((value) => Navigator.pop(context));
       }
     }
   }

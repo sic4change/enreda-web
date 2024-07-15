@@ -210,6 +210,7 @@ class Sizes {
   static const double RADIUS_70 = 70.0;
   static const double RADIUS_60 = 60.0;
   static const double RADIUS_50 = 50.0;
+  static const double RADIUS_45 = 45.0;
   static const double RADIUS_40 = 40.0;
   static const double RADIUS_32 = 32.0;
   static const double RADIUS_30 = 30.0;

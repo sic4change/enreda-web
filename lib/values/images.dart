@@ -153,6 +153,23 @@ class ImagePath {
   static const String ICON_JOB_OFFER = '$imageDir/icon-job-offer.png';
   static const String ICON_CANDIDATES_FOLLOW = '$imageDir/icon-candidates-follow.png';
   static const String ICON_CANDIDATES_SELECTION = '$imageDir/icon-candidates-selection.png';
+  static const String ARROW_BACK_SHADOW = '$imageDir/arrow_back_alt.png';
+  static const String ICON_MODALITY = '$imageDir/modality-icon.png';
+  static const String ICON_MODALITY_YELLOW = '$imageDir/modality-icon-yellow.png';
+  static const String ICON_PLACE = '$imageDir/place-icon.png';
+  static const String ICON_PLACE_YELLOW = '$imageDir/place-icon-yellow.png';
+  static const String ICON_SEATS = '$imageDir/seats-icon.png';
+  static const String ICON_SEATS_YELLOW = '$imageDir/seats-icon-yellow.png';
+  static const String ICON_DATE = '$imageDir/date-icon.png';
+  static const String ICON_DATE_YELLOW = '$imageDir/date-icon-yellow.png';
+  static const String ICON_CONTRACT = '$imageDir/contract-icon.png';
+  static const String ICON_CONTRACT_YELLOW = '$imageDir/contract-icon-yellow.png';
+  static const String ICON_CURRENCY = '$imageDir/currency-icon.png';
+  static const String ICON_CURRENCY_YELLOW = '$imageDir/currency-icon-yellow.png';
+  static const String ARROW_B = '$imageDir/flecha-back.png';
+  static const String ICON_PLAY = '$imageDir/icon-play-pildoras.png';
+
+
 
   //Resources Categories
   static const String BACKGROUND_1 = '$imageDir/background-empleo-2X.png';
@@ -168,6 +185,8 @@ class ImagePath {
   static const String BACKGROUND_6 = '$imageDir/background-voluntariado-2X.png';
   static const String PERSON_6 = '$imageDir/person-voluntariado.png';
   static const String FUNDAULA = '$imageDir/icon-click-fundaula.png';
+  static const String RECTANGLE_RESOURCE = '$imageDir/background-recursos.png';
+
 
   //Training pills
   static const String BACKGROUND_PILLS = '$imageDir/background-pildoras.png';

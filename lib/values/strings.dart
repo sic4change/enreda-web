@@ -329,6 +329,12 @@ class StringConst {
   static const String NOT_ALLOWED = '¿Estás interesado en este recurso?';
   static const String NOT_ALLOWED_CHAT = '¿Quieres empezar el chat y crear tu CV?';
   static const String SEARCH_TEXT = 'Nombre del recurso, organizador, país...';
+  static const String FORM_DESCRIPTION = "Descripción del puesto";
+  static const String COMPETENCIES = "Competencias";
+  static const String AVAILABLE = "Disponibilidad";
+  static const String FORM_SCHEDULE = "Horario";
+
+
 
   //Search Section
   static const String SEARCH = "Busca por área";
@@ -343,6 +349,13 @@ class StringConst {
   static const String ONLINE_FOR_COUNTRY = 'Online para residentes en país';
   static const String ONLINE_FOR_PROVINCE = 'Online para residentes en provincia';
   static const String ONLINE_FOR_CITY = 'Online para residentes en ciudad';
+
+  //Competencies
+  static const String BADGE_EMPTY = 'empty';
+  static const String BADGE_IDENTIFIED = 'identified';
+  static const String BADGE_VALIDATED = 'validated';
+  static const String BADGE_CERTIFIED = 'certified';
+  static const String BADGE_PROCESSING = 'processing';
 
   static String RESOURCE_LINK(String resourceId) => 'https://enredawebapp.web.app/resources/$resourceId';
   static String TRAINING_PILL_LINK(String trainingPillId) => 'https://enredawebapp.web.app/pills/$trainingPillId';

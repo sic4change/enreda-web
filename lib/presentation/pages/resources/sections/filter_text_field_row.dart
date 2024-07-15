@@ -1,5 +1,6 @@
 import 'package:enreda_app/presentation/layout/adaptive.dart';
 import 'package:enreda_app/presentation/widgets/rounded_container.dart';
+import 'package:enreda_app/presentation/widgets/rounded_container_filter.dart';
 import 'package:enreda_app/presentation/widgets/spaces.dart';
 import 'package:enreda_app/utils/responsive.dart';
 import 'package:enreda_app/values/values.dart';
@@ -80,9 +81,10 @@ class _FilterTextFieldRowState extends State<FilterTextFieldRow> {
       child: Row(
         children: [
           Expanded(
-            child: RoundedContainer(
+            child: RoundedContainerFilter(
               height: Responsive.isMobile(context) ? 40 : 45,
-              padding: Responsive.isMobile(context) ? EdgeInsets.all(0) : EdgeInsets.all(0),
+              padding: Responsive.isMobile(context) ? EdgeInsets.all(0)
+                  : Responsive.isDesktop(context) ? EdgeInsets.only(bottom: 8) : EdgeInsets.only(bottom: 2),
               margin: EdgeInsets.only(left: 5, right: 5),
               child: Row(children: [
                 SpaceW16(),
@@ -94,17 +96,18 @@ class _FilterTextFieldRowState extends State<FilterTextFieldRow> {
                     focusNode: _focusNode,
                     decoration: InputDecoration(
                       hintText: widget.hintText,
-                      hintStyle: textTheme.bodySmall?.copyWith(
-                        color: AppColors.greyAlt,
-                        fontSize: fontSize,
+                      hintStyle:  textTheme.bodySmall?.copyWith(
+                        color: AppColors.textBlue,
                         height: 1.5,
+                        fontWeight: FontWeight.w500,
+                        fontSize: fontSize,
                       ),
                       border: InputBorder.none,
                     ),
                     controller: widget.searchTextController,
                     keyboardType: TextInputType.text,
                     style: textTheme.bodySmall?.copyWith(
-                      color: AppColors.greyAlt,
+                      color: AppColors.textBlue,
                       height: 1.5,
                       fontWeight: FontWeight.w500,
                       fontSize: fontSize,
@@ -113,14 +116,14 @@ class _FilterTextFieldRowState extends State<FilterTextFieldRow> {
                 ),
                 if (_isClearTextVisible)
                   IconButton(
-                    padding: EdgeInsets.only(bottom: 2),
-                    icon: Icon(Icons.clear, color: AppColors.darkGray),
+                    padding: Responsive.isDesktop(context) ? EdgeInsets.only(top: 10, right: 10) : EdgeInsets.only(bottom: 2),
+                    icon: Icon(Icons.clear, color: AppColors.textBlue),
                     onPressed: widget.clearFilter,
                   ),
                 if (!_isClearTextVisible)
                   IconButton(
-                    padding: EdgeInsets.only(bottom: 2),
-                    icon: Icon(Icons.search, color: AppColors.darkGray),
+                    padding: Responsive.isDesktop(context) ? EdgeInsets.only(top: 10, right: 10) : EdgeInsets.only(bottom: 2),
+                    icon: Icon(Icons.search, color: AppColors.textBlue),
                     onPressed: widget.onPressed,
                   ),
               ]),

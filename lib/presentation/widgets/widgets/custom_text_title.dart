@@ -27,6 +27,49 @@ class CustomTextTitle extends StatelessWidget {
   }
 }
 
+class CustomText extends StatelessWidget {
+
+  CustomText({ required this.title, this.color = AppColors.greyAlt });
+  final String title;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    double fontSize = responsiveSize(context, 14, 15, md: 14);
+    TextTheme textTheme = Theme.of(context).textTheme;
+    return Text(
+      title,
+      style: textTheme.bodySmall?.copyWith(
+        color: color,
+        height: 1.5,
+        fontSize: fontSize,
+      ),
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+    );
+  }
+}
+
+class CustomTextMediumBold extends StatelessWidget {
+
+  const CustomTextMediumBold({required this.text, this.color = AppColors.textBlue });
+  final String text;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    double fontSize = responsiveSize(context, 15, 20, md: 16);
+    TextTheme textTheme = Theme.of(context).textTheme;
+    return Text(
+      text,
+      style: textTheme.titleMedium?.copyWith(
+        color: color,
+        height: 1.5,
+        fontSize: fontSize,
+      ),
+    );
+  }
+}
 
 class CustomTextBody extends StatelessWidget {
 

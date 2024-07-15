@@ -340,7 +340,7 @@ class StatItem extends StatelessWidget {
             const Radius.circular(60.0),
           ),
           border: Border.all(
-            color: titleColor, //TODO
+            color: titleColor,
             width: 2,
           )
       ),

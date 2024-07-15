@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:enreda_app/models/ability.dart';
+import 'package:enreda_app/models/competency.dart';
 import 'package:enreda_app/models/dedication.dart';
 import 'package:enreda_app/models/education.dart';
 import 'package:enreda_app/models/filterTrainingPills.dart';
@@ -68,6 +70,8 @@ abstract class Database {
   Stream<List<TrainingPill>> trainingPillStream();
   Stream<List<TrainingPill>> filteredTrainingPillStream(FilterTrainingPill filter);
   Stream<TrainingPill> trainingPillStreamById(String id);
+  Stream<List<Competency>> competenciesStream();
+
 
   Future<void> addContact(Contact contact);
   Future<void> addUnemployedUser(UnemployedUser unemployedUser);
@@ -506,4 +510,14 @@ class FirestoreDatabase implements Database {
       sort: (lhs, rhs) => lhs.email.compareTo(rhs.email),
     );
   }
+
+  @override
+  Stream<List<Competency>> competenciesStream() => _service.collectionStream(
+    path: APIPath.competencies(),
+    builder: (data, documentId) => Competency.fromMap(data, documentId),
+    queryBuilder: (query) => query,
+    sort: (lhs, rhs) => lhs.name.compareTo(rhs.name),
+  );
+
+
 }
