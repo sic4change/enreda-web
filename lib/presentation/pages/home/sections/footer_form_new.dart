@@ -1,5 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:enreda_app/localization/LocaleProvider.dart';
+import 'package:enreda_app/models/contact.dart';
 import 'package:enreda_app/presentation/pages/home/home_page.dart';
+import 'package:enreda_app/presentation/widgets/dialogs/show_alert_dialog.dart';
+import 'package:enreda_app/presentation/widgets/dialogs/show_exception_alert_dialog.dart';
+import 'package:enreda_app/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -25,6 +30,13 @@ class FooterFormNew extends StatefulWidget {
 
 class _FooterFormNewState extends State<FooterFormNew> {
 
+  final _formKey = GlobalKey<FormState>();
+  String? _email;
+  String? _name;
+  String? _entityName;
+  String? _phone;
+  String? _text;
+
   @override
   void initState() {
     super.initState();
@@ -44,147 +56,148 @@ class _FooterFormNewState extends State<FooterFormNew> {
 
   Widget _buildFooter(BuildContext context){
     return Padding(
-      padding: const EdgeInsets.only(top:412.0),
+      padding: const EdgeInsets.only(top:100.0),
       child: Column(
         children: [
           Stack(
-            clipBehavior: Clip.none,
-            alignment: Alignment.center,
+            alignment: Alignment.bottomCenter,
             children: [
               Container(
                 color: AppColors.skyBlue,
-                height: 600,
                 width: widthOfScreen(context),
-                child: Padding(
-                  padding: EdgeInsets.only(right: 100, left: 100, top: 200, bottom: 89),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                height: 200,
+              ),
+              _buildContactFormCommunityPanel(context),
+            ],
+          ),
+          Container(
+            color: AppColors.skyBlue,
+            height: 450,
+            width: widthOfScreen(context),
+            child: Padding(
+              padding: EdgeInsets.only(right: 100, left: 100, top: 100, bottom: 89),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    child: Row(
+                      children: [
+                        Image.asset(ImagePath.LOGO_ENREDA_VERTICAL, height: 450),
+                        //Menu options
+                        Padding(
+                          padding: const EdgeInsets.only(left: 100.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _buildSubMenuItem('Menú', true),
+                              InkWell(
+                                  onTap: (){
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.RESOURCES,)),
+                                    );
+                                  },
+                                  child: _buildSubMenuItem('Recursos', false)
+                              ),
+                              InkWell(
+                                  onTap: (){
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.JOB_SEARCH,)),
+                                    );
+                                  },
+                                  child: _buildSubMenuItem('Busco empleo', false)
+                              ),
+                              InkWell(
+                                  onTap: (){
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.SOCIAL_ENTITY,)),
+                                    );
+                                  },
+                                  child: _buildSubMenuItem('Entidades', false)
+                              ),
+                              InkWell(
+                                  onTap: (){
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.TALENT_SEARCH,)),
+                                    );
+                                  },
+                                  child: _buildSubMenuItem('Busco talento', false)
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  //Enreda icon
+
+                  //Text and buttons
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Container(
+                      Text(
+                        'Sé parte del cambio,\n¡Enrédate!',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontFamily: GoogleFonts.outfit().fontFamily,
+                          color: AppColors.textBlue,
+                          fontSize: 36,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 30),
                         child: Row(
                           children: [
-                            Image.asset(ImagePath.LOGO_ENREDA_VERTICAL, height: 450),
-                            //Menu options
-                            Padding(
-                              padding: const EdgeInsets.only(left: 100.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  _buildSubMenuItem('Menú', true),
-                                  InkWell(
-                                      onTap: (){
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.RESOURCES,)),
-                                        );
-                                      },
-                                      child: _buildSubMenuItem('Recursos', false)
+                            Container(
+                              height: 60,
+                              width: 260,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: AppColors.textBlue,
+                                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                                  onPrimary: AppColors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(33),
                                   ),
-                                  InkWell(
-                                      onTap: (){
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.JOB_SEARCH,)),
-                                        );
-                                      },
-                                      child: _buildSubMenuItem('Busco empleo', false)
+                                  textStyle: TextStyle(
+                                    fontFamily: GoogleFonts.outfit().fontFamily,
+                                    fontSize: 15,
+                                    letterSpacing: 1.8,
                                   ),
-                                  InkWell(
-                                      onTap: (){
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.SOCIAL_ENTITY,)),
-                                        );
-                                      },
-                                      child: _buildSubMenuItem('Entidades', false)
-                                  ),
-                                  InkWell(
-                                      onTap: (){
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.TALENT_SEARCH,)),
-                                        );
-                                      },
-                                      child: _buildSubMenuItem('Busco talento', false)
-                                  ),
-                                ],
+                                ),
+                                onPressed: () {
+                                  sendEmail(StringConst.DEV_EMAIL);
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.all(22.0),
+                                  child:
+                                  Center(child: Text('Contacta ahora'.toUpperCase())),
+                                ),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      //Enreda icon
-
-                      //Text and buttons
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        mainAxisAlignment: MainAxisAlignment.start,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text(
-                            'Sé parte del cambio,\n¡Enrédate!',
-                            textAlign: TextAlign.right,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontFamily: GoogleFonts.outfit().fontFamily,
-                              color: AppColors.textBlue,
-                              fontSize: 36,
-                            ),
+                          InkWell(
+                              onTap: () => openUrlLink(StringConst.INSTAGRAM_URL),
+                              child: Image.asset(ImagePath.ICON_INSTAGRAM, height: 36)
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 30),
-                            child: Row(
-                              children: [
-                                Container(
-                                  height: 60,
-                                  width: 260,
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      primary: AppColors.textBlue,
-                                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                                      onPrimary: AppColors.white,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(33),
-                                      ),
-                                      textStyle: TextStyle(
-                                        fontFamily: GoogleFonts.outfit().fontFamily,
-                                        fontSize: 15,
-                                        letterSpacing: 1.8,
-                                      ),
-                                    ),
-                                    onPressed: () {
-                                      sendEmail(StringConst.DEV_EMAIL);
-                                    },
-                                    child: Padding(
-                                      padding: EdgeInsets.all(22.0),
-                                      child:
-                                      Center(child: Text('Contacta ahora'.toUpperCase())),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              InkWell(
-                                  onTap: () => openUrlLink(StringConst.INSTAGRAM_URL),
-                                  child: Image.asset(ImagePath.ICON_INSTAGRAM, height: 36)
-                              ),
-                            ],
-                          )
                         ],
                       )
                     ],
-                  ),
-                ),
+                  )
+                ],
               ),
-              Positioned(
-                child: _buildContactFormCommunityPanel(context),
-                top: -500,
-              ),
-            ],
+            ),
           ),
           Container(
             color: AppColors.textBlue,
@@ -258,7 +271,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
       color: AppColors.textBlue,
       //margin: EdgeInsets.symmetric(horizontal: 100),
       width: widthOfScreen(context)-200,
-      height: 650,
+      height: 700,
       child: Stack(
         clipBehavior: Clip.none,
         alignment: Alignment.centerLeft,
@@ -301,21 +314,24 @@ class _FooterFormNewState extends State<FooterFormNew> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top:40.0, right: 100, left: 100),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Column(
-                      children: [
-                        contactFormField('Nombre y apellidos'),
-                        contactFormField('Nombre de la entidad'),
-                        contactFormField('Correo electrónico'),
-                        contactFormField('Número de télefono'),
-                      ],
-                    ),
-                    SpaceW48(),
-                    contactFormFieldBig("¿En qué podemos ayudarte?"),
-                  ],
+                child: Form(
+                  key: _formKey,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Column(
+                        children: [
+                          contactFormField('Nombre y apellidos', (value) => _name = value),
+                          contactFormField('Nombre de la entidad', (value) => _entityName = value),
+                          contactFormField('Correo electrónico', (value) => _email = value),
+                          contactFormField('Número de télefono', (value) => _phone = value),
+                        ],
+                      ),
+                      SpaceW48(),
+                      contactFormFieldBig("¿En qué podemos ayudarte?", (value) => _text = value),
+                    ],
+                  ),
                 ),
               ),
               Padding(
@@ -338,6 +354,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                       ),
                     ),
                     onPressed: () {
+                      _submit();
                     },
                     child: Padding(
                       padding: EdgeInsets.all(22.0),
@@ -356,11 +373,11 @@ class _FooterFormNewState extends State<FooterFormNew> {
     );
   }
 
-  Widget contactFormField(String title){
+  Widget contactFormField(String title, Function(String?) onSaved){
     return Container(
       width: widthOfScreen(context)/4,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -376,7 +393,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
             ),
             SpaceH2(),
             Container(
-              height: 45,
+              height: 65,
               child: TextFormField(
                   decoration: InputDecoration(
                     fillColor: Colors.white,
@@ -385,7 +402,18 @@ class _FooterFormNewState extends State<FooterFormNew> {
                       borderRadius: BorderRadius.circular(8.0),
                       borderSide: BorderSide.none,
                     ),
-                  )
+                    errorStyle: TextStyle(
+                      fontSize: 12,
+                      color: AppColors.skyBlue,
+                    ),
+                    helperText: " "
+                  ),
+                  initialValue: '',
+                  validator: (value) =>
+                  value!.isNotEmpty ? null : 'Este campo no puede estar vacío',
+                  onSaved: onSaved,
+                  textCapitalization: TextCapitalization.sentences,
+                  keyboardType: TextInputType.name
               ),
             )
           ],
@@ -394,7 +422,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
     );
   }
 
-  Widget contactFormFieldBig(String title){
+  Widget contactFormFieldBig(String title, Function(String?) onSaved){
     return Container(
       width: widthOfScreen(context)/2.5 ,
       child: Padding(
@@ -424,7 +452,17 @@ class _FooterFormNewState extends State<FooterFormNew> {
                       borderRadius: BorderRadius.circular(8.0),
                       borderSide: BorderSide.none,
                     ),
-                  )
+                    errorStyle: TextStyle(
+                      fontSize: 12,
+                      color: AppColors.skyBlue,
+                    ),
+                  ),
+                  initialValue: '',
+                  validator: (value) =>
+                  value!.isNotEmpty ? null : 'Este campo no puede estar vacío',
+                  onSaved: onSaved,
+                  textCapitalization: TextCapitalization.sentences,
+                  keyboardType: TextInputType.name
               ),
             )
           ],
@@ -771,6 +809,38 @@ class _FooterFormNewState extends State<FooterFormNew> {
         )
       ],
     );
+  }
+
+  bool _validateAndSaveForm() {
+    final form = _formKey.currentState;
+    if (form!.validate()) {
+      form.save();
+      return true;
+    }
+    return false;
+  }
+
+  Future<void> _submit() async {
+    if (_validateAndSaveForm()) {
+      final contact = Contact(
+        email: _email!,
+        name: _name!,
+        text: 'Tenemos un contacto mediante la página web: Se ha puesto en contacto $_name, de la entidad/empresa $_entityName, con teléfono $_phone. El motivo del contacto es el siguiente: ${_text!}',
+      );
+      try {
+        final database = Provider.of<Database>(context, listen: false);
+        await database.addContact(contact);
+        showAlertDialog(
+          context,
+          title: 'Mensaje enviado',
+          content: 'Hemos recibido satisfactoriamente tu mensaje, nos comunicaremos contigo a la brevedad.',
+          defaultActionText: 'Ok',
+        ).then((value) => (value) {});
+      } on FirebaseException catch (e) {
+        showExceptionAlertDialog(context,
+            title: 'Error al enviar contacto', exception: e).then((value) => (value) {});
+      }
+    }
   }
 
 }

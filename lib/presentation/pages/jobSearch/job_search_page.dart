@@ -1,7 +1,9 @@
+import 'package:enreda_app/models/trainingPill.dart';
 import 'package:enreda_app/presentation/layout/adaptive.dart';
 import 'package:enreda_app/presentation/pages/home/home_page.dart';
 import 'package:enreda_app/presentation/pages/home/sections/footer_new.dart';
 import 'package:enreda_app/presentation/widgets/spaces.dart';
+import 'package:enreda_app/services/database.dart';
 import 'package:enreda_app/utils/functions.dart';
 import 'package:enreda_app/utils/responsive.dart';
 import 'package:enreda_app/values/values.dart';
@@ -9,6 +11,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class JobSearchPage extends StatefulWidget {
   @override
@@ -18,6 +22,8 @@ class JobSearchPage extends StatefulWidget {
 }
 
 class _JobSearchPageState extends State<JobSearchPage> {
+  bool _isVideoVisible = false;
+  late YoutubePlayerController _controller;
 
   void setStateIfMounted(f) {
     if (mounted) setState(f);
@@ -44,6 +50,7 @@ class _JobSearchPageState extends State<JobSearchPage> {
 
 
   Widget _buildJobSearchPageWeb(BuildContext context) {
+    final database = Provider.of<Database>(context, listen: false);
     return SingleChildScrollView(
         child: Column(
           children: [
@@ -185,7 +192,17 @@ class _JobSearchPageState extends State<JobSearchPage> {
                             clipBehavior: Clip.hardEdge,
                             decoration: BoxDecoration(),
                             width: widthOfScreen(context)/2.5,
-                            child: Image.asset(ImagePath.JOB_SEARCH_EXAMPLE_IMAGE)
+                            child: StreamBuilder<TrainingPill>(
+                              stream: database.trainingPillStreamById('RSZTAJ8gzW2ZV4JRAzz9'),
+                              builder: (context, snapshot) {
+                                TrainingPill? trainingPill = snapshot.data;
+                                if(snapshot.hasData)
+                                  return playAreaDesktop(trainingPill!);
+                                else{
+                                  return Image.asset(ImagePath.JOB_SEARCH_EXAMPLE_IMAGE);
+                                }
+                              }
+                            )
                           ),
                         ],
                       ),
@@ -202,6 +219,8 @@ class _JobSearchPageState extends State<JobSearchPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  _buildDownloadSectionWeb(context),
+                  SpaceH80(),
                   Center(
                     child: Text(
                       AppLocalizations.of(context)!.jobItemsTitle,
@@ -213,7 +232,7 @@ class _JobSearchPageState extends State<JobSearchPage> {
                       ),
                     ),
                   ),
-                  SpaceH80(),
+                  SpaceH40(),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 100.0),
                     child: Wrap(
@@ -240,6 +259,7 @@ class _JobSearchPageState extends State<JobSearchPage> {
   }
 
   Widget _buildJobSearchPageMobile(BuildContext context) {
+    final database = Provider.of<Database>(context, listen: false);
     double fontSizeTitle = responsiveSize(context, 30, 40);
     double fontSizeBody = responsiveSize(context, 13, 14);
     return SingleChildScrollView(
@@ -288,6 +308,12 @@ class _JobSearchPageState extends State<JobSearchPage> {
                         ),
                       ),
                     ),
+                  ),
+                  Positioned(
+                    child: Image.asset(ImagePath.ENTITY_YELLOW_LINE_1),
+                    width: widthOfScreen(context),
+                    //bottom: widthOfScreen(context) > 1435 ? 800 : 900,
+                    bottom: 300,
                   ),
                   Positioned(
                     child: Padding(
@@ -373,7 +399,17 @@ class _JobSearchPageState extends State<JobSearchPage> {
                                     clipBehavior: Clip.none,
                                     decoration: BoxDecoration(),
                                     width: widthOfScreen(context),
-                                    child: Image.asset(ImagePath.JOB_SEARCH_EXAMPLE_IMAGE)
+                                    child: StreamBuilder<TrainingPill>(
+                                        stream: database.trainingPillStreamById('RSZTAJ8gzW2ZV4JRAzz9'),
+                                        builder: (context, snapshot) {
+                                          TrainingPill? trainingPill = snapshot.data;
+                                          if(snapshot.hasData)
+                                            return playAreaDesktop(trainingPill!);
+                                          else{
+                                            return Image.asset(ImagePath.JOB_SEARCH_EXAMPLE_IMAGE);
+                                          }
+                                        }
+                                    )
                                 ),
                               ],
                             ),
@@ -382,18 +418,13 @@ class _JobSearchPageState extends State<JobSearchPage> {
                       ),
                     ),
                   ),
-                  Positioned(
-                    child: Image.asset(ImagePath.ENTITY_YELLOW_LINE_1),
-                    width: widthOfScreen(context),
-                    //bottom: widthOfScreen(context) > 1435 ? 800 : 900,
-                    bottom: 300,
-                  ),
                 ],
               ),
             ),
             SizedBox(
               height: 1000,
             ),
+            _buildDownloadSectionMobile(context),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
               child: Container(
@@ -435,6 +466,186 @@ class _JobSearchPageState extends State<JobSearchPage> {
         )
     );
   }
+  
+  Widget _buildDownloadSectionWeb(BuildContext context){
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        Positioned(
+          bottom: -85,
+          child: Container(
+            width: widthOfScreen(context),
+            child: Image.asset(ImagePath.BLUE_LINE_DOWNLOAD),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 180.0),
+          child: Row(
+            children: [
+              Container(
+                width: widthOfScreen(context)*0.25,
+                child: Image.asset(ImagePath.DOWNLOAD_SECTION_IMAGE)
+              ),
+              SpaceW60(),
+              Container(
+                width: widthOfScreen(context)*0.45,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Lleva tu progreso siempre contigo ¡Descárgate  Enreda App y no te pierdas nada!",
+                        style: TextStyle(
+                        height: 1.2,
+                        fontWeight: FontWeight.w900,
+                        fontFamily: GoogleFonts.outfit().fontFamily,
+                        fontSize: 45,
+                        color: AppColors.textBlue,
+                      ),
+                    ),
+                    SpaceH8(),
+                    Text(
+                      'Con la app de Enreda, tendrás acceso a todas las herramientas y recursos que necesitas para avanzar en tu camino hacia el empleo. Monitoriza tus logros, recibe notificaciones importantes, y mantente en contacto con tu red de apoyo desde cualquier lugar.',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontFamily: GoogleFonts.lato().fontFamily,
+                        fontSize: 12,
+                        color: AppColors.greyTxtAlt,
+                      ),
+                    ),
+                    SpaceH16(),
+                    Text(
+                      '¡Descárgala ahora y empieza a construir tu futuro hoy mismo!',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontFamily: GoogleFonts.lato().fontFamily,
+                        fontSize: 12,
+                        color: AppColors.greyTxtAlt,
+                      ),
+                    ),
+                    SpaceH30(),
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: () => openUrlLink(StringConst.URL_GOOGLE_PLAY),
+                          child: Container(
+                            height: 65,
+                            width: 260,
+                            child: Image.asset(ImagePath.PLAY_STORE)
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () => openUrlLink(StringConst.URL_APPSTORE),
+                          hoverColor: Colors.transparent,
+                          child: Container(
+                            height: 65,
+                            width: 260,
+                            child: Image.asset(ImagePath.APP_STORE)
+                          ),
+                        ),
+                      ],
+                    ),
+                    SpaceH100(),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDownloadSectionMobile(BuildContext context){
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        Positioned(
+          top: 250,
+          child: Container(
+            width: widthOfScreen(context),
+            child: Image.asset(ImagePath.BLUE_LINE_DOWNLOAD),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 50.0),
+          child: Column(
+            children: [
+              Container(
+                  width: widthOfScreen(context)*0.8,
+                  child: Image.asset(ImagePath.DOWNLOAD_SECTION_IMAGE)
+              ),
+              SpaceW60(),
+              Container(
+                width: widthOfScreen(context)*0.9,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Lleva tu progreso siempre contigo ¡Descárgate  Enreda App y no te pierdas nada!",
+                      style: TextStyle(
+                        height: 1.2,
+                        fontWeight: FontWeight.w900,
+                        fontFamily: GoogleFonts.outfit().fontFamily,
+                        fontSize: 40,
+                        color: AppColors.textBlue,
+                      ),
+                    ),
+                    SpaceH8(),
+                    Text(
+                      'Con la app de Enreda, tendrás acceso a todas las herramientas y recursos que necesitas para avanzar en tu camino hacia el empleo. Monitoriza tus logros, recibe notificaciones importantes, y mantente en contacto con tu red de apoyo desde cualquier lugar.',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontFamily: GoogleFonts.lato().fontFamily,
+                        fontSize: 12,
+                        color: AppColors.greyTxtAlt,
+                      ),
+                    ),
+                    SpaceH16(),
+                    Text(
+                      '¡Descárgala ahora y empieza a construir tu futuro hoy mismo!',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontFamily: GoogleFonts.lato().fontFamily,
+                        fontSize: 12,
+                        color: AppColors.greyTxtAlt,
+                      ),
+                    ),
+                    SpaceH30(),
+                    Column(
+                      children: [
+                        InkWell(
+                          onTap: () => openUrlLink(StringConst.URL_GOOGLE_PLAY),
+                          child: Container(
+                              height: 65,
+                              width: 260,
+                              child: Image.asset(ImagePath.PLAY_STORE)
+                          ),
+                        ),
+                        SpaceH20(),
+                        InkWell(
+                          onTap: () => openUrlLink(StringConst.URL_APPSTORE),
+                          hoverColor: Colors.transparent,
+                          child: Container(
+                              height: 65,
+                              width: 260,
+                              child: Image.asset(ImagePath.APP_STORE)
+                          ),
+                        ),
+                      ],
+                    ),
+                    SpaceH30(),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
 
   Widget _buildBigItemCard(BuildContext context, String icon, String title, String text){
     return Container(
@@ -589,6 +800,104 @@ class _JobSearchPageState extends State<JobSearchPage> {
         ],
       ),
     );
+  }
+
+  Widget playAreaDesktop(TrainingPill trainingPill) {
+    String urlYoutubeVideo = trainingPill.urlVideo;
+    String idYoutubeVideo =
+    urlYoutubeVideo.substring(urlYoutubeVideo.length - 11);
+    if (!_isVideoVisible)
+      return AspectRatio(
+        aspectRatio: 16 / 9,
+        child: InkWell(
+          onTap: () async {
+            setState(() {
+              setState(() {
+                _isVideoVisible = !_isVideoVisible;
+                _initializeVideo(idYoutubeVideo);
+              });
+            });
+          },
+          child: Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.textBlue),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      YoutubePlayerController.getThumbnail(
+                        videoId: idYoutubeVideo,
+                        quality: ThumbnailQuality.max,
+                      ),
+                    ),
+                    fit: BoxFit.fitWidth,
+                  ),
+                  borderRadius: Responsive.isMobile(context)
+                      ? BorderRadius.circular(10)
+                      : BorderRadius.all(Radius.circular(10)),
+                ),
+              ),
+              Center(
+                child: Icon(
+                  Icons.play_circle_rounded,
+                  color: AppColors.textBlue.withOpacity(0.5),
+                  size: 70,
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+      ),
+      child: YoutubePlayerControllerProvider(
+        // Provides controller to all the widget below it.
+          controller: _controller,
+          child: YoutubePlayer(
+            controller: _controller,
+            aspectRatio: 16 / 9,
+          )),
+    );
+  }
+
+  _initializeVideo(String id) {
+    // Generate a new controller and set as global _controller
+    final controller = YoutubePlayerController.fromVideoId(
+      videoId: id,
+      autoPlay: true,
+      params: const YoutubePlayerParams(
+        showControls: true,
+        mute: false,
+        showFullscreenButton: true,
+      ),
+    );
+    setState(() {
+      _controller = controller;
+      if (_isVideoVisible == false) {
+        _isVideoVisible = true;
+      }
+    });
+    if (!kIsWeb) {
+      _controller..setFullScreenListener(
+            (_) async {
+          final videoData = await _controller.videoData;
+          final startSeconds = await _controller.currentTime;
+          final currentTime =
+          await FullscreenYoutubePlayer.launch(
+            context,
+            videoId: videoData.videoId,
+            startSeconds: startSeconds,
+          );
+          if (currentTime != null) {
+            _controller.seekTo(seconds: currentTime);
+          }
+          _controller.seekTo(seconds: currentTime!);
+        },
+      );
+    }
   }
 
 
