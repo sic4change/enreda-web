@@ -305,7 +305,7 @@ class StatItem extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(40.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
@@ -347,7 +347,7 @@ class StatItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(40.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
