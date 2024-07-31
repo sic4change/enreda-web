@@ -140,9 +140,9 @@ class _FooterNewState extends State<FooterNew> {
                                   width: 260,
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
-                                      primary: AppColors.textBlue,
+                                      backgroundColor: AppColors.textBlue,
                                       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                                      onPrimary: AppColors.white,
+                                      foregroundColor: AppColors.white,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(33),
                                       ),
@@ -197,7 +197,10 @@ class _FooterNewState extends State<FooterNew> {
                 children: [
                   InkWell(
                       onTap: () => openUrlLink(StringConst.WEB_SIC4Change),
-                      child: Image.asset(ImagePath.LOGO_SIC4CHANGE)
+                      child: Container(
+                        height: 40,
+                        child: Image.asset(ImagePath.LOGO_SIC4CHANGE)
+                      )
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -287,9 +290,9 @@ class _FooterNewState extends State<FooterNew> {
                         width: 320,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: AppColors.turquoiseDark,
+                            backgroundColor: AppColors.turquoiseDark,
                             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                            onPrimary: AppColors.white,
+                            foregroundColor: AppColors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(33),
                             ),
@@ -406,9 +409,9 @@ class _FooterNewState extends State<FooterNew> {
                         width: 260,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: AppColors.textBlue,
+                            backgroundColor: AppColors.textBlue,
                             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                            onPrimary: AppColors.white,
+                            foregroundColor: AppColors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(33),
                             ),
@@ -632,9 +635,9 @@ class _FooterNewState extends State<FooterNew> {
                       width: 320,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          primary: AppColors.turquoiseDark,
+                          backgroundColor: AppColors.turquoiseDark,
                           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                          onPrimary: AppColors.white,
+                          foregroundColor: AppColors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(33),
                           ),

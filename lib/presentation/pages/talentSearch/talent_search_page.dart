@@ -155,9 +155,9 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
                                   width: 400,
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
-                                      primary: AppColors.buttonBlue,
+                                      backgroundColor: AppColors.buttonBlue,
                                       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                                      onPrimary: AppColors.white,
+                                      foregroundColor: AppColors.white,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(33),
                                       ),
@@ -229,7 +229,7 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
               ),
             ),
             SpaceH180(),
-            FooterFormNew(),
+            FooterFormNew(isEntity: false),
           ],
         )
     );
@@ -633,9 +633,9 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
                                   width: widthOfScreen(context)*0.7,
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
-                                      primary: AppColors.buttonBlue,
+                                      backgroundColor: AppColors.buttonBlue,
                                       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                                      onPrimary: AppColors.white,
+                                      foregroundColor: AppColors.white,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(33),
                                       ),
@@ -714,7 +714,7 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
               ),
             ),
             SpaceH100(),
-            FooterFormNew(),
+            FooterFormNew(isEntity: false),
           ],
         )
     );

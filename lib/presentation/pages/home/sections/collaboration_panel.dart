@@ -67,7 +67,7 @@ class _CollaborationPanelState extends State<CollaborationPanel> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Realizado con la colaboración de:',
+              'Impulsado por...',
               style: TextStyle(
                 color: AppColors.textBlue,
                 fontFamily: GoogleFonts.outfit().fontFamily,
@@ -80,14 +80,14 @@ class _CollaborationPanelState extends State<CollaborationPanel> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  width: widthOfScreen(context)/6,
+                  width: widthOfScreen(context)/4,
                   child: Text(
-                    'Un programa innovador enfocado en la cohesión social para el desarrollo del territorio a través del empleo joven',
+                    'Enreda nace de la colaboración entre Sic4Change y Proyecto Kieu, con el objetivo de impulsar el talento y fomentar el empleo. Juntos, proponemos un un cambio de paradigma basado en competencias y enfoque territorial.',
                     style: TextStyle(
                       color: AppColors.textBlue,
                       fontFamily: GoogleFonts.lato().fontFamily,
                       fontWeight: FontWeight.w400,
-                      fontSize: 30,
+                      fontSize: 28,
                     ),
                   ),
                 ),
@@ -119,7 +119,7 @@ class _CollaborationPanelState extends State<CollaborationPanel> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Realizado con la colaboración de:',
+              'Impulsado por...',
               style: TextStyle(
                 color: AppColors.textBlue,
                 fontFamily: GoogleFonts.outfit().fontFamily,
@@ -130,7 +130,7 @@ class _CollaborationPanelState extends State<CollaborationPanel> {
             SpaceH12(),
             Container(
               child: Text(
-                'Un programa innovador enfocado en la cohesión social para el desarrollo del territorio a través del empleo joven',
+                'Enreda nace de la colaboración entre Sic4Change y Proyecto Kieu, con el objetivo de impulsar el talento y fomentar el empleo. Juntos, proponemos un un cambio de paradigma basado en competencias y enfoque territorial.',
                 style: TextStyle(
                   color: AppColors.textBlue,
                   fontFamily: GoogleFonts.lato().fontFamily,

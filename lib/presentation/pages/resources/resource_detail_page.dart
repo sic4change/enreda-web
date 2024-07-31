@@ -8,6 +8,7 @@ import 'package:enreda_app/models/userEnreda.dart';
 import 'package:enreda_app/presentation/layout/adaptive.dart';
 import 'package:enreda_app/presentation/pages/resources/build_share_button.dart';
 import 'package:enreda_app/presentation/pages/resources/box_item_data.dart';
+import 'package:enreda_app/presentation/pages/resources/sections/show_alert_user_anonimous.dart';
 import 'package:enreda_app/presentation/pages/resources/streams/competencies_by_resource.dart';
 import 'package:enreda_app/presentation/pages/resources/streams/interests_by_resource.dart';
 import 'package:enreda_app/presentation/widgets/dialogs/show_alert_dialog.dart';
@@ -325,6 +326,9 @@ class _ResourceDetailPageState extends State<ResourceDetailPage> {
                   ]
               ),
             ),
+            SpaceH20(),
+            Responsive.isMobile(context)  ? _buildButton(context, resource) : Container(),
+            SpaceH20(),
             Responsive.isMobile(context) ? Container() : Padding(
               padding: Responsive.isMobile(context) ? const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0) :
               const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
@@ -437,6 +441,8 @@ class _ResourceDetailPageState extends State<ResourceDetailPage> {
                 CustomTextBody(text: resource.status),
               ],
             )),
+        SpaceH30(),
+        _buildButton(context, resource),
         Responsive.isMobile(context) ?  SizedBox(height: 50,) : SizedBox(height: 30,),
       ],
     );
@@ -770,6 +776,41 @@ class _ResourceDetailPageState extends State<ResourceDetailPage> {
         ;
       }
     }
+  }
+
+  Widget _buildButton(BuildContext context, Resource resource) {
+    final textTheme = Theme.of(context).textTheme;
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        TextButton(
+          onPressed: () {
+          if (resource.link != null) {
+              launchURL(resource.link!);
+            } else {
+            showAlertUserAnonimous(context);
+            }
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
+            child: Text(
+              StringConst.JOIN_RESOURCE,
+              style: textTheme.bodyMedium?.copyWith(
+                fontSize: 16,
+                color: Constants.white,
+              ),
+            ),
+          ),
+          style: ButtonStyle(
+              backgroundColor:
+              MaterialStateProperty.all(AppColors.turquoise),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ))),
+        ),
+      ],
+    );
   }
 
   String getLocationText(Resource resource) {

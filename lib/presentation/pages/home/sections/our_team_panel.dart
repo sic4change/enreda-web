@@ -75,14 +75,14 @@ class _OurTeamPanelState extends State<OurTeamPanel> {
             spacing: 20,
             runSpacing: 20,
             children: [
-              _buildCard(context, "Beatriz", ImagePath.PERSON_BEA, AppLocalizations.of(context)!.personTextBea, AppLocalizations.of(context)!.personPosition),
-              _buildCard(context, "María", ImagePath.PERSON_MARIA, AppLocalizations.of(context)!.personTextMaria, AppLocalizations.of(context)!.personPosition),
-              _buildCard(context, "Laura", ImagePath.PERSON_LAURA, AppLocalizations.of(context)!.personTextLaura, AppLocalizations.of(context)!.personPosition),
-              _buildCard(context, "Valeria", ImagePath.PERSON_VALERIA, AppLocalizations.of(context)!.personTextValeria, AppLocalizations.of(context)!.personPosition),
-              _buildCard(context, "Aidira", ImagePath.PERSON_AIDIRA, AppLocalizations.of(context)!.personTextAidira, AppLocalizations.of(context)!.personPosition),
-              _buildCard(context, "Ana", ImagePath.PERSON_ANA, AppLocalizations.of(context)!.personTextAna, AppLocalizations.of(context)!.personPosition),
-              _buildCard(context, "Marisol", ImagePath.PERSON_MARISOL, AppLocalizations.of(context)!.personTextMarisol, AppLocalizations.of(context)!.personPosition),
-              _buildCard(context, "Morelia", ImagePath.PERSON_MORELIA, AppLocalizations.of(context)!.personTextMorelia, AppLocalizations.of(context)!.personPosition),
+              _buildCard(context, "Beatriz", ImagePath.PERSON_BEA, AppLocalizations.of(context)!.personTextBea, AppLocalizations.of(context)!.positionBea),
+              _buildCard(context, "María", ImagePath.PERSON_MARIA, AppLocalizations.of(context)!.personTextMaria, AppLocalizations.of(context)!.positionMaria),
+              _buildCard(context, "Laura", ImagePath.PERSON_LAURA, AppLocalizations.of(context)!.personTextLaura, AppLocalizations.of(context)!.positionLaura),
+              _buildCard(context, "Valeria", ImagePath.PERSON_VALERIA, AppLocalizations.of(context)!.personTextValeria, AppLocalizations.of(context)!.positionValeria),
+              _buildCard(context, "Aidira", ImagePath.PERSON_AIDIRA, AppLocalizations.of(context)!.personTextAidira, AppLocalizations.of(context)!.positionAidira),
+              _buildCard(context, "Ana", ImagePath.PERSON_ANA, AppLocalizations.of(context)!.personTextAna, AppLocalizations.of(context)!.positionAna),
+              _buildCard(context, "Marisol", ImagePath.PERSON_MARISOL, AppLocalizations.of(context)!.personTextMarisol, AppLocalizations.of(context)!.positionMarisol),
+              _buildCard(context, "Morelia", ImagePath.PERSON_MORELIA, AppLocalizations.of(context)!.personTextMorelia, AppLocalizations.of(context)!.positionMorelia),
             ],
           ),
         ],
@@ -109,14 +109,14 @@ class _OurTeamPanelState extends State<OurTeamPanel> {
           SpaceH30(),
           Column(
             children: [
-              _buildCard(context, "Beatriz", ImagePath.PERSON_BEA, AppLocalizations.of(context)!.personTextBea, AppLocalizations.of(context)!.personPosition),
-              _buildCard(context, "María", ImagePath.PERSON_MARIA, AppLocalizations.of(context)!.personTextMaria, AppLocalizations.of(context)!.personPosition),
-              _buildCard(context, "Laura", ImagePath.PERSON_LAURA, AppLocalizations.of(context)!.personTextLaura, AppLocalizations.of(context)!.personPosition),
-              _buildCard(context, "Valeria", ImagePath.PERSON_VALERIA, AppLocalizations.of(context)!.personTextValeria, AppLocalizations.of(context)!.personPosition),
-              _buildCard(context, "Aidira", ImagePath.PERSON_AIDIRA, AppLocalizations.of(context)!.personTextAidira, AppLocalizations.of(context)!.personPosition),
-              _buildCard(context, "Ana", ImagePath.PERSON_ANA, AppLocalizations.of(context)!.personTextAna, AppLocalizations.of(context)!.personPosition),
-              _buildCard(context, "Marisol", ImagePath.PERSON_MARISOL, AppLocalizations.of(context)!.personTextMarisol, AppLocalizations.of(context)!.personPosition),
-              _buildCard(context, "Morelia", ImagePath.PERSON_MORELIA, AppLocalizations.of(context)!.personTextMorelia, AppLocalizations.of(context)!.personPosition),
+              _buildCard(context, "Beatriz", ImagePath.PERSON_BEA, AppLocalizations.of(context)!.personTextBea, AppLocalizations.of(context)!.positionBea),
+              _buildCard(context, "María", ImagePath.PERSON_MARIA, AppLocalizations.of(context)!.personTextMaria, AppLocalizations.of(context)!.positionMaria),
+              _buildCard(context, "Laura", ImagePath.PERSON_LAURA, AppLocalizations.of(context)!.personTextLaura, AppLocalizations.of(context)!.positionLaura),
+              _buildCard(context, "Valeria", ImagePath.PERSON_VALERIA, AppLocalizations.of(context)!.personTextValeria, AppLocalizations.of(context)!.positionValeria),
+              _buildCard(context, "Aidira", ImagePath.PERSON_AIDIRA, AppLocalizations.of(context)!.personTextAidira, AppLocalizations.of(context)!.positionAidira),
+              _buildCard(context, "Ana", ImagePath.PERSON_ANA, AppLocalizations.of(context)!.personTextAna, AppLocalizations.of(context)!.positionAna),
+              _buildCard(context, "Marisol", ImagePath.PERSON_MARISOL, AppLocalizations.of(context)!.personTextMarisol, AppLocalizations.of(context)!.positionMarisol),
+              _buildCard(context, "Morelia", ImagePath.PERSON_MORELIA, AppLocalizations.of(context)!.personTextMorelia, AppLocalizations.of(context)!.positionMorelia),
             ],
           ),
         ],
@@ -128,7 +128,7 @@ class _OurTeamPanelState extends State<OurTeamPanel> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 15.0),
       child: Container(
-        height: 480,
+        height: 520,
         width: Responsive.isMobile(context) ? widthOfScreen(context) : widthOfScreen(context)/5,
         decoration: BoxDecoration(
           color: AppColors.cardWhite,
@@ -171,16 +171,20 @@ class _OurTeamPanelState extends State<OurTeamPanel> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              SpaceH20(),
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: Text(
-                  position,
-                  style: TextStyle(
-                    fontFamily: GoogleFonts.lato().fontFamily,
-                    fontSize: 14,
-                    color: AppColors.buttonBlue,
-                    fontWeight: FontWeight.w800,
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 20.0),
+                  child: Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Text(
+                      position,
+                      style: TextStyle(
+                        fontFamily: GoogleFonts.lato().fontFamily,
+                        fontSize: 14,
+                        color: AppColors.buttonBlue,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
                   ),
                 ),
               ),

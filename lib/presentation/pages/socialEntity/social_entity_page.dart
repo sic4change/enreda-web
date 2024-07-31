@@ -179,9 +179,9 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                                   width: 400,
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
-                                      primary: AppColors.buttonBlue,
+                                      backgroundColor: AppColors.buttonBlue,
                                       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                                      onPrimary: AppColors.white,
+                                      foregroundColor: AppColors.white,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(33),
                                       ),
@@ -256,7 +256,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
               ),
             ),
             SpaceH100(),
-            FooterFormNew(),
+            FooterFormNew(isEntity: true),
           ],
         )
     );
@@ -369,9 +369,9 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                                   width: widthOfScreen(context)*0.7,
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
-                                      primary: AppColors.buttonBlue,
+                                      backgroundColor: AppColors.buttonBlue,
                                       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                                      onPrimary: AppColors.white,
+                                      foregroundColor: AppColors.white,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(33),
                                       ),
@@ -453,7 +453,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
               ),
             ),
             SpaceH100(),
-            FooterFormNew(),
+            FooterFormNew(isEntity: true),
           ],
         )
     );

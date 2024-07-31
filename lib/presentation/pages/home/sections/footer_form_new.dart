@@ -23,7 +23,8 @@ import '../../../widgets/enreda_info_section.dart';
 import '../../../widgets/spaces.dart';
 
 class FooterFormNew extends StatefulWidget {
-  FooterFormNew({Key? key});
+  FooterFormNew({Key? key, required this.isEntity});
+  final bool isEntity;
   @override
   _FooterFormNewState createState() => _FooterFormNewState();
 }
@@ -159,9 +160,9 @@ class _FooterFormNewState extends State<FooterFormNew> {
                               width: 260,
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  primary: AppColors.textBlue,
+                                  backgroundColor: AppColors.textBlue,
                                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                                  onPrimary: AppColors.white,
+                                  foregroundColor: AppColors.white,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(33),
                                   ),
@@ -210,7 +211,10 @@ class _FooterFormNewState extends State<FooterFormNew> {
                 children: [
                   InkWell(
                       onTap: () => openUrlLink(StringConst.WEB_SIC4Change),
-                      child: Image.asset(ImagePath.LOGO_SIC4CHANGE)
+                      child: Container(
+                        height: 40,
+                        child: Image.asset(ImagePath.LOGO_SIC4CHANGE)
+                      )
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -323,7 +327,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                       Column(
                         children: [
                           contactFormField('Nombre y apellidos', (value) => _name = value),
-                          contactFormField('Nombre de la entidad', (value) => _entityName = value),
+                          contactFormField(widget.isEntity ? 'Nombre de la entidad' : 'Empresa', (value) => _entityName = value),
                           contactFormField('Correo electrónico', (value) => _email = value),
                           contactFormField('Número de télefono', (value) => _phone = value),
                         ],
@@ -341,9 +345,9 @@ class _FooterFormNewState extends State<FooterFormNew> {
                   width: 200,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: AppColors.turquoiseDark,
+                      backgroundColor: AppColors.turquoiseDark,
                       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                      onPrimary: AppColors.white,
+                      foregroundColor: AppColors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(33),
                       ),
@@ -520,9 +524,9 @@ class _FooterFormNewState extends State<FooterFormNew> {
                         width: 320,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: AppColors.turquoiseDark,
+                            backgroundColor: AppColors.turquoiseDark,
                             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                            onPrimary: AppColors.white,
+                            foregroundColor: AppColors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(33),
                             ),
@@ -639,9 +643,9 @@ class _FooterFormNewState extends State<FooterFormNew> {
                         width: 260,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: AppColors.textBlue,
+                            backgroundColor: AppColors.textBlue,
                             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                            onPrimary: AppColors.white,
+                            foregroundColor: AppColors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(33),
                             ),

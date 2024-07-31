@@ -1,19 +1,9 @@
 import 'package:enreda_app/presentation/pages/home/sections/statistics_section.dart';
-import 'package:enreda_app/presentation/widgets/buttons/enreda_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:responsive_builder/responsive_builder.dart';
-import 'package:visibility_detector/visibility_detector.dart';
-
-import '../../../../utils/functions.dart';
 import '../../../../utils/responsive.dart';
 import '../../../../values/values.dart';
 import '../../../layout/adaptive.dart';
-import '../../../widgets/buttons/social_button_2.dart';
-import '../../../widgets/content_area.dart';
-import '../../../widgets/enreda_info_section.dart';
-import '../../../widgets/spaces.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 const double kSpacingSm = 40.0;
 const double kRunSpacingSm = 24.0;
@@ -27,7 +17,7 @@ class RebuildPanel extends StatefulWidget {
 }
 
 class _RebuildPanelState extends State<RebuildPanel> {
-
+  bool _cardEnable = false;
   @override
   void initState() {
     super.initState();
@@ -40,11 +30,6 @@ class _RebuildPanelState extends State<RebuildPanel> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = widthOfScreen(context) - getSidePadding(context);
-    double screenHeight = heightOfScreen(context);
-    double contentAreaWidthSm = screenWidth * 1.0;
-    double contentAreaHeightSm = screenHeight * 0.7;
-    double contentAreaWidthLg = screenWidth * 0.5;
     return Container(
       //height: Responsive.isMobile(context) ? screenHeight : contentAreaHeightSm,
       decoration: BoxDecoration(
@@ -72,9 +57,16 @@ class _RebuildPanelState extends State<RebuildPanel> {
                   color: AppColors.lightBlue,
                   child: Align(
                     alignment: Alignment.centerRight,
-                    child: Container(
-                        width: widthOfScreen(context)*0.8,
-                        child: Image.asset(ImagePath.REBUILD_MAP)
+                    child: InkWell(
+                      onTap: (){
+                        setState(() {
+                          _cardEnable = !_cardEnable;
+                        });
+                      },
+                      child: Container(
+                          width: widthOfScreen(context)*0.8,
+                          child: Image.asset(ImagePath.REBUILD_MAP)
+                      ),
                     ),
                   ),
                 ),
@@ -89,7 +81,7 @@ class _RebuildPanelState extends State<RebuildPanel> {
                 ),
               ],
             ),
-            Positioned(
+            _cardEnable ? Positioned(
               right: widthOfScreen(context)*0.1,
               top:100,
               bottom: 700,
@@ -97,7 +89,7 @@ class _RebuildPanelState extends State<RebuildPanel> {
                   width: widthOfScreen(context)*0.2,
                   child: Image.asset(ImagePath.REBUILD_CARD_ITEM)
               ),
-            ),
+            ) : Container(),
             Positioned(
               bottom: 500,
               child: Container(
@@ -121,14 +113,21 @@ class _RebuildPanelState extends State<RebuildPanel> {
           children: [
             Column(
               children: [
-                Container(
-                  width: widthOfScreen(context),
-                  color: AppColors.lightBlue,
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Container(
-                        width: widthOfScreen(context)*0.95,
-                        child: Image.asset(ImagePath.REBUILD_MAP)
+                InkWell(
+                  onTap: (){
+                    setState(() {
+                      _cardEnable = !_cardEnable;
+                    });
+                  },
+                  child: Container(
+                    width: widthOfScreen(context),
+                    color: AppColors.lightBlue,
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Container(
+                          width: widthOfScreen(context)*0.95,
+                          child: Image.asset(ImagePath.REBUILD_MAP)
+                      ),
                     ),
                   ),
                 ),
@@ -154,7 +153,7 @@ class _RebuildPanelState extends State<RebuildPanel> {
                 ),
               ],
             ),
-            Positioned(
+            _cardEnable ? Positioned(
               left: 260,
               top: 30,
               bottom: 1300,
@@ -163,7 +162,7 @@ class _RebuildPanelState extends State<RebuildPanel> {
                   //height: 300,
                   child: Image.asset(ImagePath.REBUILD_CARD_ITEM)
               ),
-            ),
+            ) : Container(),
             Positioned(
               bottom: 1230,
               child: Container(

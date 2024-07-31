@@ -162,9 +162,9 @@ class _JobSearchPageState extends State<JobSearchPage> {
                                   width: 400,
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
-                                      primary: AppColors.buttonBlue,
+                                      backgroundColor: AppColors.buttonBlue,
                                       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                                      onPrimary: AppColors.white,
+                                      foregroundColor: AppColors.white,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(33),
                                       ),
@@ -372,9 +372,9 @@ class _JobSearchPageState extends State<JobSearchPage> {
                                   width: widthOfScreen(context)*0.6,
                                   child: ElevatedButton(
                                     style: ElevatedButton.styleFrom(
-                                      primary: AppColors.buttonBlue,
+                                      backgroundColor: AppColors.buttonBlue,
                                       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                                      onPrimary: AppColors.white,
+                                      foregroundColor: AppColors.white,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(33),
                                       ),

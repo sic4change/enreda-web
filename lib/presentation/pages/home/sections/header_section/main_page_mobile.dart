@@ -195,9 +195,9 @@ class _MainPageMobileState extends State<MainPageMobile>
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: AppColors.turquoiseDark,
+                        backgroundColor: AppColors.turquoiseDark,
                         padding: EdgeInsets.symmetric(horizontal: 10, vertical: Responsive.isMobile(context) ? 0 : 10),
-                        onPrimary: AppColors.white,
+                        foregroundColor: AppColors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
