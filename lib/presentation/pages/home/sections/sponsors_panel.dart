@@ -59,6 +59,7 @@ class _SponsorsPanelState extends State<SponsorsPanel> {
   }
 
   Widget _buildWebPage(BuildContext context){
+    var textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 100.0, vertical: 90),
       child: Container(
@@ -70,7 +71,7 @@ class _SponsorsPanelState extends State<SponsorsPanel> {
             Center(
               child: Text(
                 AppLocalizations.of(context)!.byHand,
-                style: TextStyle(
+                style: textTheme.titleLarge!.copyWith(
                   color: AppColors.textBlue,
                   fontFamily: GoogleFonts.outfit().fontFamily,
                   fontWeight: FontWeight.w800,
@@ -81,9 +82,8 @@ class _SponsorsPanelState extends State<SponsorsPanel> {
             SpaceH20(),
             Text(
               AppLocalizations.of(context)!.enredadas,
-              style: TextStyle(
+              style: textTheme.titleMedium!.copyWith(
                 color: AppColors.textBlue,
-                fontFamily: GoogleFonts.outfit().fontFamily,
                 fontWeight: FontWeight.w100,
                 fontSize: 40,
               ),
@@ -114,9 +114,8 @@ class _SponsorsPanelState extends State<SponsorsPanel> {
             SpaceH20(),
             Text(
               AppLocalizations.of(context)!.funders,
-              style: TextStyle(
+              style: textTheme.titleMedium!.copyWith(
                 color: AppColors.textBlue,
-                fontFamily: GoogleFonts.outfit().fontFamily,
                 fontWeight: FontWeight.w100,
                 fontSize: 40,
               ),

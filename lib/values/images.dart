@@ -16,6 +16,11 @@ class ImagePath {
   static const String LOGO_ENREDA_LONG = '$imageDir/logo-enreda-long.png';
   static const String LOGO_ENREDA_BLACK = '$imageDir/logo-enreda-black.png';
   static const String LOGO_SIC4CHANGE = '$imageDir/logo-sic4change.png';
+  static const String LOGO_ACCENTURE = '$imageDir/logo-accenture.png';
+  static const String LOGO_FUTURO = '$imageDir/logo-futuro.png';
+  static const String LOGO_IBEROSTAR = '$imageDir/logo-iberostar.png';
+  static const String LOGO_EARTH = '$imageDir/earth-icon.png';
+
 
   // Stores
   static const String PLAY_STORE = "$imageDir/play_store_900x503.png";
@@ -77,6 +82,8 @@ class ImagePath {
   static const String REBUILD_TITLE_IMAGE = '$imageDir/rebuild-title-image.png';
   static const String DOWNLOAD_SECTION_IMAGE = '$imageDir/download-section-image.png';
   static const String BLUE_LINE_DOWNLOAD = '$imageDir/blue-line-download.png';
+  static const String LOGIN_PERSON = '$imageDir/login-person.png';
+
 
   // Blog Images
   static const String TEAM_01 = "$imageDir/team_01.jpg";

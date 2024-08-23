@@ -44,13 +44,13 @@
     "gamification": "Gamificación",
     "cvCreation": "Creación de CV",
     "resourcesAccess": "Acceso a ofertas y recursos",
-    "enredaApp": "Enreda App",
+    "enredaApp": "Acceso a píldoras formativas",
     "chatbotText": "Enreda cuenta con un chatbot que te acompaña y orienta a redescubrir y reconocer tus competencias a través de tus experiencias vitales, profesionales y formativas.",
     "competenciesText": "¿Sabes que en las experiencias vitales adquieres competencias transferibles al empleo? Enreda te permitirá identificar y reconocer las habilidades y destrezas que has adquirido y ponerlas en valor para el empleo.",
     "gamificationText": "Con Enreda, puedes reconocer y registrar los logros en tu camino hacia el empleo. ¡Verás tu progreso, te sentirás más motivado y estarás siempre listo para tus próximos desafíos!",
     "cvCreationText": "La plataforma enREDa te facilita las herramientas para que puedas crear tu CV de forma rápida y sencilla considerando tus competencias, además de los conocimientos y la experiencia y formación.",
     "resourcesAccessText": "A través de Enreda podrás conocer recursos de distinto tipo en los que participar, además de fortalecer y adquirir nuevas competencias, ampliarás tu red de contactos",
-    "enredaAppText": "Además de la web, enreda está accesible en APP para Android e IOs. La app cuenta con un sistema de notificaciones para tener estar al día de tus recursos de interés, ofertas de empleo, formativas, voluntariado, ocio, etc.",
+    "enredaAppText": "Enreda te ofrece píldoras formativas gratuitas en videos cortos para mejorar tus habilidades y abrir puertas en el mundo laboral. Con contenido práctico y accesible, estas cápsulas educativas se adaptan a tu tiempo, brindándote herramientas efectivas para enfrentar los desafíos laborales.",
     "entityTitle": "Transforma vidas con Enreda: Tecnología al servicio del acompañamiento laboral.",
     "entityParagraph1": "¿Quieres que tus programas y recursos lleguen más lejos? ¿Quieres aumentar el potencial laboral de tus participantes? Enreda ayuda a las entidades sociales a mejorar la situación de empleabilidad de sus participantes. ",
     "entityParagraph2": "Permite generar CV actualizados y profesionales desde un enfoque por competencias, poniendo en valor las habilidades y destrezas de cada persona. Favorece su certificación, aumentando así, su valor.",
@@ -109,5 +109,11 @@
     "positionAna": "Técnica en inserción sociolaboral",
     "positionMarisol": "Responsable de contabilidad y justificaciones",
     "positionMorelia": "Técnica en prospección laboral",
-    "personTitle": "Nuestro Equipo de Enreda Canarias"
+    "personTitle": "Nuestro Equipo de Enreda Canarias",
+    "enredaCompanies": "Empresas Enredadas",
+    "myAccount": "Mi cuenta",
+    "professionalAccount": "Cuenta profesional"
+
+
+
 }

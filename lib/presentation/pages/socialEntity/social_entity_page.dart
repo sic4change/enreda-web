@@ -58,6 +58,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
     super.dispose();
   }
 
+  ScrollController scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +70,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
 
   Widget _buildSocialEntityPage(BuildContext context) {
     return SingleChildScrollView(
+        controller: scrollController,
         child: Column(
           children: [
             Stack(
@@ -192,7 +194,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                                       ),
                                     ),
                                     onPressed: () {
-                                      openUrlLink(StringConst.SOCIAL_ENTITY_URL);
+                                      scrollController.animateTo(scrollController.position.maxScrollExtent - 500, duration: Duration(seconds: 1), curve: Curves.easeIn);
                                     },
                                     child: Padding(
                                       padding: EdgeInsets.all(22.0),

@@ -46,6 +46,7 @@ class AppColors {
   static const Color brightBlue = Color(0xFF79FFFC);
   static const Color brightBlueNumber = Color(0xFF20DAD3);
   static const Color blue050 = Color(0xFF82A6AE);
+  static const Color blueLanguage = Color(0xFF006776);
 
 
   //Yellow

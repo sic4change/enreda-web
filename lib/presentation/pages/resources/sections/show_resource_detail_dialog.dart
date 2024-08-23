@@ -1,3 +1,4 @@
+import 'package:enreda_app/presentation/pages/resources/build_share_button.dart';
 import 'package:enreda_app/presentation/pages/resources/sections/show_alert_user_anonimous.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,7 +13,6 @@ import '../../../layout/adaptive.dart';
 import '../../../widgets/buttons/dialog_main_button.dart';
 import '../../../widgets/spaces.dart';
 import '../../../widgets/widgets/custom_text_title.dart';
-import 'build_share_button.dart';
 
 class ShowResourceDetailDialog extends StatelessWidget {
   final Resource resource;

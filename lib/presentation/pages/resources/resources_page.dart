@@ -164,7 +164,6 @@ class _ResourcesPageState extends State<ResourcesPage> {
             ),
             _buildTrainingPillsButton(context),
             SpaceH8(),
-            //_buildJoinCommunityPanel(context),
             FooterNew()
           ],
         ));
@@ -435,8 +434,8 @@ class _ResourcesPageState extends State<ResourcesPage> {
         ),
         Container(
           margin: _categoryFormationId == "6ag9Px7zkFpHgRe17PQk"
-              ? EdgeInsets.only(top: 230.0)
-              : EdgeInsets.only(top: 120.0),
+              ? EdgeInsets.only(top: 80.0)
+              : EdgeInsets.only(top: 10.0),
           child: _buildContents(context),
         ),
       ],
@@ -446,57 +445,68 @@ class _ResourcesPageState extends State<ResourcesPage> {
   Widget _buildTrainingPills(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
     final isBigScreen = MediaQuery.of(context).size.width >= 900;
-    return Stack(
-      children: [
-        Container(
-          margin: const EdgeInsets.only(top: 20.0),
-          child: Column(
-            children: [
-              Padding(
-                padding: Responsive.isMobile(context)
-                    ? EdgeInsets.symmetric(horizontal: 15)
-                    : Responsive.isDesktopS(context)
-                    ? EdgeInsets.symmetric(horizontal: 30)
-                    : EdgeInsets.symmetric(horizontal: 100),
-                child: InkWell(
-                  onTap: () {
-                    setStateIfMounted(() {
-                      ResourcesPage.selectedIndex.value = 0;
-                      _clearFilter();
-                    });
-                  },
-                  child: Row(
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            height: 1000,
+            child: Stack(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(top: 20.0),
+                  child: Column(
                     children: [
-                      Image.asset(ImagePath.ARROW_B, height: 30),
-                      Spacer(),
-                      CustomTextMediumBold(text: 'Píldoras formativas'),
-                      Spacer(),
-                      SizedBox(width: 30),
+                      Padding(
+                        padding: Responsive.isMobile(context)
+                            ? EdgeInsets.symmetric(horizontal: 15)
+                            : Responsive.isDesktopS(context)
+                            ? EdgeInsets.symmetric(horizontal: 30)
+                            : EdgeInsets.symmetric(horizontal: 100),
+                        child: InkWell(
+                          onTap: () {
+                            setStateIfMounted(() {
+                              ResourcesPage.selectedIndex.value = 0;
+                              _clearFilter();
+                            });
+                          },
+                          child: Row(
+                            children: [
+                              Image.asset(ImagePath.ARROW_B, height: 30),
+                              Spacer(),
+                              CustomTextMediumBold(text: 'Píldoras formativas'),
+                              Spacer(),
+                              SizedBox(width: 30),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SpaceH12(),
+                      FilterTextFieldRow(
+                        searchTextController: _searchTextController,
+                        onPressed: () => setStateIfMounted(() {
+                          filterTrainingPill.searchText = _searchTextController.text;
+                        }),
+                        onFieldSubmitted: (value) => setStateIfMounted(() {
+                          filterTrainingPill.searchText = _searchTextController.text;
+                        }),
+                        clearFilter: () => _clearFilter(),
+                        hintText: 'Nombre del video, categoría...',
+                      ),
                     ],
                   ),
                 ),
-              ),
-              SpaceH12(),
-              FilterTextFieldRow(
-                searchTextController: _searchTextController,
-                onPressed: () => setStateIfMounted(() {
-                  filterTrainingPill.searchText = _searchTextController.text;
-                }),
-                onFieldSubmitted: (value) => setStateIfMounted(() {
-                  filterTrainingPill.searchText = _searchTextController.text;
-                }),
-                clearFilter: () => _clearFilter(),
-                hintText: 'Nombre del video, categoría...',
-              ),
-            ],
+                Container(
+                    margin: !kIsWeb ? EdgeInsets.only(top: 120.0) : EdgeInsets.only(top: 120.0),
+                    child: Responsive.isMobile(context) || Responsive.isMobileHorizontal(context) ?
+                    _buildTrainingPillsListMobile(context)
+                        : _buildTrainingPillsList(context)),
+              ],
+            ),
           ),
-        ),
-        Container(
-            margin: !kIsWeb ? EdgeInsets.only(top: 120.0) : EdgeInsets.only(top: 120.0),
-            child: Responsive.isMobile(context) || Responsive.isMobileHorizontal(context) ?
-            _buildTrainingPillsListMobile(context)
-                : _buildTrainingPillsList(context)),
-      ],
+          SpaceH20(),
+          FooterNew(),
+        ],
+      ),
     );
   }
 
@@ -731,31 +741,39 @@ class _ResourcesPageState extends State<ResourcesPage> {
   }
 
   Widget _buildResourceDetail(BuildContext context) {
-    return Padding(
-      padding: Responsive.isMobile(context) ? EdgeInsets.symmetric(horizontal: 0, vertical: 0)
-          : Responsive.isDesktopS(context) ? EdgeInsets.symmetric(horizontal: 30, vertical: 20)
-          : EdgeInsets.symmetric(horizontal: 100, vertical: 20),
-      child: SingleChildScrollView(
-        child: Stack(
-          children: [
-            ResourceDetailPage(),
-            InkWell(
-              onTap: () {
-                setStateIfMounted(() {
-                  ResourcesPage.selectedIndex.value = 1;
-                  _clearFilter();
-                });
-              },
-              child: Padding(
-                padding: MediaQuery.of(context).size.width >= 1200 || Responsive.isMobile(context) ? EdgeInsets.all(10.0)
-                    : EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
-                child: Image.asset(ImagePath.ARROW_BACK_SHADOW, scale: 1.2, height: 40,),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Padding(
+            padding: Responsive.isMobile(context) ? EdgeInsets.symmetric(horizontal: 0, vertical: 0)
+                : Responsive.isDesktopS(context) ? EdgeInsets.symmetric(horizontal: 30, vertical: 20)
+                : EdgeInsets.symmetric(horizontal: 100, vertical: 20),
+            child: Container(
+              height: 1100,
+              child: Stack(
+                children: [
+                  ResourceDetailPage(),
+                  InkWell(
+                    onTap: () {
+                      setStateIfMounted(() {
+                        ResourcesPage.selectedIndex.value = 1;
+                        _clearFilter();
+                      });
+                    },
+                    child: Padding(
+                      padding: MediaQuery.of(context).size.width >= 1200 || Responsive.isMobile(context) ? EdgeInsets.all(10.0)
+                          : EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+                      child: Image.asset(ImagePath.ARROW_BACK_SHADOW, scale: 1.2, height: 40,),
+                    ),
+                  ),
+                  Responsive.isMobile(context) || Responsive.isTablet(context) ? SpaceH8() : SpaceH4(),
+                  SpaceH50(),
+                ],
               ),
             ),
-            Responsive.isMobile(context) || Responsive.isTablet(context) ? SpaceH8() : SpaceH4(),
-            SpaceH50(),
-          ],
-        ),
+          ),
+          FooterNew()
+        ],
       ),
     );
   }

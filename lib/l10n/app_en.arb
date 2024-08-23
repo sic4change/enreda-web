@@ -44,13 +44,13 @@
   "gamification": "Gamification",
   "cvCreation": "CV creation",
   "resourcesAccess": "Access to offers and resources",
-  "enredaApp": "Enreda App",
+  "enredaApp": "Access to training pills",
   "chatbotText": "Enreda has a chatbot that accompanies you and guides you to rediscover and recognize your competencies through your life, professional and training experiences.",
   "competenciesText": "Did you know that in life experiences you acquire skills that are transferable to employment? Enreda will allow you to identify and recognize the skills and abilities you have acquired and value them for employment.",
   "gamificationText": "With Enreda, you can recognize and record achievements on your path to employment - you'll see your progress, feel more motivated and always be ready for your next challenges!",
   "cvCreationText": "The enREDa platform provides you with the tools to create your CV quickly and easily, taking into account your skills, knowledge, experience and training.",
   "resourcesAccessText": "Through Enreda you will be able to learn about different types of resources in which to participate, in addition to strengthening and acquiring new skills, you will expand your network of contacts.",
-  "enredaAppText": "In addition to the web, enreda is accessible on APP for Android and IOs. The app has a notification system to keep you up to date with your resources of interest, job offers, training, volunteering, leisure, etc.",
+  "enredaAppText": "Enreda offers you free training pills in short videos to improve your skills and open doors in the working world. With practical and accessible content, these educational capsules adapt to your time, providing you with effective tools to face work challenges.",
   "entityTitle": "Transform lives with Enreda: Technology at the service of job accompaniment.",
   "entityParagraph1": "Do you want your programs and resources to go further? Do you want to increase the employment potential of your participants Enreda helps social entities to improve the employability situation of their participants.",
   "entityParagraph2": "It allows the generation of updated and professional CVs from a competency-based approach, highlighting the skills and abilities of each person. It favors their certification, thus increasing their value.",
@@ -109,5 +109,8 @@
   "positionAna": "Technician in socio-labor insertion",
   "positionMarisol": "Responsible for accounting and justifications",
   "positionMorelia": "Technician in labor prospecting",
-  "personTitle": "Our Enreda Canarias Team"
+  "personTitle": "Our Enreda Canarias Team",
+  "enredaCompanies": "Enredadas Companies",
+  "myAccount": "My account",
+  "professionalAccount": "Professional account"
 }

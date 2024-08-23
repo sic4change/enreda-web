@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:enreda_app/presentation/pages/resources/sections/build_share_button.dart';
+import 'package:enreda_app/presentation/pages/resources/build_share_button.dart';
 import 'package:enreda_app/presentation/pages/resources/sections/show_alert_user_anonimous.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -258,7 +258,7 @@ class _ResourceListTileState extends State<ResourceListTile> {
                         IconButton(
                           icon: FaIcon(FontAwesomeIcons.heart),
                           tooltip: 'Me gusta',
-                          color: AppColors.greyTxtAlt,
+                          color: AppColors.red,
                           iconSize: 20,
                           onPressed: () => showAlertUserAnonimous(context),
                         ),

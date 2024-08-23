@@ -1,6 +1,9 @@
 import 'package:enreda_app/localization/LocaleProvider.dart';
 import 'package:enreda_app/presentation/pages/home/home_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -34,6 +37,11 @@ class _FooterNewState extends State<FooterNew> {
   void dispose() {
     super.dispose();
   }
+
+  bool _isHoveredResources = false;
+  bool _isHoveredJob = false;
+  bool _isHoveredSocialEntity = false;
+  bool _isHoveredTalent = false;
 
   @override
   Widget build(BuildContext context) {
@@ -71,42 +79,90 @@ class _FooterNewState extends State<FooterNew> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  _buildSubMenuItem('Menú', true),
-                                  InkWell(
-                                      onTap: (){
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.RESOURCES,)),
-                                        );
-                                      },
-                                      child: _buildSubMenuItem('Recursos', false)
+                                  _buildSubMenuItem('Menú', true, false),
+                                  MouseRegion(
+                                    onEnter: (_) {
+                                      setState(() {
+                                        _isHoveredResources = true;
+                                      });
+                                    },
+                                    onExit: (_) {
+                                      setState(() {
+                                        _isHoveredResources = false;
+                                      });
+                                    },
+                                    child: InkWell(
+                                        onTap: (){
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.RESOURCES,)),
+                                          );
+                                        },
+                                        child: _buildSubMenuItem('Recursos', false, _isHoveredResources)
+                                    ),
                                   ),
-                                  InkWell(
-                                      onTap: (){
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.JOB_SEARCH,)),
-                                        );
-                                      },
-                                      child: _buildSubMenuItem('Busco empleo', false)
+                                  MouseRegion(
+                                    onEnter: (_) {
+                                      setState(() {
+                                        _isHoveredJob = true;
+                                      });
+                                    },
+                                    onExit: (_) {
+                                      setState(() {
+                                        _isHoveredJob = false;
+                                      });
+                                    },
+                                    child: InkWell(
+                                        onTap: (){
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.JOB_SEARCH,)),
+                                          );
+                                        },
+                                        child: _buildSubMenuItem('Busco empleo', false, _isHoveredJob)
+                                    ),
                                   ),
-                                  InkWell(
-                                      onTap: (){
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.SOCIAL_ENTITY,)),
-                                        );
-                                      },
-                                      child: _buildSubMenuItem('Entidades', false)
+                                  MouseRegion(
+                                    onEnter: (_) {
+                                      setState(() {
+                                        _isHoveredSocialEntity = true;
+                                      });
+                                    },
+                                    onExit: (_) {
+                                      setState(() {
+                                        _isHoveredSocialEntity = false;
+                                      });
+                                    },
+                                    child: InkWell(
+                                        onTap: (){
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.SOCIAL_ENTITY,)),
+                                          );
+                                        },
+                                        child: _buildSubMenuItem('Entidades', false, _isHoveredSocialEntity)
+                                    ),
                                   ),
-                                  InkWell(
-                                      onTap: (){
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.TALENT_SEARCH,)),
-                                        );
-                                      },
-                                      child: _buildSubMenuItem('Busco talento', false)
+                                  MouseRegion(
+                                    onEnter: (_) {
+                                      setState(() {
+                                        _isHoveredTalent = true;
+                                      });
+                                    },
+                                    onExit: (_) {
+                                      setState(() {
+                                        _isHoveredTalent = false;
+                                      });
+                                    },
+                                    child: InkWell(
+                                        onTap: (){
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.TALENT_SEARCH,)),
+                                          );
+                                        },
+                                        child: _buildSubMenuItem('Busco talento', false, _isHoveredTalent)
+                                    ),
                                   ),
                                 ],
                               ),
@@ -306,7 +362,7 @@ class _FooterNewState extends State<FooterNew> {
                           child: Padding(
                             padding: EdgeInsets.all(22.0),
                             child:
-                            Center(child: Text('Quiero inscribrime ahora'.toUpperCase())),
+                            Center(child: Text('Quiero inscribirme ahora'.toUpperCase())),
                           ),
                         ),
                       ),
@@ -332,7 +388,7 @@ class _FooterNewState extends State<FooterNew> {
                   child: Image.asset(ImagePath.LOGO_ENREDA_BLACK),
                 ),
                 SpaceH16(),
-                _buildSubMenuItem('Menú', true),
+                _buildSubMenuItem('Menú', true, false),
                 Padding(
                   padding: const EdgeInsets.only(right: 150.0),
                   child: Row(
@@ -345,7 +401,7 @@ class _FooterNewState extends State<FooterNew> {
                               MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.RESOURCES,)),
                             );
                           },
-                          child: _buildSubMenuItem('Recursos', false)
+                          child: _buildSubMenuItem('Recursos', false, _isHoveredResources)
                       ),
                       InkWell(
                           onTap: (){
@@ -354,7 +410,7 @@ class _FooterNewState extends State<FooterNew> {
                               MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.JOB_SEARCH,)),
                             );
                           },
-                          child: _buildSubMenuItem('Busco empleo', false)
+                          child: _buildSubMenuItem('Busco empleo', false, _isHoveredJob)
                       ),
                     ],
                   ),
@@ -371,7 +427,7 @@ class _FooterNewState extends State<FooterNew> {
                               MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.SOCIAL_ENTITY,)),
                             );
                           },
-                          child: _buildSubMenuItem('Entidades', false)
+                          child: _buildSubMenuItem('Entidades', false, _isHoveredSocialEntity)
                       ),
                       InkWell(
                           onTap: (){
@@ -380,7 +436,7 @@ class _FooterNewState extends State<FooterNew> {
                               MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.TALENT_SEARCH,)),
                             );
                           },
-                          child: _buildSubMenuItem('Busco talento', false)
+                          child: _buildSubMenuItem('Busco talento', false, _isHoveredTalent)
                       ),
                     ],
                   ),
@@ -581,15 +637,17 @@ class _FooterNewState extends State<FooterNew> {
     );
   }
 
-  Widget _buildSubMenuItem(String name, bool isTitle){
+  Widget _buildSubMenuItem(String name, bool isTitle, bool isHovered){
+    var textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: EdgeInsets.only(bottom: isTitle ? 14 : 6),
       child: Text(
         name,
-        style: TextStyle(
+        style: textTheme.titleLarge!.copyWith(
           fontFamily: GoogleFonts.lato().fontFamily,
+          decoration: isHovered ? TextDecoration.underline : TextDecoration.none,
           fontSize: isTitle ? 20 : 14,
-          fontWeight: isTitle ? FontWeight.w600 : FontWeight.w400,
+          fontWeight: (isTitle || isHovered) ? FontWeight.w800 : FontWeight.w400,
           color: AppColors.textBlue,
         ),
       ),
@@ -651,7 +709,7 @@ class _FooterNewState extends State<FooterNew> {
                         child: Padding(
                           padding: EdgeInsets.all(22.0),
                           child:
-                          Center(child: Text('Quiero inscribrime ahora'.toUpperCase())),
+                          Center(child: Text('Quiero inscribirme ahora'.toUpperCase())),
                         ),
                       ),
                     ),

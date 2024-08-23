@@ -96,7 +96,7 @@ Widget buildShareButton(BuildContext context, Resource resource, Color color) {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset(ImagePath.ICON_SHARE, height: 20),
+        Icon(Icons.share, size: 20, color: color,),
         SizedBox(width: 10),
       ],
     ),

@@ -68,7 +68,7 @@ class BoxItem extends StatelessWidget {
           color: Colors.white,
           shape: BoxShape.rectangle,
           border: Border.all(
-              color: AppColors.greyLight.withOpacity(0.2),
+              color: AppColors.greyTxtAlt.withOpacity(0.2),
               width: 1),
           borderRadius: BorderRadius.circular(5),
         ),

@@ -91,118 +91,116 @@ class _ResourceDetailPageState extends State<ResourceDetailPage> {
     TextTheme textTheme = Theme.of(context).textTheme;
     double fontSizeTitle = responsiveSize(context, 14, 22, md: 18);
     double fontSizePromotor = responsiveSize(context, 12, 16, md: 14);
-    return SingleChildScrollView(
-      child: Container(
-        margin: MediaQuery.of(context).size.width >= 1200 ?
-          EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1) : EdgeInsets.zero,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          shape: BoxShape.rectangle,
-          border: Border.all(
-              color: AppColors.greyTxtAlt.withOpacity(0.2),
-              width: 1),
-          borderRadius: BorderRadius.circular(Sizes.MARGIN_16),
-        ),
-        child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(ImagePath.RECTANGLE_RESOURCE),
-                  fit: BoxFit.cover,
-                ),
-                borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(Sizes.MARGIN_16),
-                    bottomLeft: Radius.circular(Sizes.MARGIN_16)),
+    return Container(
+      margin: MediaQuery.of(context).size.width >= 1200 ?
+        EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1) : EdgeInsets.zero,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.rectangle,
+        border: Border.all(
+            color: AppColors.greyTxtAlt.withOpacity(0.2),
+            width: 1),
+        borderRadius: BorderRadius.circular(Sizes.MARGIN_16),
+      ),
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(ImagePath.RECTANGLE_RESOURCE),
+                fit: BoxFit.cover,
               ),
-              margin: Responsive.isMobile(context) ? const EdgeInsets.all(0.0) : const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Column(
-                  children: [
-                    Responsive.isMobile(context) ? SpaceH8() : SpaceH20(),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(width: 60,),
-                        Spacer(),
-                        Align(
-                          alignment: Alignment.topCenter,
-                          child: resource.organizerImage == null || resource.organizerImage!.isEmpty ? Container() :
-                            Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(width: 1.0, color: AppColors.greyLight),
-                                  borderRadius: BorderRadius.circular(100,),
-                                  color: AppColors.greyLight),
-                              child: CircleAvatar(
-                                radius: Responsive.isMobile(context) ? 28 : 40,
-                                backgroundColor: AppColors.white,
-                                backgroundImage: NetworkImage(resource.organizerImage!),
-                              ),
+              borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(Sizes.MARGIN_16),
+                  bottomLeft: Radius.circular(Sizes.MARGIN_16)),
+            ),
+            margin: Responsive.isMobile(context) ? const EdgeInsets.all(0.0) : const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Column(
+                children: [
+                  Responsive.isMobile(context) ? SpaceH8() : SpaceH20(),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(width: 60,),
+                      Spacer(),
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: resource.organizerImage == null || resource.organizerImage!.isEmpty ? Container() :
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(width: 1.0, color: AppColors.greyLight),
+                                borderRadius: BorderRadius.circular(100,),
+                                color: AppColors.greyLight),
+                            child: CircleAvatar(
+                              radius: Responsive.isMobile(context) ? 28 : 40,
+                              backgroundColor: AppColors.white,
+                              backgroundImage: NetworkImage(resource.organizerImage!),
                             ),
-                        ),
-                        Spacer(),
-                        Container(
-                            width: 60,
-                            child: _buildMenuButton(context, resource))
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10, right: 30.0, left: 30.0),
-                      child: Text(
-                        resource.title,
-                        textAlign: TextAlign.center,
-                        maxLines:
-                        Responsive.isMobile(context) ? 2 : 1,
-                        style: textTheme.bodySmall?.copyWith(
-                          letterSpacing: 1.2,
-                          color: AppColors.white,
-                          height: 1.5,
-                          fontWeight: FontWeight.w300,
-                          fontSize: fontSizeTitle,
-                        ),
+                          ),
+                      ),
+                      Spacer(),
+                      Container(
+                          width: 60,
+                          child: _buildMenuButton(context, resource))
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10, right: 30.0, left: 30.0),
+                    child: Text(
+                      resource.title,
+                      textAlign: TextAlign.center,
+                      maxLines:
+                      Responsive.isMobile(context) ? 2 : 1,
+                      style: textTheme.bodySmall?.copyWith(
+                        letterSpacing: 1.2,
+                        color: AppColors.white,
+                        height: 1.5,
+                        fontWeight: FontWeight.w300,
+                        fontSize: fontSizeTitle,
                       ),
                     ),
-                    SpaceH4(),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          resource.promotor != null
-                              ? resource.promotor != ""
-                              ? resource.promotor!
-                              : resource.organizerName!
-                              : resource.organizerName!,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            letterSpacing: 1.2,
-                            fontSize: fontSizePromotor,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.white,
-                          ),
+                  ),
+                  SpaceH4(),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        resource.promotor != null
+                            ? resource.promotor != ""
+                            ? resource.promotor!
+                            : resource.organizerName!
+                            : resource.organizerName!,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          letterSpacing: 1.2,
+                          fontSize: fontSizePromotor,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.white,
                         ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        buildShare(context, resource, AppColors.darkGray,
-                            Responsive.isDesktopS(context) ? Colors.white : AppColors.darkGray,
-                            Responsive.isDesktopS(context) ? Colors.transparent : Colors.white),
-                        SpaceW8(),
-                      ],
-                    )
-                  ]
-              ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      buildShare(context, resource, AppColors.darkGray,
+                          Responsive.isDesktopS(context) ? Colors.white : AppColors.darkGray,
+                          Responsive.isDesktopS(context) ? Colors.transparent : Colors.white),
+                      SpaceW8(),
+                    ],
+                  )
+                ]
             ),
-            Padding(
-              padding: Responsive.isMobile(context) ? const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0) :
-              const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-              child: _buildBoxes(resource),
-            ),
-            _buildDetailResource(context, resource),
-          ],
-        ),
+          ),
+          Padding(
+            padding: Responsive.isMobile(context) ? const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0) :
+            const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+            child: _buildBoxes(resource),
+          ),
+          _buildDetailResource(context, resource),
+        ],
       ),
     );
   }

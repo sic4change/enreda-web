@@ -34,6 +34,8 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
     super.dispose();
   }
 
+  ScrollController scrollController = ScrollController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +47,7 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
 
   Widget _buildTalentSearchPage(BuildContext context) {
     return SingleChildScrollView(
+        controller: scrollController,
         child: Column(
           children: [
             Stack(
@@ -168,6 +171,7 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
                                       ),
                                     ),
                                     onPressed: () {
+                                      scrollController.animateTo(scrollController.position.maxScrollExtent - 500, duration: Duration(seconds: 1), curve: Curves.easeIn);
                                     },
                                     child: Padding(
                                       padding: EdgeInsets.all(22.0),
@@ -212,7 +216,7 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
                       ),
                     ),
                   ),
-                  SpaceH80(),
+                  SpaceH60(),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 100.0),
                     child: Wrap(
@@ -228,7 +232,49 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
                 ],
               ),
             ),
-            SpaceH180(),
+            SpaceH80(),
+            Container(
+              width: double.maxFinite,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Center(
+                    child: Text(
+                      AppLocalizations.of(context)!.enredaCompanies,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w900,
+                        fontFamily: GoogleFonts.outfit().fontFamily,
+                        fontSize: 45,
+                        color: AppColors.textBlue,
+                      ),
+                    ),
+                  ),
+                  SpaceH60(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 100.0),
+                    child: Wrap(
+                        alignment: WrapAlignment.center,
+                        spacing: 30,
+                        runSpacing: 30,
+                        children: [
+                          Container(
+                            height: 100,
+                            child: Image.asset(ImagePath.LOGO_ACCENTURE)
+                          ),
+                          Container(
+                              height: 100,
+                              child: Image.asset(ImagePath.LOGO_FUTURO)
+                          ),
+                          Container(
+                              height: 100,
+                              child: Image.asset(ImagePath.LOGO_IBEROSTAR)
+                          ),
+                        ]),
+                  ),
+                ],
+              ),
+            ),
+            SpaceH100(),
             FooterFormNew(isEntity: false),
           ],
         )
@@ -678,7 +724,7 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
               ),
             ),
             SizedBox(
-              height: 1200,
+              height: 1400,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -707,6 +753,38 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
                           _buildSmallItemCardMobile(context, ImagePath.ICON_JOB_OFFER, AppLocalizations.of(context)!.jobOffersPublication, AppLocalizations.of(context)!.jobOffersPublicationText),
                           _buildSmallItemCardMobile(context, ImagePath.ICON_CANDIDATES_FOLLOW, AppLocalizations.of(context)!.candidatesFollow, AppLocalizations.of(context)!.candidatesFollowText),
                           _buildSmallItemCardMobile(context, ImagePath.ICON_CANDIDATES_SELECTION, AppLocalizations.of(context)!.candidatesSelection, AppLocalizations.of(context)!.candidatesSelectionText),
+                        ]
+                    ),
+                    SpaceH30(),
+                    Center(
+                      child: Text(
+                        AppLocalizations.of(context)!.enredaCompanies,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          fontFamily: GoogleFonts.outfit().fontFamily,
+                          fontSize: fontSizeTitle,
+                          color: AppColors.textBlue,
+                        ),
+                      ),
+                    ),
+                    SpaceH30(),
+                    Wrap(
+                        alignment: WrapAlignment.spaceEvenly,
+                        spacing: 20,
+                        runSpacing: 20,
+                        children: [
+                          Container(
+                              height: 80,
+                              child: Image.asset(ImagePath.LOGO_ACCENTURE)
+                          ),
+                          Container(
+                              height: 80,
+                              child: Image.asset(ImagePath.LOGO_FUTURO)
+                          ),
+                          Container(
+                              height: 80,
+                              child: Image.asset(ImagePath.LOGO_IBEROSTAR)
+                          ),
                         ]
                     ),
                   ],

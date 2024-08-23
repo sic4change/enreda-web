@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:enreda_app/localization/HeaderLanguageButton.dart';
 import 'package:enreda_app/localization/LocaleProvider.dart';
+import 'package:enreda_app/presentation/pages/home/sections/nav_section/professionalSelector.dart';
 import 'package:enreda_app/presentation/pages/resources/resources_page.dart';
 import 'package:enreda_app/presentation/routes/router.gr.dart';
 import 'package:enreda_app/presentation/widgets/dialogs/show_login_menu.dart';
@@ -64,6 +65,8 @@ class _NavSectionWebState extends State<NavSectionWeb> {
   @override
   Widget build(BuildContext context) {
     final localeProvider = Provider.of<LocaleProvider>(context);
+    final textTheme = Theme.of(context).textTheme;
+
     router = AutoRouter.of(context);
     double logoSpaceLeft =
         responsiveSize(context, logoSpaceLeftSm, logoSpaceLeftLg, sm:logoSpaceLeftSm, md: logoSpaceLeftMd, xl:logoSpaceLeftLg);
@@ -134,32 +137,34 @@ class _NavSectionWebState extends State<NavSectionWeb> {
                 }
               },
             ),*/
+            //EnredaVerticalDivider(color: AppColors.greyDivider,),
+            SizedBox(width: 10),
+            HeaderLanguageButton(),
+            SizedBox(width: 10),
             EnredaVerticalDivider(color: AppColors.greyDivider,),
-            SizedBox(width: contactBtnSpaceLeft),
-            localeProvider.getLocale() == Locale('es').languageCode ?
-            HeaderLanguageButton(
-                text: AppLocalizations.of(context)!.english,
-                onTap: () {
-                  print('tapeado en ingles paea español');
-                  localeProvider.setLocale(Locale('en'));
-                }
-            ) : HeaderLanguageButton(
-                text: AppLocalizations.of(context)!.spanish,
-                onTap: () {
-                  print('tapeado en español para ingles');
-                  localeProvider.setLocale(Locale('es'));
-                }
-            ),
-            SizedBox(width: contactBtnSpaceLeft),
-            EnredaButton(
-              buttonTitle: AppLocalizations.of(context)!.access.toUpperCase(),
+            SizedBox(width: 10),
+            ProfessionalSelector(),
+            SizedBox(width: 10),
+            EnredaVerticalDivider(color: AppColors.greyDivider,),
+            SizedBox(width: 10),
+            EnredaButtonIconReverse(
+              buttonTitle: AppLocalizations.of(context)!.myAccount.toUpperCase(),
+              widget: Image.asset(ImagePath.LOGIN_PERSON),
               buttonColor: AppColors.textBlue,
+              padding: EdgeInsets.symmetric(horizontal: 22),
               borderRadius: BorderRadius.all(Radius.circular(30)),
+              titleStyle: textTheme.titleLarge!.copyWith(
+                fontFamily: GoogleFonts.outfit().fontFamily,
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+                color: AppColors.white,
+              ),
               width: contactBtnWidth,
-              onPressed: () => showLoginMenu(
+              onPressed: () =>  openUrlLink(StringConst.WEB_APP_URL),
+              /*showLoginMenu(
                   context,
                   relativePosition: RelativeRect.fromLTRB(double.infinity, 90, 40, 0)
-              )
+              )*/
             ),
             SizedBox(width: contactBtnSpaceRight),
           ],
@@ -199,6 +204,7 @@ class _NavSectionWebState extends State<NavSectionWeb> {
   }
 
   List<Widget> _buildNavItems(List<NavItemData> navItems) {
+    var textTheme = Theme.of(context).textTheme;
     List<Widget> items = [];
     for (int index = 0; index < navItems.length; index++) {
       items.add(
@@ -211,7 +217,7 @@ class _NavSectionWebState extends State<NavSectionWeb> {
               context: navItems[index].key,
               navItemName: navItems[index].name,
             ),
-            titleStyle: TextStyle(
+            titleStyle: textTheme.titleLarge!.copyWith(
               fontFamily: GoogleFonts.outfit().fontFamily,
               fontWeight: FontWeight.w700,
               fontSize: 16
