@@ -1,4 +1,5 @@
 import 'package:enreda_app/presentation/pages/home/sections/statistics_section.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../utils/responsive.dart';
@@ -17,7 +18,8 @@ class RebuildPanel extends StatefulWidget {
 }
 
 class _RebuildPanelState extends State<RebuildPanel> {
-  bool _cardEnable = false;
+  bool _cardEnableSIC = false;
+  bool _cardEnableKieu = false;
   @override
   void initState() {
     super.initState();
@@ -57,16 +59,51 @@ class _RebuildPanelState extends State<RebuildPanel> {
                   color: AppColors.lightBlue,
                   child: Align(
                     alignment: Alignment.centerRight,
-                    child: InkWell(
-                      onTap: (){
-                        setState(() {
-                          _cardEnable = !_cardEnable;
-                        });
-                      },
-                      child: Container(
-                          width: widthOfScreen(context)*0.8,
-                          child: Image.asset(ImagePath.REBUILD_MAP)
-                      ),
+                    child: Stack(
+                      children: [
+                        Container(
+                            width: widthOfScreen(context)*0.8,
+                            child: Image.asset(ImagePath.REBUILD_MAP)
+                        ),
+                        Positioned( //SIC
+                          right: widthOfScreen(context)*0.51,
+                          bottom: 70,
+                          child: InkWell(
+                            onTap: (){
+                              setState(() {
+                                if(_cardEnableKieu){
+                                  _cardEnableKieu = false;
+                                }
+                                _cardEnableSIC = !_cardEnableSIC;
+                              });
+                            },
+                            child: Container(
+                              width: 70,
+                              height: 70,
+                              color: Colors.transparent,
+                            ),
+                          ),
+                        ),
+                        Positioned( //Kieu
+                          right: widthOfScreen(context)*0.38,
+                          bottom: widthOfScreen(context)*0.22,
+                          child: InkWell(
+                            onTap: (){
+                              setState(() {
+                                if(_cardEnableSIC){
+                                  _cardEnableSIC = false;
+                                }
+                                _cardEnableKieu = !_cardEnableKieu;
+                              });
+                            },
+                            child: Container(
+                              width: 70,
+                              height: 70,
+                              color: Colors.transparent,
+                            ),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),
@@ -81,13 +118,13 @@ class _RebuildPanelState extends State<RebuildPanel> {
                 ),
               ],
             ),
-            _cardEnable ? Positioned(
+            (_cardEnableKieu || _cardEnableSIC) ? Positioned(
               right: widthOfScreen(context)*0.1,
               top:100,
               bottom: 700,
               child: Container(
                   width: widthOfScreen(context)*0.2,
-                  child: Image.asset(ImagePath.REBUILD_CARD_ITEM)
+                  child: Image.asset(_cardEnableSIC ? ImagePath.REBUILD_CARD_ITEM : ImagePath.REBUILD_CARD_ITEM_2)
               ),
             ) : Container(),
             Positioned(
@@ -116,7 +153,7 @@ class _RebuildPanelState extends State<RebuildPanel> {
                 InkWell(
                   onTap: (){
                     setState(() {
-                      _cardEnable = !_cardEnable;
+                      _cardEnableSIC = !_cardEnableSIC;
                     });
                   },
                   child: Container(
@@ -124,9 +161,53 @@ class _RebuildPanelState extends State<RebuildPanel> {
                     color: AppColors.lightBlue,
                     child: Align(
                       alignment: Alignment.centerRight,
-                      child: Container(
-                          width: widthOfScreen(context)*0.95,
-                          child: Image.asset(ImagePath.REBUILD_MAP)
+                      child: Stack(
+                        alignment: Alignment.center,
+                        clipBehavior: Clip.none,
+                        children: [
+                          Container(
+                              width: widthOfScreen(context)*0.95,
+                              child: Image.asset(ImagePath.REBUILD_MAP)
+                          ),
+                          Positioned( //SIC
+                            right: widthOfScreen(context)*0.51,
+                            bottom: 10,
+                            child: InkWell(
+                              onTap: (){
+                                setState(() {
+                                  if(_cardEnableKieu){
+                                    _cardEnableKieu = false;
+                                  }
+                                  _cardEnableSIC = !_cardEnableSIC;
+                                });
+                              },
+                              child: Container(
+                                width: 70,
+                                height: 70,
+                                color: Colors.transparent,
+                              ),
+                            ),
+                          ),
+                          Positioned( //Kieu
+                            right: widthOfScreen(context)*0.38,
+                            bottom: widthOfScreen(context)*0.22,
+                            child: InkWell(
+                              onTap: (){
+                                setState(() {
+                                  if(_cardEnableSIC){
+                                    _cardEnableSIC = false;
+                                  }
+                                  _cardEnableKieu = !_cardEnableKieu;
+                                });
+                              },
+                              child: Container(
+                                width: 70,
+                                height: 70,
+                                color: Colors.transparent,
+                              ),
+                            ),
+                          )
+                        ],
                       ),
                     ),
                   ),
@@ -138,29 +219,19 @@ class _RebuildPanelState extends State<RebuildPanel> {
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 20.0),
                     child: StatisticsSection()
-                    /*Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SpaceH30(),
-                        numberCountTileMobile(856, AppLocalizations.of(context)!.daysTransforming, AppColors.brightBlueNumber),
-                        numberCountTileMobile(350, AppLocalizations.of(context)!.participant, AppColors.white),
-                        numberCountTileMobile(30, AppLocalizations.of(context)!.institutionsAndCompanies, AppColors.brightBlueNumber),
-                        numberCountTileMobile(2401, AppLocalizations.of(context)!.resourcesEnabled, AppColors.white),
-                      ],
-                    ),*/
                   ),
                 ),
               ],
             ),
-            _cardEnable ? Positioned(
+            (_cardEnableKieu || _cardEnableSIC) ? Positioned(
               left: 260,
+              right: 50,
               top: 30,
               bottom: 1300,
               child: Container(
                   width: 200,
                   //height: 300,
-                  child: Image.asset(ImagePath.REBUILD_CARD_ITEM)
+                  child: Image.asset(_cardEnableSIC ? ImagePath.REBUILD_CARD_ITEM : ImagePath.REBUILD_CARD_ITEM_2)
               ),
             ) : Container(),
             Positioned(

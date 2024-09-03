@@ -79,6 +79,7 @@ class ImagePath {
   static const String REIMAGINE_TITLE_IMAGE = '$imageDir/reimagine-title-image.png';
   static const String REBUILD_MAP = '$imageDir/rebuild-map.png';
   static const String REBUILD_CARD_ITEM = '$imageDir/rebuild-card-item.png';
+  static const String REBUILD_CARD_ITEM_2 = '$imageDir/rebuild-card-item-2.png';
   static const String REBUILD_TITLE_IMAGE = '$imageDir/rebuild-title-image.png';
   static const String DOWNLOAD_SECTION_IMAGE = '$imageDir/download-section-image.png';
   static const String BLUE_LINE_DOWNLOAD = '$imageDir/blue-line-download.png';
