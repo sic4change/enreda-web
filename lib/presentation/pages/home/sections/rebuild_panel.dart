@@ -1,6 +1,7 @@
 import 'package:enreda_app/presentation/pages/home/sections/statistics_section.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../utils/responsive.dart';
 import '../../../../values/values.dart';
@@ -61,9 +62,17 @@ class _RebuildPanelState extends State<RebuildPanel> {
                     alignment: Alignment.centerRight,
                     child: Stack(
                       children: [
-                        Container(
-                            width: widthOfScreen(context)*0.8,
-                            child: Image.asset(ImagePath.REBUILD_MAP)
+                        GestureDetector(
+                          onTap: (){
+                            setState(() {
+                              _cardEnableSIC = false;
+                              _cardEnableKieu = false;
+                            });
+                          },
+                          child: Container(
+                              width: widthOfScreen(context)*0.8,
+                              child: Image.asset(ImagePath.REBUILD_MAP)
+                          ),
                         ),
                         Positioned( //SIC
                           right: widthOfScreen(context)*0.51,
@@ -165,9 +174,17 @@ class _RebuildPanelState extends State<RebuildPanel> {
                         alignment: Alignment.center,
                         clipBehavior: Clip.none,
                         children: [
-                          Container(
-                              width: widthOfScreen(context)*0.95,
-                              child: Image.asset(ImagePath.REBUILD_MAP)
+                          GestureDetector(
+                            onTap: (){
+                              setState(() {
+                                _cardEnableSIC = false;
+                                _cardEnableKieu = false;
+                              });
+                            },
+                            child: Container(
+                                width: widthOfScreen(context)*0.95,
+                                child: Image.asset(ImagePath.REBUILD_MAP)
+                            ),
                           ),
                           Positioned( //SIC
                             right: widthOfScreen(context)*0.51,

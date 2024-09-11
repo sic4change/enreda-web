@@ -120,7 +120,7 @@ class _HomePageState extends State<HomePage>
 
     return Scaffold(
       key: _scaffoldKey,
-      drawer: ResponsiveBuilder(
+      endDrawer: ResponsiveBuilder(
         refinedBreakpoints: RefinedBreakpoints(),
         builder: (context, sizingInformation) {
           double screenWidth = sizingInformation.screenSize.width;

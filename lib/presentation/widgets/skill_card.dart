@@ -107,19 +107,19 @@ class _SkillCardState extends State<SkillCard> {
                 SelectableText(
                   widget.title,
                   textAlign: TextAlign.center,
-                  style: textTheme.headline5?.copyWith(height: 2.0, fontWeight: FontWeight.bold),
+                  style: textTheme.titleSmall?.copyWith(height: 2.0, fontWeight: FontWeight.bold),
                 ),
                 SpaceH12(),
                 SelectableText(
                   widget.subtitle,
                   textAlign: TextAlign.center,
-                  style: textTheme.bodyText1?.copyWith(height: 1.4, fontWeight: FontWeight.w700, color: AppColors.violetBlue.withOpacity(0.6)),
+                  style: textTheme.bodyMedium?.copyWith(height: 1.4, fontWeight: FontWeight.w700, color: AppColors.violetBlue.withOpacity(0.6)),
                 ),
                 SpaceH12(),
                 SelectableText(
                   widget.description,
                   textAlign: TextAlign.center,
-                  style: textTheme.bodyText1?.copyWith(height: 1.6, fontWeight: FontWeight.w400, color: AppColors.greyBlue.withOpacity(0.5), letterSpacing: -0.2),
+                  style: textTheme.bodyMedium?.copyWith(height: 1.6, fontWeight: FontWeight.w400, color: AppColors.greyBlue.withOpacity(0.5), letterSpacing: -0.2),
                 ),
               ],
             ),
@@ -151,7 +151,7 @@ class _SkillCardState extends State<SkillCard> {
                   Text(
                     widget.title,
                     style: widget.titleStyle ??
-                        textTheme.subtitle1?.copyWith(
+                        textTheme.titleMedium?.copyWith(
                           color: AppColors.white,
                         ),
                   ),
@@ -159,7 +159,7 @@ class _SkillCardState extends State<SkillCard> {
                   Text(
                     widget.subtitle,
                     style: widget.descriptionStyle ??
-                        textTheme.bodyText2?.copyWith(
+                        textTheme.bodyMedium?.copyWith(
                           color: AppColors.primaryText1,
                         ),
                   ),
@@ -167,7 +167,7 @@ class _SkillCardState extends State<SkillCard> {
                   Text(
                     widget.description,
                     style: widget.descriptionStyle ??
-                        textTheme.bodyText2?.copyWith(
+                        textTheme.bodyMedium?.copyWith(
                           color: AppColors.primaryText1,
                         ),
                   ),

@@ -2,7 +2,7 @@ part of values;
 
 class StringConst {
   //strings
-  static const String APP_NAME = "enREDa";
+  static const String APP_NAME = "Enreda";
 
   //Nav Section
   static const String NAME_ABBREV = "CA";
@@ -196,7 +196,7 @@ class StringConst {
   static const String BEHANCE_URL = "https://www.behance.net/";
   static const String DRIBBLE_URL = "https://dribbble.com/";
   static const String LINKED_IN_URL = "https://www.linkedin.com/company/sic4change/";
-  static const String INSTAGRAM_URL = "https://www.instagram.com/enredas/";
+  static const String INSTAGRAM_URL = "https://www.instagram.com/enreda_canarias/";
   static const String GITHUB_URL = "https://github.com/";
   static const String FACEBOOK_URL = "https://www.facebook.com/EnREDaEmpleo/";
   static const String TWITTER_URL = "https://twitter.com/sic4change";

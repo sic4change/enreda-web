@@ -75,7 +75,7 @@ class _MainPageMobileState extends State<MainPageMobile>
     double fontSizeButtonDiscover = Responsive.isMobile(context) ? 14 : 16;
     FontWeight fontWeightBody = Responsive.isMobile(context) ? FontWeight.w600 : FontWeight.w600;
     TextStyle? bodyTextStyle =
-    textTheme.bodyText1?.copyWith(fontSize: bodyTextSizeSm);
+    textTheme.bodyMedium?.copyWith(fontSize: bodyTextSizeSm);
     double sizeOfBlobSm = screenWidth * 0.2;
     double sizeOfGoldenGlobe = screenWidth * 0.3;
     double dottedGoldenGlobeOffset = sizeOfBlobSm * 0.4;
@@ -114,7 +114,7 @@ class _MainPageMobileState extends State<MainPageMobile>
                               widget.introText,
                               speed: Duration(milliseconds: 70),
                               textAlign: TextAlign.left,
-                              textStyle: textTheme.headline2?.copyWith(
+                              textStyle: textTheme.titleMedium?.copyWith(
                                 fontSize: headerIntroTextSize,
                               ),
                             ),
@@ -133,7 +133,7 @@ class _MainPageMobileState extends State<MainPageMobile>
                               widget.positionText,
                               speed: Duration(milliseconds: 80),
                               textAlign: TextAlign.left,
-                              textStyle: textTheme.headline2?.copyWith(
+                              textStyle: textTheme.titleMedium?.copyWith(
                                 fontSize: headerIntroTextSize,
                                 color: AppColors.blueMain,
                                 height: 1.2,

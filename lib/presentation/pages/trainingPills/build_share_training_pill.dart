@@ -79,7 +79,7 @@ Widget buildShareTrainingPill(BuildContext context, TrainingPill trainingPill, C
               ),
               SpaceW16(),
               Text('Compartir',
-                style: textTheme.bodyText1?.copyWith(
+                style: textTheme.bodyMedium?.copyWith(
                   color: Constants.grey,
                   height: 1.5,
                   fontWeight: FontWeight.w400,

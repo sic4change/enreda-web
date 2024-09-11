@@ -202,7 +202,7 @@ class _MessageSectionState extends State<MessageSection>
       children: [
         Text(
           StringConst.DIAGNOSIS_TITLE,
-          style: textTheme.headline6,
+          style: textTheme.headlineSmall,
         ),
         SpaceH16(),
         ..._buildMessage(Data.awards1, Data.awardsUrl1),

@@ -26,8 +26,17 @@ class _NavSectionMobileState extends State<NavSectionMobile> {
         color: Colors.transparent,
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SpaceW20(),
+          SpaceW30(),
+          InkWell(
+            onTap: () => router.push(HomeRoute()),
+            child: Image.asset(
+              ImagePath.LOGO_ENREDA_LONG,
+              height: Sizes.HEIGHT_48,
+            ),
+          ),
+          Spacer(),
           IconButton(
             icon: Icon(
               FeatherIcons.menu,
@@ -38,19 +47,11 @@ class _NavSectionMobileState extends State<NavSectionMobile> {
               if (widget.scaffoldKey.currentState!.isEndDrawerOpen) {
                 widget.scaffoldKey.currentState?.openEndDrawer();
               } else {
-                widget.scaffoldKey.currentState?.openDrawer();
+                widget.scaffoldKey.currentState?.openEndDrawer();
               }
             },
           ),
-          SpaceW24(),
-          InkWell(
-            onTap: () => router.push(HomeRoute()),
-            child: Image.asset(
-              ImagePath.LOGO_ENREDA_LONG,
-              height: Sizes.HEIGHT_52,
-            ),
-          ),
-          Spacer(),
+          SpaceW30(),
         ],
       ),
     );

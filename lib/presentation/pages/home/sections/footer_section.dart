@@ -95,7 +95,7 @@ class _FooterSectionState extends State<FooterSection> {
             TextFormField(
                 decoration: new InputDecoration(
                   labelText: StringConst.NAME,
-                  labelStyle: textTheme.bodyText1?.copyWith(
+                  labelStyle: textTheme.bodyMedium?.copyWith(
                     color: AppColors.greyTxtAlt,
                     height: 1.5,
                     fontWeight: FontWeight.w400,
@@ -117,7 +117,7 @@ class _FooterSectionState extends State<FooterSection> {
                     ),
                   ),
                 ),
-                style: textTheme.bodyText1?.copyWith(
+                style: textTheme.bodyMedium?.copyWith(
                   color: AppColors.greyTxtAlt,
                   height: 1.5,
                   fontWeight: FontWeight.w400,
@@ -134,7 +134,7 @@ class _FooterSectionState extends State<FooterSection> {
             TextFormField(
                 decoration: new InputDecoration(
                   labelText: StringConst.EMAIL,
-                  labelStyle: textTheme.bodyText1?.copyWith(
+                  labelStyle: textTheme.bodyMedium?.copyWith(
                       color: AppColors.greyTxtAlt,
                       height: 1.5,
                       fontWeight: FontWeight.w400,
@@ -156,7 +156,7 @@ class _FooterSectionState extends State<FooterSection> {
                     ),
                   ),
                 ),
-                style: textTheme.bodyText1?.copyWith(
+                style: textTheme.bodyMedium?.copyWith(
                   color: AppColors.greyTxtAlt,
                   height: 1.5,
                   fontWeight: FontWeight.w400,
@@ -171,7 +171,7 @@ class _FooterSectionState extends State<FooterSection> {
             TextFormField(
                 decoration: new InputDecoration(
                   labelText: StringConst.DESCRIPTION,
-                  labelStyle: textTheme.bodyText1?.copyWith(
+                  labelStyle: textTheme.bodyMedium?.copyWith(
                     color: AppColors.greyTxtAlt,
                     height: 1.5,
                     fontWeight: FontWeight.w400,
@@ -193,7 +193,7 @@ class _FooterSectionState extends State<FooterSection> {
                     ),
                   ),
                 ),
-                style: textTheme.bodyText1?.copyWith(
+                style: textTheme.bodyMedium?.copyWith(
                   color: AppColors.greyTxtAlt,
                   height: 1.5,
                   fontWeight: FontWeight.w400,
@@ -242,7 +242,7 @@ class _FooterSectionState extends State<FooterSection> {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
-    TextStyle? footerTextStyle = textTheme.caption?.copyWith(
+    TextStyle? footerTextStyle = textTheme.bodySmall?.copyWith(
       color: AppColors.primaryText2,
       fontWeight: FontWeight.bold,
     );
@@ -564,14 +564,14 @@ class FooterItem extends StatelessWidget {
           SpaceH12(),
           Text(
             title,
-            style: textTheme.subtitle1?.copyWith(
+            style: textTheme.titleMedium?.copyWith(
               color: AppColors.greyTxtAlt, fontSize: fontSize,
             ),
           ),
           SpaceH8(),
           Text(
             subtitle,
-            style: textTheme.bodyText1?.copyWith(
+            style: textTheme.bodyMedium?.copyWith(
               color: AppColors.greyTxtAlt.withOpacity(0.7), fontSize: fontSize,
             ),
           ),

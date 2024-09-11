@@ -224,7 +224,7 @@ class CompanyCover extends StatelessWidget {
               Text(
                 title,
                 style: titleStyle ??
-                    textTheme.headline6?.copyWith(
+                    textTheme.titleSmall?.copyWith(
                       color: AppColors.white,
                     ),
               ),
@@ -232,7 +232,7 @@ class CompanyCover extends StatelessWidget {
               Text(
                 subtitle,
                 style: subtitleStyle ??
-                    textTheme.subtitle2?.copyWith(
+                    textTheme.titleSmall?.copyWith(
                       color: AppColors.white,
                       fontSize: Sizes.TEXT_SIZE_16,
                     ),

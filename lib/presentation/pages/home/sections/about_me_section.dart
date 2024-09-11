@@ -150,7 +150,7 @@ class _AboutEnredaSectionState extends State<AboutEnredaSection>
   Widget _buildImage({required double width, required double height}) {
     TextTheme textTheme = Theme.of(context).textTheme;
     double fontSize = responsiveSize(context, 60, 72, md: 64);
-    TextStyle? titleStyle = textTheme.bodyText1?.merge(
+    TextStyle? titleStyle = textTheme.bodyMedium?.merge(
       Styles.customTextStyle3(fontSize: fontSize, height: 1.25),
     );
 

@@ -341,7 +341,7 @@ class _UnemployedRegisteringState extends State<UnemployedRegistering> {
                               showFlagDialog: true,
                             ),
                             focusColor: AppColors.turquoise,
-                            labelStyle: textTheme.bodyText1?.copyWith(
+                            labelStyle: textTheme.bodyMedium?.copyWith(
                               height: 1.5,
                               color: AppColors.greyDark,
                               fontWeight: FontWeight.w400,
@@ -373,7 +373,7 @@ class _UnemployedRegisteringState extends State<UnemployedRegistering> {
                           inputFormatters: <TextInputFormatter>[
                             FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                           ],
-                        style: textTheme.bodyText1?.copyWith(
+                        style: textTheme.bodyMedium?.copyWith(
                           height: 1.5,
                           color: AppColors.greyDark,
                           fontWeight: FontWeight.w700,
@@ -392,7 +392,7 @@ class _UnemployedRegisteringState extends State<UnemployedRegistering> {
                         decoration: InputDecoration(
                           prefixIcon: Icon(Icons.calendar_today), //icon of text field
                           labelText: StringConst.FORM_BIRTHDAY, //label text of field
-                          labelStyle: textTheme.bodyText1?.copyWith(
+                          labelStyle: textTheme.bodyMedium?.copyWith(
                             height: 1.5,
                             color: AppColors.greyDark,
                             fontWeight: FontWeight.w400,
@@ -429,7 +429,7 @@ class _UnemployedRegisteringState extends State<UnemployedRegistering> {
                             });
                           }
                         },
-                        style: textTheme.bodyText1?.copyWith(
+                        style: textTheme.bodyMedium?.copyWith(
                           height: 1.5,
                           color: AppColors.greyDark,
                           fontWeight: FontWeight.w700,
@@ -466,7 +466,7 @@ class _UnemployedRegisteringState extends State<UnemployedRegistering> {
                               TextFormField(
                                 decoration: InputDecoration(
                                     labelText: StringConst.FORM_EMAIL,
-                                    labelStyle: textTheme.bodyText1?.copyWith(
+                                    labelStyle: textTheme.bodyMedium?.copyWith(
                                       height: 1.5,
                                       color: AppColors.greyDark,
                                       fontWeight: FontWeight.w400,
@@ -491,7 +491,7 @@ class _UnemployedRegisteringState extends State<UnemployedRegistering> {
                                 onSaved: (value) => _email = value,
                                 keyboardType: TextInputType.emailAddress,
                                 onChanged: (value) => setState(() => this.writtenEmail = value),
-                                style: textTheme.bodyText1?.copyWith(
+                                style: textTheme.bodyMedium?.copyWith(
                                   height: 1.5,
                                   color: AppColors.greyDark,
                                   fontWeight: FontWeight.w700,
@@ -541,7 +541,7 @@ class _UnemployedRegisteringState extends State<UnemployedRegistering> {
                     decoration: InputDecoration(
                       hintText: StringConst.FORM_ABILITIES,
                       hintMaxLines: 2, //label text of field
-                      labelStyle: textTheme.bodyText1?.copyWith(
+                      labelStyle: textTheme.bodyMedium?.copyWith(
                         color: AppColors.greyDark,
                         height: 1.5,
                         fontWeight: FontWeight.w400,
@@ -567,7 +567,7 @@ class _UnemployedRegisteringState extends State<UnemployedRegistering> {
                     onSaved: (value) => value = _abilityId,
                     maxLines: 2,
                     readOnly: true,
-                    style: textTheme.bodyText1?.copyWith(
+                    style: textTheme.bodyMedium?.copyWith(
                       height: 1.5,
                       color: AppColors.greyDark,
                       fontWeight: FontWeight.w700,
@@ -595,7 +595,7 @@ class _UnemployedRegisteringState extends State<UnemployedRegistering> {
                   decoration: InputDecoration(
                     hintText: StringConst.FORM_INTERESTS_QUESTION,
                     hintMaxLines: 2,//label text of field
-                    labelStyle: textTheme.bodyText1?.copyWith(
+                    labelStyle: textTheme.bodyMedium?.copyWith(
                       color: AppColors.greyDark,
                       height: 1.5,
                       fontWeight: FontWeight.w400,
@@ -621,7 +621,7 @@ class _UnemployedRegisteringState extends State<UnemployedRegistering> {
                   onSaved: (value) => value = _interestId,
                   maxLines: 2,
                   readOnly: true,
-                  style: textTheme.bodyText1?.copyWith(
+                  style: textTheme.bodyMedium?.copyWith(
                     height: 1.5,
                     color: AppColors.greyDark,
                     fontWeight: FontWeight.w700,
@@ -635,7 +635,7 @@ class _UnemployedRegisteringState extends State<UnemployedRegistering> {
                   controller: textEditingControllerSpecificInterests,
                   decoration: InputDecoration(
                     labelText: StringConst.FORM_SPECIFIC_INTERESTS, //label text of field
-                    labelStyle: textTheme.bodyText1?.copyWith(
+                    labelStyle: textTheme.bodyMedium?.copyWith(
                       color: AppColors.greyDark,
                       height: 1.5,
                       fontWeight: FontWeight.w400,
@@ -661,7 +661,7 @@ class _UnemployedRegisteringState extends State<UnemployedRegistering> {
                   onSaved: (value) => value = _interestId,
                   maxLines: 2,
                   readOnly: true,
-                  style: textTheme.bodyText1?.copyWith(
+                  style: textTheme.bodyMedium?.copyWith(
                     height: 1.5,
                     color: AppColors.greyDark,
                     fontWeight: FontWeight.w700,

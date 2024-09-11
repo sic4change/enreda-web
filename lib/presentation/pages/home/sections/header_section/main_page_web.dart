@@ -97,7 +97,7 @@ class _MainPageWebState extends State<MainPageWeb>
     double screenWidth = widthOfScreen(context);
     double screenHeight = heightOfScreen(context);
     TextStyle? bodyTextStyle =
-    textTheme.bodyText1?.copyWith(fontSize: bodyTextSize);
+    textTheme.bodyMedium?.copyWith(fontSize: bodyTextSize);
     double sizeOfBlobSm = screenWidth * 0.3;
     double sizeOfGoldenGlobe = screenWidth * 0.2;
     double dottedGoldenGlobeOffset = sizeOfBlobSm * 0.4;
@@ -159,7 +159,7 @@ class _MainPageWebState extends State<MainPageWeb>
                             TypewriterAnimatedText(
                               widget.introText,
                               speed: Duration(milliseconds: 70),
-                              textStyle: textTheme.headline2?.copyWith(
+                              textStyle: textTheme.titleMedium?.copyWith(
                                 fontSize: headerIntroTextSize,
                               ),
                             ),
@@ -177,7 +177,7 @@ class _MainPageWebState extends State<MainPageWeb>
                             TypewriterAnimatedText(
                               widget.positionText,
                               speed: Duration(milliseconds: 80),
-                              textStyle: textTheme.headline2?.copyWith(
+                              textStyle: textTheme.titleMedium?.copyWith(
                                 fontSize: headerIntroTextSize,
                                 color: AppColors.blueMain,
                                 height: 1.2,
@@ -216,7 +216,7 @@ class _MainPageWebState extends State<MainPageWeb>
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20),
                                 ),
-                                textStyle: textTheme.button?.copyWith(
+                                textStyle: textTheme.bodySmall?.copyWith(
                                   fontSize: textSize,
                                   letterSpacing: 1.8,
                                 ),

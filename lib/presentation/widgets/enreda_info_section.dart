@@ -46,7 +46,7 @@ class EnredaInfoSection1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
-    TextStyle? titleStyle = textTheme.headline3?.copyWith(
+    TextStyle? titleStyle = textTheme.titleMedium?.copyWith(
       fontSize: responsiveSize(context, 26, 36, md: 32),
     );
     double fontSize = responsiveSize(context, 16, 18);
@@ -62,7 +62,7 @@ class EnredaInfoSection1 extends StatelessWidget {
                   quarterTurns: quarterTurns,
                   child: Text(
                     sectionTitle,
-                    style: textTheme.bodyText2?.copyWith(
+                    style: textTheme.bodyMedium?.copyWith(
                       fontSize: fontSizeSection,
                       fontWeight: FontWeight.w400,
                       color: AppColors.grey250,
@@ -107,7 +107,7 @@ class EnredaInfoSection1 extends StatelessWidget {
                   SpaceH20(),
                   Text(
                     body,
-                    style: textTheme.bodyText1
+                    style: textTheme.bodyMedium
                         ?.copyWith(fontSize: fontSize, height: 1.8),
                   ),
                   child != null ? SpaceH30() : Empty(),
@@ -162,7 +162,7 @@ class EnredaInfoSection2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
-    TextStyle? titleStyle = textTheme.headline3?.copyWith(
+    TextStyle? titleStyle = textTheme.titleSmall?.copyWith(
       fontSize: responsiveSize(context, 25, 45, md: 30),
       color: AppColors.greyDark,
     );
@@ -187,7 +187,7 @@ class EnredaInfoSection2 extends StatelessWidget {
               children: [
                 Text(
                   sectionTitle!,
-                  style: textTheme.bodyText2?.copyWith(
+                  style: textTheme.bodyMedium?.copyWith(
                   fontSize: fontSizeSection,
                   fontWeight: FontWeight.w400,
                   color: AppColors.greyDark,
@@ -256,7 +256,7 @@ class EnredaInfoSection2 extends StatelessWidget {
               Text(
                 body!,
                 textAlign: TextAlign.center,
-                style: textTheme.bodyText1
+                style: textTheme.bodyMedium
                     ?.copyWith(fontSize: fontSize, height: 1.8),
               ),
             ],
@@ -289,7 +289,7 @@ class EnredaInfoSection3 extends StatelessWidget {
         children: [
           Text(
             sectionTitle,
-            style: textTheme.bodyText2?.copyWith(
+            style: textTheme.bodyMedium?.copyWith(
               fontSize: fontSizeSection,
               fontWeight: FontWeight.w400,
               color: AppColors.greyDark,
@@ -317,7 +317,7 @@ class EnredaInfoSection4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
-    TextStyle? titleStyle = textTheme.headline3?.copyWith(
+    TextStyle? titleStyle = textTheme.titleMedium?.copyWith(
       fontSize: responsiveSize(context, 25, 45, md: 30),
       color: AppColors.greyDark,
     );
@@ -368,7 +368,7 @@ class EnredaInfoSection5 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
-    TextStyle? titleStyle = textTheme.headline3?.copyWith(
+    TextStyle? titleStyle = textTheme.titleMedium?.copyWith(
       fontSize: responsiveSize(context, 25, 45, md: 30),
       color: AppColors.greyDark,
     );
@@ -395,7 +395,7 @@ class EnredaInfoSection5 extends StatelessWidget {
             children: [
               Text(
                 sectionTitle!,
-                style: textTheme.headline2?.copyWith(
+                style: textTheme.titleMedium?.copyWith(
                   fontSize: fontSizeSection,
                   fontWeight: FontWeight.w400,
                   color: AppColors.greyLightTxt,
@@ -423,7 +423,7 @@ class EnredaInfoSection5 extends StatelessWidget {
                 child: Text(
                   title1!,
                   textAlign: TextAlign.start,
-                  style: textTheme.headline2?.copyWith(
+                  style: textTheme.titleMedium?.copyWith(
                     fontSize: fontSize,
                     fontWeight: FontWeight.w400,
                     color: AppColors.black,

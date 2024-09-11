@@ -216,7 +216,7 @@ class _OrganizationRegisteringState extends State<OrganizationRegistering> {
             children: <Widget> [
               CustomPaddingTitle(child: Text(
                 StringConst.FORM_ORGANIZATION_INFO,
-                style: textTheme.bodyText1?.copyWith(
+                style: textTheme.bodyMedium?.copyWith(
                   height: 1.5,
                   color: AppColors.greyDark,
                   fontWeight: FontWeight.w700,
@@ -242,7 +242,7 @@ class _OrganizationRegisteringState extends State<OrganizationRegistering> {
               ),
               CustomPaddingTitle(child: Text(
                 StringConst.FORM_CONTACT_INFO,
-                style: textTheme.bodyText1?.copyWith(
+                style: textTheme.bodyMedium?.copyWith(
                   height: 1.5,
                   color: AppColors.greyDark,
                   fontWeight: FontWeight.w700,
@@ -255,7 +255,7 @@ class _OrganizationRegisteringState extends State<OrganizationRegistering> {
                   childLeft: TextFormField(
                       decoration: InputDecoration(
                         labelText: StringConst.FORM_PHONE,
-                        labelStyle: textTheme.bodyText1?.copyWith(
+                        labelStyle: textTheme.bodyMedium?.copyWith(
                           height: 1.5,
                           color: AppColors.greyDark,
                           fontWeight: FontWeight.w400,
@@ -293,7 +293,7 @@ class _OrganizationRegisteringState extends State<OrganizationRegistering> {
                       },
                       textCapitalization: TextCapitalization.sentences,
                       keyboardType: TextInputType.phone,
-                      style: textTheme.bodyText1?.copyWith(
+                      style: textTheme.bodyMedium?.copyWith(
                         height: 1.5,
                         color: AppColors.greyDark,
                         fontWeight: FontWeight.w700,
@@ -318,7 +318,7 @@ class _OrganizationRegisteringState extends State<OrganizationRegistering> {
                           TextFormField(
                               decoration: InputDecoration(
                                 labelText: StringConst.FORM_EMAIL,
-                                labelStyle: textTheme.bodyText1?.copyWith(
+                                labelStyle: textTheme.bodyMedium?.copyWith(
                                   height: 1.5,
                                   color: AppColors.greyDark,
                                   fontWeight: FontWeight.w400,
@@ -343,7 +343,7 @@ class _OrganizationRegisteringState extends State<OrganizationRegistering> {
                               onSaved: (value) => _email = value,
                               keyboardType: TextInputType.emailAddress,
                               onChanged: (value) => setState(() => this.writtenEmail = value),
-                              style: textTheme.bodyText1?.copyWith(
+                              style: textTheme.bodyMedium?.copyWith(
                                 height: 1.5,
                                 color: AppColors.greyDark,
                                 fontWeight: FontWeight.w700,

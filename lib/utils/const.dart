@@ -45,7 +45,7 @@ class Constants {
 
   static ThemeData lighTheme(BuildContext context) {
     return ThemeData(
-      backgroundColor: lightBackground,
+      shadowColor: lightBackground,
       primaryColor: lightPrimary,
       colorScheme: Theme.of(context).colorScheme.copyWith(
         secondary: lightAccent,

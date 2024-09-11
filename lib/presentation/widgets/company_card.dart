@@ -136,7 +136,7 @@ class _CompanyCardState extends State<CompanyCard> {
                       Text(
                         widget.title,
                         style: widget.titleStyle ??
-                            textTheme.subtitle1?.copyWith(
+                            textTheme.titleMedium?.copyWith(
                               color: AppColors.white,
                             ),
                       ),

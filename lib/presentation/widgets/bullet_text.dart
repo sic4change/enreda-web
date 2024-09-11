@@ -26,7 +26,7 @@ class TextWithBullet extends StatelessWidget {
         Text(
           text,
           style: textStyle ??
-              textTheme.bodyText1?.copyWith(
+              textTheme.bodyMedium?.copyWith(
                 color: AppColors.darkViolet, fontSize: fontSize, height: 1.8
               ),
         ),

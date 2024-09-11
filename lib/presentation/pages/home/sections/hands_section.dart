@@ -317,7 +317,7 @@ class _ProjectCategoryState extends State<ProjectCategory>
                 style: widget.titleStyle?.copyWith(
                       color: colorOfCategory(),
                     ) ??
-                    textTheme.subtitle1?.copyWith(
+                    textTheme.titleMedium?.copyWith(
                       fontSize: Sizes.TEXT_SIZE_16,
                       color: colorOfCategory(),
                     ),
@@ -348,7 +348,7 @@ class _ProjectCategoryState extends State<ProjectCategory>
         style: widget.numberStyle?.copyWith(
               color: widget.hoverColor,
             ) ??
-            textTheme.subtitle1?.copyWith(
+            textTheme.titleMedium?.copyWith(
               fontSize: Sizes.TEXT_SIZE_16,
               color: widget.hoverColor,
             ),

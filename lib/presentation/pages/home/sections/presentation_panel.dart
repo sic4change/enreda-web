@@ -1,5 +1,6 @@
 import 'package:enreda_app/localization/LocaleProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:visibility_detector/visibility_detector.dart';
@@ -143,6 +144,12 @@ class _PresentationPanelState extends State<PresentationPanel> {
         EnredaInfoSection6(
           title1: AppLocalizations.of(context)!.futureText,
           buttonTitle: AppLocalizations.of(context)!.jobSearch,
+          title1Style: textTheme.titleLarge!.copyWith(
+              fontSize: 55,
+              fontFamily: GoogleFonts.outfit().fontFamily,
+              color: AppColors.textBlue,
+              fontWeight: FontWeight.w900
+          ),
         ),
       ],
     );
@@ -153,8 +160,14 @@ class _PresentationPanelState extends State<PresentationPanel> {
     return Container(
       height: height,
       child: EnredaInfoSection6(
-        title1: AppLocalizations.of(context)!.techText,
+        title1: AppLocalizations.of(context)!.futureText,
         buttonTitle: AppLocalizations.of(context)!.jobSearch,
+        title1Style: textTheme.titleLarge!.copyWith(
+          fontSize: 55,
+          fontFamily: GoogleFonts.outfit().fontFamily,
+          color: AppColors.textBlue,
+          fontWeight: FontWeight.w900
+        ),
       ),
     );
   }

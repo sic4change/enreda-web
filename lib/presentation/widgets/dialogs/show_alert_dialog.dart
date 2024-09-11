@@ -16,13 +16,13 @@ Future showAlertDialog(
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text(title, style: textTheme.bodyText1?.copyWith(
+        title: Text(title, style: textTheme.bodyMedium?.copyWith(
           color: AppColors.greyTxtAlt,
           height: 1.5,
           fontWeight: FontWeight.w800,
           fontSize: fontSize + 2,
         )),
-        content: Text(content, style: textTheme.bodyText1?.copyWith(
+        content: Text(content, style: textTheme.bodyMedium?.copyWith(
             color: AppColors.greyTxtAlt,
             height: 1.5,
             fontWeight: FontWeight.w400,
@@ -35,7 +35,7 @@ Future showAlertDialog(
               ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(defaultActionText, style: textTheme.bodyText1?.copyWith(
+                child: Text(defaultActionText, style: textTheme.bodyMedium?.copyWith(
                     color: AppColors.white,
                     height: 1.5,
                     fontWeight: FontWeight.w400,
@@ -51,7 +51,7 @@ Future showAlertDialog(
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(cancelActionText, style: textTheme.bodyText1?.copyWith(
+                  child: Text(cancelActionText, style: textTheme.bodyMedium?.copyWith(
                     color: AppColors.white,
                     height: 1.5,
                     fontWeight: FontWeight.w400,
@@ -66,13 +66,13 @@ Future showAlertDialog(
     return showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text(title, style: textTheme.bodyText1?.copyWith(
+        title: Text(title, style: textTheme.bodyMedium?.copyWith(
           color: AppColors.greyTxtAlt,
           height: 1.5,
           fontWeight: FontWeight.w800,
           fontSize: fontSize + 2,
         )),
-        content: Text(content, style: textTheme.bodyText1?.copyWith(
+        content: Text(content, style: textTheme.bodyMedium?.copyWith(
           color: AppColors.greyTxtAlt,
           height: 1.5,
           fontWeight: FontWeight.w400,
@@ -86,7 +86,7 @@ Future showAlertDialog(
               ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(defaultActionText, style: textTheme.bodyText1?.copyWith(
+                child: Text(defaultActionText, style: textTheme.bodyMedium?.copyWith(
                     color: AppColors.greyTxtAlt,
                     height: 1.5,
                     fontWeight: FontWeight.w400,
@@ -102,7 +102,7 @@ Future showAlertDialog(
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(cancelActionText, style: textTheme.bodyText1?.copyWith(
+                  child: Text(cancelActionText, style: textTheme.bodyMedium?.copyWith(
                       color: AppColors.white,
                       height: 1.5,
                       fontWeight: FontWeight.w400,

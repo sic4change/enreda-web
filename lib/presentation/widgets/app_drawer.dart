@@ -13,6 +13,7 @@ import '../../utils/responsive.dart';
 import '../../values/values.dart';
 import '../layout/adaptive.dart';
 import 'nav_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 const kSpacing20 = Sizes.SIZE_20;
 
@@ -42,6 +43,7 @@ class _AppDrawerState extends State<AppDrawer> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     router = AutoRouter.of(context);
     double defaultWidthOfDrawer = responsiveSize(
       context,
@@ -52,6 +54,9 @@ class _AppDrawerState extends State<AppDrawer> {
     return Container(
       width: widget.width ?? defaultWidthOfDrawer,
       child: Drawer(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(0)),
+        ),
         child: Container(
           color: widget.color,
           child: Column(
@@ -60,15 +65,8 @@ class _AppDrawerState extends State<AppDrawer> {
               Padding(
                 padding: const EdgeInsets.all(Sizes.PADDING_24),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    InkWell(
-                      onTap: () {},
-                      child: Image.asset(
-                        ImagePath.LOGO_ENREDA_LONG,
-                        height: Sizes.HEIGHT_60,
-                      ),
-                    ),
-                    Spacer(),
                     InkWell(
                       onTap: widget.onClose ?? () => _closeDrawer(),
                       child: Icon(
@@ -88,42 +86,110 @@ class _AppDrawerState extends State<AppDrawer> {
                   ),
                 ],
               ),
-              SpaceH16(),
-              InkWell(
-                onTap: () {
-                  _closeDrawer();
-                  showLoginMenu(
-                      context,
-                      relativePosition: RelativeRect.fromLTRB(20, 360, double.infinity, 0)
-                  );
-                },
-                child: Container(
-                  color: AppColors.textBlue,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: Responsive.isMobile(context) ? Sizes.PADDING_28 :Sizes.PADDING_32,
-                    vertical: Responsive.isMobile(context) ? Sizes.PADDING_16 :Sizes.PADDING_32,
+              SpaceH12(),
+              Padding(
+                padding: const EdgeInsets.only(left: Sizes.PADDING_24, right: 150),
+                child: EnredaButtonIconReverse(
+                  buttonTitle: AppLocalizations.of(context)!.myAccount.toUpperCase(),
+                  widget: Image.asset(ImagePath.LOGIN_PERSON),
+                  buttonColor: AppColors.textBlue,
+                  padding: EdgeInsets.symmetric(horizontal: 22),
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  titleStyle: textTheme.titleLarge!.copyWith(
+                    fontFamily: GoogleFonts.outfit().fontFamily,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.white,
                   ),
-                  child: Row(
-                    children: [
-                      Text(
-                        StringConst.ACCESS.toUpperCase(),
-                        style: Theme.of(context).textTheme.bodyText1?.copyWith(
-                              color: AppColors.white,
-                              fontSize: Sizes.TEXT_SIZE_15,
-                              fontWeight: FontWeight.bold,
-                            ),
-                      ),
-                    ],
+                  onPressed: (){
+                    _closeDrawer();
+                    openUrlLink(StringConst.WEB_APP_URL);
+                  }
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: Sizes.PADDING_24, left: Sizes.PADDING_24),
+                child: Text(
+                  'Descárgate la app'.toUpperCase(),
+                  style: textTheme.bodyMedium?.copyWith(
+                    fontFamily: GoogleFonts.outfit().fontFamily,
+                    color: AppColors.black,
+                    fontSize: Sizes.TEXT_SIZE_12,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
-              Spacer(),
               Padding(
-                padding: const EdgeInsets.all(Sizes.PADDING_24),
-                child: Column(
+                padding: const EdgeInsets.only(left: Sizes.PADDING_24, top: 10),
+                child: Row(
                   children: [
-                    _buildFooterText(),
+                    InkWell(
+                      onTap: () => openUrlLink(StringConst.URL_GOOGLE_PLAY),
+                      child: Container(
+                          height: 50,
+                          width: 130,
+                          child: Image.asset(ImagePath.PLAY_STORE)
+                      ),
+                    ),
+                    SpaceW16(),
+                    InkWell(
+                      onTap: () => openUrlLink(StringConst.URL_APPSTORE),
+                      hoverColor: Colors.transparent,
+                      child: Container(
+                          height: 50,
+                          width: 130,
+                          child: Image.asset(ImagePath.APP_STORE)
+                      ),
+                    ),
                   ],
+                ),
+              ),
+              SpaceH40(),
+              Padding(
+                padding: EdgeInsets.only(top: Sizes.PADDING_24, left: Sizes.PADDING_24),
+                child: Text(
+                  'Cuenta profesional'.toUpperCase(),
+                  style: textTheme.bodyMedium?.copyWith(
+                    fontFamily: GoogleFonts.outfit().fontFamily,
+                    color: AppColors.textBlue,
+                    fontSize: Sizes.TEXT_SIZE_12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: (){
+                _closeDrawer();
+                openUrlLink(StringConst.SOCIAL_ENTITY_URL);
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(top: Sizes.PADDING_24, left: Sizes.PADDING_24),
+                  child: Text(
+                    'Soy entidad'.toUpperCase(),
+                    style: textTheme.bodyMedium?.copyWith(
+                      fontFamily: GoogleFonts.outfit().fontFamily,
+                      color: AppColors.textBlue,
+                      fontSize: Sizes.TEXT_SIZE_12,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: (){
+
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(top: Sizes.PADDING_24, left: Sizes.PADDING_24),
+                  child: Text(
+                    'Soy empresa'.toUpperCase(),
+                    style: textTheme.bodyMedium?.copyWith(
+                      fontFamily: GoogleFonts.outfit().fontFamily,
+                      color: AppColors.textBlue,
+                      fontSize: Sizes.TEXT_SIZE_12,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -149,16 +215,15 @@ class _AppDrawerState extends State<AppDrawer> {
           title: menuList[i].name,
           isMobile: true,
           isSelected: menuList[i].isSelected,
-          titleStyle: textTheme.bodyText1?.copyWith(
-            color:
-                menuList[i].isSelected ? AppColors.buttonBlue : AppColors.greyDark,
-            fontSize: Sizes.TEXT_SIZE_15,
-            fontWeight:
-                menuList[i].isSelected ? FontWeight.bold : FontWeight.bold,
+          titleStyle: textTheme.bodyMedium?.copyWith(
+            fontFamily: GoogleFonts.outfit().fontFamily,
+            color: menuList[i].isSelected ? AppColors.primary500 : AppColors.greyTxtAlt,
+            fontSize: Sizes.TEXT_SIZE_16,
+            fontWeight: FontWeight.bold,
           ),
         ),
       );
-      menuItems.add(SpaceH4());
+      menuItems.add(SpaceH44());
     }
     return menuItems;
   }
@@ -184,97 +249,4 @@ class _AppDrawerState extends State<AppDrawer> {
     context.router.pop();
   }
 
-  Widget _buildFooterText() {
-    TextTheme textTheme = Theme.of(context).textTheme;
-    TextStyle? footerTextStyle = textTheme.caption?.copyWith(
-      fontFamily: GoogleFonts.lato().fontFamily,
-      color: AppColors.primaryText2,
-      fontWeight: FontWeight.bold,
-    );
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SpaceH4(),
-        Center(
-          child: InkWell(
-            onTap: () => openUrlLink(StringConst.PRIVACITY_URL),
-            child: RichText(
-              text: TextSpan(
-                text: StringConst.RIGHTS_RESERVED + " ",
-                style: footerTextStyle,
-                children: [
-                  TextSpan(text: StringConst.DESIGNED_BY + " "),
-                  TextSpan(
-                    text: " ",
-                    style: footerTextStyle?.copyWith(
-                      decoration: TextDecoration.underline,
-                      fontWeight: FontWeight.w900,
-                      color: AppColors.black,
-                    ),
-                  ),
-                ],
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-        SpaceH4(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Center(
-                child: InkWell(
-                  onTap: () => openUrlLink(StringConst.USE_CONDITIONS_URL),
-                  child: RichText(
-                    text: TextSpan(
-                      text: StringConst.BUILT_BY + " ",
-                      style: footerTextStyle,
-                      children: [],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-        SpaceH4(),
-        SpaceH4(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(StringConst.MADE_BY, style: footerTextStyle),
-            SpaceW4(),
-            Icon(
-              FontAwesomeIcons.solidHeart,
-              color: AppColors.turquoise,
-              size: Sizes.ICON_SIZE_12,
-            ),
-            SpaceW4(),
-            Text(StringConst.WITH_LOVE, style: footerTextStyle),
-            SpaceW4(),
-            InkWell(
-              onTap: () => openUrlLink(StringConst.WEB_SIC4Change),
-              child: RichText(
-                text: TextSpan(
-                  text: " ",
-                  style: footerTextStyle,
-                  children: [
-                    TextSpan(
-                      text: StringConst.SIC4CHANGE,
-                      style: footerTextStyle?.copyWith(
-                        decoration: TextDecoration.underline,
-                        fontWeight: FontWeight.w900,
-                        color: AppColors.black,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            )
-          ],
-        ),
-      ],
-    );
-  }
 }

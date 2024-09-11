@@ -69,7 +69,7 @@ class _MultiSelectListDialogState<V> extends State<MultiSelectListDialog<V>> {
                   for (List<MultiSelectDialogItem<V>> items in widget.itemsSet!)
                       Column(
                         children: [
-                          Text(items[0].title, style: textTheme.bodyText1?.copyWith(
+                          Text(items[0].title, style: textTheme.bodyMedium?.copyWith(
                             height: 1.5,
                             color: AppColors.primaryColor,
                             fontWeight: FontWeight.w700,
@@ -109,7 +109,7 @@ class _MultiSelectListDialogState<V> extends State<MultiSelectListDialog<V>> {
         CheckboxListTile(
           value: checked,
           title: Text(item.label,
-            style: textTheme.bodyText1?.copyWith(
+            style: textTheme.bodyMedium?.copyWith(
             height: 1.5,
             color: AppColors.greyDark,
             fontWeight: FontWeight.w700,

@@ -90,7 +90,7 @@ dialogContent(BuildContext context, Resource resource) {
                           resource.title,
                           textAlign: TextAlign.center,
                           maxLines: Responsive.isMobile(context) ? 2 : 1,
-                          style: textTheme.bodyText1?.copyWith(
+                          style: textTheme.bodyMedium?.copyWith(
                             letterSpacing: 1.2,
                             color: AppColors.greyTxtAlt,
                             height: 1.5,
@@ -258,7 +258,7 @@ Widget _buildDetailsListViewWeb(BuildContext context, Resource resource) {
                   child: Text(
                     resource.description,
                     textAlign: TextAlign.left,
-                    style: textTheme.bodyText1?.copyWith(
+                    style: textTheme.bodyMedium?.copyWith(
                       color: AppColors.greyTxtAlt,
                       fontWeight: FontWeight.w400,
                       fontSize: fontSize,
@@ -353,7 +353,7 @@ Widget _buildDetailsListViewMobile(BuildContext context, Resource resource) {
           child: Text(
             resource.description,
             textAlign: TextAlign.left,
-            style: textTheme.bodyText1?.copyWith(
+            style: textTheme.bodyMedium?.copyWith(
               color: AppColors.greyTxtAlt,
               height: 1.5,
               fontWeight: FontWeight.w400,

@@ -73,7 +73,7 @@ class _SkillLevelState extends State<SkillLevel> {
 
   Widget _buildChild(double level) {
     TextTheme textTheme = Theme.of(context).textTheme;
-    TextStyle? defaultStyle = textTheme.subtitle2;
+    TextStyle? defaultStyle = textTheme.titleMedium;
     return Container(
       width: widget.skillLevelWidth,
       child: Column(

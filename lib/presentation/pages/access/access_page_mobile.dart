@@ -49,7 +49,7 @@ class _AccessPageMobileState extends State<AccessPageMobile> {
                                 padding: EdgeInsets.symmetric(horizontal: Constants.mainPadding * 2),
                                 child: Text(
                                   StringConst.LOOKING_FOR_YOUTHS,
-                                  style: textTheme.subtitle1,
+                                  style: textTheme.titleMedium,
                                   textAlign: TextAlign.center,
                                 ),
                               ),
@@ -58,7 +58,7 @@ class _AccessPageMobileState extends State<AccessPageMobile> {
                                 padding: EdgeInsets.symmetric(horizontal: Constants.mainPadding * 2),
                                 child: Text(
                                   StringConst.LOOKING_FOR_OPPORTUNITIES,
-                                  style: textTheme.subtitle1,
+                                  style: textTheme.titleMedium,
                                   textAlign: TextAlign.center,
                                 ),
                               ),

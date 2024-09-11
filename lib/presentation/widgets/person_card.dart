@@ -156,7 +156,7 @@ class _PersonCardState extends State<PersonCard> {
                   child: Text(
                     widget.person,
                     style: widget.categoryStyle ??
-                        textTheme.bodyText1?.copyWith(
+                        textTheme.bodyMedium?.copyWith(
                           fontSize: Sizes.TEXT_SIZE_15,
                           color: AppColors.greyAlt,
                           fontWeight: FontWeight.w600,
@@ -169,7 +169,7 @@ class _PersonCardState extends State<PersonCard> {
                   child: Text(
                     widget.position,
                     textAlign: TextAlign.center,
-                    style: widget.titleStyle ?? textTheme.subtitle1?.copyWith(
+                    style: widget.titleStyle ?? textTheme.titleMedium?.copyWith(
                       fontSize: Sizes.TEXT_SIZE_12,
                     ),
                   ),

@@ -64,7 +64,7 @@ class _AccessPageWebState extends State<AccessPageWeb> {
                                       padding: EdgeInsets.symmetric(horizontal: Constants.mainPadding * 5),
                                       child: Text(
                                         StringConst.LOOKING_FOR_YOUTHS,
-                                        style: textTheme.headline5,
+                                        style: textTheme.titleSmall,
                                         textAlign: TextAlign.center,
                                       ),
                                     ),
@@ -73,7 +73,7 @@ class _AccessPageWebState extends State<AccessPageWeb> {
                                       padding: EdgeInsets.symmetric(horizontal: Constants.mainPadding * 5),
                                       child: Text(
                                         StringConst.LOOKING_FOR_OPPORTUNITIES,
-                                        style: textTheme.headline5,
+                                        style: textTheme.titleSmall,
                                         textAlign: TextAlign.center,
                                       ),
                                     ),

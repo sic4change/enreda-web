@@ -35,7 +35,7 @@ Widget streamBuilder_Dropdown_Dedication (BuildContext context, Dedication? sele
           iconDisabledColor: AppColors.greyLightTxt,
           iconEnabledColor: AppColors.turquoise,
           decoration: InputDecoration(
-            labelStyle: textTheme.bodyText1?.copyWith(
+            labelStyle: textTheme.bodyMedium?.copyWith(
               height: 1.5,
               color: AppColors.greyDark,
               fontWeight: FontWeight.w400,
@@ -55,7 +55,7 @@ Widget streamBuilder_Dropdown_Dedication (BuildContext context, Dedication? sele
               ),
             ),
           ),
-          style: textTheme.bodyText1?.copyWith(
+          style: textTheme.bodyMedium?.copyWith(
             height: 1.5,
             color: AppColors.greyDark,
             fontWeight: FontWeight.w700,

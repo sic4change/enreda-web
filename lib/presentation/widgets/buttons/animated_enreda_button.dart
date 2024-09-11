@@ -95,7 +95,7 @@ class _AnimatedEnredaButtonState extends State<AnimatedEnredaButton> {
                         child: Text(
                           widget.title,
                           style: widget.titleStyle ??
-                              textTheme.button?.copyWith(
+                              textTheme.displayMedium?.copyWith(
                                 color:_isHovering ? widget.titleColor : Colors.transparent,
                                 fontSize: Sizes.TEXT_SIZE_14,
                               ),

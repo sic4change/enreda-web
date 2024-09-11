@@ -181,7 +181,7 @@ class _MentorRegisteringState extends State<MentorRegistering> {
                           countryFilter: ['ES', 'PE', 'GT'],
                           showFlagDialog: true,
                         ),
-                        labelStyle: textTheme.bodyText1?.copyWith(
+                        labelStyle: textTheme.bodyMedium?.copyWith(
                           height: 1.5,
                           color: AppColors.greyDark,
                           fontWeight: FontWeight.w400,
@@ -210,7 +210,7 @@ class _MentorRegisteringState extends State<MentorRegistering> {
                       },
                       textCapitalization: TextCapitalization.sentences,
                       keyboardType: TextInputType.phone,
-                      style: textTheme.bodyText1?.copyWith(
+                      style: textTheme.bodyMedium?.copyWith(
                         height: 1.5,
                         color: AppColors.greyDark,
                         fontWeight: FontWeight.w700,
@@ -242,7 +242,7 @@ class _MentorRegisteringState extends State<MentorRegistering> {
                           TextFormField(
                             decoration: InputDecoration(
                               labelText: StringConst.FORM_EMAIL,
-                              labelStyle: textTheme.bodyText1?.copyWith(
+                              labelStyle: textTheme.bodyMedium?.copyWith(
                                 height: 1.5,
                                 color: AppColors.greyDark,
                                 fontWeight: FontWeight.w400,
@@ -267,7 +267,7 @@ class _MentorRegisteringState extends State<MentorRegistering> {
                             onSaved: (value) => _email = value,
                             keyboardType: TextInputType.emailAddress,
                             onChanged: (value) => setState(() => this.writtenEmail = value),
-                            style: textTheme.bodyText1?.copyWith(
+                            style: textTheme.bodyMedium?.copyWith(
                               height: 1.5,
                               color: AppColors.greyDark,
                               fontWeight: FontWeight.w700,

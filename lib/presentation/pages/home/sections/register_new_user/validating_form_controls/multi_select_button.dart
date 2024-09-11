@@ -81,7 +81,7 @@ class _MultiSelectDialogState<V> extends State<MultiSelectDialog<V>> {
     double fontSize = responsiveSize(context, 14, 18, md: 15);
     return CheckboxListTile(
       value: checked,
-      title: Text(item.label, style: textTheme.bodyText1?.copyWith(
+      title: Text(item.label, style: textTheme.bodyMedium?.copyWith(
         height: 1.5,
         color: AppColors.greyDark,
         fontWeight: FontWeight.w700,

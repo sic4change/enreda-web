@@ -27,7 +27,7 @@ Widget CheckboxForm(BuildContext context, _checkFieldKey, bool _isChecked, funct
                     ),
                     Text(
                       StringConst.FORM_ACCEPT_SENTENCE,
-                      style: textTheme.bodyText1?.copyWith(
+                      style: textTheme.bodyMedium?.copyWith(
                         height: 1.5,
                         color: AppColors.greyDark,
                         fontWeight: FontWeight.w700,
@@ -41,7 +41,7 @@ Widget CheckboxForm(BuildContext context, _checkFieldKey, bool _isChecked, funct
                           children: [
                             Text(
                               StringConst.RIGHTS_RESERVED,
-                              style: textTheme.bodyText1?.copyWith(
+                              style: textTheme.bodyMedium?.copyWith(
                                 height: 1.5,
                                 color: AppColors.turquoise,
                                 fontWeight: FontWeight.w700,
@@ -56,7 +56,7 @@ Widget CheckboxForm(BuildContext context, _checkFieldKey, bool _isChecked, funct
                 Row(
                   children: [
                     Text(StringConst.FORM_ACCEPT_SENTENCE_Y,
-                      style: textTheme.bodyText1?.copyWith(
+                      style: textTheme.bodyMedium?.copyWith(
                       height: 1.5,
                       color: AppColors.greyDark,
                       fontWeight: FontWeight.w700,
@@ -70,7 +70,7 @@ Widget CheckboxForm(BuildContext context, _checkFieldKey, bool _isChecked, funct
                           children: [
                             Text(
                               StringConst.BUILT_BY,
-                              style: textTheme.bodyText1?.copyWith(
+                              style: textTheme.bodyMedium?.copyWith(
                               height: 1.5,
                               color: AppColors.turquoise,
                               fontWeight: FontWeight.w700,

@@ -34,7 +34,7 @@ Widget streamBuilderForSizeOrg (BuildContext context, SizeOrg? selectedSizeOrg, 
           iconDisabledColor: AppColors.greyLightTxt,
           iconEnabledColor: AppColors.turquoise,
           decoration: InputDecoration(
-            labelStyle: textTheme.bodyText1?.copyWith(
+            labelStyle: textTheme.bodyMedium?.copyWith(
               height: 1.5,
               color: AppColors.greyDark,
               fontWeight: FontWeight.w400,
@@ -54,7 +54,7 @@ Widget streamBuilderForSizeOrg (BuildContext context, SizeOrg? selectedSizeOrg, 
               ),
             ),
           ),
-          style: textTheme.bodyText1?.copyWith(
+          style: textTheme.bodyMedium?.copyWith(
             height: 1.5,
             fontWeight: FontWeight.w700,
             color: AppColors.greyDark,

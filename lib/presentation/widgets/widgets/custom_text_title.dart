@@ -82,7 +82,7 @@ class CustomTextBody extends StatelessWidget {
     TextTheme textTheme = Theme.of(context).textTheme;
     return Text(
       text,
-      style: textTheme.bodyText1?.copyWith(
+      style: textTheme.bodyMedium?.copyWith(
         color: AppColors.greyDarkTxt,
         height: 1.5,
         fontWeight: FontWeight.w700,

@@ -380,7 +380,7 @@ class StatItem extends StatelessWidget {
         Text(
           "$value",
           style: titleStyle ??
-              textTheme.bodyText2?.copyWith(
+              textTheme.bodyMedium?.copyWith(
                 color: titleColor, fontSize: fontSizeTitle, fontWeight: fontWeightTitle,
               ),
         ),
@@ -390,7 +390,7 @@ class StatItem extends StatelessWidget {
             subtitle.toUpperCase(),
             textAlign: TextAlign.center,
             style: subtitleStyle ??
-                textTheme.bodyText1?.copyWith(
+                textTheme.bodyMedium?.copyWith(
                   color: subtitleColor,
                   fontSize: 12,
                   fontWeight: FontWeight.w800,
