@@ -494,8 +494,8 @@ class _JobSearchPageState extends State<JobSearchPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Lleva tu progreso siempre contigo ¡Descárgate  Enreda App y no te pierdas nada!",
-                        style: TextStyle(
+                      AppLocalizations.of(context)!.downloadTitle,
+                      style: TextStyle(
                         height: 1.2,
                         fontWeight: FontWeight.w900,
                         fontFamily: GoogleFonts.outfit().fontFamily,
@@ -505,7 +505,7 @@ class _JobSearchPageState extends State<JobSearchPage> {
                     ),
                     SpaceH8(),
                     Text(
-                      'Con la app de Enreda, tendrás acceso a todas las herramientas y recursos que necesitas para avanzar en tu camino hacia el empleo. Monitoriza tus logros, recibe notificaciones importantes, y mantente en contacto con tu red de apoyo desde cualquier lugar.',
+                      AppLocalizations.of(context)!.downloadText1,
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontFamily: GoogleFonts.lato().fontFamily,
@@ -515,7 +515,7 @@ class _JobSearchPageState extends State<JobSearchPage> {
                     ),
                     SpaceH16(),
                     Text(
-                      '¡Descárgala ahora y empieza a construir tu futuro hoy mismo!',
+                      AppLocalizations.of(context)!.downloadText2,
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontFamily: GoogleFonts.lato().fontFamily,
@@ -583,7 +583,7 @@ class _JobSearchPageState extends State<JobSearchPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Lleva tu progreso siempre contigo ¡Descárgate  Enreda App y no te pierdas nada!",
+                      AppLocalizations.of(context)!.downloadTitle,
                       style: TextStyle(
                         height: 1.2,
                         fontWeight: FontWeight.w900,
@@ -594,7 +594,7 @@ class _JobSearchPageState extends State<JobSearchPage> {
                     ),
                     SpaceH8(),
                     Text(
-                      'Con la app de Enreda, tendrás acceso a todas las herramientas y recursos que necesitas para avanzar en tu camino hacia el empleo. Monitoriza tus logros, recibe notificaciones importantes, y mantente en contacto con tu red de apoyo desde cualquier lugar.',
+                      AppLocalizations.of(context)!.downloadText1,
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontFamily: GoogleFonts.lato().fontFamily,
@@ -604,7 +604,7 @@ class _JobSearchPageState extends State<JobSearchPage> {
                     ),
                     SpaceH16(),
                     Text(
-                      '¡Descárgala ahora y empieza a construir tu futuro hoy mismo!',
+                      AppLocalizations.of(context)!.downloadText2,
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontFamily: GoogleFonts.lato().fontFamily,

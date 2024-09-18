@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../../../values/values.dart';
@@ -37,7 +37,7 @@ class _CompaniesSectionState extends State<CompaniesSection> {
   }
 
   final int blogLength = Data.branding.length;
-  final _carouselController = CarouselController();
+  final _carouselController = CarouselSliderController();
   int currentPageIndex = 0;
 
 

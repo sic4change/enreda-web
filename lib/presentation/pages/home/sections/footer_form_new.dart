@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:enreda_app/localization/LocaleProvider.dart';
 import 'package:enreda_app/models/contact.dart';
 import 'package:enreda_app/presentation/pages/home/home_page.dart';
 import 'package:enreda_app/presentation/widgets/dialogs/show_alert_dialog.dart';
@@ -8,19 +7,14 @@ import 'package:enreda_app/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:responsive_builder/responsive_builder.dart';
-import 'package:visibility_detector/visibility_detector.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 import '../../../../utils/functions.dart';
 import '../../../../utils/responsive.dart';
 import '../../../../values/values.dart';
 import '../../../layout/adaptive.dart';
-import '../../../widgets/buttons/social_button_2.dart';
-import '../../../widgets/content_area.dart';
-import '../../../widgets/enreda_info_section.dart';
 import '../../../widgets/spaces.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FooterFormNew extends StatefulWidget {
   FooterFormNew({Key? key, required this.isEntity});
@@ -96,7 +90,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              _buildSubMenuItem('Menú', true, false),
+                              _buildSubMenuItem(AppLocalizations.of(context)!.menu, true, false),
                               MouseRegion(
                                 onEnter: (_) {
                                   setState(() {
@@ -115,7 +109,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                                         MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.RESOURCES,)),
                                       );
                                     },
-                                    child: _buildSubMenuItem('Recursos', false, _isHoveredResources)
+                                    child: _buildSubMenuItem(AppLocalizations.of(context)!.resources, false, _isHoveredResources)
                                 ),
                               ),
                               MouseRegion(
@@ -136,7 +130,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                                         MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.JOB_SEARCH,)),
                                       );
                                     },
-                                    child: _buildSubMenuItem('Busco empleo', false, _isHoveredJob)
+                                    child: _buildSubMenuItem(AppLocalizations.of(context)!.jobSearch, false, _isHoveredJob)
                                 ),
                               ),
                               MouseRegion(
@@ -157,7 +151,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                                         MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.SOCIAL_ENTITY,)),
                                       );
                                     },
-                                    child: _buildSubMenuItem('Entidades', false, _isHoveredSocialEntity)
+                                    child: _buildSubMenuItem(AppLocalizations.of(context)!.socialEntities, false, _isHoveredSocialEntity)
                                 ),
                               ),
                               MouseRegion(
@@ -178,7 +172,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                                         MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.TALENT_SEARCH,)),
                                       );
                                     },
-                                    child: _buildSubMenuItem('Busco talento', false, _isHoveredTalent)
+                                    child: _buildSubMenuItem(AppLocalizations.of(context)!.talentSearch, false, _isHoveredTalent)
                                 ),
                               ),
                             ],
@@ -196,7 +190,17 @@ class _FooterFormNewState extends State<FooterFormNew> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        'Sé parte del cambio,\n¡Enrédate!',
+                        AppLocalizations.of(context)!.partOfChange,
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontFamily: GoogleFonts.outfit().fontFamily,
+                          color: AppColors.textBlue,
+                          fontSize: 36,
+                        ),
+                      ),
+                      Text(
+                        AppLocalizations.of(context)!.enredate,
                         textAlign: TextAlign.right,
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
@@ -232,7 +236,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                                 child: Padding(
                                   padding: EdgeInsets.all(22.0),
                                   child:
-                                  Center(child: Text('Contacta ahora'.toUpperCase())),
+                                  Center(child: Text(AppLocalizations.of(context)!.contactNow.toUpperCase())),
                                 ),
                               ),
                             ),
@@ -622,7 +626,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                   child: Image.asset(ImagePath.LOGO_ENREDA_BLACK),
                 ),
                 SpaceH16(),
-                _buildSubMenuItem('Menú', true, false),
+                _buildSubMenuItem(AppLocalizations.of(context)!.menu, true, false),
                 Padding(
                   padding: const EdgeInsets.only(right: 150.0),
                   child: Row(
@@ -635,7 +639,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                               MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.RESOURCES,)),
                             );
                           },
-                          child: _buildSubMenuItem('Recursos', false, _isHoveredResources)
+                          child: _buildSubMenuItem(AppLocalizations.of(context)!.resources, false, _isHoveredResources)
                       ),
                       InkWell(
                           onTap: (){
@@ -644,7 +648,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                               MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.JOB_SEARCH,)),
                             );
                           },
-                          child: _buildSubMenuItem('Busco empleo', false, _isHoveredJob)
+                          child: _buildSubMenuItem(AppLocalizations.of(context)!.jobSearch, false, _isHoveredJob)
                       ),
                     ],
                   ),
@@ -661,7 +665,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                               MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.SOCIAL_ENTITY,)),
                             );
                           },
-                          child: _buildSubMenuItem('Entidades', false, _isHoveredSocialEntity)
+                          child: _buildSubMenuItem(AppLocalizations.of(context)!.socialEntities, false, _isHoveredSocialEntity)
                       ),
                       InkWell(
                           onTap: (){
@@ -670,7 +674,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                               MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.TALENT_SEARCH,)),
                             );
                           },
-                          child: _buildSubMenuItem('Busco talento', false, _isHoveredTalent)
+                          child: _buildSubMenuItem(AppLocalizations.of(context)!.talentSearch, false, _isHoveredTalent)
                       ),
                     ],
                   ),
@@ -683,7 +687,17 @@ class _FooterFormNewState extends State<FooterFormNew> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      'Sé parte del cambio,\n¡Enrédate!',
+                      AppLocalizations.of(context)!.partOfChange,
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontFamily: GoogleFonts.outfit().fontFamily,
+                        color: AppColors.textBlue,
+                        fontSize: 36,
+                      ),
+                    ),
+                    Text(
+                      AppLocalizations.of(context)!.enredate,
                       textAlign: TextAlign.right,
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
@@ -717,7 +731,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                           child: Padding(
                             padding: EdgeInsets.all(22.0),
                             child:
-                            Center(child: Text('Contacta ahora'.toUpperCase())),
+                            Center(child: Text(AppLocalizations.of(context)!.contactNow.toUpperCase())),
                           ),
                         ),
                       ),
@@ -806,7 +820,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Introduce tu email y súmate',
+          AppLocalizations.of(context)!.putEmail,
           style: TextStyle(
             color: AppColors.skyBlue,
             fontFamily: GoogleFonts.lato().fontFamily,

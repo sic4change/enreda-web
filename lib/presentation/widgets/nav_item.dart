@@ -63,20 +63,21 @@ class _NavItemState extends State<NavItem> with SingleTickerProviderStateMixin {
         child: InkWell(
           onTap: widget.onTap,
           child: Stack(
+            alignment: Alignment.center,
             children: [
               if (!widget.isMobile)
                 widget.isSelected
                     ? Positioned(
                         top: Sizes.SIZE_32,
                         child: SelectedIndicator(
-                          width: indicatorWidth,
+                          width: _widthTitle(widget.title),
                         ),
                       )
                     : Positioned(
                         top: Sizes.SIZE_32,
                         child: AnimatedHoverIndicator(
                           isHover: _hovering,
-                          width: indicatorWidth,
+                          width: _widthTitle(widget.title),
                         ),
                       ),
               Padding(
@@ -101,5 +102,9 @@ class _NavItemState extends State<NavItem> with SingleTickerProviderStateMixin {
     setState(() {
       _hovering = hovering;
     });
+  }
+
+  double _widthTitle(String name){
+    return name.length*7.5;
   }
 }

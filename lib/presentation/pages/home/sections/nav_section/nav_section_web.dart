@@ -100,10 +100,10 @@ class _NavSectionWebState extends State<NavSectionWeb> {
     return Container(
       height: Sizes.HEIGHT_100,
       decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(width: 1, color: AppColors.greyDivider)
+        ),
         color: Colors.white,
-        boxShadow: [
-          Shadows.elevationShadow,
-        ],
       ),
       child: IntrinsicHeight(
         child: Row(
@@ -211,7 +211,7 @@ class _NavSectionWebState extends State<NavSectionWeb> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30.0),
           child: NavItem(
-            title: navItems[index].name,
+            title: _navItemsTranslation(navItems[index].name, context),
             isSelected: navItems[index].isSelected,
             onTap: () => _onTapNavItem(
               context: navItems[index].key,
@@ -243,5 +243,20 @@ class _NavSectionWebState extends State<NavSectionWeb> {
       items.add(SpaceW16());
     }
     return items;
+  }
+
+  String _navItemsTranslation(String name, BuildContext context){
+    switch(name){
+      case StringConst.RESOURCES:
+        return AppLocalizations.of(context)!.resources;
+      case StringConst.JOB_SEARCH:
+        return AppLocalizations.of(context)!.jobSearch;
+      case StringConst.SOCIAL_ENTITY:
+        return AppLocalizations.of(context)!.socialEntities;
+      case StringConst.TALENT_SEARCH:
+        return AppLocalizations.of(context)!.talentSearch;
+      default:
+        return name;
+    }
   }
 }

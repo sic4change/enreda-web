@@ -15,6 +15,8 @@ import '../../../widgets/dialogs/show_alert_dialog.dart';
 import '../../../widgets/dialogs/show_exception_alert_dialog.dart';
 import '../../../widgets/spaces.dart';
 import '../../../widgets/widgets/precache_widgets.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class ResourceListTile extends StatefulWidget {
   const ResourceListTile({Key? key, required this.resource, this.onTap})
@@ -243,7 +245,7 @@ class _ResourceListTileState extends State<ResourceListTile> {
                                 color: Constants.white
                             ),
                             child: Text(
-                              'Ver más', style: TextStyle(
+                              AppLocalizations.of(context)!.viewMore, style: TextStyle(
                               letterSpacing: 1,
                               fontSize: fontSize,
                               fontWeight: FontWeight.bold,

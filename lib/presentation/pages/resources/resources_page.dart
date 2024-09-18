@@ -147,7 +147,7 @@ class _ResourcesPageState extends State<ResourcesPage> {
                       alignment: Alignment.center,
                       padding: Responsive.isMobile(context) ?  EdgeInsets.symmetric(horizontal: 30) : EdgeInsets.symmetric(horizontal: 100.0),
                       child: Text(
-                        Responsive.isMobile(context) ? StringConst.PILLS_SUBTITLE : AppLocalizations.of(context)!.resourcesAbout,
+                        Responsive.isMobile(context) ? AppLocalizations.of(context)!.pillsText : AppLocalizations.of(context)!.resourcesAbout,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 16,
@@ -211,7 +211,7 @@ class _ResourcesPageState extends State<ResourcesPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(StringConst.PILLS_TITLE,
+                        Text(AppLocalizations.of(context)!.pillsTitle,
                           style: textTheme.headlineSmall?.copyWith(
                             color: Colors.white,
                             fontFamily: GoogleFonts.outfit().fontFamily,
@@ -221,7 +221,7 @@ class _ResourcesPageState extends State<ResourcesPage> {
                           ),
                         ),
                         SpaceH8(),
-                        Text(StringConst.PILLS_SUBTITLE, style: textTheme.bodySmall?.copyWith(
+                        Text(AppLocalizations.of(context)!.pillsText, style: textTheme.bodySmall?.copyWith(
                           color: Colors.white,
                           fontFamily: GoogleFonts.outfit().fontFamily,
                           letterSpacing: 1,
@@ -242,7 +242,7 @@ class _ResourcesPageState extends State<ResourcesPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: Responsive.isDesktop(context) ? CrossAxisAlignment.start : CrossAxisAlignment.center,
                         children: [
-                          Text(StringConst.PILLS_TITLE,
+                          Text(AppLocalizations.of(context)!.pillsTitle,
                             style: textTheme.headlineSmall?.copyWith(
                               color: Colors.white,
                               letterSpacing: 1,
@@ -251,7 +251,7 @@ class _ResourcesPageState extends State<ResourcesPage> {
                             ),
                           ),
                           SpaceH8(),
-                          Text(StringConst.PILLS_SUBTITLE,
+                          Text(AppLocalizations.of(context)!.pillsText,
                             textAlign: Responsive.isDesktop(context) ? TextAlign.left : TextAlign.center,
                             style: textTheme.bodySmall?.copyWith(
                               color: Colors.white,
@@ -534,7 +534,7 @@ class _ResourcesPageState extends State<ResourcesPage> {
             setStateIfMounted(() {
               filterResource.resourceCategoryId = (resourceCategories[index].id);
               ResourcesPage.selectedIndex.value = 1;
-              _categoryName = resourceCategories[index].name;
+              _categoryName = _categoryNameTranslation(resourceCategories[index].name);
               _categoryFormationId = resourceCategories[index].id;
             });
           },
@@ -557,7 +557,7 @@ class _ResourcesPageState extends State<ResourcesPage> {
                       constraints: BoxConstraints(
                         maxWidth: Responsive.isMobile(context) ? 150 : 300,
                       ),
-                      child: Text(resourceCategories[index].name,
+                      child: Text(_categoryNameTranslation(resourceCategories[index].name),
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
@@ -784,6 +784,25 @@ class _ResourcesPageState extends State<ResourcesPage> {
       filterResource.searchText = '';
       filterTrainingPill.searchText = '';
     });
+  }
+
+  String _categoryNameTranslation(String name){
+     switch(name){
+       case "Empleo":
+         return AppLocalizations.of(context)!.job;
+       case "Prácticas":
+         return AppLocalizations.of(context)!.practices;
+       case "Formación":
+         return AppLocalizations.of(context)!.formation;
+       case "Voluntariado":
+         return AppLocalizations.of(context)!.volunteering;
+       case "Ocio y tiempo libre":
+         return AppLocalizations.of(context)!.entertainment;
+       case "Otros":
+         return AppLocalizations.of(context)!.others;
+       default:
+         return name;
+     }
   }
 
 }

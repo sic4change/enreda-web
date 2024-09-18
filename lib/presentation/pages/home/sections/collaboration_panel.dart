@@ -67,7 +67,7 @@ class _CollaborationPanelState extends State<CollaborationPanel> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Impulsado por...',
+              AppLocalizations.of(context)!.impulsedBy,
               style: TextStyle(
                 color: AppColors.textBlue,
                 fontFamily: GoogleFonts.outfit().fontFamily,
@@ -82,7 +82,7 @@ class _CollaborationPanelState extends State<CollaborationPanel> {
                 Container(
                   width: widthOfScreen(context)/4,
                   child: Text(
-                    'Enreda nace de la colaboración entre Sic4Change y Proyecto Kieu, con el objetivo de impulsar el talento y fomentar el empleo. Juntos, proponemos un un cambio de paradigma basado en competencias y enfoque territorial.',
+                    AppLocalizations.of(context)!.impulsedByText.toUpperCase(),
                     style: TextStyle(
                       color: AppColors.textBlue,
                       fontFamily: GoogleFonts.lato().fontFamily,
@@ -119,7 +119,7 @@ class _CollaborationPanelState extends State<CollaborationPanel> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Impulsado por...',
+              AppLocalizations.of(context)!.impulsedBy,
               style: TextStyle(
                 color: AppColors.textBlue,
                 fontFamily: GoogleFonts.outfit().fontFamily,
@@ -130,7 +130,7 @@ class _CollaborationPanelState extends State<CollaborationPanel> {
             SpaceH12(),
             Container(
               child: Text(
-                'Enreda nace de la colaboración entre Sic4Change y Proyecto Kieu, con el objetivo de impulsar el talento y fomentar el empleo. Juntos, proponemos un un cambio de paradigma basado en competencias y enfoque territorial.',
+                AppLocalizations.of(context)!.impulsedByText.toUpperCase(),
                 style: TextStyle(
                   color: AppColors.textBlue,
                   fontFamily: GoogleFonts.lato().fontFamily,

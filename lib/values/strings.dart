@@ -81,7 +81,7 @@ class StringConst {
   static const String YOUNGS = "Jóvenes";
   static const String YOUNG_1_DESC = "¿No sabes por dónde tirar?";
   static const String YOUNG_2_DESC =
-      "EnREDa te conecta con recursos educativos, actividades, empresas y personas de tu comunidad para que puedas mejorar empleabilidad y construir tu camino vital. Porque las oportunidades no se compran, se crean.";
+      "En Enreda, te conectamos con recursos educativos, oportunidades de empleo, formación, prácticas, voluntariado y más. Construye tu propio camino con las herramientas que necesitas para avanzar.";
   static const String INSTITUTIONS = "Instituciones";
   static const String INSTITUTIONS_1_DESC = "¿Quieres que tus programas y recursos lleguen más lejos?";
   static const String INSTITUTIONS_2_DESC =

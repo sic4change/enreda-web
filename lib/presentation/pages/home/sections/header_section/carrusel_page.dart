@@ -5,6 +5,7 @@ import 'package:enreda_app/presentation/pages/home/sections/header_section/cards
 import 'package:enreda_app/presentation/pages/home/sections/header_section/main_page_mobile.dart';
 import 'package:enreda_app/presentation/pages/home/sections/header_section/main_page_web.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../../../../utils/responsive.dart';
@@ -32,7 +33,7 @@ class CarruselSection extends StatefulWidget {
 class _CarruselSectionState extends State<CarruselSection> {
   final int pageLength = Data.mainPageData.length;
   int currentPageIndex = 0;
-  CarouselController _carouselController = CarouselController();
+  CarouselSliderController _carouselController = CarouselSliderController();
 
   @override
   Widget build(BuildContext context) {

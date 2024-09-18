@@ -54,7 +54,7 @@ class HeaderLanguageButton extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: GoogleFonts.outfit().fontFamily,
                       fontSize: 14,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: localeProvider.locale == Locale('es') ?  FontWeight.w800 : FontWeight.w400,
                       color: AppColors.blueLanguage,
                     ),
                   ),
@@ -71,7 +71,7 @@ class HeaderLanguageButton extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: GoogleFonts.outfit().fontFamily,
                       fontSize: 13,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: localeProvider.locale == Locale('en') ?  FontWeight.w800 : FontWeight.w400,
                       color: AppColors.blueLanguage,
                     ),
                   ),

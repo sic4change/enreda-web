@@ -475,7 +475,7 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: EnredaButton(
-                    buttonTitle: 'Ver más'.toUpperCase(),
+                    buttonTitle: AppLocalizations.of(context)!.viewMore.toUpperCase(),
                     buttonColor: AppColors.turquoise,
                     titleColor: AppColors.white,
                     opensUrl: false,

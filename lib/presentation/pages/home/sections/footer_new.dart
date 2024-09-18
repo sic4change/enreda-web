@@ -1,24 +1,18 @@
-import 'package:enreda_app/localization/LocaleProvider.dart';
 import 'package:enreda_app/presentation/pages/home/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:responsive_builder/responsive_builder.dart';
-import 'package:visibility_detector/visibility_detector.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 import '../../../../utils/functions.dart';
 import '../../../../utils/responsive.dart';
 import '../../../../values/values.dart';
 import '../../../layout/adaptive.dart';
-import '../../../widgets/buttons/social_button_2.dart';
-import '../../../widgets/content_area.dart';
-import '../../../widgets/enreda_info_section.dart';
 import '../../../widgets/spaces.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class FooterNew extends StatefulWidget {
   FooterNew({Key? key});
@@ -79,7 +73,7 @@ class _FooterNewState extends State<FooterNew> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  _buildSubMenuItem('Menú', true, false),
+                                  _buildSubMenuItem(AppLocalizations.of(context)!.menu, true, false),
                                   MouseRegion(
                                     onEnter: (_) {
                                       setState(() {
@@ -98,7 +92,7 @@ class _FooterNewState extends State<FooterNew> {
                                             MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.RESOURCES,)),
                                           );
                                         },
-                                        child: _buildSubMenuItem('Recursos', false, _isHoveredResources)
+                                        child: _buildSubMenuItem(AppLocalizations.of(context)!.resources, false, _isHoveredResources)
                                     ),
                                   ),
                                   MouseRegion(
@@ -119,7 +113,7 @@ class _FooterNewState extends State<FooterNew> {
                                             MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.JOB_SEARCH,)),
                                           );
                                         },
-                                        child: _buildSubMenuItem('Busco empleo', false, _isHoveredJob)
+                                        child: _buildSubMenuItem(AppLocalizations.of(context)!.jobSearch, false, _isHoveredJob)
                                     ),
                                   ),
                                   MouseRegion(
@@ -140,7 +134,7 @@ class _FooterNewState extends State<FooterNew> {
                                             MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.SOCIAL_ENTITY,)),
                                           );
                                         },
-                                        child: _buildSubMenuItem('Entidades', false, _isHoveredSocialEntity)
+                                        child: _buildSubMenuItem(AppLocalizations.of(context)!.socialEntities, false, _isHoveredSocialEntity)
                                     ),
                                   ),
                                   MouseRegion(
@@ -161,7 +155,7 @@ class _FooterNewState extends State<FooterNew> {
                                             MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.TALENT_SEARCH,)),
                                           );
                                         },
-                                        child: _buildSubMenuItem('Busco talento', false, _isHoveredTalent)
+                                        child: _buildSubMenuItem(AppLocalizations.of(context)!.talentSearch, false, _isHoveredTalent)
                                     ),
                                   ),
                                 ],
@@ -178,7 +172,17 @@ class _FooterNewState extends State<FooterNew> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            'Sé parte del cambio,\n¡Enrédate!',
+                            AppLocalizations.of(context)!.partOfChange,
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontFamily: GoogleFonts.outfit().fontFamily,
+                              color: AppColors.textBlue,
+                              fontSize: 36,
+                            ),
+                          ),
+                          Text(
+                            AppLocalizations.of(context)!.enredate,
                             textAlign: TextAlign.right,
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
@@ -214,7 +218,7 @@ class _FooterNewState extends State<FooterNew> {
                                     child: Padding(
                                       padding: EdgeInsets.all(22.0),
                                       child:
-                                      Center(child: Text('Contacta ahora'.toUpperCase())),
+                                      Center(child: Text(AppLocalizations.of(context)!.contactNow.toUpperCase())),
                                     ),
                                   ),
                                 ),
@@ -318,7 +322,7 @@ class _FooterNewState extends State<FooterNew> {
                     children: [
                       SpaceH80(),
                       Text(
-                        'Únete a Enreda y\nconstruye tu futuro\ncon nosotras/os'.toUpperCase(),
+                        AppLocalizations.of(context)!.joinEnreda.toUpperCase(),
                         style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.w700,
@@ -329,7 +333,7 @@ class _FooterNewState extends State<FooterNew> {
                       ),
                       SpaceH20(),
                       Text(
-                        'Descubre cómo transformamos el camino hacia\nel empleo, escuchando y colaborando con\nel ecosistema para crear oportunidades en red.',
+                        AppLocalizations.of(context)!.discoverFooter,
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w400,
@@ -362,7 +366,7 @@ class _FooterNewState extends State<FooterNew> {
                           child: Padding(
                             padding: EdgeInsets.all(22.0),
                             child:
-                            Center(child: Text('Quiero inscribirme ahora'.toUpperCase())),
+                            Center(child: Text(AppLocalizations.of(context)!.inscribeNow.toUpperCase())),
                           ),
                         ),
                       ),
@@ -388,7 +392,7 @@ class _FooterNewState extends State<FooterNew> {
                   child: Image.asset(ImagePath.LOGO_ENREDA_BLACK),
                 ),
                 SpaceH16(),
-                _buildSubMenuItem('Menú', true, false),
+                _buildSubMenuItem(AppLocalizations.of(context)!.menu, true, false),
                 Padding(
                   padding: const EdgeInsets.only(right: 150.0),
                   child: Row(
@@ -401,7 +405,7 @@ class _FooterNewState extends State<FooterNew> {
                               MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.RESOURCES,)),
                             );
                           },
-                          child: _buildSubMenuItem('Recursos', false, _isHoveredResources)
+                          child: _buildSubMenuItem(AppLocalizations.of(context)!.resources, false, _isHoveredResources)
                       ),
                       InkWell(
                           onTap: (){
@@ -410,7 +414,7 @@ class _FooterNewState extends State<FooterNew> {
                               MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.JOB_SEARCH,)),
                             );
                           },
-                          child: _buildSubMenuItem('Busco empleo', false, _isHoveredJob)
+                          child: _buildSubMenuItem(AppLocalizations.of(context)!.jobSearch, false, _isHoveredJob)
                       ),
                     ],
                   ),
@@ -427,7 +431,7 @@ class _FooterNewState extends State<FooterNew> {
                               MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.SOCIAL_ENTITY,)),
                             );
                           },
-                          child: _buildSubMenuItem('Entidades', false, _isHoveredSocialEntity)
+                          child: _buildSubMenuItem(AppLocalizations.of(context)!.socialEntities, false, _isHoveredSocialEntity)
                       ),
                       InkWell(
                           onTap: (){
@@ -436,7 +440,7 @@ class _FooterNewState extends State<FooterNew> {
                               MaterialPageRoute(builder: (context) => HomePage(pageSelected: StringConst.TALENT_SEARCH,)),
                             );
                           },
-                          child: _buildSubMenuItem('Busco talento', false, _isHoveredTalent)
+                          child: _buildSubMenuItem(AppLocalizations.of(context)!.talentSearch, false, _isHoveredTalent)
                       ),
                     ],
                   ),
@@ -449,7 +453,17 @@ class _FooterNewState extends State<FooterNew> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      'Sé parte del cambio,\n¡Enrédate!',
+                      AppLocalizations.of(context)!.partOfChange,
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontFamily: GoogleFonts.outfit().fontFamily,
+                        color: AppColors.textBlue,
+                        fontSize: 36,
+                      ),
+                    ),
+                    Text(
+                      AppLocalizations.of(context)!.enredate,
                       textAlign: TextAlign.right,
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
@@ -483,7 +497,7 @@ class _FooterNewState extends State<FooterNew> {
                           child: Padding(
                             padding: EdgeInsets.all(22.0),
                             child:
-                            Center(child: Text('Contacta ahora'.toUpperCase())),
+                            Center(child: Text(AppLocalizations.of(context)!.contactNow.toUpperCase())),
                           ),
                         ),
                       ),
@@ -572,7 +586,7 @@ class _FooterNewState extends State<FooterNew> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Introduce tu email y súmate',
+          AppLocalizations.of(context)!.putEmail,
           style: TextStyle(
             color: AppColors.skyBlue,
             fontFamily: GoogleFonts.lato().fontFamily,
@@ -669,69 +683,75 @@ class _FooterNewState extends State<FooterNew> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(50.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Únete a Enreda y\nconstruye tu futuro\ncon nosotras/os'.toUpperCase(),
-                      style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.w700,
-                        fontFamily: GoogleFonts.outfit().fontFamily,
-                        color: Colors.white,
-                      ),
-                      textAlign: TextAlign.left,
+                child: Container(
+                  width: widthOfScreen(context)/3,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        AppLocalizations.of(context)!.joinEnreda.toUpperCase(),
+                        style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: GoogleFonts.outfit().fontFamily,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.left,
 
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50.0, bottom: 20),
-                      child: _buildEmailFieldYellow(context),
-                    ),
-                    Container(
-                      height: 60,
-                      width: 320,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.turquoiseDark,
-                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                          foregroundColor: AppColors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(33),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 50.0, bottom: 20),
+                        child: _buildEmailFieldYellow(context),
+                      ),
+                      Container(
+                        height: 60,
+                        width: 320,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.turquoiseDark,
+                            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                            foregroundColor: AppColors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(33),
+                            ),
+                            textStyle: TextStyle(
+                              fontFamily: GoogleFonts.outfit().fontFamily,
+                              fontSize: 15,
+                              letterSpacing: 1.8,
+                            ),
                           ),
-                          textStyle: TextStyle(
-                            fontFamily: GoogleFonts.outfit().fontFamily,
-                            fontSize: 15,
-                            letterSpacing: 1.8,
+                          onPressed: () => openUrlLink(StringConst.WEB_APP_URL),
+                          child: Padding(
+                            padding: EdgeInsets.all(22.0),
+                            child:
+                            Center(child: Text(AppLocalizations.of(context)!.joinNow.toUpperCase())),
                           ),
-                        ),
-                        onPressed: () => openUrlLink(StringConst.WEB_APP_URL),
-                        child: Padding(
-                          padding: EdgeInsets.all(22.0),
-                          child:
-                          Center(child: Text('Quiero inscribirme ahora'.toUpperCase())),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(50.0),
-                    child: Text(
-                      'Descubre cómo transformamos el camino hacia\nel empleo, escuchando y colaborando con\nel ecosistema para crear oportunidades en red.',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w400,
-                        fontFamily: GoogleFonts.lato().fontFamily,
-                        color: Colors.white,
+              Container(
+                width: widthOfScreen(context)/3,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(50.0),
+                      child: Text(
+                        AppLocalizations.of(context)!.discoverFooter,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: GoogleFonts.lato().fontFamily,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.left,
                       ),
-                      textAlign: TextAlign.left,
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               )
             ],
           ),

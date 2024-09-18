@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../../../values/values.dart';
@@ -22,7 +23,7 @@ class TeamSection extends StatefulWidget {
 class _TeamSectionState extends State<TeamSection> {
   final int blogLength = Data.blogData.length;
   int currentPageIndex = 0;
-  CarouselController _carouselController = CarouselController();
+  CarouselSliderController _carouselController = CarouselSliderController();
 
   @override
   Widget build(BuildContext context) {
