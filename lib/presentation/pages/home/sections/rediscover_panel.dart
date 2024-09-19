@@ -1,7 +1,9 @@
+import 'package:enreda_app/localization/LocaleProvider.dart';
 import 'package:enreda_app/presentation/pages/home/home_page.dart';
 import 'package:enreda_app/presentation/widgets/buttons/enreda_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -60,6 +62,7 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
 
 
   Widget _buildWebPage(BuildContext context){
+    final localeProvider = Provider.of<LocaleProvider>(context, listen: true);
     return Column(
       children: [
         Padding(
@@ -160,7 +163,7 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
               ),
             ),
             Positioned(
-              child: Image.asset(ImagePath.REDISCOVER_TEXT),
+              child: localeProvider.locale == Locale('es') ? Image.asset(ImagePath.REDISCOVER_TEXT) : Image.asset(ImagePath.REDISCOVER_TEXT_EN),
               width: widthOfScreen(context)/1.1,
               bottom: -widthOfScreen(context)/15,
             ),
@@ -234,6 +237,7 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
   }
 
   Widget _buildMobilePage(BuildContext context){
+    final localeProvider = Provider.of<LocaleProvider>(context, listen: true);
     double fontSizeTitle = responsiveSize(context, 30, 46);
     double fontSizeBody = responsiveSize(context, 13, 16);
     return Column(
@@ -336,7 +340,7 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
                 ),
               ),
               Positioned(
-                child: Image.asset(ImagePath.REDISCOVER_TEXT),
+                child: localeProvider.locale == Locale('es') ? Image.asset(ImagePath.REDISCOVER_TEXT) : Image.asset(ImagePath.REDISCOVER_TEXT_EN),
                 width: widthOfScreen(context)/1.1,
                 bottom: -widthOfScreen(context)/15,
               ),

@@ -251,7 +251,7 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
                   ),
                   SpaceH60(),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 100.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 200.0),
                     child: Wrap(
                         alignment: WrapAlignment.center,
                         spacing: 30,
@@ -268,6 +268,11 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
                           Container(
                               height: 100,
                               child: Image.asset(ImagePath.LOGO_IBEROSTAR)
+                          ),
+                          Container(
+                              height: 100,
+                              width: 120,
+                              child: Image.asset(ImagePath.ENREDADA_7)
                           ),
                         ]),
                   ),
@@ -784,6 +789,11 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
                           Container(
                               height: 80,
                               child: Image.asset(ImagePath.LOGO_IBEROSTAR)
+                          ),
+                          Container(
+                              height: 80,
+                              width: 100,
+                              child: Image.asset(ImagePath.ENREDADA_7)
                           ),
                         ]
                     ),

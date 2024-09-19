@@ -27,6 +27,8 @@ class SponsorsPanel extends StatefulWidget {
 }
 
 class _SponsorsPanelState extends State<SponsorsPanel> {
+  List<String> enredadasImages = [ImagePath.ENREDADA_1, ImagePath.ENREDADA_2, ImagePath.ENREDADA_3, ImagePath.ENREDADA_4, ImagePath.ENREDADA_5, ImagePath.ENREDADA_6, ImagePath.ENREDADA_7];
+
 
   @override
   void initState() {
@@ -88,28 +90,20 @@ class _SponsorsPanelState extends State<SponsorsPanel> {
                 fontSize: 40,
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                    width: widthOfScreen(context)/8,
-                    child: Image.asset(ImagePath.ENREDADA_1)),
-                Container(
-                    width: widthOfScreen(context)/8,
-                    child: Image.asset(ImagePath.ENREDADA_2)),
-                Container(
-                    width: widthOfScreen(context)/8,
-                    child: Image.asset(ImagePath.ENREDADA_3)),
-                Container(
-                    width: widthOfScreen(context)/8,
-                    child: Image.asset(ImagePath.ENREDADA_4)),
-                Container(
-                    width: widthOfScreen(context)/8,
-                    child: Image.asset(ImagePath.ENREDADA_5)),
-                Container(
-                    width: widthOfScreen(context)/8,
-                    child: Image.asset(ImagePath.ENREDADA_6)),
-              ],
+            CarouselSlider.builder(
+              itemCount: enredadasImages.length,
+              itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) =>
+                  Container(
+                      child: Container(
+                        height: 150,
+                        child: Image.asset(enredadasImages[itemIndex]),
+                      )
+                  ),
+              options: CarouselOptions(
+                  height: 180,
+                  autoPlay: true,
+                  viewportFraction: 1/5
+              ),
             ),
             SpaceH20(),
             Text(
@@ -152,7 +146,6 @@ class _SponsorsPanelState extends State<SponsorsPanel> {
   Widget _buildMobilePage(BuildContext context){
     double fontSizeTitle = responsiveSize(context, 30, 46);
     double fontSizeBody = responsiveSize(context, 26, 40);
-    List<String> enredadasImages = [ImagePath.ENREDADA_1, ImagePath.ENREDADA_2, ImagePath.ENREDADA_3, ImagePath.ENREDADA_4, ImagePath.ENREDADA_5, ImagePath.ENREDADA_6];
     List<String> financiersImages = [ImagePath.FINANCIER_1, ImagePath.FINANCIER_2, ImagePath.FINANCIER_3, ImagePath.FINANCIER_4, ImagePath.FINANCIER_5, ImagePath.FINANCIER_6];
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20),

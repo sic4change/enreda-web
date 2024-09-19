@@ -23,6 +23,8 @@ class JobSearchPage extends StatefulWidget {
 
 class _JobSearchPageState extends State<JobSearchPage> {
   bool _isVideoVisible = false;
+  bool _hoverGooglePlay = false;
+  bool _hoverAppStore = false;
   late YoutubePlayerController _controller;
 
   void setStateIfMounted(f) {
@@ -528,18 +530,33 @@ class _JobSearchPageState extends State<JobSearchPage> {
                       children: [
                         InkWell(
                           onTap: () => openUrlLink(StringConst.URL_GOOGLE_PLAY),
-                          child: Container(
-                            height: 65,
-                            width: 260,
+                          onHover: (value){
+                            setState(() {
+                              _hoverGooglePlay = value;
+                            });
+                          },
+                          hoverColor: Colors.transparent,
+                          child: AnimatedContainer(
+                            duration: Duration(seconds: 1),
+                            curve: Curves.bounceOut,
+                            height: _hoverGooglePlay ? 80 : 65,
+                            width: _hoverGooglePlay ? 300 : 260,
                             child: Image.asset(ImagePath.PLAY_STORE)
                           ),
                         ),
                         InkWell(
                           onTap: () => openUrlLink(StringConst.URL_APPSTORE),
+                          onHover: (value){
+                            setState(() {
+                              _hoverAppStore = value;
+                            });
+                          },
                           hoverColor: Colors.transparent,
-                          child: Container(
-                            height: 65,
-                            width: 260,
+                          child: AnimatedContainer(
+                              curve: Curves.bounceOut,
+                            duration: Duration(seconds: 1),
+                            height: _hoverAppStore ? 80 : 65,
+                            width: _hoverAppStore ? 300 : 260,
                             child: Image.asset(ImagePath.APP_STORE)
                           ),
                         ),

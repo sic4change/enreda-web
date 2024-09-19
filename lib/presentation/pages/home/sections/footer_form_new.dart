@@ -352,7 +352,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        'Formulario de contacto'.toUpperCase(),
+                        AppLocalizations.of(context)!.contactFormTitle.toUpperCase(),
                         style: TextStyle(
                           fontSize: 40,
                           fontWeight: FontWeight.w700,
@@ -363,7 +363,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                       ),
                       SpaceH8(),
                       Text(
-                        widget.isEntity ?  'Transforma el futuro de tus participantes. Explícanos brevemente tu proyecto y nos pondremos en contacto contigo.' : '¿Te gustaría encontrar el talento de forma rápida y sencilla? Rellena este formulario y nos pondremos en contacto contigo.',
+                        widget.isEntity ?  AppLocalizations.of(context)!.contactFormText : AppLocalizations.of(context)!.contactFormTextCompany,
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w400,
@@ -386,14 +386,14 @@ class _FooterFormNewState extends State<FooterFormNew> {
                     children: [
                       Column(
                         children: [
-                          contactFormField('Nombre y apellidos', (value) => _name = value),
-                          contactFormField(widget.isEntity ? 'Nombre de la entidad' : 'Empresa', (value) => _entityName = value),
-                          contactFormField('Correo electrónico', (value) => _email = value),
-                          contactFormField('Número de télefono', (value) => _phone = value),
+                          contactFormField(AppLocalizations.of(context)!.contactFormName, (value) => _name = value),
+                          contactFormField(widget.isEntity ? AppLocalizations.of(context)!.contactFormEntityName : AppLocalizations.of(context)!.contactFormCompanyName, (value) => _entityName = value),
+                          contactFormField(AppLocalizations.of(context)!.contactFormEmail, (value) => _email = value),
+                          contactFormField(AppLocalizations.of(context)!.contactFormPhone, (value) => _phone = value),
                         ],
                       ),
                       SpaceW48(),
-                      contactFormFieldBig("¿En qué podemos ayudarte?", (value) => _text = value),
+                      contactFormFieldBig(AppLocalizations.of(context)!.contactFormFree, (value) => _text = value),
                     ],
                   ),
                 ),
@@ -423,7 +423,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                     child: Padding(
                       padding: EdgeInsets.all(22.0),
                       child:
-                      Center(child: Text('Enviar'.toUpperCase())),
+                      Center(child: Text(AppLocalizations.of(context)!.contactFormSend.toUpperCase())),
                     ),
                   ),
                 ),
@@ -474,7 +474,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                   ),
                   initialValue: '',
                   validator: (value) =>
-                  value!.isNotEmpty ? null : 'Este campo no puede estar vacío',
+                  value!.isNotEmpty ? null : AppLocalizations.of(context)!.contactFormEmpty,
                   onSaved: onSaved,
                   textCapitalization: TextCapitalization.sentences,
                   keyboardType: TextInputType.name
@@ -523,7 +523,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                   ),
                   initialValue: '',
                   validator: (value) =>
-                  value!.isNotEmpty ? null : 'Este campo no puede estar vacío',
+                  value!.isNotEmpty ? null : AppLocalizations.of(context)!.contactFormEmpty,
                   onSaved: onSaved,
                   textCapitalization: TextCapitalization.sentences,
                   keyboardType: TextInputType.name
@@ -556,7 +556,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                     children: [
                       SpaceH80(),
                       Text(
-                        'Únete a Enreda y\nconstruye tu futuro\ncon nosotras/os'.toUpperCase(),
+                        AppLocalizations.of(context)!.joinEnreda.toUpperCase(),
                         style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.w700,
@@ -567,7 +567,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                       ),
                       SpaceH20(),
                       Text(
-                        'Descubre cómo transformamos el camino hacia\nel empleo, escuchando y colaborando con\nel ecosistema para crear oportunidades en red.',
+                        AppLocalizations.of(context)!.discoverFooter,
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w400,
@@ -600,7 +600,7 @@ class _FooterFormNewState extends State<FooterFormNew> {
                           child: Padding(
                             padding: EdgeInsets.all(22.0),
                             child:
-                            Center(child: Text('Quiero inscribirme ahora'.toUpperCase())),
+                            Center(child: Text(AppLocalizations.of(context)!.inscribeNow.toUpperCase())),
                           ),
                         ),
                       ),

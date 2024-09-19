@@ -73,6 +73,7 @@ class ImagePath {
   static const String TALENT_SEARCH_DIAGRAM_4 = '$imageDir/talent-search-diagram-4.png';
   static const String REDISCOVER_IMAGE = '$imageDir/rediscover-image.png';
   static const String REDISCOVER_TEXT = '$imageDir/rediscover-text.png';
+  static const String REDISCOVER_TEXT_EN = '$imageDir/rediscover-text-en.png';
   static const String REDISCOVER_PARTICIPANT_ICON = '$imageDir/rediscover-participant-icon.png';
   static const String REDISCOVER_SOCIAL_ENTITY_ICON = '$imageDir/rediscover-social-entity-icon.png';
   static const String REDISCOVER_COMPANY_ICON = '$imageDir/rediscover-company-icon.png';
@@ -81,6 +82,7 @@ class ImagePath {
   static const String REBUILD_CARD_ITEM = '$imageDir/rebuild-card-item.png';
   static const String REBUILD_CARD_ITEM_2 = '$imageDir/rebuild-card-item-2.png';
   static const String REBUILD_TITLE_IMAGE = '$imageDir/rebuild-title-image.png';
+  static const String REBUILD_TITLE_IMAGE_EN = '$imageDir/rebuild-title-image-en.png';
   static const String DOWNLOAD_SECTION_IMAGE = '$imageDir/download-section-image.png';
   static const String BLUE_LINE_DOWNLOAD = '$imageDir/blue-line-download.png';
   static const String LOGIN_PERSON = '$imageDir/login-person.png';
@@ -138,6 +140,7 @@ class ImagePath {
   static const String ENREDADA_4 = "$imageDir/enredada-4.png";
   static const String ENREDADA_5 = "$imageDir/enredada-5.png";
   static const String ENREDADA_6 = "$imageDir/enredada-6.png";
+  static const String ENREDADA_7 = "$imageDir/enredada-7.png";
 
   // Icons
   static const String USER_COMPANY_ICON = "$imageDir/icon-user-empresa.png";

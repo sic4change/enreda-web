@@ -1,11 +1,15 @@
+import 'package:enreda_app/localization/LocaleProvider.dart';
 import 'package:enreda_app/presentation/pages/home/sections/statistics_section.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import '../../../../utils/responsive.dart';
 import '../../../../values/values.dart';
 import '../../../layout/adaptive.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 const double kSpacingSm = 40.0;
 const double kRunSpacingSm = 24.0;
@@ -21,6 +25,7 @@ class RebuildPanel extends StatefulWidget {
 class _RebuildPanelState extends State<RebuildPanel> {
   bool _cardEnableSIC = false;
   bool _cardEnableKieu = false;
+
   @override
   void initState() {
     super.initState();
@@ -47,6 +52,7 @@ class _RebuildPanelState extends State<RebuildPanel> {
   }
 
   Widget _buildWebPage(BuildContext context){
+    final localeProvider = Provider.of<LocaleProvider>(context, listen: true);
     return Column(
       children: [
         Stack(
@@ -139,8 +145,8 @@ class _RebuildPanelState extends State<RebuildPanel> {
             Positioned(
               bottom: 500,
               child: Container(
-                  width: widthOfScreen(context)-200,
-                  child: Image.asset(ImagePath.REBUILD_TITLE_IMAGE)
+                  width: localeProvider.locale == Locale('es') ? widthOfScreen(context)-200 : widthOfScreen(context)-600,
+                  child: localeProvider.locale == Locale('es') ? Image.asset(ImagePath.REBUILD_TITLE_IMAGE) : Image.asset(ImagePath.REBUILD_TITLE_IMAGE_EN)
               ),
             ),
 
@@ -151,6 +157,7 @@ class _RebuildPanelState extends State<RebuildPanel> {
   }
 
   Widget _buildMobilePage(BuildContext context){
+    final localeProvider = Provider.of<LocaleProvider>(context, listen: true);
     return Column(
       children: [
         Stack(
@@ -254,8 +261,8 @@ class _RebuildPanelState extends State<RebuildPanel> {
             Positioned(
               bottom: 1230,
               child: Container(
-                  width: widthOfScreen(context)-60,
-                  child: Image.asset(ImagePath.REBUILD_TITLE_IMAGE)
+                  width: localeProvider.locale == Locale('es') ? widthOfScreen(context)-60 : widthOfScreen(context)-120,
+                  child: localeProvider.locale == Locale('es') ? Image.asset(ImagePath.REBUILD_TITLE_IMAGE) : Image.asset(ImagePath.REBUILD_TITLE_IMAGE_EN)
               ),
             ),
 

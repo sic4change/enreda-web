@@ -137,11 +137,15 @@
     "downloadText2": "¡Descárgala ahora y empieza a construir tu futuro hoy mismo!",
     "contactFormTitle": "Formulario de contacto",
     "contactFormText": "Transforma el futuro de tus participantes. Explícanos brevemente tu proyecto y nos pondremos en contacto contigo.",
-    "contactFormName": "",
-    "contactFormEntityName": "",
-    "contactFormEmail": "",
-    "contactFormPhone": "",
-    "contactFormFree": "",
+    "contactFormName": "Nombre y apellidos",
+    "contactFormEntityName": "Nombre de la entidad",
+    "contactFormEmail": "Correo electrónico",
+    "contactFormPhone": "Número de teléfono",
+    "contactFormFree": "¿En qué podemos ayudarte?",
+    "contactFormTextCompany": "¿Te gustaría encontrar el talento de forma rápida y sencilla? Rellena este formulario y nos pondremos en contacto contigo.",
+    "contactFormCompanyName": "Nombre de la empresa",
+    "contactFormSend": "Enviar",
+    "contactFormEmpty": "Este campo no puede estar vacío"
 
 
 }

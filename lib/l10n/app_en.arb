@@ -142,5 +142,10 @@
   "contactFormEmail": "Email",
   "contactFormPhone": "Telephone number",
   "contactFormFree": "How can we help you?",
+  "contactFormTextCompany": "Would you like to find talent quickly and easily? Fill out this form and we will contact you.",
+  "contactFormCompanyName": "Name of company",
+  "contactFormSend": "Send",
+  "contactFormEmpty": "This field cannot be empty"
+
 
 }
