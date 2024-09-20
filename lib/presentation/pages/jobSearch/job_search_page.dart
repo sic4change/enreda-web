@@ -1,3 +1,4 @@
+import 'package:enreda_app/localization/LocaleProvider.dart';
 import 'package:enreda_app/models/trainingPill.dart';
 import 'package:enreda_app/presentation/layout/adaptive.dart';
 import 'package:enreda_app/presentation/pages/home/home_page.dart';
@@ -53,6 +54,7 @@ class _JobSearchPageState extends State<JobSearchPage> {
 
   Widget _buildJobSearchPageWeb(BuildContext context) {
     final database = Provider.of<Database>(context, listen: false);
+    final localeProvider = Provider.of<LocaleProvider>(context, listen: true);
     return SingleChildScrollView(
         child: Column(
           children: [
@@ -66,9 +68,9 @@ class _JobSearchPageState extends State<JobSearchPage> {
                   child: Image.asset(ImagePath.JOB_SEARCH_PRESENTATION_IMAGE),
                 ),
                 Positioned(
-                  bottom: -widthOfScreen(context)/15,
+                  bottom: localeProvider.locale == Locale('es') ? -widthOfScreen(context)/15 : -widthOfScreen(context)/18,
                   width: widthOfScreen(context)/1.3,
-                  child: Image.asset(ImagePath.JOB_SEARCH_PRESENTATION_TEXT),
+                  child: localeProvider.locale == Locale('es') ? Image.asset(ImagePath.JOB_SEARCH_PRESENTATION_TEXT) : Image.asset(ImagePath.JOB_SEARCH_PRESENTATION_TEXT_EN),
                 )
               ],
             ),
@@ -262,6 +264,7 @@ class _JobSearchPageState extends State<JobSearchPage> {
 
   Widget _buildJobSearchPageMobile(BuildContext context) {
     final database = Provider.of<Database>(context, listen: false);
+    final localeProvider = Provider.of<LocaleProvider>(context, listen: true);
     double fontSizeTitle = responsiveSize(context, 30, 40);
     double fontSizeBody = responsiveSize(context, 13, 14);
     return SingleChildScrollView(
@@ -277,9 +280,9 @@ class _JobSearchPageState extends State<JobSearchPage> {
                   child: Image.asset(ImagePath.JOB_SEARCH_PRESENTATION_IMAGE),
                 ),
                 Positioned(
-                  bottom: -widthOfScreen(context)/15,
+                  bottom: localeProvider.locale == Locale('es') ? -widthOfScreen(context)/15 : -widthOfScreen(context)/19,
                   width: widthOfScreen(context)/1.3,
-                  child: Image.asset(ImagePath.JOB_SEARCH_PRESENTATION_TEXT),
+                  child: localeProvider.locale == Locale('es') ? Image.asset(ImagePath.JOB_SEARCH_PRESENTATION_TEXT) : Image.asset(ImagePath.JOB_SEARCH_PRESENTATION_TEXT_EN),
                 )
               ],
             ),

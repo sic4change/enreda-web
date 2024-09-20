@@ -1,3 +1,4 @@
+import 'package:enreda_app/localization/LocaleProvider.dart';
 import 'package:enreda_app/presentation/layout/adaptive.dart';
 import 'package:enreda_app/presentation/pages/home/home_page.dart';
 import 'package:enreda_app/presentation/pages/home/sections/footer_form_new.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class TalentSearchPage extends StatefulWidget {
   @override
@@ -46,6 +48,7 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
 
 
   Widget _buildTalentSearchPage(BuildContext context) {
+    final localeProvider = Provider.of<LocaleProvider>(context, listen: true);
     return SingleChildScrollView(
         controller: scrollController,
         child: Column(
@@ -60,9 +63,9 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
                   child: Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_IMAGE),
                 ),
                 Positioned(
-                  bottom: -widthOfScreen(context)/19,
+                  bottom: localeProvider.locale == Locale("es") ? -widthOfScreen(context)/19 : -widthOfScreen(context)/24,
                   width: widthOfScreen(context)/1.3,
-                  child: Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_TEXT),
+                  child: localeProvider.locale == Locale("es") ? Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_TEXT) : Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_TEXT_EN),
                 )
               ],
             ),
@@ -580,6 +583,7 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
   Widget _buildTalentSearchPageMobile(BuildContext context) {
     double fontSizeTitle = responsiveSize(context, 30, 40);
     double fontSizeBody = responsiveSize(context, 13, 14);
+    final localeProvider = Provider.of<LocaleProvider>(context, listen: true);
     return SingleChildScrollView(
         child: Column(
           children: [
@@ -593,9 +597,9 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
                   child: Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_IMAGE),
                 ),
                 Positioned(
-                  bottom: -widthOfScreen(context)/20,
+                  bottom: localeProvider.locale == Locale("es") ? -widthOfScreen(context)/20 : -widthOfScreen(context)/25,
                   width: widthOfScreen(context)/1.3,
-                  child: Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_TEXT),
+                  child: localeProvider.locale == Locale("es") ?  Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_TEXT) : Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_TEXT_EN),
                 )
               ],
             ),

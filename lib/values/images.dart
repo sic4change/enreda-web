@@ -52,6 +52,7 @@ class ImagePath {
   static const String JOIN_GIRL = '$imageDir/join-girl-image.png';
   static const String ENTITY_PRESENTATION_IMAGE = '$imageDir/entity-presentation-image.png';
   static const String ENTITY_PRESENTATION_TEXT = '$imageDir/entity-presentation-text.png';
+  static const String ENTITY_PRESENTATION_TEXT_EN = '$imageDir/entity-presentation-text-en.png';
   static const String ENTITY_EXAMPLE_IMAGE = '$imageDir/entity-example-image.png';
   static const String ENTITY_YELLOW_LINE_1 = '$imageDir/yellow-line-1.png';
   static const String ICON_ROCKET = '$imageDir/icon-rocket.png';
@@ -63,9 +64,11 @@ class ImagePath {
   static const String ICON_PUZZLE = '$imageDir/icon-puzzle.png';
   static const String JOB_SEARCH_PRESENTATION_IMAGE = '$imageDir/job-search-presentation-image.png';
   static const String JOB_SEARCH_PRESENTATION_TEXT = '$imageDir/job-search-presentation-text.png';
+  static const String JOB_SEARCH_PRESENTATION_TEXT_EN = '$imageDir/job-search-presentation-text-en.png';
   static const String JOB_SEARCH_EXAMPLE_IMAGE = '$imageDir/job-search-example-image.png';
   static const String TALENT_SEARCH_PRESENTATION_IMAGE = '$imageDir/talent-search-presentation-image.png';
   static const String TALENT_SEARCH_PRESENTATION_TEXT = '$imageDir/talent-search-presentation-text.png';
+  static const String TALENT_SEARCH_PRESENTATION_TEXT_EN = '$imageDir/talent-search-presentation-text-en.png';
   static const String TALENT_SEARCH_EXAMPLE_IMAGE = '$imageDir/talent-search-example-image.png';
   static const String TALENT_SEARCH_DIAGRAM_1 = '$imageDir/talent-search-diagram-1.png';
   static const String TALENT_SEARCH_DIAGRAM_2 = '$imageDir/talent-search-diagram-2.png';

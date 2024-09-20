@@ -1,3 +1,4 @@
+import 'package:enreda_app/localization/LocaleProvider.dart';
 import 'package:enreda_app/models/city.dart';
 import 'package:enreda_app/models/country.dart';
 import 'package:enreda_app/models/filterResource.dart';
@@ -69,6 +70,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
 
 
   Widget _buildSocialEntityPage(BuildContext context) {
+    final localeProvider = Provider.of<LocaleProvider>(context, listen: true);
     return SingleChildScrollView(
         controller: scrollController,
         child: Column(
@@ -85,7 +87,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                 Positioned(
                   bottom: -widthOfScreen(context)/15,
                   width: widthOfScreen(context)/1.5,
-                  child: Image.asset(ImagePath.ENTITY_PRESENTATION_TEXT),
+                  child: localeProvider.locale == Locale('es') ? Image.asset(ImagePath.ENTITY_PRESENTATION_TEXT) : Image.asset(ImagePath.ENTITY_PRESENTATION_TEXT_EN),
                 )
               ],
             ),
@@ -267,6 +269,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
   Widget _buildSocialEntityPageMobile(BuildContext context) {
     double fontSizeTitle = responsiveSize(context, 30, 40);
     double fontSizeBody = responsiveSize(context, 13, 14);
+    final localeProvider = Provider.of<LocaleProvider>(context, listen: true);
     return SingleChildScrollView(
         child: Column(
           children: [
@@ -282,7 +285,7 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                 Positioned(
                   bottom: -widthOfScreen(context)/15,
                   width: widthOfScreen(context)/1.3,
-                  child: Image.asset(ImagePath.ENTITY_PRESENTATION_TEXT),
+                  child: localeProvider.locale == Locale("es") ? Image.asset(ImagePath.ENTITY_PRESENTATION_TEXT) : Image.asset(ImagePath.ENTITY_PRESENTATION_TEXT_EN),
                 )
               ],
             ),
