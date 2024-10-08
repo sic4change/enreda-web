@@ -98,7 +98,7 @@
     "personTextValeria": "Valeria Payán, coordinadora del eje transversal de Nuevas Narrativas en Canarias, es experta en género, migraciones, participación ciudadana y dinamización comunitaria. Con amplia trayectoria en prevención y formación profesional, promueve la integración social y laboral, creando puentes entre personas en riesgo de exclusión social y mercados laborales.",
     "personTextAidira": "Aidira Suárez, coordinadora de formación, organiza talleres y programas educativos que mejoran las competencias de las y los participantes. Su pasión por la educación fomenta el crecimiento personal y profesional.",
     "personTextAna": "Ana González, trabajadora social y técnica de intervención sociolaboral, facilita la integración sociolaboral. Colabora con otras profesionales para fomentar el progreso individual y abrir nuevas oportunidades laborales, impulsando a cada persona hacia un futuro mejor.",
-    "personTextMarisol": "Marisol Cabrera, contable meticulosa y detallista, se encarga de las justificaciones económicas de los distintos proyectos que tenemos en Canarias, entre ellos Enreda. Su responsabilidad y compromiso garantizan la transparencia y el buen uso de los recursos económicos, apoyando al éxito de nuestros programas de empleabilidad.",
+    "personTextIdaira": "Idaira Quintero Martín, Técnica de Inserción Sociolaboral y Trabajadora Social especializada en Igualdad y Migración, se dedica al empoderamiento e inclusión social de personas vulnerables. Con amplia experiencia en intervención social y facilitación de grupos, su trabajo promueve la capacitación prelaboral y el bienestar, con un fuerte compromiso con la justicia social",
     "personTextMorelia": "Morelia Rivero, Prospectora Laboral, encargada de analizar y gestionar demandas del mercado laboral, analizando las necesidades de las empresas, trazando estrategias idóneas de colaboración, fomentando talento y oportunidades laborales de nuestros participantes.",
     "personPosition": "Puesto",
     "positionBea": "Técnica de proyecto",
@@ -107,7 +107,7 @@
     "positionValeria": "Técnica de nuevas narrativas",
     "positionAidira": "Técnica de proyecto",
     "positionAna": "Técnica en inserción sociolaboral",
-    "positionMarisol": "Responsable de contabilidad y justificaciones",
+    "positionIdaira": "Técnica de inserción sociolaboral",
     "positionMorelia": "Técnica en prospección laboral",
     "personTitle": "Nuestro Equipo de Enreda Canarias",
     "enredaCompanies": "Empresas Enredadas",
@@ -145,7 +145,12 @@
     "contactFormTextCompany": "¿Te gustaría encontrar el talento de forma rápida y sencilla? Rellena este formulario y nos pondremos en contacto contigo.",
     "contactFormCompanyName": "Nombre de la empresa",
     "contactFormSend": "Enviar",
-    "contactFormEmpty": "Este campo no puede estar vacío"
+    "contactFormEmpty": "Este campo no puede estar vacío",
+    "locationTitle": "Dónde estamos",
+    "locationText": "Un programa innovador enfocado en potenciar el talento para el empelo a través de la dinamización comunitatia y territorial",
+    "downloadDrawer": "Descargate la app",
+    "iAmCompany": "Soy empresa",
+    "iAmEntity": "Soy entidad"
 
 
 }

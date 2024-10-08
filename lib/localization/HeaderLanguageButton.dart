@@ -17,6 +17,8 @@ class HeaderLanguageButton extends StatelessWidget {
     final size = button.size;
     final offset = button.localToGlobal(Offset.zero);
     final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
+    var textTheme = Theme.of(context).textTheme;
+
 
     _overlayEntry = OverlayEntry(
       builder: (context) => Positioned(
@@ -35,7 +37,7 @@ class HeaderLanguageButton extends StatelessWidget {
               ),
             ),
             width: 38,
-            padding: EdgeInsets.only(right: 6.0, left: 6, top: 6, bottom: 10),
+            padding: EdgeInsets.only(right: 5.0, left: 5, top: 6, bottom: 10),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
@@ -51,11 +53,11 @@ class HeaderLanguageButton extends StatelessWidget {
                   child: Text(
                     "ES",
                     maxLines: 1,
-                    style: TextStyle(
-                      fontFamily: GoogleFonts.outfit().fontFamily,
-                      fontSize: 14,
+                    style: textTheme.titleLarge!.copyWith(
+                      fontFamily: 'outfit',
                       fontWeight: localeProvider.locale == Locale('es') ?  FontWeight.w800 : FontWeight.w400,
-                      color: AppColors.blueLanguage,
+                      fontSize: 14,
+                      color: AppColors.textBlue,
                     ),
                   ),
                   onTap: () {
@@ -68,11 +70,11 @@ class HeaderLanguageButton extends StatelessWidget {
                   child: Text(
                     "EN",
                     maxLines: 1,
-                    style: TextStyle(
-                      fontFamily: GoogleFonts.outfit().fontFamily,
-                      fontSize: 13,
+                    style: textTheme.titleLarge!.copyWith(
+                      fontFamily: 'outfit',
                       fontWeight: localeProvider.locale == Locale('en') ?  FontWeight.w800 : FontWeight.w400,
-                      color: AppColors.blueLanguage,
+                      fontSize: 13,
+                      color: AppColors.textBlue,
                     ),
                   ),
                   onTap: () {

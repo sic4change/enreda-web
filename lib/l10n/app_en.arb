@@ -98,7 +98,7 @@
   "personTextValeria": "Valeria Payán, coordinator of the transversal axis of New Narratives in the Canary Islands, is an expert in gender, migration, citizen participation and community dynamization. With extensive experience in prevention and vocational training, she promotes social and labor integration, creating bridges between people at risk of social exclusion and labor markets.",
   "personTextAidira": "Aidira Suárez, training coordinator, organizes workshops and educational programs that enhance participants' skills. Her passion for education fosters personal and professional growth.",
   "personTextAna": "Ana González, social worker and social and labor intervention technician, facilitates social and labor integration. She collaborates with other professionals to promote individual progress and open up new job opportunities, pushing each person towards a better future.",
-  "personTextMarisol": "Marisol Cabrera, a meticulous and detailed accountant, is in charge of the economic justifications of the different projects we have in the Canary Islands, including Enreda. Her responsibility and commitment guarantee transparency and the good use of economic resources, supporting the success of our employability programs.",
+  "personTextIdaira": "Idaira Quintero Martín, Social and Labor Insertion Technician and Social Worker specialized in Equality and Migration, is dedicated to the empowerment and social inclusion of vulnerable people. With extensive experience in social intervention and group facilitation, her work promotes pre-employment training and welfare, with a strong commitment to social justice.",
   "personTextMorelia": "Morelia Rivero, Labor Prospector, in charge of analyzing and managing labor market demands, analyzing the needs of companies, outlining suitable collaboration strategies, promoting talent and job opportunities for our participants.",
   "personPosition": "Position",
   "positionBea": "Project technology",
@@ -107,7 +107,7 @@
   "positionValeria": "New narrative techniques",
   "positionAidira": "Project technology",
   "positionAna": "Technician in socio-labor insertion",
-  "positionMarisol": "Responsible for accounting and justifications",
+  "positionIdaira": "Technician in socio-labor insertion",
   "positionMorelia": "Technician in labor prospecting",
   "personTitle": "Our Enreda Canarias Team",
   "enredaCompanies": "Enredadas Companies",
@@ -145,7 +145,13 @@
   "contactFormTextCompany": "Would you like to find talent quickly and easily? Fill out this form and we will contact you.",
   "contactFormCompanyName": "Name of company",
   "contactFormSend": "Send",
-  "contactFormEmpty": "This field cannot be empty"
+  "contactFormEmpty": "This field cannot be empty",
+  "locationTitle": "Where we are",
+  "locationText": "An innovative program focused on promoting talent for employment through community and territorial dynamism",
+  "downloadDrawer": "Download the app",
+  "iAmCompany": "I am company",
+  "iAmEntity": "I am entity"
+
 
 
 }

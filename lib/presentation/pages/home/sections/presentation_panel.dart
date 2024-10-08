@@ -144,12 +144,7 @@ class _PresentationPanelState extends State<PresentationPanel> {
         EnredaInfoSection6(
           title1: AppLocalizations.of(context)!.futureText,
           buttonTitle: AppLocalizations.of(context)!.jobSearch,
-          title1Style: textTheme.titleLarge!.copyWith(
-              fontSize: 55,
-              fontFamily: GoogleFonts.outfit().fontFamily,
-              color: AppColors.textBlue,
-              fontWeight: FontWeight.w900
-          ),
+          title1Style: textTheme.titleLarge!,
         ),
       ],
     );
@@ -162,12 +157,7 @@ class _PresentationPanelState extends State<PresentationPanel> {
       child: EnredaInfoSection6(
         title1: AppLocalizations.of(context)!.futureText,
         buttonTitle: AppLocalizations.of(context)!.jobSearch,
-        title1Style: textTheme.titleLarge!.copyWith(
-          fontSize: 55,
-          fontFamily: GoogleFonts.outfit().fontFamily,
-          color: AppColors.textBlue,
-          fontWeight: FontWeight.w900
-        ),
+        title1Style: textTheme.titleMedium!
       ),
     );
   }

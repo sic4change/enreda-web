@@ -81,7 +81,9 @@ class ImagePath {
   static const String REDISCOVER_SOCIAL_ENTITY_ICON = '$imageDir/rediscover-social-entity-icon.png';
   static const String REDISCOVER_COMPANY_ICON = '$imageDir/rediscover-company-icon.png';
   static const String REIMAGINE_TITLE_IMAGE = '$imageDir/reimagine-title-image.png';
+  static const String REIMAGINE_TITLE_IMAGE_EN = '$imageDir/reimagine-title-image-en.png';
   static const String REBUILD_MAP = '$imageDir/rebuild-map.png';
+  static const String REBUILD_MAP_2 = '$imageDir/rebuild-map-2.png';
   static const String REBUILD_CARD_ITEM = '$imageDir/rebuild-card-item.png';
   static const String REBUILD_CARD_ITEM_2 = '$imageDir/rebuild-card-item-2.png';
   static const String REBUILD_TITLE_IMAGE = '$imageDir/rebuild-title-image.png';
@@ -217,7 +219,7 @@ class ImagePath {
   static const String PERSON_VALERIA = '$imageDir/person-valeria.png';
   static const String PERSON_AIDIRA = '$imageDir/person-aidira.png';
   static const String PERSON_ANA = '$imageDir/person-ana.png';
-  static const String PERSON_MARISOL = '$imageDir/person-marisol.png';
+  static const String PERSON_IDAIRA = '$imageDir/person-idaira.png';
   static const String PERSON_MORELIA = '$imageDir/person-morelia.png';
 
 

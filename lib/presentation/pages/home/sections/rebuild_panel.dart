@@ -1,5 +1,6 @@
 import 'package:enreda_app/localization/LocaleProvider.dart';
 import 'package:enreda_app/presentation/pages/home/sections/statistics_section.dart';
+import 'package:enreda_app/presentation/widgets/spaces.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -75,9 +76,45 @@ class _RebuildPanelState extends State<RebuildPanel> {
                               _cardEnableKieu = false;
                             });
                           },
-                          child: Container(
-                              width: widthOfScreen(context)*0.8,
-                              child: Image.asset(ImagePath.REBUILD_MAP)
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 100.0),
+                                child: Container(
+                                  width: widthOfScreen(context)*0.2,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        AppLocalizations.of(context)!.locationTitle,
+                                        style: TextStyle(
+                                            fontFamily: GoogleFonts.outfit().fontFamily,
+                                            fontSize: 30,
+                                            fontWeight: FontWeight.w800,
+                                            color: AppColors.textBlue
+                                        ),
+                                      ),
+                                      SpaceH16(),
+                                      Text(
+                                        AppLocalizations.of(context)!.locationText.toUpperCase(),
+                                        style: TextStyle(
+                                          fontFamily: GoogleFonts.lato().fontFamily,
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.w400,
+                                          color: AppColors.textBlue
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ),
+                              ),
+
+                              Container(
+                                  width: widthOfScreen(context)*0.6,
+                                  child: Image.asset(ImagePath.REBUILD_MAP_2)
+                              ),
+                            ],
                           ),
                         ),
                         Positioned( //SIC
@@ -188,9 +225,44 @@ class _RebuildPanelState extends State<RebuildPanel> {
                                 _cardEnableKieu = false;
                               });
                             },
-                            child: Container(
-                                width: widthOfScreen(context)*0.95,
-                                child: Image.asset(ImagePath.REBUILD_MAP)
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 30.0),
+                                  child: Container(
+                                      width: widthOfScreen(context)*0.3,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            AppLocalizations.of(context)!.locationTitle,
+                                            style: TextStyle(
+                                                fontFamily: GoogleFonts.outfit().fontFamily,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w800,
+                                                color: AppColors.textBlue
+                                            ),
+                                          ),
+                                          SpaceH12(),
+                                          Text(
+                                            AppLocalizations.of(context)!.locationText.toUpperCase(),
+                                            style: TextStyle(
+                                                fontFamily: GoogleFonts.lato().fontFamily,
+                                                fontSize: 8,
+                                                fontWeight: FontWeight.w400,
+                                                color: AppColors.textBlue
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                  ),
+                                ),
+                                Container(
+                                    width: widthOfScreen(context)*0.6,
+                                    child: Image.asset(ImagePath.REBUILD_MAP_2)
+                                ),
+                              ],
                             ),
                           ),
                           Positioned( //SIC

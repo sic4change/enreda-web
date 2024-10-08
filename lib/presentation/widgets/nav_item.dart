@@ -85,7 +85,7 @@ class _NavItemState extends State<NavItem> with SingleTickerProviderStateMixin {
                 child: Text(
                   widget.title,
                   style: widget.titleStyle ??
-                      textTheme.titleMedium?.copyWith(
+                      textTheme.displayMedium?.copyWith(
                         fontSize: textSize,
                         color: widget.titleColor,
                       ),

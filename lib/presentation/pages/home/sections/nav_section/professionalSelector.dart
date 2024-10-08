@@ -45,7 +45,7 @@ class ProfessionalSelector extends StatelessWidget {
               children: <Widget>[
                 InkWell(
                   child: Text(
-                    "SOY ENTIDAD",
+                    AppLocalizations.of(context)!.iAmEntity.toUpperCase(),
                     maxLines: 1,
                     style: textTheme.titleLarge!.copyWith(
                       fontFamily: GoogleFonts.outfit().fontFamily,
@@ -62,7 +62,7 @@ class ProfessionalSelector extends StatelessWidget {
                 SpaceH4(),
                 InkWell(
                   child: Text(
-                    "SOY EMPRESA",
+                    AppLocalizations.of(context)!.iAmCompany.toUpperCase(),
                     maxLines: 1,
                     style: textTheme.titleLarge!.copyWith(
                       fontFamily: GoogleFonts.outfit().fontFamily,
@@ -110,11 +110,11 @@ class ProfessionalSelector extends StatelessWidget {
         child: Text(
           AppLocalizations.of(context)!.professionalAccount.toUpperCase(),
           style: textTheme.titleLarge!.copyWith(
-            fontFamily: 'outfit',
-            fontWeight: FontWeight.w800,
-            fontSize: 16,
+            fontFamily: GoogleFonts.outfit().fontFamily,
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
             color: AppColors.textBlue,
-          )
+          ),
 
           /*TextStyle(
             fontFamily: GoogleFonts.outfit().fontFamily,

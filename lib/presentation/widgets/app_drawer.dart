@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:enreda_app/localization/DrawerLanguageButton.dart';
 import 'package:enreda_app/presentation/routes/router.gr.dart';
 import 'package:enreda_app/presentation/widgets/buttons/enreda_button.dart';
 import 'package:enreda_app/presentation/widgets/dialogs/show_login_menu.dart';
@@ -40,6 +41,7 @@ class AppDrawer extends StatefulWidget {
 
 class _AppDrawerState extends State<AppDrawer> {
   late StackRouter router;
+  final LanguageSelector = new DrawerLanguageButton();
 
   @override
   Widget build(BuildContext context) {
@@ -86,9 +88,13 @@ class _AppDrawerState extends State<AppDrawer> {
                   ),
                 ],
               ),
-              SpaceH12(),
               Padding(
-                padding: const EdgeInsets.only(left: Sizes.PADDING_24, right: 150),
+                padding: const EdgeInsets.only(left: Sizes.PADDING_24),
+                child: LanguageSelector,
+              ),
+              SpaceH16(),
+              Padding(
+                padding: const EdgeInsets.only(left: Sizes.PADDING_24, right: 100),
                 child: EnredaButtonIconReverse(
                   buttonTitle: AppLocalizations.of(context)!.myAccount.toUpperCase(),
                   widget: Image.asset(ImagePath.LOGIN_PERSON),
@@ -110,7 +116,7 @@ class _AppDrawerState extends State<AppDrawer> {
               Padding(
                 padding: EdgeInsets.only(top: Sizes.PADDING_24, left: Sizes.PADDING_24),
                 child: Text(
-                  'Descárgate la app'.toUpperCase(),
+                  AppLocalizations.of(context)!.downloadDrawer.toUpperCase(),
                   style: textTheme.bodyMedium?.copyWith(
                     fontFamily: GoogleFonts.outfit().fontFamily,
                     color: AppColors.black,
@@ -144,11 +150,11 @@ class _AppDrawerState extends State<AppDrawer> {
                   ],
                 ),
               ),
-              SpaceH40(),
+              SpaceH16(),
               Padding(
                 padding: EdgeInsets.only(top: Sizes.PADDING_24, left: Sizes.PADDING_24),
                 child: Text(
-                  'Cuenta profesional'.toUpperCase(),
+                  AppLocalizations.of(context)!.professionalAccount.toUpperCase(),
                   style: textTheme.bodyMedium?.copyWith(
                     fontFamily: GoogleFonts.outfit().fontFamily,
                     color: AppColors.textBlue,
@@ -165,7 +171,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 child: Padding(
                   padding: EdgeInsets.only(top: Sizes.PADDING_24, left: Sizes.PADDING_24),
                   child: Text(
-                    'Soy entidad'.toUpperCase(),
+                    AppLocalizations.of(context)!.iAmEntity.toUpperCase(),
                     style: textTheme.bodyMedium?.copyWith(
                       fontFamily: GoogleFonts.outfit().fontFamily,
                       color: AppColors.textBlue,
@@ -182,7 +188,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 child: Padding(
                   padding: EdgeInsets.only(top: Sizes.PADDING_24, left: Sizes.PADDING_24),
                   child: Text(
-                    'Soy empresa'.toUpperCase(),
+                    AppLocalizations.of(context)!.iAmCompany.toUpperCase(),
                     style: textTheme.bodyMedium?.copyWith(
                       fontFamily: GoogleFonts.outfit().fontFamily,
                       color: AppColors.textBlue,
@@ -212,15 +218,10 @@ class _AppDrawerState extends State<AppDrawer> {
             context: menuList[i].key,
             navItemName: menuList[i].name,
           ),
-          title: menuList[i].name,
+          title: _navItemsTranslation(menuList[i].name, context),
           isMobile: true,
           isSelected: menuList[i].isSelected,
-          titleStyle: textTheme.bodyMedium?.copyWith(
-            fontFamily: GoogleFonts.outfit().fontFamily,
-            color: menuList[i].isSelected ? AppColors.primary500 : AppColors.greyTxtAlt,
-            fontSize: Sizes.TEXT_SIZE_16,
-            fontWeight: FontWeight.bold,
-          ),
+          titleColor: menuList[i].isSelected ? AppColors.primary500 : AppColors.greyTxtAlt,
         ),
       );
       menuItems.add(SpaceH44());
@@ -247,6 +248,22 @@ class _AppDrawerState extends State<AppDrawer> {
 
   _closeDrawer() {
     context.router.pop();
+    LanguageSelector.hideOptions();
+  }
+
+  String _navItemsTranslation(String name, BuildContext context){
+    switch(name){
+      case StringConst.RESOURCES:
+        return AppLocalizations.of(context)!.resources;
+      case StringConst.JOB_SEARCH:
+        return AppLocalizations.of(context)!.jobSearch;
+      case StringConst.SOCIAL_ENTITY:
+        return AppLocalizations.of(context)!.socialEntities;
+      case StringConst.TALENT_SEARCH:
+        return AppLocalizations.of(context)!.talentSearch;
+      default:
+        return name;
+    }
   }
 
 }

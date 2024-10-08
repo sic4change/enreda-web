@@ -53,9 +53,10 @@ class AppTheme {
       fontWeight: _bold,
       fontStyle: FontStyle.normal,
     ),
-    displayMedium: GoogleFonts.inter(
-      fontSize: Sizes.TEXT_SIZE_60,
-      color: AppColors.black,
+    //Menu header items
+    displayMedium: GoogleFonts.outfit(
+      fontSize: Sizes.TEXT_SIZE_18,
+      color: AppColors.greyTxtAlt,
       fontWeight: _bold,
       fontStyle: FontStyle.normal,
     ),
@@ -77,16 +78,18 @@ class AppTheme {
       fontWeight: _bold,
       fontStyle: FontStyle.normal,
     ),
-    titleLarge: GoogleFonts.inter(
-      fontSize: Sizes.TEXT_SIZE_20,
-      color: AppColors.black,
-      fontWeight: _bold,
+    //Important titles
+    titleLarge: GoogleFonts.outfit(
+      fontSize: Sizes.TEXT_SIZE_56,
+      color: AppColors.textBlue,
+      fontWeight: FontWeight.w900,
       fontStyle: FontStyle.normal,
     ),
     titleMedium: GoogleFonts.outfit(
-      fontSize: Sizes.TEXT_SIZE_18,
-      color: AppColors.black,
-      fontWeight: FontWeight.w100,
+      fontSize: Sizes.TEXT_SIZE_32,
+      color: AppColors.textBlue,
+      fontWeight: FontWeight.w900,
+      fontStyle: FontStyle.normal,
     ),
     titleSmall: GoogleFonts.outfit(
       fontSize: Sizes.TEXT_SIZE_14,

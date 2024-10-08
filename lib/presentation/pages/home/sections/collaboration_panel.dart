@@ -191,6 +191,7 @@ class _CollaborationPanelState extends State<CollaborationPanel> {
         EnredaInfoSection6(
           title1: 'Tu futuro está lleno de oportunidades. ¡Atrévete a avanzar y alcanzar tus metas!',
           buttonTitle: 'Prueba de boton',
+          title1Style: textTheme.titleLarge!,
         ),
       ],
     );
@@ -203,6 +204,7 @@ class _CollaborationPanelState extends State<CollaborationPanel> {
       child: EnredaInfoSection6(
         title1: 'Tu futuro está lleno de oportunidades. ¡Atrévete a avanzar y alcanzar tus metas!',
         buttonTitle: 'Prueba de boton',
+        title1Style: textTheme.titleLarge!,
       ),
     );
   }

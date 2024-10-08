@@ -217,11 +217,6 @@ class _NavSectionWebState extends State<NavSectionWeb> {
               context: navItems[index].key,
               navItemName: navItems[index].name,
             ),
-            titleStyle: textTheme.titleLarge!.copyWith(
-              fontFamily: GoogleFonts.outfit().fontFamily,
-              fontWeight: FontWeight.w700,
-              fontSize: 16
-            ),
           ),
         ),
       );

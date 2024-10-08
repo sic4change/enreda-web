@@ -229,7 +229,7 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
             height: heightOfScreen(context)*0.8,
             child: Container(
                 height: 430,
-                child: Image.asset(ImagePath.REIMAGINE_TITLE_IMAGE)),
+                child: localeProvider.locale == Locale('es') ? Image.asset(ImagePath.REIMAGINE_TITLE_IMAGE) : Image.asset(ImagePath.REIMAGINE_TITLE_IMAGE_EN)),
           ),
         ),
       ],
@@ -407,7 +407,7 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
               //height: heightOfScreen(context)*0.8,
               child: Container(
                   //height: 430,
-                  child: Image.asset(ImagePath.REIMAGINE_TITLE_IMAGE)),
+                  child: localeProvider.locale == Locale('es') ? Image.asset(ImagePath.REIMAGINE_TITLE_IMAGE) : Image.asset(ImagePath.REIMAGINE_TITLE_IMAGE_EN)),
             ),
           ),
         ],

@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage>
 //    NavItemData(name: StringConst.WHO, key: GlobalKey()),
 //    NavItemData(name: StringConst.EMPTY, key: GlobalKey()),
 //    NavItemData(name: StringConst.CONTACT, key: GlobalKey()),
-    NavItemData(name: StringConst.JOB_SEARCH, key: GlobalKey()),
+    NavItemData(name: StringConst.JOB_SEARCH, key: GlobalKey(), ),
     NavItemData(name: StringConst.SOCIAL_ENTITY, key: GlobalKey()),
     NavItemData(name: StringConst.TALENT_SEARCH, key: GlobalKey()),
   ];

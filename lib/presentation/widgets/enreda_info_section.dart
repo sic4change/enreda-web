@@ -368,10 +368,6 @@ class EnredaInfoSection5 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextTheme textTheme = Theme.of(context).textTheme;
-    TextStyle? titleStyle = textTheme.titleMedium?.copyWith(
-      fontSize: responsiveSize(context, 25, 45, md: 30),
-      color: AppColors.greyDark,
-    );
     double fontSize = responsiveSize(context, 25, 40, md: 20);
     double fontSizeSection = responsiveSize(context, 40, 60, md: 40);
     return Padding(
@@ -442,12 +438,12 @@ class EnredaInfoSection5 extends StatelessWidget {
 
 class EnredaInfoSection6 extends StatelessWidget {
   final String? title1;
-  final TextStyle? title1Style;
+  final TextStyle title1Style;
   final String? buttonTitle;
 
   EnredaInfoSection6({
     this.title1,
-    this.title1Style,
+    required this.title1Style,
     this.buttonTitle,
 
   });
@@ -469,12 +465,7 @@ class EnredaInfoSection6 extends StatelessWidget {
                 child: Text(
                   title1!,
                   textAlign: TextAlign.start,
-                  style: TextStyle(
-                    fontFamily: GoogleFonts.outfit().fontFamily,
-                    fontWeight: FontWeight.w800,
-                    fontSize: fontSizeSection,
-                    color: AppColors.textBlue,
-                  )
+                  style: title1Style
                 ),
               ),
               Responsive.isMobile(context) ? SpaceH30() : SpaceH50(),
