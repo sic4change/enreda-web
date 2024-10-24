@@ -41,7 +41,7 @@ class AppTheme {
 
   // static const _superBold = FontWeight.w900;
   static const _bold = FontWeight.w700;
-  // static const _semiBold = FontWeight.w600;
+  static const _semiBold = FontWeight.w600;
   // static const _medium = FontWeight.w500;
   static const _regular = FontWeight.w400;
   static const _light = FontWeight.w300;
@@ -57,7 +57,7 @@ class AppTheme {
     displayMedium: GoogleFonts.outfit(
       fontSize: Sizes.TEXT_SIZE_18,
       color: AppColors.greyTxtAlt,
-      fontWeight: _bold,
+      fontWeight: _semiBold,
       fontStyle: FontStyle.normal,
     ),
     displaySmall: GoogleFonts.inter(

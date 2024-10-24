@@ -240,4 +240,6 @@ class Sizes {
   static const double ELEVATION_2 = 2.0;
   static const double ELEVATION_1 = 1.0;
   static const double ELEVATION_0 = 0.0;
+
+  static double mainPadding = 20.0;
 }
