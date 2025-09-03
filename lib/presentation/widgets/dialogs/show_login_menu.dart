@@ -87,7 +87,7 @@ Future showLoginMenu(BuildContext context, {
           openUrlLink(StringConst.SOCIAL_ENTITY_URL);
           break;
         case 'empresa':
-          openUrlLink(StringConst.ADMIN_WEB_URL);
+          openUrlLink(StringConst.WEB_COMPANIES_URL);
           break;
       }
     }

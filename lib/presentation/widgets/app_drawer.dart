@@ -183,7 +183,8 @@ class _AppDrawerState extends State<AppDrawer> {
               ),
               InkWell(
                 onTap: (){
-
+                  _closeDrawer();
+                  openUrlLink(StringConst.WEB_COMPANIES_URL);
                 },
                 child: Padding(
                   padding: EdgeInsets.only(top: Sizes.PADDING_24, left: Sizes.PADDING_24),

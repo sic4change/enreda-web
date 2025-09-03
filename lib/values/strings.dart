@@ -205,6 +205,7 @@ class StringConst {
   static const String WEB_APP_URL = 'https://enredawebapp.web.app/access';
   static const String SOCIAL_ENTITY_URL = 'https://enredadentidadsocial.web.app/';
   static const String WEB_FUNDAULA_ACCESS = 'https://fundaula-lp.cclearning.accenture.com/?p=12510';
+  static const String WEB_COMPANIES_URL = 'https://enreda-empresas.web.app/';
 
 
   //Contact form

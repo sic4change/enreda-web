@@ -701,7 +701,7 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
                                       ),
                                     ),
                                     onPressed: () {
-                                      openUrlLink(StringConst.SOCIAL_ENTITY_URL);
+                                      openUrlLink(StringConst.WEB_COMPANIES_URL);
                                     },
                                     child: Padding(
                                       padding: EdgeInsets.all(22.0),

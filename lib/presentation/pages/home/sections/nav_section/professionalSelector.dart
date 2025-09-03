@@ -68,11 +68,11 @@ class ProfessionalSelector extends StatelessWidget {
                       fontFamily: GoogleFonts.outfit().fontFamily,
                       fontSize: 14,
                       fontWeight: FontWeight.w300,
-                      color: AppColors.greyDivider,
+                      color: AppColors.textBlue,
                     ),
                   ),
                   onTap: () {
-                    //localeProvider.setLocale(Locale('en'));
+                    openUrlLink(StringConst.WEB_COMPANIES_URL);
                     _hideOptions();
                   },
                 ),
