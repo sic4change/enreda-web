@@ -14,7 +14,7 @@ import '../../utils/responsive.dart';
 import '../../values/values.dart';
 import '../layout/adaptive.dart';
 import 'nav_item.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:enreda_app/l10n/app_localizations.dart';
 
 const kSpacing20 = Sizes.SIZE_20;
 

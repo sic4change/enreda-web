@@ -192,7 +192,7 @@ class StringConst {
   static const String FIND_ME = "Find me on..";
 
   //URL Links
-  static const String PRIVACITY_URL = "https://firebasestorage.googleapis.com/v0/b/enreda-d3b41.appspot.com/o/pagina-politicas.html?alt=media&token=3f1ed44d-b0e2-4e51-8266-1ad608604eba";
+  static const String PRIVACITY_URL = "https://firebasestorage.googleapis.com/v0/b/enreda-d3b41.appspot.com/o/enreda-web-politicas.html?alt=media&token=6b43c4b8-9146-45ea-aef4-90ee15e84a02";
   static const String BEHANCE_URL = "https://www.behance.net/";
   static const String DRIBBLE_URL = "https://dribbble.com/";
   static const String LINKED_IN_URL = "https://www.linkedin.com/company/sic4change/";

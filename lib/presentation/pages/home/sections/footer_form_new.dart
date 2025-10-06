@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:enreda_app/l10n/app_localizations.dart';
 import 'package:enreda_app/models/contact.dart';
 import 'package:enreda_app/presentation/pages/home/home_page.dart';
 import 'package:enreda_app/presentation/widgets/dialogs/show_alert_dialog.dart';
@@ -14,7 +15,6 @@ import '../../../../utils/responsive.dart';
 import '../../../../values/values.dart';
 import '../../../layout/adaptive.dart';
 import '../../../widgets/spaces.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FooterFormNew extends StatefulWidget {
   FooterFormNew({Key? key, required this.isEntity});

@@ -11,7 +11,8 @@ import '../../../../utils/responsive.dart';
 import '../../../../values/values.dart';
 import '../../../layout/adaptive.dart';
 import '../../../widgets/spaces.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:enreda_app/l10n/app_localizations.dart';
+
 
 
 class FooterNew extends StatefulWidget {

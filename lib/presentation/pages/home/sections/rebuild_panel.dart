@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import '../../../../utils/responsive.dart';
 import '../../../../values/values.dart';
 import '../../../layout/adaptive.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:enreda_app/l10n/app_localizations.dart';
 
 
 const double kSpacingSm = 40.0;

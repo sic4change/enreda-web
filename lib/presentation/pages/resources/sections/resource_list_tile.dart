@@ -16,7 +16,7 @@ import '../../../widgets/dialogs/show_alert_dialog.dart';
 import '../../../widgets/dialogs/show_exception_alert_dialog.dart';
 import '../../../widgets/spaces.dart';
 import '../../../widgets/widgets/precache_widgets.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:enreda_app/l10n/app_localizations.dart';
 
 
 class ResourceListTile extends StatefulWidget {

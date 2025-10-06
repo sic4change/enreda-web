@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:enreda_app/l10n/app_localizations.dart';
 import 'package:enreda_app/localization/HeaderLanguageButton.dart';
 import 'package:enreda_app/localization/LocaleProvider.dart';
 import 'package:enreda_app/presentation/pages/home/sections/nav_section/professionalSelector.dart';
@@ -9,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../../utils/functions.dart';
 import '../../../../../values/values.dart';

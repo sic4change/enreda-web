@@ -1,3 +1,4 @@
+import 'package:enreda_app/l10n/app_localizations.dart';
 import 'package:enreda_app/localization/LocaleProvider.dart';
 import 'package:enreda_app/presentation/widgets/spaces.dart';
 import 'package:enreda_app/utils/functions.dart';
@@ -5,7 +6,6 @@ import 'package:enreda_app/values/values.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class ProfessionalSelector extends StatelessWidget {

@@ -13,7 +13,7 @@ import '../../../widgets/buttons/social_button_2.dart';
 import '../../../widgets/content_area.dart';
 import '../../../widgets/enreda_info_section.dart';
 import '../../../widgets/spaces.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:enreda_app/l10n/app_localizations.dart';
 
 const double kSpacingSm = 40.0;
 const double kRunSpacingSm = 24.0;
