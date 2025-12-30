@@ -63,9 +63,13 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
                   child: Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_IMAGE),
                 ),
                 Positioned(
-                  bottom: localeProvider.locale == Locale("es") ? -widthOfScreen(context)/19 : -widthOfScreen(context)/24,
+                  bottom: localeProvider.locale == Locale("es")  ? -widthOfScreen(context)/19 : -widthOfScreen(context)/24,
                   width: widthOfScreen(context)/1.3,
-                  child: localeProvider.locale == Locale("es") ? Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_TEXT) : Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_TEXT_EN),
+                  child: localeProvider.locale == Locale("es") 
+                  ? Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_TEXT) :
+                  localeProvider.locale == Locale("fr") ? 
+                  Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_TEXT_FR)
+                  : Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_TEXT_EN),
                 )
               ],
             ),
@@ -599,7 +603,11 @@ class _TalentSearchPageState extends State<TalentSearchPage> {
                 Positioned(
                   bottom: localeProvider.locale == Locale("es") ? -widthOfScreen(context)/20 : -widthOfScreen(context)/25,
                   width: widthOfScreen(context)/1.3,
-                  child: localeProvider.locale == Locale("es") ?  Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_TEXT) : Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_TEXT_EN),
+                  child: localeProvider.locale == Locale("es") 
+                  ? Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_TEXT) :
+                  localeProvider.locale == Locale("fr") ? 
+                  Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_TEXT_FR)
+                  : Image.asset(ImagePath.TALENT_SEARCH_PRESENTATION_TEXT_EN),
                 )
               ],
             ),

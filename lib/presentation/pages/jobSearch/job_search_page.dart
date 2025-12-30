@@ -68,9 +68,13 @@ class _JobSearchPageState extends State<JobSearchPage> {
                   child: Image.asset(ImagePath.JOB_SEARCH_PRESENTATION_IMAGE),
                 ),
                 Positioned(
-                  bottom: localeProvider.locale == Locale('es') ? -widthOfScreen(context)/15 : -widthOfScreen(context)/18,
+                  bottom: localeProvider.locale == Locale('es')  ? -widthOfScreen(context)/15 : -widthOfScreen(context)/18,
                   width: widthOfScreen(context)/1.3,
-                  child: localeProvider.locale == Locale('es') ? Image.asset(ImagePath.JOB_SEARCH_PRESENTATION_TEXT) : Image.asset(ImagePath.JOB_SEARCH_PRESENTATION_TEXT_EN),
+                  child: localeProvider.locale == Locale('es') 
+                    ? Image.asset(ImagePath.JOB_SEARCH_PRESENTATION_TEXT) :
+                      localeProvider.locale == Locale('fr') ?
+                      Image.asset(ImagePath.JOB_SEARCH_PRESENTATION_TEXT_FR)
+                      : Image.asset(ImagePath.JOB_SEARCH_PRESENTATION_TEXT_EN),
                 )
               ],
             ),
@@ -282,7 +286,11 @@ class _JobSearchPageState extends State<JobSearchPage> {
                 Positioned(
                   bottom: localeProvider.locale == Locale('es') ? -widthOfScreen(context)/15 : -widthOfScreen(context)/19,
                   width: widthOfScreen(context)/1.3,
-                  child: localeProvider.locale == Locale('es') ? Image.asset(ImagePath.JOB_SEARCH_PRESENTATION_TEXT) : Image.asset(ImagePath.JOB_SEARCH_PRESENTATION_TEXT_EN),
+                  child: localeProvider.locale == Locale('es') 
+                    ? Image.asset(ImagePath.JOB_SEARCH_PRESENTATION_TEXT) :
+                      localeProvider.locale == Locale('fr') ?
+                      Image.asset(ImagePath.JOB_SEARCH_PRESENTATION_TEXT_FR)
+                      : Image.asset(ImagePath.JOB_SEARCH_PRESENTATION_TEXT_EN),
                 )
               ],
             ),

@@ -87,7 +87,11 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                 Positioned(
                   bottom: -widthOfScreen(context)/15,
                   width: widthOfScreen(context)/1.5,
-                  child: localeProvider.locale == Locale('es') ? Image.asset(ImagePath.ENTITY_PRESENTATION_TEXT) : Image.asset(ImagePath.ENTITY_PRESENTATION_TEXT_EN),
+                  child: localeProvider.locale == Locale('es') 
+                    ? Image.asset(ImagePath.ENTITY_PRESENTATION_TEXT) :
+                      localeProvider.locale == Locale('fr') ? 
+                      Image.asset(ImagePath.ENTITY_PRESENTATION_TEXT_FR)
+                    : Image.asset(ImagePath.ENTITY_PRESENTATION_TEXT_EN),
                 )
               ],
             ),
@@ -285,7 +289,11 @@ class _SocialEntityPageState extends State<SocialEntityPage> {
                 Positioned(
                   bottom: -widthOfScreen(context)/15,
                   width: widthOfScreen(context)/1.3,
-                  child: localeProvider.locale == Locale("es") ? Image.asset(ImagePath.ENTITY_PRESENTATION_TEXT) : Image.asset(ImagePath.ENTITY_PRESENTATION_TEXT_EN),
+                  child: localeProvider.locale == Locale('es') 
+                    ? Image.asset(ImagePath.ENTITY_PRESENTATION_TEXT) :
+                      localeProvider.locale == Locale('fr') ? 
+                      Image.asset(ImagePath.ENTITY_PRESENTATION_TEXT_FR)
+                    : Image.asset(ImagePath.ENTITY_PRESENTATION_TEXT_EN),
                 )
               ],
             ),
