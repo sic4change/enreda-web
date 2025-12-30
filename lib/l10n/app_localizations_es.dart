@@ -83,7 +83,7 @@ class AppLocalizationsEs extends AppLocalizations {
       'Enreda conecta a tu empresa con perfiles profesionales del territorio motivados y comprometidos, que cumplirán con tus expectativas y tus necesidades. Te permite publicar ofertas de empleo y seleccionar candidatos de manera ágil, no solo basado en conocimiento, sino también en competencias.';
 
   @override
-  String get learnMore => 'Learn more';
+  String get learnMore => 'Saber más';
 
   @override
   String get byHand => 'De la mano de...';

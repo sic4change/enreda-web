@@ -163,7 +163,11 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
               ),
             ),
             Positioned(
-              child: localeProvider.locale == Locale('es') ? Image.asset(ImagePath.REDISCOVER_TEXT) : Image.asset(ImagePath.REDISCOVER_TEXT_EN),
+              child: localeProvider.locale == const Locale('es')
+                ? Image.asset(ImagePath.REDISCOVER_TEXT)
+                : localeProvider.locale == const Locale('fr')
+                    ? Image.asset(ImagePath.REDISCOVER_TEXT_FR)
+                    : Image.asset(ImagePath.REDISCOVER_TEXT_EN),
               width: widthOfScreen(context)/1.1,
               bottom: -widthOfScreen(context)/15,
             ),
@@ -229,7 +233,11 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
             height: heightOfScreen(context)*0.8,
             child: Container(
                 height: 430,
-                child: localeProvider.locale == Locale('es') ? Image.asset(ImagePath.REIMAGINE_TITLE_IMAGE) : Image.asset(ImagePath.REIMAGINE_TITLE_IMAGE_EN)),
+                child: localeProvider.locale == Locale('es') 
+                  ? Image.asset(ImagePath.REIMAGINE_TITLE_IMAGE)
+                  : localeProvider.locale == Locale('fr') 
+                    ? Image.asset(ImagePath.REIMAGINE_TITLE_IMAGE_FR)
+                    : Image.asset(ImagePath.REIMAGINE_TITLE_IMAGE_EN)),
           ),
         ),
       ],
@@ -340,7 +348,11 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
                 ),
               ),
               Positioned(
-                child: localeProvider.locale == Locale('es') ? Image.asset(ImagePath.REDISCOVER_TEXT) : Image.asset(ImagePath.REDISCOVER_TEXT_EN),
+                child: localeProvider.locale == const Locale('es')
+                ? Image.asset(ImagePath.REDISCOVER_TEXT)
+                : localeProvider.locale == const Locale('fr')
+                    ? Image.asset(ImagePath.REDISCOVER_TEXT_FR)
+                    : Image.asset(ImagePath.REDISCOVER_TEXT_EN),
                 width: widthOfScreen(context)/1.1,
                 bottom: -widthOfScreen(context)/15,
               ),
@@ -407,7 +419,11 @@ class _RediscoverPanelState extends State<RediscoverPanel> {
               //height: heightOfScreen(context)*0.8,
               child: Container(
                   //height: 430,
-                  child: localeProvider.locale == Locale('es') ? Image.asset(ImagePath.REIMAGINE_TITLE_IMAGE) : Image.asset(ImagePath.REIMAGINE_TITLE_IMAGE_EN)),
+                  child: localeProvider.locale == Locale('es') 
+                  ? Image.asset(ImagePath.REIMAGINE_TITLE_IMAGE)
+                  : localeProvider.locale == Locale('fr') 
+                    ? Image.asset(ImagePath.REIMAGINE_TITLE_IMAGE_FR)
+                    : Image.asset(ImagePath.REIMAGINE_TITLE_IMAGE_EN)),
             ),
           ),
         ],

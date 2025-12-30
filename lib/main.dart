@@ -55,6 +55,7 @@ class Enreda extends StatelessWidget {
             supportedLocales: [
               Locale('en'),
               Locale('es'),
+              Locale('fr'),
             ],
           );
         }

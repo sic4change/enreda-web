@@ -89,12 +89,12 @@ class HeaderLanguageButton extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: GoogleFonts.outfit().fontFamily,
                       fontSize: 13,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.greyDivider,
+                      fontWeight: localeProvider.locale == Locale('fr') ?  FontWeight.w800 : FontWeight.w400,
+                      color: AppColors.textBlue,
                     ),
                   ),
                   onTap: () {
-                    // Lógica para la opción 2
+                    localeProvider.setLocale(Locale('fr'));
                     _hideOptions();
                   },
                 ),

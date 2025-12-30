@@ -182,8 +182,12 @@ class _RebuildPanelState extends State<RebuildPanel> {
             Positioned(
               bottom: 500,
               child: Container(
-                  width: localeProvider.locale == Locale('es') ? widthOfScreen(context)-200 : widthOfScreen(context)-600,
-                  child: localeProvider.locale == Locale('es') ? Image.asset(ImagePath.REBUILD_TITLE_IMAGE) : Image.asset(ImagePath.REBUILD_TITLE_IMAGE_EN)
+                  width: localeProvider.locale == Locale('es') || localeProvider.locale == Locale('fr')  ? widthOfScreen(context)-200 : widthOfScreen(context)-600,
+                  child: localeProvider.locale == Locale('es') 
+                    ? Image.asset(ImagePath.REBUILD_TITLE_IMAGE) 
+                    : localeProvider.locale == Locale('fr') 
+                      ? Image.asset(ImagePath.REBUILD_TITLE_IMAGE_FR)
+                      : Image.asset(ImagePath.REBUILD_TITLE_IMAGE_EN)
               ),
             ),
 
@@ -333,8 +337,12 @@ class _RebuildPanelState extends State<RebuildPanel> {
             Positioned(
               bottom: 1230,
               child: Container(
-                  width: localeProvider.locale == Locale('es') ? widthOfScreen(context)-60 : widthOfScreen(context)-120,
-                  child: localeProvider.locale == Locale('es') ? Image.asset(ImagePath.REBUILD_TITLE_IMAGE) : Image.asset(ImagePath.REBUILD_TITLE_IMAGE_EN)
+                  width: localeProvider.locale == Locale('es') || localeProvider.locale == Locale('fr') ? widthOfScreen(context)-60 : widthOfScreen(context)-120,
+                  child: localeProvider.locale == Locale('es') 
+                    ? Image.asset(ImagePath.REBUILD_TITLE_IMAGE) 
+                    : localeProvider.locale == Locale('fr') 
+                      ? Image.asset(ImagePath.REBUILD_TITLE_IMAGE_FR)
+                      : Image.asset(ImagePath.REBUILD_TITLE_IMAGE_EN)
               ),
             ),
 
