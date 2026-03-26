@@ -47,20 +47,22 @@ class _FooterNewState extends State<FooterNew> {
 
   Widget _buildFooter(BuildContext context){
     return Padding(
-      padding: const EdgeInsets.only(top:412.0),
+      padding: const EdgeInsets.only(top: 12.0),
       child: Column(
         children: [
           Stack(
             clipBehavior: Clip.none,
             alignment: Alignment.center,
             children: [
-              Container(
-                color: AppColors.skyBlue,
-                height: 600,
-                width: widthOfScreen(context),
-                child: Padding(
-                  padding: EdgeInsets.only(right: 100, left: 100, top: 200, bottom: 89),
-                  child: Row(
+              Padding(
+                padding: const EdgeInsets.only(top: 400.0),
+                child: Container(
+                  color: AppColors.skyBlue,
+                  height: 600,
+                  width: widthOfScreen(context),
+                  child: Padding(
+                    padding: EdgeInsets.only(right: 100, left: 100, top: 200, bottom: 89),
+                    child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
@@ -243,7 +245,7 @@ class _FooterNewState extends State<FooterNew> {
               ),
               Positioned(
                 child: _buildJoinCommunityPanel(context),
-                top: -400,
+                top: 0,
               ),
             ],
           ),
